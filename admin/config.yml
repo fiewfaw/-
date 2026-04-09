@@ -1,0 +1,23 @@
+backend:
+  name: github
+  repo: fiewfaw/-
+  branch: main
+
+media_folder: "รูปประกอบ/blog"
+public_folder: "/รูปประกอบ/blog"
+
+locale: "th"
+
+collections:
+  - name: "posts"
+    label: "บทความ"
+    folder: "content/posts"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "ชื่อบทความ", name: "title", widget: "string" }
+      - { label: "คำอธิบายสั้น", name: "description", widget: "string" }
+      - { label: "วันที่เผยแพร่", name: "date", widget: "datetime", format: "YYYY-MM-DD" }
+      - { label: "รูปปก", name: "image", widget: "image", required: false }
+      - { label: "แท็ก", name: "tags", widget: "list", default: ["stroke"] }
+      - { label: "เนื้อหา", name: "body", widget: "markdown" }
