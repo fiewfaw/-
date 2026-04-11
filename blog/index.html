@@ -159,7 +159,7 @@
             const grid = document.getElementById('blogGrid');
             try {
                 // Fetch list of posts from articles.json
-                const res = await fetch('./articles.json');
+                const res = await fetch('./articles.json', { cache: 'no-store' });
                 const articles = await res.json();
 
                 if (!articles.length) {

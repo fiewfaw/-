@@ -4,7 +4,7 @@
     "title": "โรคหลอดเลือดสมอง (Stroke) คืออะไร? จากโรคปริศนา สู่โรคที่รักษาได้",
     "description": "เข้าใจโรคหลอดเลือดสมอง (Stroke) ตั้งแต่ประวัติศาสตร์ 2,500 ปี สาเหตุ อาการเตือน วิธีวินิจฉัยด้วย CT scan ความแตกต่างระหว่างเส้นเลือดตีบกับแตก การรักษาด้วย tPA และ Thrombectomy จนถึงการฟื้นฟูด้วยกายภาพบำบัดและ Neuroplasticity",
     "date": "2026-04-09",
-    "image": "../blog/images/ep1/stroke-cover.jpg",
+    "image": "/blog/images/ep1/stroke-cover.jpg",
     "tags": ["stroke", "EP.1 ซีรีส์ Stroke", "กายภาพบำบัด", "Neuroplasticity"]
   },
   {
@@ -12,7 +12,7 @@
     "title": "Stroke คืออะไร? อาการเตือน สาเหตุ และการฟื้นฟูที่ควรรู้",
     "description": "ทำความเข้าใจโรคหลอดเลือดสมอง (Stroke) ตั้งแต่สาเหตุ อาการเตือน FAST วิธีรับมือเบื้องต้น และแนวทางการฟื้นฟูด้วยกายภาพบำบัด",
     "date": "2026-04-09",
-    "image": "",
+    "image": "/blog/images/ep1/stroke-types.jpg",
     "tags": ["stroke", "ความรู้พื้นฐาน"]
   },
   {
@@ -20,7 +20,7 @@
     "title": "Golden Period คืออะไร? เลย Golden Period แล้วยังฟื้นตัวได้ไหม?",
     "description": "ทำความเข้าใจ Golden Period ของ Stroke และเหตุผลว่าทำไมผู้ป่วย Chronic Stroke ที่เลย Golden Period แล้ว ยังมีโอกาสฟื้นตัวได้ด้วยกายภาพบำบัด",
     "date": "2026-04-09",
-    "image": "",
+    "image": "/blog/images/ep1/brain-plasticity.jpg",
     "tags": ["stroke", "golden period", "การฟื้นฟู"]
   },
   {
@@ -28,7 +28,7 @@
     "title": "กายภาพบำบัดถึงบ้าน ชลบุรี ดูแลผู้ป่วย Stroke อย่างไร?",
     "description": "เรียนรู้ว่าบริการกายภาพบำบัดถึงบ้านในชลบุรี ช่วยดูแลผู้ป่วย Stroke ได้อย่างไร ข้อดีของการรักษาที่บ้าน และขั้นตอนการรับบริการ",
     "date": "2026-04-09",
-    "image": "",
+    "image": "/blog/images/ep1/pt-helping-patient.webp",
     "tags": ["กายภาพบำบัดถึงบ้าน", "ชลบุรี"]
   }
 ]

@@ -1170,7 +1170,7 @@
         // Load latest articles
         (async function() {
             try {
-                const res = await fetch('blog/articles.json');
+                const res = await fetch('blog/articles.json', { cache: 'no-store' });
                 const articles = await res.json();
                 articles.sort((a, b) => new Date(b.date) - new Date(a.date));
                 const latest = articles.slice(0, 3);
@@ -1181,8 +1181,11 @@
                 grid.innerHTML = latest.map(a => {
                     const d = new Date(a.date);
                     const dateStr = d.getDate() + ' ' + months[d.getMonth()] + ' ' + (d.getFullYear() + 543);
+                    const imgStyle = a.image
+                        ? `background-image:url(${a.image}); background-size:cover; background-position:center;`
+                        : `background:linear-gradient(135deg, var(--light-blue), var(--light-green));`;
                     return `<a href="blog/post.html?slug=${encodeURIComponent(a.slug)}" style="background:var(--white); border-radius:var(--radius); border:1px solid var(--border); overflow:hidden; text-decoration:none; color:inherit; display:block; transition:all 0.3s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='var(--shadow-lg)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-                        <div style="height:180px; background:linear-gradient(135deg, var(--light-blue), var(--light-green));"></div>
+                        <div style="height:180px; ${imgStyle}"></div>
                         <div style="padding:20px 24px;">
                             <div style="display:flex; gap:6px; margin-bottom:8px; flex-wrap:wrap;">${(a.tags||[]).map(t => `<span style="background:var(--light-blue); color:var(--blue); font-size:0.75rem; font-weight:600; padding:2px 10px; border-radius:50px;">${t}</span>`).join('')}</div>
                             <h3 style="font-family:'Mitr',sans-serif; font-size:1.1rem; font-weight:600; color:var(--text-dark); line-height:1.4; margin-bottom:8px;">${a.title}</h3>
