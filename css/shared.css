@@ -76,6 +76,7 @@ body {
     padding: 8px 16px;
     border-radius: 50px;
     transition: all 0.3s;
+    white-space: nowrap;
 }
 .nav-link:hover {
     color: var(--blue);
@@ -91,6 +92,7 @@ body {
     font-weight: 600;
     font-size: 0.9rem;
     transition: all 0.3s;
+    white-space: nowrap;
 }
 .nav-cta:hover {
     background: var(--dark-green);
@@ -797,9 +799,32 @@ body {
     .article-header h1 {
         font-size: 1.7rem;
     }
-    .nav-link { display: none; }
+    .nav-inner { padding: 0 16px; gap: 8px; }
+    .nav-brand { font-size: 1rem; }
+    .nav-links { gap: 4px; }
+    .nav-link {
+        font-size: 0.85rem;
+        padding: 6px 10px;
+    }
+    .nav-cta {
+        font-size: 0.85rem;
+        padding: 8px 16px;
+    }
     .cta-hub h2 { font-size: 1.6rem; }
     .cta-big { width: 100%; justify-content: center; padding: 16px 32px; }
     .social-links { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
     .social-link { justify-content: center; }
+}
+
+@media (max-width: 420px) {
+    .nav-brand { font-size: 0.9rem; }
+    .nav-brand span { display: inline; }
+    .nav-link {
+        font-size: 0.8rem;
+        padding: 5px 8px;
+    }
+    .nav-cta {
+        font-size: 0.8rem;
+        padding: 7px 12px;
+    }
 }
