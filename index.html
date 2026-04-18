@@ -92,10 +92,21 @@
             font-weight: 600;
             color: var(--blue);
             text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
         }
 
         .nav-brand span {
             color: var(--green);
+        }
+
+        .nav-brand-logo {
+            height: 36px;
+            width: auto;
+            border-radius: 4px;
+            flex-shrink: 0;
         }
 
         .nav-cta {
@@ -756,6 +767,16 @@
 
         /* ========== RESPONSIVE ========== */
         @media (max-width: 768px) {
+            .nav { padding: 8px 0; }
+            .nav-inner { padding: 0 14px; gap: 8px; }
+            .nav-brand { font-size: 0.95rem; gap: 6px; }
+            .nav-brand-logo { height: 28px; }
+            .nav-cta { font-size: 0.85rem; padding: 7px 14px; }
+
+            .hero {
+                padding: 90px 20px 60px;
+            }
+
             .hero-inner {
                 grid-template-columns: 1fr;
                 gap: 40px;
@@ -860,10 +881,10 @@
     <!-- NAV -->
     <nav class="nav" id="nav">
         <div class="nav-inner">
-            <a href="#" class="nav-brand"><img src="รูปประกอบ/บ้านกายภาพ ชลบุรี.jpg" alt="โลโก้บ้านกายภาพ ชลบุรี" style="height: 36px; width: auto; vertical-align: middle; margin-right: 8px; border-radius: 4px;">บ้านกายภาพ <span>ชลบุรี</span></a>
-            <div style="display:flex; align-items:center; gap:8px;">
-                <a href="blog/" style="font-family:'Sarabun',sans-serif; font-size:0.95rem; font-weight:600; color:var(--text-mid); text-decoration:none; padding:8px 16px; border-radius:50px; transition:all 0.3s;">บทความ</a>
-                <a href="videos/" style="font-family:'Sarabun',sans-serif; font-size:0.95rem; font-weight:600; color:var(--text-mid); text-decoration:none; padding:8px 16px; border-radius:50px; transition:all 0.3s;">วิดีโอ</a>
+            <a href="#" class="nav-brand"><img src="รูปประกอบ/บ้านกายภาพ ชลบุรี.jpg" alt="โลโก้บ้านกายภาพ ชลบุรี" class="nav-brand-logo">บ้านกายภาพ <span>ชลบุรี</span></a>
+            <div class="nav-links">
+                <a href="blog/" class="nav-link">บทความ</a>
+                <a href="videos/" class="nav-link">วิดีโอ</a>
                 <a href="#contact" class="nav-cta">ปรึกษาฟรี</a>
             </div>
         </div>
