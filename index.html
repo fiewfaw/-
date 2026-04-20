@@ -92,9 +92,6 @@
             font-weight: 600;
             color: var(--blue);
             text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
             white-space: nowrap;
         }
 
@@ -102,11 +99,26 @@
             color: var(--green);
         }
 
-        .nav-brand-logo {
-            height: 36px;
-            width: auto;
-            border-radius: 4px;
-            flex-shrink: 0;
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-link {
+            font-family: 'Sarabun', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-mid);
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 50px;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+        .nav-link:hover {
+            color: var(--blue);
+            background: var(--light-blue);
         }
 
         .nav-cta {
@@ -118,6 +130,7 @@
             font-weight: 600;
             font-size: 0.9rem;
             transition: all 0.3s;
+            white-space: nowrap;
         }
 
         .nav-cta:hover {
@@ -769,9 +782,30 @@
         @media (max-width: 768px) {
             .nav { padding: 8px 0; }
             .nav-inner { padding: 0 14px; gap: 8px; }
-            .nav-brand { font-size: 0.95rem; gap: 6px; }
-            .nav-brand-logo { height: 28px; }
+            .nav-brand { font-size: 0.95rem; }
+            .nav-links { gap: 4px; }
+            .nav-link {
+                font-size: 0.85rem;
+                padding: 6px 10px;
+            }
             .nav-cta { font-size: 0.85rem; padding: 7px 14px; }
+        }
+        @media (max-width: 480px) {
+            .nav-brand { font-size: 0.85rem; }
+            .nav-link {
+                font-size: 0.78rem;
+                padding: 5px 8px;
+            }
+            .nav-cta {
+                font-size: 0.78rem;
+                padding: 6px 12px;
+            }
+        }
+        @media (max-width: 380px) {
+            .nav-brand span { display: none; }
+        }
+
+        @media (max-width: 768px) {
 
             .hero {
                 padding: 90px 20px 60px;
@@ -881,8 +915,9 @@
     <!-- NAV -->
     <nav class="nav" id="nav">
         <div class="nav-inner">
-            <a href="#" class="nav-brand"><img src="รูปประกอบ/บ้านกายภาพ ชลบุรี.jpg" alt="โลโก้บ้านกายภาพ ชลบุรี" class="nav-brand-logo">บ้านกายภาพ <span>ชลบุรี</span></a>
+            <a href="#" class="nav-brand">บ้านกายภาพ <span>ชลบุรี</span></a>
             <div class="nav-links">
+                <a href="#" class="nav-link" style="color: var(--blue); background: var(--light-blue);">หน้าหลัก</a>
                 <a href="blog/" class="nav-link">บทความ</a>
                 <a href="videos/" class="nav-link">วิดีโอ</a>
                 <a href="#contact" class="nav-cta">ปรึกษาฟรี</a>
