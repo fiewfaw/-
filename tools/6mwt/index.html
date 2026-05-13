@@ -299,13 +299,13 @@ body{
     <div class="distance-calc">
       <div class="distance-row">
         <input type="tel" id="laps" inputmode="numeric" pattern="[0-9]*" placeholder="รอบ">
-        <span class="x">× 12 +</span>
+        <span class="x">× 24 +</span>
         <input type="tel" id="extra" inputmode="numeric" pattern="[0-9]*" placeholder="เศษ">
         <span class="eq">=</span>
         <span class="total" id="distTotal">— m</span>
       </div>
     </div>
-    <div class="hint">1 รอบ (ไป-กลับ) = 12 ม. → รอบ × 12 + เศษระยะที่เดินไม่ครบรอบ</div>
+    <div class="hint">1 รอบ (ไป-กลับ) = 24 ม. → รอบ × 24 + เศษระยะที่เดินไม่ครบรอบ</div>
   </div>
 
   <!-- 4. POST -->
@@ -512,7 +512,7 @@ function getSex(){ return document.querySelector('input[name=sex]:checked').valu
 function getActual(){
   const laps = parseInt($('laps').value, 10);
   const extra = parseFloat($('extra').value);
-  const lapM = (isNaN(laps) ? 0 : laps) * 12;
+  const lapM = (isNaN(laps) ? 0 : laps) * 24;
   const extraM = isNaN(extra) ? 0 : extra;
   return lapM + extraM;
 }
