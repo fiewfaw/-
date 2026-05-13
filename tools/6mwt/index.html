@@ -442,16 +442,18 @@ body{
 
 const $ = id => document.getElementById(id);
 const LS_KEY = 'mwt6_settings_v1';
+const DEFAULT_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbz5tj8NOxaFC3rGVhZR1A4LMP6i1IBgUCdO-qo_EBLmNQKPAvQStDgeryrWgKaNaqOJ/exec';
 const THAI_MONTHS_FULL = ['มกราคม','กุมภาพันธ์','มีนาคม','เมษายน','พฤษภาคม','มิถุนายน','กรกฎาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม'];
 
 // ---------- Settings ----------
 function loadSettings(){
   try{
     const s = JSON.parse(localStorage.getItem(LS_KEY) || '{}');
-    $('webhookUrl').value = s.url || '';
+    const url = s.url || DEFAULT_WEBHOOK_URL;
+    $('webhookUrl').value = url;
     $('recorder').value = s.recorder || '';
-    return s;
-  }catch(e){return {}}
+    return {...s, url};
+  }catch(e){return {url: DEFAULT_WEBHOOK_URL}}
 }
 function saveSettings(){
   const s = {url: $('webhookUrl').value.trim(), recorder: $('recorder').value.trim()};
