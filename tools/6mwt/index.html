@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="6MWT">
+<meta name="theme-color" content="#0077B6">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<title>6MWT Calculator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#0077B6; --dark-blue:#005A8C; --green:#2A9D8F; --dark-green:#1E7A6E;
+  --light-blue:#E8F4F8; --light-green:#E6F5F2;
+  --bg:#F7FAFB; --card:#FFFFFF; --border:#E2E8F0;
+  --text:#1A2332; --text-mid:#4A5568; --text-light:#718096;
+  --danger:#E53E3E; --warn:#F59E0B; --ok:#16A34A;
+  --radius:14px; --radius-sm:10px;
+  --safe-top:env(safe-area-inset-top);
+  --safe-bot:env(safe-area-inset-bottom);
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{
+  font-family:'Sarabun',-apple-system,BlinkMacSystemFont,sans-serif;
+  background:var(--bg); color:var(--text); line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  padding-top:calc(64px + var(--safe-top));
+  padding-bottom:calc(92px + var(--safe-bot));
+}
+
+.topbar{
+  position:fixed; top:0; left:0; right:0; z-index:50;
+  background:rgba(255,255,255,0.92);
+  backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+  padding-top:var(--safe-top);
+}
+.topbar-inner{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:8px 16px; min-height:64px;
+}
+.brand{display:flex; flex-direction:column; gap:1px;}
+.brand .title{
+  font-weight:700; font-size:17px; color:var(--blue);
+  display:flex; align-items:center; gap:8px;
+}
+.brand .title .dot{width:8px;height:8px;border-radius:50%;background:var(--green)}
+.brand .sub{font-size:11px;color:var(--text-light);font-weight:500;padding-left:16px}
+.brand .sub a{color:var(--text-mid);text-decoration:none;border-bottom:1px dotted var(--text-light)}
+.icon-btn{
+  width:38px;height:38px;border-radius:10px;border:none;background:transparent;
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;color:var(--text-mid);cursor:pointer;flex-shrink:0;
+}
+.icon-btn:active{background:var(--light-blue)}
+
+.wrap{max-width:560px;margin:0 auto;padding:16px}
+
+/* Date banner */
+.date-banner{
+  background:linear-gradient(135deg,var(--blue),var(--dark-blue));
+  color:#fff; padding:10px 14px; border-radius:var(--radius);
+  margin-bottom:12px; display:flex; align-items:center; gap:10px;
+  box-shadow:0 4px 16px rgba(0,119,182,0.18);
+}
+.date-banner .ico{font-size:22px}
+.date-banner .lbl{font-size:11px; opacity:0.85; text-transform:uppercase; letter-spacing:0.5px}
+.date-banner .val{font-size:16px; font-weight:700}
+
+.section{
+  background:var(--card); border:1px solid var(--border);
+  border-radius:var(--radius); padding:14px 14px 4px; margin-bottom:12px;
+}
+.section h2{
+  font-size:13px; font-weight:700; color:var(--blue);
+  text-transform:uppercase; letter-spacing:0.5px;
+  margin-bottom:10px; display:flex; align-items:center; gap:6px;
+}
+.section.post h2{color:var(--green)}
+.section.demo h2{color:var(--text-mid)}
+
+.row{display:grid;gap:10px;margin-bottom:10px}
+.row.cols-2{grid-template-columns:1fr 1fr}
+.row.cols-3{grid-template-columns:1fr 1fr 1fr}
+.row.cols-4{grid-template-columns:1fr 1fr 1fr 1fr}
+.field{display:flex;flex-direction:column;gap:4px}
+.field label{
+  font-size:12px;color:var(--text-mid);font-weight:500;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.field .unit{color:var(--text-light);font-size:11px}
+.field input, .field select, .field textarea{
+  width:100%; font-family:inherit; font-size:16px;
+  padding:11px 12px; border:1.5px solid var(--border);
+  border-radius:var(--radius-sm); background:#fff; color:var(--text);
+  -webkit-appearance:none; appearance:none;
+  transition:border-color .15s, background .15s;
+}
+.field input:focus, .field select:focus, .field textarea:focus{
+  outline:none; border-color:var(--blue); background:#fff;
+}
+.field input.hn-big{font-size:20px;font-weight:700;text-align:center;letter-spacing:1px}
+.field select{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%234A5568' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+  background-repeat:no-repeat; background-position:right 14px center; padding-right:34px;
+}
+
+/* Distance calculator */
+.distance-calc{
+  background:var(--light-blue); border-radius:var(--radius-sm);
+  padding:12px; margin-bottom:10px;
+}
+.distance-row{
+  display:flex; align-items:center; gap:8px; flex-wrap:wrap;
+  font-size:15px; font-weight:600; color:var(--text);
+}
+.distance-row input{
+  width:74px; text-align:center; font-size:18px; font-weight:700;
+  padding:8px; border:1.5px solid var(--border); border-radius:8px; background:#fff;
+}
+.distance-row .x{color:var(--text-mid);font-weight:500}
+.distance-row .eq{color:var(--blue);font-weight:700;font-size:18px;margin-left:auto}
+.distance-row .total{
+  background:var(--blue); color:#fff; padding:8px 14px; border-radius:8px;
+  font-size:20px; font-weight:700; min-width:88px; text-align:center;
+}
+
+/* Segmented (sex) */
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:0;
+  background:#EEF2F4;border-radius:var(--radius-sm);padding:3px}
+.seg input{display:none}
+.seg label{
+  text-align:center;padding:10px 8px;border-radius:8px;
+  font-weight:600;font-size:15px;color:var(--text-mid);cursor:pointer;
+  transition:all .15s;
+}
+.seg input:checked + label{background:#fff;color:var(--blue);box-shadow:0 1px 3px rgba(0,0,0,0.08)}
+
+/* Result panel */
+.result{
+  background:linear-gradient(135deg,var(--light-blue),var(--light-green));
+  border:1px solid var(--border); border-radius:var(--radius);
+  padding:16px; margin-bottom:12px;
+}
+.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.result-item{background:#fff;border-radius:var(--radius-sm);padding:10px 12px}
+.result-item .lbl{font-size:11px;color:var(--text-mid);font-weight:500;text-transform:uppercase;letter-spacing:0.3px}
+.result-item .val{font-size:22px;font-weight:700;color:var(--text);margin-top:2px}
+.result-item .val .u{font-size:13px;color:var(--text-light);font-weight:500;margin-left:3px}
+.result-item.big{grid-column:1/-1;background:#fff}
+.result-item.big .val{font-size:32px;color:var(--blue)}
+.result-item .badge{
+  display:inline-block;padding:2px 8px;border-radius:999px;
+  font-size:11px;font-weight:600;margin-top:4px;
+}
+.badge.ok{background:#DCFCE7;color:#15803D}
+.badge.low{background:#FEE2E2;color:#B91C1C}
+.badge.warn{background:#FEF3C7;color:#A16207}
+
+.delta-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.delta{background:#fff;border-radius:8px;padding:8px;text-align:center}
+.delta .l{font-size:10px;color:var(--text-light);text-transform:uppercase}
+.delta .v{font-size:16px;font-weight:700;margin-top:1px}
+.delta .v.up{color:#16A34A}
+.delta .v.down{color:#E53E3E}
+
+.bottom{
+  position:fixed; bottom:0; left:0; right:0; z-index:40;
+  background:rgba(255,255,255,0.96);
+  backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+  border-top:1px solid var(--border);
+  padding:10px 16px calc(10px + var(--safe-bot));
+}
+.bottom-inner{max-width:560px;margin:0 auto;display:flex;gap:8px}
+.btn{
+  flex:1; padding:14px; border-radius:var(--radius-sm); border:none;
+  font-family:inherit; font-size:16px; font-weight:600;
+  cursor:pointer; transition:transform .08s, opacity .15s;
+}
+.btn:active{transform:scale(0.98)}
+.btn-primary{background:var(--blue);color:#fff}
+.btn-primary:disabled{opacity:0.5}
+.btn-ghost{background:#EEF2F4;color:var(--text-mid);flex:0 0 auto;padding:14px 18px}
+
+.kb-bar{
+  position:fixed; left:0; right:0; bottom:0; z-index:500;
+  background:#F2F2F7; border-top:1px solid #C7C7CC;
+  padding:6px 6px calc(6px + var(--safe-bot));
+  display:none;
+}
+.kb-bar.show{display:flex; gap:6px;}
+.kb-btn{
+  flex:1; padding:10px 8px; border-radius:8px;
+  background:#FFFFFF; border:none; font-family:inherit;
+  font-size:15px; font-weight:600; color:var(--blue); cursor:pointer;
+  box-shadow:0 1px 0 rgba(0,0,0,0.05);
+}
+.kb-btn:active{background:#EFEFF4}
+.kb-btn.done{background:var(--blue);color:#fff}
+.kb-btn[disabled]{opacity:0.4}
+
+.toast{
+  position:fixed; left:50%; transform:translateX(-50%);
+  bottom:calc(110px + var(--safe-bot));
+  background:rgba(26,35,50,0.96); color:#fff;
+  padding:10px 16px; border-radius:999px; font-size:14px; font-weight:500;
+  z-index:100; opacity:0; pointer-events:none; transition:opacity .25s, transform .25s;
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(-4px)}
+.toast.err{background:#7F1D1D}
+.toast.ok{background:#166534}
+
+.modal-bg{
+  position:fixed; inset:0; background:rgba(0,0,0,0.4); z-index:200;
+  display:none; align-items:flex-end; justify-content:center;
+}
+.modal-bg.show{display:flex}
+.modal{
+  background:#fff; width:100%; max-width:560px;
+  border-radius:20px 20px 0 0; padding:20px 16px calc(20px + var(--safe-bot));
+  max-height:80vh; overflow-y:auto;
+}
+.modal h3{font-size:18px;margin-bottom:12px}
+.modal p{font-size:13px;color:var(--text-mid);margin-bottom:10px;line-height:1.6}
+.modal .field{margin-bottom:12px}
+.modal-actions{display:flex;gap:8px;margin-top:12px}
+.modal code{background:#F2F2F7;padding:1px 6px;border-radius:4px;font-size:12px}
+
+.muted{color:var(--text-light);font-size:12px}
+.hint{font-size:11px;color:var(--text-light);margin-top:-4px;margin-bottom:8px}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <div class="title"><span class="dot"></span>6MWT Calculator</div>
+      <div class="sub">สูตร <a href="https://www.atsjournals.org/doi/10.1164/ajrccm.158.5.9710086" target="_blank" rel="noopener">Enright &amp; Sherrill (1998)</a></div>
+    </div>
+    <button class="icon-btn" id="btnSettings" aria-label="ตั้งค่า">⚙</button>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- Date banner (visible when URL has ?date=) -->
+  <div class="date-banner" id="dateBanner" style="display:none">
+    <div class="ico">📅</div>
+    <div>
+      <div class="lbl">บันทึกของวันที่</div>
+      <div class="val" id="bannerDate"></div>
+    </div>
+  </div>
+
+  <!-- RESULT PANEL -->
+  <div class="result">
+    <div class="result-grid">
+      <div class="result-item big">
+        <div class="lbl">Predicted 6MWD</div>
+        <div class="val"><span id="rPred">—</span><span class="u">เมตร</span></div>
+        <div id="rBadge"></div>
+      </div>
+      <div class="result-item">
+        <div class="lbl">LLN</div>
+        <div class="val"><span id="rLln">—</span><span class="u">m</span></div>
+      </div>
+      <div class="result-item">
+        <div class="lbl">% Predicted</div>
+        <div class="val"><span id="rPct">—</span><span class="u">%</span></div>
+      </div>
+    </div>
+    <div class="delta-grid">
+      <div class="delta"><div class="l">Δ HR</div><div class="v" id="dHr">—</div></div>
+      <div class="delta"><div class="l">Δ SpO₂</div><div class="v" id="dSpo2">—</div></div>
+      <div class="delta"><div class="l">Δ RPE</div><div class="v" id="dRpe">—</div></div>
+    </div>
+  </div>
+
+  <!-- 1. HN + Date (if no URL param) -->
+  <div class="section">
+    <h2>🔢 HN</h2>
+    <div class="row">
+      <div class="field">
+        <input type="tel" id="hn" inputmode="numeric" pattern="[0-9]*" class="hn-big" autocomplete="off" placeholder="HN ผู้ป่วย">
+      </div>
+    </div>
+    <div class="row" id="dateRow">
+      <div class="field">
+        <label>วันที่ตรวจ</label>
+        <input type="date" id="testDate">
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. PRE -->
+  <div class="section">
+    <h2>📊 ก่อนทดสอบ (Pre)</h2>
+    <div class="row cols-3">
+      <div class="field">
+        <label>HR <span class="unit">bpm</span></label>
+        <input type="tel" id="preHr" inputmode="numeric" pattern="[0-9]*">
+      </div>
+      <div class="field">
+        <label>SpO₂ <span class="unit">%</span></label>
+        <input type="tel" id="preSpo2" inputmode="numeric" pattern="[0-9]*">
+      </div>
+      <div class="field">
+        <label>RPE <span class="unit">0-10</span></label>
+        <input type="text" id="preRpe" inputmode="decimal" pattern="[0-9.]*">
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. DISTANCE -->
+  <div class="section">
+    <h2>🚶 ระยะทางที่เดินได้</h2>
+    <div class="distance-calc">
+      <div class="distance-row">
+        <input type="tel" id="laps" inputmode="numeric" pattern="[0-9]*" placeholder="รอบ">
+        <span class="x">× 12 +</span>
+        <input type="tel" id="extra" inputmode="numeric" pattern="[0-9]*" placeholder="เศษ">
+        <span class="eq">=</span>
+        <span class="total" id="distTotal">— m</span>
+      </div>
+    </div>
+    <div class="hint">รอบ × 12 ม. (กรวย 7 อัน × 2 ม.) + เศษระยะที่เดินไม่ครบรอบ</div>
+  </div>
+
+  <!-- 4. POST -->
+  <div class="section post">
+    <h2>📊 หลังทดสอบ (Post)</h2>
+    <div class="row cols-3">
+      <div class="field">
+        <label>HR <span class="unit">bpm</span></label>
+        <input type="tel" id="postHr" inputmode="numeric" pattern="[0-9]*">
+      </div>
+      <div class="field">
+        <label>SpO₂ <span class="unit">%</span></label>
+        <input type="tel" id="postSpo2" inputmode="numeric" pattern="[0-9]*">
+      </div>
+      <div class="field">
+        <label>RPE <span class="unit">0-10</span></label>
+        <input type="text" id="postRpe" inputmode="decimal" pattern="[0-9.]*">
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. DEMOGRAPHICS -->
+  <div class="section demo">
+    <h2>👤 ข้อมูลผู้ป่วย (สำหรับคำนวณ)</h2>
+    <div class="row">
+      <div class="field">
+        <label>เพศ</label>
+        <div class="seg">
+          <input type="radio" name="sex" id="sexM" value="M" checked>
+          <label for="sexM">♂ ชาย</label>
+          <input type="radio" name="sex" id="sexF" value="F">
+          <label for="sexF">♀ หญิง</label>
+        </div>
+      </div>
+    </div>
+    <div class="row cols-3">
+      <div class="field">
+        <label>อายุ <span class="unit">ปี</span></label>
+        <input type="tel" id="age" inputmode="numeric" pattern="[0-9]*">
+      </div>
+      <div class="field">
+        <label>ส่วนสูง <span class="unit">cm</span></label>
+        <input type="text" id="height" inputmode="decimal" pattern="[0-9.]*">
+      </div>
+      <div class="field">
+        <label>น้ำหนัก <span class="unit">kg</span></label>
+        <input type="text" id="weight" inputmode="decimal" pattern="[0-9.]*">
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. NOTES (optional) -->
+  <div class="section demo">
+    <h2>📝 หมายเหตุ (ถ้ามี)</h2>
+    <div class="row">
+      <div class="field">
+        <label>หมายเหตุ % prediction <span class="unit">(override ถ้าหยุดก่อนครบ)</span></label>
+        <input type="text" id="pctNote" placeholder='เช่น "หยุด 4.19 นาที"'>
+      </div>
+    </div>
+  </div>
+
+  <p class="muted" style="text-align:center;margin:8px 0 4px;line-height:1.6">
+    <b>Enright PL, Sherrill DL.</b><br>
+    <i>Am J Respir Crit Care Med</i> 1998;158:1384-7
+  </p>
+</div>
+
+<!-- Bottom action bar -->
+<div class="bottom">
+  <div class="bottom-inner">
+    <button class="btn btn-ghost" id="btnClear">ล้าง</button>
+    <button class="btn btn-primary" id="btnSave">💾 บันทึก → เคสต่อไป</button>
+  </div>
+</div>
+
+<!-- Keyboard accessory bar -->
+<div class="kb-bar" id="kbBar">
+  <button class="kb-btn" id="kbPrev" type="button">‹ ก่อนหน้า</button>
+  <button class="kb-btn" id="kbNext" type="button">ถัดไป ›</button>
+  <button class="kb-btn done" id="kbDone" type="button">เสร็จ</button>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<div class="modal-bg" id="modalSettings">
+  <div class="modal">
+    <h3>⚙ ตั้งค่า</h3>
+    <p>วาง URL ของ Google Apps Script Web App สำหรับบันทึกข้อมูลเข้า Google Sheet</p>
+    <div class="field">
+      <label>Apps Script Web App URL</label>
+      <input type="url" id="webhookUrl" placeholder="https://script.google.com/macros/s/.../exec">
+    </div>
+    <div class="field">
+      <label>ชื่อผู้บันทึก <span class="unit">(optional)</span></label>
+      <input type="text" id="recorder" placeholder="ชื่อนักกายภาพ">
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" id="btnTestUrl" style="flex:1">ทดสอบ</button>
+      <button class="btn btn-primary" id="btnSaveSettings">บันทึก</button>
+    </div>
+    <p class="muted" style="margin-top:12px">
+      ปลายทาง: <a href="https://docs.google.com/spreadsheets/d/1IBC491LLj8-q4wW3c4FL0xFovC4Eo9WzscWaGAibMtQ/edit#gid=760319088" target="_blank">รายชื่อ COPD</a> · เปิดผ่านลิงก์ปฏิทินจะใช้วันที่ในลิงก์อัตโนมัติ
+    </p>
+  </div>
+</div>
+
+<script>
+'use strict';
+
+const $ = id => document.getElementById(id);
+const LS_KEY = 'mwt6_settings_v1';
+const DEFAULT_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbz5tj8NOxaFC3rGVhZR1A4LMP6i1IBgUCdO-qo_EBLmNQKPAvQStDgeryrWgKaNaqOJ/exec';
+const THAI_MONTHS_FULL = ['มกราคม','กุมภาพันธ์','มีนาคม','เมษายน','พฤษภาคม','มิถุนายน','กรกฎาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม'];
+
+// ---------- Settings ----------
+function loadSettings(){
+  try{
+    const s = JSON.parse(localStorage.getItem(LS_KEY) || '{}');
+    const url = s.url || DEFAULT_WEBHOOK_URL;
+    $('webhookUrl').value = url;
+    $('recorder').value = s.recorder || '';
+    return {...s, url};
+  }catch(e){return {url: DEFAULT_WEBHOOK_URL}}
+}
+function saveSettings(){
+  const s = {url: $('webhookUrl').value.trim(), recorder: $('recorder').value.trim()};
+  localStorage.setItem(LS_KEY, JSON.stringify(s));
+  return s;
+}
+$('btnSettings').onclick = ()=>{ loadSettings(); $('modalSettings').classList.add('show'); };
+$('modalSettings').addEventListener('click', e => { if(e.target.id==='modalSettings') $('modalSettings').classList.remove('show'); });
+$('btnSaveSettings').onclick = ()=>{ saveSettings(); $('modalSettings').classList.remove('show'); toast('บันทึกการตั้งค่าแล้ว','ok'); };
+$('btnTestUrl').onclick = async ()=>{
+  const url = $('webhookUrl').value.trim();
+  if(!url){ toast('ยังไม่ได้ใส่ URL','err'); return; }
+  try{
+    const r = await fetch(url, {method:'GET'});
+    const t = await r.text();
+    toast(r.ok ? '✓ เชื่อมต่อได้' : 'ตอบกลับผิดปกติ', r.ok?'ok':'err');
+  }catch(e){ toast('เชื่อมต่อไม่ได้: '+e.message,'err'); }
+};
+
+// ---------- URL date param ----------
+(function(){
+  const params = new URLSearchParams(window.location.search);
+  const urlDate = params.get('date');
+  const dateEl = $('testDate');
+  if(urlDate && /^\d{4}-\d{2}-\d{2}$/.test(urlDate)){
+    dateEl.value = urlDate;
+    const d = new Date(urlDate + 'T00:00:00');
+    $('bannerDate').textContent = d.getDate() + ' ' + THAI_MONTHS_FULL[d.getMonth()] + ' ' + (d.getFullYear()+543);
+    $('dateBanner').style.display = 'flex';
+    $('dateRow').style.display = 'none';
+  } else {
+    const d = new Date();
+    dateEl.value = d.toISOString().slice(0,10);
+  }
+})();
+
+// ---------- 6MWT formulas ----------
+function computePredicted(sex, age, htCm, wtKg){
+  if(!(age>0 && htCm>0 && wtKg>0)) return null;
+  let pred, lln;
+  if(sex==='M'){
+    pred = 7.57*htCm - 5.02*age - 1.76*wtKg - 309;
+    lln  = pred - 153;
+  } else {
+    pred = 2.11*htCm - 2.29*wtKg - 5.78*age + 667;
+    lln  = pred - 139;
+  }
+  return {pred: Math.round(pred), lln: Math.round(lln)};
+}
+
+function getSex(){ return document.querySelector('input[name=sex]:checked').value; }
+
+function getActual(){
+  const laps = parseInt($('laps').value, 10);
+  const extra = parseFloat($('extra').value);
+  const lapM = (isNaN(laps) ? 0 : laps) * 12;
+  const extraM = isNaN(extra) ? 0 : extra;
+  return lapM + extraM;
+}
+
+function recompute(){
+  const sex = getSex();
+  const age = parseFloat($('age').value);
+  const ht  = parseFloat($('height').value);
+  const wt  = parseFloat($('weight').value);
+  const act = getActual();
+  const res = computePredicted(sex, age, ht, wt);
+
+  // Distance total badge
+  $('distTotal').textContent = act > 0 ? act + ' m' : '— m';
+
+  if(res){
+    $('rPred').textContent = res.pred;
+    $('rLln').textContent  = res.lln;
+    if(act > 0){
+      const pct = (act/res.pred)*100;
+      $('rPct').textContent = pct.toFixed(0);
+      const b = $('rBadge');
+      if(act >= res.lln){ b.innerHTML='<span class="badge ok">✓ ปกติ (≥ LLN)</span>'; }
+      else if(act >= res.pred*0.6){ b.innerHTML='<span class="badge warn">⚠ ต่ำกว่าค่าปกติ</span>'; }
+      else { b.innerHTML='<span class="badge low">▼ ต่ำกว่าค่าปกติมาก</span>'; }
+    } else {
+      $('rPct').textContent='—';
+      $('rBadge').innerHTML='';
+    }
+  } else {
+    $('rPred').textContent='—';
+    $('rLln').textContent='—';
+    $('rPct').textContent='—';
+    $('rBadge').innerHTML='';
+  }
+
+  setDelta('dHr', delta('preHr','postHr'), 'bpm');
+  setDelta('dSpo2', delta('preSpo2','postSpo2'), '%');
+  setDelta('dRpe', delta('preRpe','postRpe'), '');
+}
+
+function delta(a,b){
+  const va = parseFloat($(a).value), vb = parseFloat($(b).value);
+  if(isNaN(va) || isNaN(vb)) return null;
+  return vb - va;
+}
+function setDelta(id, v, unit){
+  const el = $(id);
+  if(v===null){ el.textContent='—'; el.className='v'; return; }
+  const sign = v>0?'+':'';
+  el.textContent = sign + (Math.round(v*10)/10) + (unit?' '+unit:'');
+  el.className = 'v ' + (v===0?'':(v>0?'up':'down'));
+}
+
+document.querySelectorAll('input, select').forEach(el=>{
+  el.addEventListener('input', recompute);
+  el.addEventListener('change', recompute);
+});
+
+// ---------- Keyboard accessory bar ----------
+const NUMERIC_SELECTOR = 'input[inputmode="numeric"], input[inputmode="decimal"]';
+const kbBar = $('kbBar');
+let currentField = null;
+
+function numericList(){
+  return Array.from(document.querySelectorAll(NUMERIC_SELECTOR))
+    .filter(el => !el.disabled && el.offsetParent !== null);
+}
+function showKbBar(){ kbBar.classList.add('show'); positionKbBar(); updateKbState(); }
+function hideKbBar(){ kbBar.classList.remove('show'); }
+function positionKbBar(){
+  const vv = window.visualViewport; if(!vv) return;
+  const kbHeight = Math.max(0, window.innerHeight - vv.height - vv.offsetTop);
+  kbBar.style.bottom = kbHeight + 'px';
+}
+function updateKbState(){
+  const arr = numericList();
+  const idx = arr.indexOf(currentField);
+  $('kbPrev').disabled = idx <= 0;
+  $('kbNext').disabled = idx === -1 || idx >= arr.length - 1;
+}
+function moveField(dir){
+  const arr = numericList();
+  const idx = arr.indexOf(currentField);
+  if(idx === -1) return;
+  const next = arr[idx + dir];
+  if(next){
+    next.focus();
+    setTimeout(()=>{ next.scrollIntoView({block:'center', behavior:'smooth'}); }, 30);
+  }
+}
+document.addEventListener('focusin', e=>{
+  if(e.target.matches(NUMERIC_SELECTOR)){
+    currentField = e.target;
+    showKbBar();
+  } else { hideKbBar(); }
+});
+document.addEventListener('focusout', ()=>{
+  setTimeout(()=>{
+    const ae = document.activeElement;
+    if(!ae || !ae.matches(NUMERIC_SELECTOR)) hideKbBar();
+  }, 80);
+});
+$('kbPrev').onclick = (e)=>{ e.preventDefault(); moveField(-1); };
+$('kbNext').onclick = (e)=>{ e.preventDefault(); moveField(1); };
+$('kbDone').onclick = (e)=>{ e.preventDefault(); currentField?.blur(); hideKbBar(); };
+['kbPrev','kbNext','kbDone'].forEach(id=>{
+  $(id).addEventListener('mousedown', e=>e.preventDefault());
+  $(id).addEventListener('touchstart', e=>e.preventDefault(), {passive:false});
+});
+if(window.visualViewport){
+  window.visualViewport.addEventListener('resize', positionKbBar);
+  window.visualViewport.addEventListener('scroll', positionKbBar);
+}
+
+// ---------- Toast ----------
+let toastTimer;
+function toast(msg, kind){
+  const t = $('toast');
+  t.textContent = msg;
+  t.className = 'toast show ' + (kind||'');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>{ t.className='toast '+(kind||''); }, 2400);
+}
+
+// ---------- Clear (for next patient) ----------
+function clearForNextPatient(){
+  const KEEP = new Set(['testDate','webhookUrl','recorder']);
+  document.querySelectorAll('input[type=tel], input[type=text], input[type=url]').forEach(el=>{
+    if(!KEEP.has(el.id)) el.value='';
+  });
+  $('sexM').checked = true;
+  recompute();
+  setTimeout(()=>{ $('hn').focus(); }, 200);
+}
+$('btnClear').onclick = ()=>{
+  if(!confirm('ล้างข้อมูลทั้งหมด?')) return;
+  clearForNextPatient();
+  toast('ล้างฟอร์มแล้ว');
+};
+
+// ---------- Save ----------
+$('btnSave').onclick = async ()=>{
+  const s = loadSettings();
+  if(!s.url){ toast('กรุณาตั้งค่า Web App URL ก่อน (⚙)','err'); $('modalSettings').classList.add('show'); return; }
+
+  const sex = getSex();
+  const age = parseFloat($('age').value);
+  const ht  = parseFloat($('height').value);
+  const wt  = parseFloat($('weight').value);
+  const act = getActual();
+  const hn  = $('hn').value.trim();
+
+  if(!hn){ toast('กรอก HN ก่อน','err'); $('hn').focus(); return; }
+  if(!(age>0 && ht>0 && wt>0)){ toast('กรอก เพศ/อายุ/สูง/นน. ก่อน','err'); return; }
+  if(!(act>0)){ toast('กรอกระยะทาง (รอบ + เศษ) ก่อน','err'); return; }
+
+  const res = computePredicted(sex, age, ht, wt);
+  const pct = (act>0 && res) ? Math.round((act/res.pred)*1000)/10 : '';
+
+  const payload = {
+    testDate: $('testDate').value,
+    hn, name: '',
+    sex: sex==='M'?'ชาย':'หญิง',
+    age, height: ht, weight: wt,
+    predicted: res.pred, lln: res.lln,
+    actual: act,
+    pctPredicted: pct,
+    pctNote: $('pctNote').value.trim(),
+    preHr: $('preHr').value, postHr: $('postHr').value,
+    preSpo2: $('preSpo2').value, postSpo2: $('postSpo2').value,
+    preRpe: $('preRpe').value, postRpe: $('postRpe').value,
+    laps: $('laps').value, extra: $('extra').value,
+    recorder: s.recorder || '',
+    ts: new Date().toISOString()
+  };
+
+  const btn = $('btnSave');
+  btn.disabled = true; btn.textContent = '⏳ กำลังบันทึก…';
+  try{
+    const r = await fetch(s.url, {
+      method:'POST',
+      headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body: JSON.stringify(payload)
+    });
+    const text = await r.text();
+    let ok = r.ok;
+    try{ const j = JSON.parse(text); ok = ok && j.ok!==false; }catch(e){}
+    if(ok){
+      toast('✓ บันทึก HN ' + hn + ' แล้ว — เคสต่อไป','ok');
+      if(navigator.vibrate) navigator.vibrate(40);
+      clearForNextPatient();
+    } else {
+      toast('บันทึกล้มเหลว: '+text.slice(0,80),'err');
+    }
+  }catch(e){
+    toast('เชื่อมต่อไม่ได้: '+e.message,'err');
+  } finally {
+    btn.disabled = false; btn.textContent = '💾 บันทึก → เคสต่อไป';
+  }
+};
+
+// init
+loadSettings();
+recompute();
+setTimeout(()=>{ $('hn').focus(); }, 300);
+</script>
+</body>
+</html>
