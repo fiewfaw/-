@@ -99,3 +99,20 @@ function formatThaiDate(iso){
   if(isNaN(d)) return iso;
   return d.getDate() + ' ' + THAI_MONTHS[d.getMonth()];
 }
+
+/**
+ * เปลี่ยน col B (ลำดับที่) เป็นสูตร =ROW()-1
+ * รันครั้งเดียวจาก editor → ลำดับจะ auto-renumber เมื่อลบแถว
+ */
+function renumberSequence(){
+  const ss = SpreadsheetApp.openById(TARGET_SHEET_ID);
+  const sheet = ss.getSheets().find(s => s.getSheetId() === TARGET_TAB_GID);
+  if(!sheet) throw new Error('Tab gid=' + TARGET_TAB_GID + ' not found');
+
+  const lastRow = Math.max(sheet.getLastRow(), 121);
+  const numRows = lastRow - 1;
+  const formulas = [];
+  for(let i = 0; i < numRows; i++) formulas.push(['=ROW()-1']);
+  sheet.getRange(2, 2, numRows, 1).setFormulas(formulas);
+  return 'OK: B2:B' + lastRow + ' set to =ROW()-1';
+}
