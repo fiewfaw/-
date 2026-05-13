@@ -249,7 +249,7 @@ body{
     <div class="delta-grid">
       <div class="delta"><div class="l">Δ HR</div><div class="v" id="dHr">—</div></div>
       <div class="delta"><div class="l">Δ SpO₂</div><div class="v" id="dSpo2">—</div></div>
-      <div class="delta"><div class="l">Δ Borg</div><div class="v" id="dBorg">—</div></div>
+      <div class="delta"><div class="l">Δ RPE</div><div class="v" id="dBorg">—</div></div>
     </div>
   </div>
 
@@ -302,14 +302,10 @@ body{
   <!-- ACTUAL DISTANCE -->
   <div class="section">
     <h2>🚶 ระยะทางที่เดินได้</h2>
-    <div class="row cols-2">
+    <div class="row">
       <div class="field">
-        <label>ระยะทางจริง <span class="unit">เมตร</span></label>
+        <label>ระยะทางจริง (6 MWTs) <span class="unit">เมตร</span></label>
         <input type="text" id="actual" inputmode="decimal" pattern="[0-9.]*">
-      </div>
-      <div class="field">
-        <label>จำนวนรอบ <span class="unit">รอบ</span></label>
-        <input type="tel" id="laps" inputmode="numeric" pattern="[0-9]*">
       </div>
     </div>
     <div class="hint">ป้อนระยะทางจริงเพื่อคำนวณ % Predicted</div>
@@ -334,71 +330,22 @@ body{
       <div class="field"><input type="tel" id="postSpo2" inputmode="numeric" pattern="[0-9]*"></div>
     </div>
     <div class="row cols-3">
-      <div class="field"><label>BP <span class="unit">SBP/DBP</span></label></div>
-      <div class="field">
-        <div class="bp-pair">
-          <input type="tel" id="preBpSys" inputmode="numeric" pattern="[0-9]*" placeholder="120">
-          <span class="slash">/</span>
-          <input type="tel" id="preBpDia" inputmode="numeric" pattern="[0-9]*" placeholder="80">
-        </div>
-      </div>
-      <div class="field">
-        <div class="bp-pair">
-          <input type="tel" id="postBpSys" inputmode="numeric" pattern="[0-9]*" placeholder="120">
-          <span class="slash">/</span>
-          <input type="tel" id="postBpDia" inputmode="numeric" pattern="[0-9]*" placeholder="80">
-        </div>
-      </div>
-    </div>
-    <div class="row cols-3">
-      <div class="field"><label>RR <span class="unit">/min</span></label></div>
-      <div class="field"><input type="tel" id="preRr" inputmode="numeric" pattern="[0-9]*"></div>
-      <div class="field"><input type="tel" id="postRr" inputmode="numeric" pattern="[0-9]*"></div>
-    </div>
-    <div class="row cols-3">
-      <div class="field"><label>Borg เหนื่อย <span class="unit">0-10</span></label></div>
-      <div class="field"><input type="text" id="preBorgD" inputmode="decimal" pattern="[0-9.]*"></div>
-      <div class="field"><input type="text" id="postBorgD" inputmode="decimal" pattern="[0-9.]*"></div>
-    </div>
-    <div class="row cols-3">
-      <div class="field"><label>Borg ขา <span class="unit">0-10</span></label></div>
-      <div class="field"><input type="text" id="preBorgL" inputmode="decimal" pattern="[0-9.]*"></div>
-      <div class="field"><input type="text" id="postBorgL" inputmode="decimal" pattern="[0-9.]*"></div>
+      <div class="field"><label>RPE <span class="unit">0-10</span></label></div>
+      <div class="field"><input type="text" id="preRpe" inputmode="decimal" pattern="[0-9.]*"></div>
+      <div class="field"><input type="text" id="postRpe" inputmode="decimal" pattern="[0-9.]*"></div>
     </div>
   </div>
 
   <!-- OTHER -->
   <div class="section">
-    <h2>📝 อื่นๆ</h2>
-    <div class="row cols-2">
-      <div class="field">
-        <label>หยุดพัก <span class="unit">ครั้ง</span></label>
-        <input type="tel" id="stops" inputmode="numeric" pattern="[0-9]*" value="0">
-      </div>
-      <div class="field">
-        <label>O₂ ขณะเดิน</label>
-        <select id="o2Used">
-          <option value="">ไม่ได้ใช้</option>
-          <option value="2 LPM NC">2 LPM NC</option>
-          <option value="3 LPM NC">3 LPM NC</option>
-          <option value="4 LPM NC">4 LPM NC</option>
-          <option value="5 LPM NC">5 LPM NC</option>
-          <option value="Other">อื่นๆ</option>
-        </select>
-      </div>
-    </div>
+    <h2>📝 หมายเหตุ</h2>
     <div class="row">
       <div class="field">
-        <label>เหตุที่หยุด / อาการสำคัญ</label>
-        <input type="text" id="reasonStopped" placeholder="เช่น เหนื่อย, ขาล้า, ครบเวลา">
+        <label>หมายเหตุ % prediction <span class="unit">(override ถ้าหยุดก่อนครบ)</span></label>
+        <input type="text" id="pctNote" placeholder='เช่น "หยุด 4.19 นาที"'>
       </div>
     </div>
-    <div class="row">
-      <div class="field">
-        <label>หมายเหตุ</label>
-        <textarea id="notes" placeholder="อาการ, การปรับ, คำแนะนำ ฯลฯ"></textarea>
-      </div>
-    </div>
+    <div class="hint">ถ้ากรอกช่องนี้ จะใช้ข้อความนี้แทนค่า % ที่คำนวณ — ตามรูปแบบใน sheet</div>
   </div>
 
   <p class="muted" style="text-align:center;margin:8px 0 4px;line-height:1.6">
@@ -443,7 +390,7 @@ body{
       <button class="btn btn-primary" id="btnSaveSettings">บันทึก</button>
     </div>
     <p class="muted" style="margin-top:12px">
-      Sheet: <code>6MWT Logger - COPD</code> ใน Drive โฟลเดอร์ <code>ข้อมูลคนไข้ COPD</code>
+      ปลายทาง: Sheet <a href="https://docs.google.com/spreadsheets/d/1IBC491LLj8-q4wW3c4FL0xFovC4Eo9WzscWaGAibMtQ/edit#gid=760319088" target="_blank">รายชื่อ COPD</a> (gid 760319088) — ระบบจะหาแถวที่ <code>HN</code> ว่างถัดไปแล้วกรอกอัตโนมัติ
     </p>
   </div>
 </div>
@@ -535,10 +482,10 @@ function recompute(){
   // Deltas
   const dHr = delta('preHr','postHr');
   const dSp = delta('preSpo2','postSpo2');
-  const dBd = delta('preBorgD','postBorgD');
+  const dRpe = delta('preRpe','postRpe');
   setDelta('dHr', dHr, 'bpm');
   setDelta('dSpo2', dSp, '%');
-  setDelta('dBorg', dBd, '');
+  setDelta('dBorg', dRpe, '');
 }
 
 function delta(a,b){
@@ -647,20 +594,12 @@ $('btnClear').onclick = ()=>{
   document.querySelectorAll('input[type=tel], input[type=text], input[type=url], textarea').forEach(el=>{
     if(el.id!=='webhookUrl' && el.id!=='recorder') el.value='';
   });
-  $('o2Used').value='';
-  $('stops').value='0';
   const d = new Date(); $('testDate').value = d.toISOString().slice(0,10);
   recompute();
   toast('ล้างฟอร์มแล้ว');
 };
 
 // ---------- Save to Sheet ----------
-function bpStr(sysId, diaId){
-  const s = $(sysId).value.trim(), d = $(diaId).value.trim();
-  if(!s && !d) return '';
-  return (s||'?') + '/' + (d||'?');
-}
-
 $('btnSave').onclick = async ()=>{
   const s = loadSettings();
   if(!s.url){ toast('กรุณาตั้งค่า Web App URL ก่อน (⚙)','err'); $('modalSettings').classList.add('show'); return; }
@@ -684,17 +623,10 @@ $('btnSave').onclick = async ()=>{
     predicted: res.pred, lln: res.lln,
     actual: isNaN(act)?'':act,
     pctPredicted: pct,
-    laps: $('laps').value,
+    pctNote: $('pctNote').value.trim(),
     preHr: $('preHr').value, postHr: $('postHr').value,
     preSpo2: $('preSpo2').value, postSpo2: $('postSpo2').value,
-    preBp: bpStr('preBpSys','preBpDia'), postBp: bpStr('postBpSys','postBpDia'),
-    preRr: $('preRr').value, postRr: $('postRr').value,
-    preBorgD: $('preBorgD').value, postBorgD: $('postBorgD').value,
-    preBorgL: $('preBorgL').value, postBorgL: $('postBorgL').value,
-    stops: $('stops').value,
-    o2Used: $('o2Used').value,
-    reasonStopped: $('reasonStopped').value,
-    notes: $('notes').value,
+    preRpe: $('preRpe').value, postRpe: $('postRpe').value,
     recorder: s.recorder || '',
     ts: new Date().toISOString()
   };
