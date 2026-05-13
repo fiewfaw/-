@@ -258,30 +258,6 @@ body{
     </div>
   </div>
 
-  <!-- RESULT PANEL -->
-  <div class="result">
-    <div class="result-grid">
-      <div class="result-item big">
-        <div class="lbl">Predicted 6MWD</div>
-        <div class="val"><span id="rPred">—</span><span class="u">เมตร</span></div>
-        <div id="rBadge"></div>
-      </div>
-      <div class="result-item">
-        <div class="lbl">LLN</div>
-        <div class="val"><span id="rLln">—</span><span class="u">m</span></div>
-      </div>
-      <div class="result-item">
-        <div class="lbl">% Predicted</div>
-        <div class="val"><span id="rPct">—</span><span class="u">%</span></div>
-      </div>
-    </div>
-    <div class="delta-grid">
-      <div class="delta"><div class="l">Δ HR</div><div class="v" id="dHr">—</div></div>
-      <div class="delta"><div class="l">Δ SpO₂</div><div class="v" id="dSpo2">—</div></div>
-      <div class="delta"><div class="l">Δ RPE</div><div class="v" id="dRpe">—</div></div>
-    </div>
-  </div>
-
   <!-- 1. HN + Date (if no URL param) -->
   <div class="section">
     <h2>🔢 HN</h2>
@@ -389,6 +365,33 @@ body{
         <label>หมายเหตุ % prediction <span class="unit">(override ถ้าหยุดก่อนครบ)</span></label>
         <input type="text" id="pctNote" placeholder='เช่น "หยุด 4.19 นาที"'>
       </div>
+    </div>
+  </div>
+
+  <!-- RESULT PANEL (สรุปผลก่อนกดบันทึก — ใช้จดลง paper) -->
+  <div class="result">
+    <div style="font-size:13px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:10px;text-align:center">
+      📋 สรุปผล (สำหรับจดลงกระดาษ)
+    </div>
+    <div class="result-grid">
+      <div class="result-item big">
+        <div class="lbl">Predicted 6MWD</div>
+        <div class="val"><span id="rPred">—</span><span class="u">เมตร</span></div>
+        <div id="rBadge"></div>
+      </div>
+      <div class="result-item">
+        <div class="lbl">LLN</div>
+        <div class="val"><span id="rLln">—</span><span class="u">m</span></div>
+      </div>
+      <div class="result-item">
+        <div class="lbl">% Predicted</div>
+        <div class="val"><span id="rPct">—</span><span class="u">%</span></div>
+      </div>
+    </div>
+    <div class="delta-grid">
+      <div class="delta"><div class="l">Δ HR</div><div class="v" id="dHr">—</div></div>
+      <div class="delta"><div class="l">Δ SpO₂</div><div class="v" id="dSpo2">—</div></div>
+      <div class="delta"><div class="l">Δ RPE</div><div class="v" id="dRpe">—</div></div>
     </div>
   </div>
 
@@ -613,13 +616,17 @@ document.addEventListener('focusout', ()=>{
     if(!ae || !ae.matches(NUMERIC_SELECTOR)) hideKbBar();
   }, 80);
 });
-$('kbPrev').onclick = (e)=>{ e.preventDefault(); moveField(-1); };
-$('kbNext').onclick = (e)=>{ e.preventDefault(); moveField(1); };
-$('kbDone').onclick = (e)=>{ e.preventDefault(); currentField?.blur(); hideKbBar(); };
-['kbPrev','kbNext','kbDone'].forEach(id=>{
-  $(id).addEventListener('mousedown', e=>e.preventDefault());
-  $(id).addEventListener('touchstart', e=>e.preventDefault(), {passive:false});
-});
+// iOS quirk: preventDefault on touchstart cancels the synthetic click,
+// so do the action there + keep keyboard open
+function setupKbBtn(id, action){
+  const btn = $(id);
+  const handle = (e)=>{ e.preventDefault(); action(); };
+  btn.addEventListener('touchstart', handle, {passive:false});
+  btn.addEventListener('mousedown', handle);
+}
+setupKbBtn('kbPrev', ()=> moveField(-1));
+setupKbBtn('kbNext', ()=> moveField(1));
+setupKbBtn('kbDone', ()=>{ currentField?.blur(); hideKbBar(); });
 if(window.visualViewport){
   window.visualViewport.addEventListener('resize', positionKbBar);
   window.visualViewport.addEventListener('scroll', positionKbBar);
