@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="favicon.ico?v=3">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=3">
-    <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png?v=3">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=3">
+    <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2">
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png?v=2">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=2">
     <title>บ้านกายภาพ ชลบุรี — กายภาพบำบัดถึงบ้าน เฉพาะทาง Stroke | นักกายภาพเฟี้ยว</title>
     <meta name="description" content="นักกายภาพบำบัดเฉพาะทาง Stroke และระบบประสาท บริการถึงบ้านในชลบุรี สัตหีบ พัทยา ศรีราชา จบจุฬาฯ กำลังเรียน ป.โท มศว. รับ chronic stroke ที่เกิน golden period">
     <meta name="keywords" content="นักกายภาพบำบัด ชลบุรี, กายภาพบำบัดถึงบ้าน, รักษา stroke ชลบุรี, กายภาพบำบัด stroke, นักกายภาพเฟี้ยว, บ้านกายภาพ ชลบุรี">
@@ -15,17 +15,6 @@
     <meta property="og:title" content="บ้านกายภาพ ชลบุรี — นักกายภาพเฟี้ยว">
     <meta property="og:description" content="กายภาพบำบัดถึงบ้าน เฉพาะทาง Stroke และระบบประสาท ชลบุรี">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://baankaiyaphap-chonburi.com/">
-    <meta property="og:image" content="https://baankaiyaphap-chonburi.com/favicon-512.png">
-    <meta property="og:image:width" content="512">
-    <meta property="og:image:height" content="512">
-    <meta property="og:site_name" content="บ้านกายภาพ ชลบุรี">
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="บ้านกายภาพ ชลบุรี — นักกายภาพเฟี้ยว">
-    <meta name="twitter:description" content="กายภาพบำบัดถึงบ้าน เฉพาะทาง Stroke และระบบประสาท ชลบุรี">
-    <meta name="twitter:image" content="https://baankaiyaphap-chonburi.com/favicon-512.png">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -104,24 +93,10 @@
             color: var(--blue);
             text-decoration: none;
             white-space: nowrap;
-            display: flex;
-            align-items: center;
         }
 
         .nav-brand span {
             color: var(--green);
-        }
-
-        .nav-logo {
-            height: 64px;
-            width: auto;
-            display: block;
-        }
-        @media (max-width: 768px) {
-            .nav-logo { height: 52px; }
-        }
-        @media (max-width: 480px) {
-            .nav-logo { height: 44px; }
         }
 
         .nav-links {
@@ -322,62 +297,153 @@
             border-radius: 5px;
         }
 
-        /* ========== CREDENTIALS ========== */
-        .credentials {
+        /* ========== ONLINE COURSE PROMO ========== */
+        .course-promo {
             padding: 60px 24px;
-            background: var(--white);
+            background: linear-gradient(135deg, var(--light-blue), var(--light-green));
         }
 
-        .credentials-inner {
-            max-width: 1100px;
+        .course-promo-inner {
+            max-width: 1000px;
             margin: 0 auto;
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 48px 40px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border: 2px solid var(--dark-green);
+            position: relative;
+        }
+
+        .course-badge {
+            display: inline-block;
+            background: var(--dark-green);
+            color: #fff;
+            padding: 6px 18px;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 18px;
+            font-family: 'Mitr', sans-serif;
+            letter-spacing: 0.3px;
+        }
+
+        .course-promo h2 {
+            font-family: 'Mitr', sans-serif;
+            font-size: 1.65rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .course-promo h2 .highlight {
+            color: var(--dark-green);
+        }
+
+        .course-tagline {
+            font-size: 1rem;
+            color: var(--text-mid);
+            line-height: 1.7;
+            max-width: 720px;
+            margin: 0 auto 28px;
+        }
+
+        .course-benefits {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
+            gap: 16px;
+            margin: 28px 0;
+            text-align: left;
         }
 
-        .cred-card {
+        .benefit-item {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
             background: var(--off-white);
-            border-radius: var(--radius);
-            padding: 32px 28px;
-            text-align: center;
+            padding: 18px 16px;
+            border-radius: 14px;
             border: 1px solid var(--border);
-            transition: all 0.3s;
         }
 
-        .cred-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow);
-            border-color: var(--blue);
+        .benefit-icon {
+            font-size: 1.7rem;
+            flex-shrink: 0;
+            line-height: 1;
         }
 
-        .cred-icon {
-            width: 56px;
-            height: 56px;
-            border-radius: 16px;
+        .benefit-text strong {
+            display: block;
+            color: var(--dark-green);
+            font-size: 0.95rem;
+            font-family: 'Mitr', sans-serif;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .benefit-text span {
+            font-size: 0.86rem;
+            color: var(--text-mid);
+            line-height: 1.5;
+        }
+
+        .course-pricing {
+            margin: 28px 0 22px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 16px;
-            font-size: 1.6rem;
+            gap: 14px;
+            flex-wrap: wrap;
         }
 
-        .cred-card:nth-child(1) .cred-icon { background: var(--light-blue); }
-        .cred-card:nth-child(2) .cred-icon { background: var(--light-green); }
-        .cred-card:nth-child(3) .cred-icon { background: #FFF3E0; }
-
-        .cred-card h3 {
+        .course-price-old {
             font-family: 'Mitr', sans-serif;
-            font-size: 1.05rem;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: var(--text-dark);
+            font-size: 1.3rem;
+            color: var(--text-mid);
+            text-decoration: line-through;
         }
 
-        .cred-card p {
-            font-size: 0.92rem;
+        .course-price-new {
+            font-family: 'Mitr', sans-serif;
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--dark-green);
+            line-height: 1;
+        }
+
+        .course-price-label {
+            font-size: 0.85rem;
+            color: #B8590F;
+            background: #FFF3E0;
+            padding: 6px 14px;
+            border-radius: 999px;
+            font-weight: 500;
+        }
+
+        .course-cta {
+            display: inline-block;
+            background: var(--dark-green);
+            color: #fff;
+            padding: 14px 38px;
+            border-radius: 999px;
+            font-family: 'Mitr', sans-serif;
+            font-weight: 600;
+            font-size: 1.05rem;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 4px 14px rgba(30, 122, 110, 0.3);
+        }
+
+        .course-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(30, 122, 110, 0.4);
+        }
+
+        .course-note {
+            margin-top: 16px;
+            font-size: 0.85rem;
             color: var(--text-mid);
-            line-height: 1.6;
         }
 
         /* ========== SECTION 2: PACKAGES ========== */
@@ -456,9 +522,9 @@
 
         .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 20px;
-            min-width: 1100px;
+            min-width: 900px;
         }
 
         .pricing-card {
@@ -855,25 +921,24 @@
                 margin: 0 auto;
             }
 
-            .credentials-inner {
+            .course-promo-inner {
+                padding: 32px 22px;
+            }
+
+            .course-promo h2 {
+                font-size: 1.3rem;
+            }
+
+            .course-benefits {
                 grid-template-columns: 1fr;
-                gap: 16px;
             }
 
-            .cred-card {
-                display: flex;
-                align-items: center;
-                text-align: left;
-                gap: 16px;
-                padding: 20px 24px;
-            }
-
-            .cred-icon {
-                margin: 0;
+            .course-price-new {
+                font-size: 1.9rem;
             }
 
             .pricing-grid {
-                grid-template-columns: repeat(5, 260px);
+                grid-template-columns: repeat(4, 260px);
             }
 
             .scroll-hint {
@@ -913,9 +978,7 @@
 
         .hero-text { animation: fadeUp 0.8s ease-out; }
         .hero-carousel { animation: fadeUp 0.8s ease-out 0.2s both; }
-        .cred-card:nth-child(1) { animation: fadeUp 0.6s ease-out 0.3s both; }
-        .cred-card:nth-child(2) { animation: fadeUp 0.6s ease-out 0.4s both; }
-        .cred-card:nth-child(3) { animation: fadeUp 0.6s ease-out 0.5s both; }
+        .course-promo-inner { animation: fadeUp 0.7s ease-out 0.3s both; }
     </style>
 
     <!-- Schema.org LocalBusiness -->
@@ -926,18 +989,12 @@
         "name": "บ้านกายภาพ ชลบุรี",
         "description": "กายภาพบำบัดถึงบ้าน เฉพาะทาง Stroke และระบบประสาท ชลบุรี",
         "url": "https://baankaiyaphap-chonburi.com",
-        "logo": "https://baankaiyaphap-chonburi.com/favicon-512.png",
-        "image": "https://baankaiyaphap-chonburi.com/favicon-512.png",
         "telephone": "+66-80-925-5000",
         "areaServed": {
             "@type": "State",
             "name": "ชลบุรี"
         },
-        "priceRange": "บาท500 - บาท12,000",
-        "sameAs": [
-            "https://www.facebook.com/profile.php?id=61553098713257",
-            "https://www.instagram.com/baankaiyaphapchonburi"
-        ]
+        "priceRange": "บาท500 - บาท12,000"
     }
     </script>
 </head>
@@ -946,9 +1003,7 @@
     <!-- NAV -->
     <nav class="nav" id="nav">
         <div class="nav-inner">
-            <a href="#" class="nav-brand" aria-label="บ้านกายภาพ ชลบุรี">
-                <img src="รูปประกอบ/logo-horizontal.png?v=3" alt="บ้านกายภาพ ชลบุรี" class="nav-logo">
-            </a>
+            <a href="#" class="nav-brand">บ้านกายภาพ <span>ชลบุรี</span></a>
             <div class="nav-links">
                 <a href="#" class="nav-link" style="color: var(--blue); background: var(--light-blue);">หน้าหลัก</a>
                 <a href="blog/" class="nav-link">บทความ</a>
@@ -999,30 +1054,48 @@
         </div>
     </section>
 
-    <!-- CREDENTIALS -->
-    <section class="credentials">
-        <div class="credentials-inner">
-            <div class="cred-card">
-                <div class="cred-icon"><img src="รูปประกอบ/image-removebg-education.png" alt="การศึกษา" style="width: 38px; height: auto;"></div>
-                <div>
-                    <h3>การศึกษา</h3>
-                    <p>ป.ตรี จุฬาลงกรณ์ฯ (2562)<br>กำลังศึกษา ป.โท มศว.</p>
+    <!-- ONLINE COURSE PROMO -->
+    <section class="course-promo" id="course">
+        <div class="course-promo-inner">
+            <div class="course-badge">🚀 เปิดสอนเร็วๆ นี้ · Early Bird</div>
+            <h2>คอร์สออนไลน์: สอนคุณ "เทรน AI" ให้เป็น<br><span class="highlight">เทรนเนอร์สุขภาพส่วนตัว 24/7</span></h2>
+            <p class="course-tagline">
+                เปลี่ยน ChatGPT / Claude ให้เป็นนักกายภาพประจำตัวคุณ — คอยดูแลอาการ ปรับโปรแกรมฝึก
+                และตอบคำถามได้ทุกวัน โดยไม่ต้องรอนัด ไม่ต้องเสียค่าครั้งละพัน
+            </p>
+
+            <div class="course-benefits">
+                <div class="benefit-item">
+                    <span class="benefit-icon">🎯</span>
+                    <div class="benefit-text">
+                        <strong>เริ่มจาก 0 ได้</strong>
+                        <span>สอน step-by-step ใช้ AI ได้ทันที แม้ไม่เคยใช้</span>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">📋</span>
+                    <div class="benefit-text">
+                        <strong>Prompt Library</strong>
+                        <span>10+ prompt สำเร็จรูปสำหรับเคส Stroke ใช้ได้เลย</span>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <span class="benefit-icon">💬</span>
+                    <div class="benefit-text">
+                        <strong>Live Q&amp;A รายเดือน</strong>
+                        <span>ถามตรงเฟี้ยวได้ทุกข้อ ตลอดอายุคอร์ส</span>
+                    </div>
                 </div>
             </div>
-            <div class="cred-card">
-                <div class="cred-icon"><img src="รูปประกอบ/image-removebg-hospital.png" alt="โรงพยาบาล" style="width: 38px; height: auto;"></div>
-                <div>
-                    <h3>ประสบการณ์จริง 4+ ปี</h3>
-                    <p>รพ.พนัสนิคม • รพ.วัดญาณฯ<br>กกท. ชลบุรี • Senior PT คลินิก</p>
-                </div>
+
+            <div class="course-pricing">
+                <span class="course-price-old">฿990</span>
+                <span class="course-price-new">฿690</span>
+                <span class="course-price-label">ราคา Early Bird (100 คนแรก)</span>
             </div>
-            <div class="cred-card">
-                <div class="cred-icon"><img src="รูปประกอบ/image-removebg-brain.png" alt="สมอง" style="width: 38px; height: auto;"></div>
-                <div>
-                    <h3>รับปรึกษาเคส Stroke ระยะเรื้อรัง</h3>
-                    <p>เคส Stroke เกิน 6 เดือน<br>ดีขึ้นได้ ถ้าฝึกถูกวิธี</p>
-                </div>
-            </div>
+
+            <a href="#contact" class="course-cta">จองที่นั่ง Early Bird</a>
+            <p class="course-note">✨ ยังไม่ต้องจ่ายเงิน — แค่กรอกชื่อ + LINE ไว้ รอเปิดคอร์สจะแจ้งให้ทราบก่อนใคร</p>
         </div>
     </section>
 
@@ -1081,23 +1154,6 @@
                             <li><span class="icon no">✗</span> ปรับตารางต่อเนื่อง</li>
                         </ul>
                         <a href="#contact" class="card-cta outline">นัดปรึกษาออนไลน์</a>
-                    </div>
-
-                    <!-- ออกแบบโปรแกรม -->
-                    <div class="pricing-card">
-                        <div class="card-name">ออกแบบโปรแกรม</div>
-                        <div class="card-desc">ได้แผนรักษาระยะยาว ฝึกเองได้</div>
-                        <div class="card-price">2,500 <span class="unit">บาท</span></div>
-                        <div class="card-price-sub">&nbsp;</div>
-                        <ul class="card-features">
-                            <li><span class="icon yes">✓</span> ทำกายภาพที่บ้าน 1 ครั้ง</li>
-                            <li><span class="icon yes">✓</span> ตรวจร่างกายละเอียด</li>
-                            <li><span class="icon yes">✓</span> รักษา 1 ครั้งเต็มรูปแบบ</li>
-                            <li><span class="icon yes">✓</span> คู่มือ PDF เฉพาะตัว</li>
-                            <li><span class="icon yes">✓</span> ลง Manual 1 ครั้ง</li>
-                            <li><span class="icon no">✗</span> ปรับตารางต่อเนื่อง</li>
-                        </ul>
-                        <a href="#contact" class="card-cta outline">นัดออกแบบโปรแกรม</a>
                     </div>
 
                     <!-- คอร์ส 5 ครั้ง -->
