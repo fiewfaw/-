@@ -15,6 +15,17 @@
     <meta property="og:title" content="บ้านกายภาพ ชลบุรี — นักกายภาพเฟี้ยว">
     <meta property="og:description" content="กายภาพบำบัดถึงบ้าน เฉพาะทาง Stroke และระบบประสาท ชลบุรี">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://baankaiyaphap-chonburi.com/">
+    <meta property="og:image" content="https://baankaiyaphap-chonburi.com/favicon-512.png">
+    <meta property="og:image:width" content="512">
+    <meta property="og:image:height" content="512">
+    <meta property="og:site_name" content="บ้านกายภาพ ชลบุรี">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="บ้านกายภาพ ชลบุรี — นักกายภาพเฟี้ยว">
+    <meta name="twitter:description" content="กายภาพบำบัดถึงบ้าน เฉพาะทาง Stroke และระบบประสาท ชลบุรี">
+    <meta name="twitter:image" content="https://baankaiyaphap-chonburi.com/favicon-512.png">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -93,10 +104,24 @@
             color: var(--blue);
             text-decoration: none;
             white-space: nowrap;
+            display: flex;
+            align-items: center;
         }
 
         .nav-brand span {
             color: var(--green);
+        }
+
+        .nav-logo {
+            height: 64px;
+            width: auto;
+            display: block;
+        }
+        @media (max-width: 768px) {
+            .nav-logo { height: 52px; }
+        }
+        @media (max-width: 480px) {
+            .nav-logo { height: 44px; }
         }
 
         .nav-links {
@@ -901,12 +926,18 @@
         "name": "บ้านกายภาพ ชลบุรี",
         "description": "กายภาพบำบัดถึงบ้าน เฉพาะทาง Stroke และระบบประสาท ชลบุรี",
         "url": "https://baankaiyaphap-chonburi.com",
+        "logo": "https://baankaiyaphap-chonburi.com/favicon-512.png",
+        "image": "https://baankaiyaphap-chonburi.com/favicon-512.png",
         "telephone": "+66-80-925-5000",
         "areaServed": {
             "@type": "State",
             "name": "ชลบุรี"
         },
-        "priceRange": "บาท500 - บาท12,000"
+        "priceRange": "บาท500 - บาท12,000",
+        "sameAs": [
+            "https://www.facebook.com/profile.php?id=61553098713257",
+            "https://www.instagram.com/baankaiyaphapchonburi"
+        ]
     }
     </script>
 </head>
@@ -915,7 +946,9 @@
     <!-- NAV -->
     <nav class="nav" id="nav">
         <div class="nav-inner">
-            <a href="#" class="nav-brand">บ้านกายภาพ <span>ชลบุรี</span></a>
+            <a href="#" class="nav-brand" aria-label="บ้านกายภาพ ชลบุรี">
+                <img src="รูปประกอบ/logo-horizontal.png" alt="บ้านกายภาพ ชลบุรี" class="nav-logo">
+            </a>
             <div class="nav-links">
                 <a href="#" class="nav-link" style="color: var(--blue); background: var(--light-blue);">หน้าหลัก</a>
                 <a href="blog/" class="nav-link">บทความ</a>
