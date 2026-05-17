@@ -297,138 +297,131 @@
             border-radius: 5px;
         }
 
-        /* ========== ONLINE COURSE PROMO ========== */
+        /* ========== ONLINE COURSE PROMO (Ad Creative Card) ========== */
         .course-promo {
             padding: 60px 24px;
             background: linear-gradient(135deg, var(--light-blue), var(--light-green));
         }
 
         .course-promo-inner {
-            max-width: 1000px;
+            max-width: 760px;
             margin: 0 auto;
-            background: var(--white);
-            border-radius: var(--radius);
-            padding: 48px 40px;
             text-align: center;
-            box-shadow: var(--shadow);
-            border: 2px solid var(--dark-green);
-            position: relative;
         }
 
-        .course-hero-img {
+        .course-ad-card {
             width: 100%;
-            max-width: 720px;
-            height: auto;
-            display: block;
-            margin: 0 auto 24px;
-            border-radius: 14px;
-            box-shadow: 0 8px 24px rgba(30, 122, 110, 0.15);
-        }
-
-        .course-badge {
-            display: inline-block;
-            background: var(--dark-green);
+            max-width: 600px;
+            margin: 0 auto;
+            aspect-ratio: 4 / 5;
+            background-image: url('รูปประกอบ/course-promo-hero-4x5.png');
+            background-size: cover;
+            background-position: center;
+            border-radius: 22px;
+            position: relative;
+            overflow: hidden;
             color: #fff;
-            padding: 6px 18px;
+            box-shadow: 0 16px 44px rgba(0,0,0,0.22);
+            font-family: 'Mitr', sans-serif;
+        }
+
+        .course-ad-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(0,0,0,0.55) 0%,
+                rgba(0,0,0,0.15) 30%,
+                rgba(0,0,0,0.15) 55%,
+                rgba(0,0,0,0.88) 100%
+            );
+            z-index: 1;
+        }
+
+        .ad-label {
+            position: absolute;
+            top: 22px;
+            left: 22px;
+            z-index: 3;
+            background: #FF8C42;
+            color: #fff;
+            font-size: 0.78rem;
+            padding: 5px 16px;
             border-radius: 999px;
-            font-size: 0.85rem;
             font-weight: 600;
-            margin-bottom: 18px;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
             font-family: 'Mitr', sans-serif;
-            letter-spacing: 0.3px;
         }
 
-        .course-promo h2 {
-            font-family: 'Mitr', sans-serif;
-            font-size: 1.65rem;
-            font-weight: 600;
-            color: var(--text-dark);
-            margin-bottom: 12px;
-            line-height: 1.4;
-        }
-
-        .course-promo h2 .highlight {
+        .ad-price-tag {
+            position: absolute;
+            top: 22px;
+            right: 22px;
+            z-index: 3;
+            background: rgba(255,255,255,0.95);
             color: var(--dark-green);
+            padding: 10px 16px;
+            border-radius: 12px;
+            text-align: right;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            font-family: 'Mitr', sans-serif;
         }
 
-        .course-tagline {
-            font-size: 1rem;
-            color: var(--text-mid);
-            line-height: 1.7;
-            max-width: 720px;
-            margin: 0 auto 28px;
+        .ad-price-old {
+            display: block;
+            font-size: 0.78rem;
+            text-decoration: line-through;
+            opacity: 0.6;
         }
 
-        .course-benefits {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-            margin: 28px 0;
+        .ad-price-new {
+            display: block;
+            font-size: 1.25rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .ad-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 28px 26px 32px;
+            z-index: 2;
             text-align: left;
         }
 
-        .benefit-item {
-            display: flex;
-            gap: 12px;
-            align-items: flex-start;
-            background: var(--off-white);
-            padding: 18px 16px;
-            border-radius: 14px;
-            border: 1px solid var(--border);
-        }
-
-        .benefit-icon {
-            font-size: 1.7rem;
-            flex-shrink: 0;
-            line-height: 1;
-        }
-
-        .benefit-text strong {
-            display: block;
-            color: var(--dark-green);
-            font-size: 0.95rem;
+        .ad-headline {
             font-family: 'Mitr', sans-serif;
             font-weight: 600;
-            margin-bottom: 4px;
+            line-height: 1.35;
+            margin-bottom: 14px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.65);
+            font-size: 1.55rem;
+            color: #fff;
         }
 
-        .benefit-text span {
-            font-size: 0.86rem;
-            color: var(--text-mid);
-            line-height: 1.5;
+        .ad-headline .ad-yellow { color: #FFD740; }
+        .ad-headline .ad-green { color: #6EE7B7; }
+
+        .ad-sub {
+            font-family: 'Sarabun', sans-serif;
+            font-weight: 400;
+            line-height: 1.55;
+            margin-bottom: 18px;
+            opacity: 0.95;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+            font-size: 0.95rem;
+            color: #fff;
         }
 
-        .course-pricing {
-            margin: 28px 0 22px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 14px;
-            flex-wrap: wrap;
-        }
+        .ad-sub strong { color: #fff; font-weight: 700; }
 
-        .course-price-old {
-            font-family: 'Mitr', sans-serif;
-            font-size: 1.3rem;
-            color: var(--text-mid);
-            text-decoration: line-through;
-        }
-
-        .course-price-new {
-            font-family: 'Mitr', sans-serif;
-            font-size: 2.4rem;
-            font-weight: 700;
-            color: var(--dark-green);
-            line-height: 1;
-        }
-
-        .course-price-label {
-            font-size: 0.85rem;
-            color: #B8590F;
-            background: #FFF3E0;
-            padding: 6px 14px;
-            border-radius: 999px;
-            font-weight: 500;
+        .course-ad-card .course-cta {
+            font-size: 1rem;
+            padding: 11px 26px;
         }
 
         .course-cta {
@@ -957,25 +950,43 @@
                 margin: 0 auto;
             }
 
-            .course-promo-inner {
-                padding: 32px 22px;
+            .course-promo {
+                padding: 40px 18px;
             }
 
-            .course-hero-img {
-                margin-bottom: 18px;
-                border-radius: 10px;
+            .course-ad-card {
+                max-width: 100%;
+                border-radius: 16px;
             }
 
-            .course-promo h2 {
-                font-size: 1.3rem;
+            .ad-headline {
+                font-size: 1.25rem;
             }
 
-            .course-benefits {
-                grid-template-columns: 1fr;
+            .ad-sub {
+                font-size: 0.85rem;
             }
 
-            .course-price-new {
-                font-size: 1.9rem;
+            .ad-content {
+                padding: 22px 20px 26px;
+            }
+
+            .ad-label {
+                top: 16px; left: 16px;
+                font-size: 0.7rem; padding: 4px 12px;
+            }
+
+            .ad-price-tag {
+                top: 16px; right: 16px;
+                padding: 8px 12px;
+            }
+
+            .ad-price-new { font-size: 1.05rem; }
+            .ad-price-old { font-size: 0.7rem; }
+
+            .course-ad-card .course-cta {
+                font-size: 0.9rem;
+                padding: 10px 22px;
             }
 
             .pricing-grid {
@@ -1019,7 +1030,7 @@
 
         .hero-text { animation: fadeUp 0.8s ease-out; }
         .hero-carousel { animation: fadeUp 0.8s ease-out 0.2s both; }
-        .course-promo-inner { animation: fadeUp 0.7s ease-out 0.3s both; }
+        .course-ad-card { animation: fadeUp 0.7s ease-out 0.3s both; }
     </style>
 
     <!-- Schema.org LocalBusiness -->
@@ -1095,48 +1106,27 @@
         </div>
     </section>
 
-    <!-- ONLINE COURSE PROMO -->
+    <!-- ONLINE COURSE PROMO (Ad Creative) -->
     <section class="course-promo" id="course">
         <div class="course-promo-inner">
-            <img src="รูปประกอบ/course-promo-hero.png" alt="เฟี้ยว นักกายภาพ + AI Health Coach hologram" class="course-hero-img" loading="lazy">
-            <div class="course-badge">🚀 เปิดสอนเร็วๆ นี้ · Early Bird</div>
-            <h2>คอร์สออนไลน์: สอนคุณ "เทรน AI" ให้เป็น<br><span class="highlight">เทรนเนอร์สุขภาพส่วนตัว 24/7</span></h2>
-            <p class="course-tagline">
-                เปลี่ยน ChatGPT / Claude ให้เป็นนักกายภาพประจำตัวคุณ — คอยดูแลอาการ ปรับโปรแกรมฝึก
-                และตอบคำถามได้ทุกวัน โดยไม่ต้องรอนัด ไม่ต้องเสียค่าครั้งละพัน
-            </p>
-
-            <div class="course-benefits">
-                <div class="benefit-item">
-                    <span class="benefit-icon">🎯</span>
-                    <div class="benefit-text">
-                        <strong>เริ่มจาก 0 ได้</strong>
-                        <span>สอน step-by-step ใช้ AI ได้ทันที แม้ไม่เคยใช้</span>
-                    </div>
+            <div class="course-ad-card">
+                <span class="ad-label">Secret</span>
+                <div class="ad-price-tag">
+                    <span class="ad-price-old">฿990</span>
+                    <span class="ad-price-new">฿690</span>
                 </div>
-                <div class="benefit-item">
-                    <span class="benefit-icon">📋</span>
-                    <div class="benefit-text">
-                        <strong>Prompt Library</strong>
-                        <span>10+ prompt สำเร็จรูปสำหรับเคส Stroke ใช้ได้เลย</span>
-                    </div>
-                </div>
-                <div class="benefit-item">
-                    <span class="benefit-icon">💬</span>
-                    <div class="benefit-text">
-                        <strong>Live Q&amp;A รายเดือน</strong>
-                        <span>ถามตรงเฟี้ยวได้ทุกข้อ ตลอดอายุคอร์ส</span>
-                    </div>
+                <div class="ad-content">
+                    <h2 class="ad-headline">
+                        <span class="ad-yellow">ความลับ</span> ที่นักกายภาพไม่บอก:<br>
+                        AI ช่วยฟื้น stroke ได้ใน <span class="ad-green">30 วัน</span>
+                    </h2>
+                    <p class="ad-sub">
+                        โดย <strong>กภ.รัชธรรม เชื้อแถว</strong> · ใบประกอบ ก.13360<br>
+                        ใช้จริงในคลินิก · ไม่ต้องมีพื้นฐาน tech
+                    </p>
+                    <a href="#contact" class="course-cta">คลิกเลย →</a>
                 </div>
             </div>
-
-            <div class="course-pricing">
-                <span class="course-price-old">฿990</span>
-                <span class="course-price-new">฿690</span>
-                <span class="course-price-label">ราคา Early Bird (100 คนแรก)</span>
-            </div>
-
-            <a href="#contact" class="course-cta">จองที่นั่ง Early Bird</a>
             <p class="course-note">✨ ยังไม่ต้องจ่ายเงิน — แค่กรอกชื่อ + LINE ไว้ รอเปิดคอร์สจะแจ้งให้ทราบก่อนใคร</p>
         </div>
     </section>
