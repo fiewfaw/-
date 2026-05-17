@@ -441,13 +441,39 @@
             font-weight: 600;
             font-size: 1.05rem;
             text-decoration: none;
-            transition: all 0.3s;
+            transition: all 0.25s ease-out;
             box-shadow: 0 4px 14px rgba(30, 122, 110, 0.3);
+            animation: courseCtaPulse 1.8s ease-in-out infinite;
+            transform-origin: center;
+            cursor: pointer;
         }
 
         .course-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 18px rgba(30, 122, 110, 0.4);
+            transform: scale(1.12);
+            background: #25958A;
+            box-shadow:
+                0 8px 24px rgba(30, 122, 110, 0.55),
+                0 0 0 8px rgba(110, 231, 183, 0.22);
+            animation: none;
+        }
+
+        @keyframes courseCtaPulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow:
+                    0 4px 14px rgba(30, 122, 110, 0.3),
+                    0 0 0 0 rgba(110, 231, 183, 0);
+            }
+            50% {
+                transform: scale(1.06);
+                box-shadow:
+                    0 6px 20px rgba(30, 122, 110, 0.5),
+                    0 0 0 10px rgba(110, 231, 183, 0.15);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .course-cta { animation: none; }
         }
 
         .course-note {
