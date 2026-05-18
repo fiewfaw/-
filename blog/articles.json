@@ -1,5 +1,13 @@
 [
   {
+    "slug": "stroke-ep2",
+    "title": "'Stroke ต้องฟื้นใน 6 เดือน' — ความเชื่อนี้มาจากไหน? ทำไมถึงใช้เป็นแผนการหลักในการรักษา?",
+    "description": "ความเชื่อเรื่อง Golden Period 6 เดือนของ Stroke มาจากไหน? ตามรอยตั้งแต่ paper Paul Twitchell ปี 1951 → Signe Brunnstrom 1966 → ระบบ IMC สปสช. 2567 → แล้วตรวจสอบกับ research ปี 2009-2024 ว่าความเชื่อนี้จริงแค่ไหน? พร้อม Verdict สรุปว่าควรเชื่อหรือไม่ และ 3 ทางเลือกถ้าเลย 6 เดือนแล้ว",
+    "date": "2026-05-18",
+    "image": "/blog/images/ep2/golden-brain-6months-cover.png",
+    "tags": ["stroke", "EP.2 ซีรีส์ Stroke", "Golden Period", "IMC", "Neuroplasticity", "กายภาพบำบัด"]
+  },
+  {
     "slug": "stroke-ep1",
     "title": "โรคหลอดเลือดสมอง (Stroke) คืออะไร? จากโรคปริศนา สู่โรคที่รักษาได้",
     "description": "เข้าใจโรคหลอดเลือดสมอง (Stroke) ตั้งแต่ประวัติศาสตร์ 2,500 ปี สาเหตุ อาการเตือน วิธีวินิจฉัยด้วย CT scan ความแตกต่างระหว่างเส้นเลือดตีบกับแตก การรักษาด้วย tPA และ Thrombectomy จนถึงการฟื้นฟูด้วยกายภาพบำบัดและ Neuroplasticity",
