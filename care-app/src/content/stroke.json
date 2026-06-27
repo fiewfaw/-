@@ -1,0 +1,58 @@
+{
+  "id": "stroke",
+  "goal": "rehab",
+  "type": "clinical",
+  "name": "ฟื้นฟูโรคหลอดเลือดสมอง (Stroke)",
+  "intro": {
+    "what_is": "โรคหลอดเลือดสมองทำให้กล้ามเนื้ออ่อนแรงครึ่งซีก การเคลื่อนไหวและการทรงตัวลดลง",
+    "how_help": "กายภาพบำบัดช่วยฟื้นการเคลื่อนไหว ฝึกลงน้ำหนัก ทรงตัว และเดิน อย่างปลอดภัยและไล่ระดับ"
+  },
+  "redFlags": [
+    { "questionId": "q_pain", "optionId": "severe", "message": "มีอาการปวดรุนแรง ควรปรึกษานักกายภาพ/แพทย์ก่อนเริ่มออกกำลังกาย" }
+  ],
+  "stages": [
+    { "id": "bed", "label": "ระยะติดเตียง" },
+    { "id": "sit", "label": "ระยะนั่งทรงตัว" },
+    { "id": "walk", "label": "ระยะยืน-เดิน" }
+  ],
+  "screeningQuestions": [
+    {
+      "id": "q_mobility", "text": "ตอนนี้เคลื่อนไหวได้แค่ไหน", "stat": "function",
+      "options": [
+        { "id": "bedbound", "label": "นอนติดเตียง พลิกตัวเองลำบาก", "stage": "bed", "stats": { "function": -30, "strength": -20, "endurance": -20 } },
+        { "id": "sits", "label": "นั่งได้ แต่ยังไม่ยืน", "stage": "sit", "stats": { "function": -5, "balance": -10 } },
+        { "id": "walks", "label": "ยืน/เดินได้บ้าง", "stage": "walk", "stats": { "function": 15, "strength": 10 } }
+      ]
+    },
+    {
+      "id": "q_balance", "text": "การทรงตัวเป็นอย่างไร", "stat": "balance",
+      "options": [
+        { "id": "poor", "label": "ทรงตัวไม่ได้ ต้องพยุงตลอด", "stage": "bed", "stats": { "balance": -30 } },
+        { "id": "fair", "label": "นั่งทรงตัวได้ ยืนต้องช่วย", "stage": "sit", "stats": { "balance": -10 } },
+        { "id": "good", "label": "ยืนเองได้พอควร", "stage": "walk", "stats": { "balance": 15 } }
+      ]
+    },
+    {
+      "id": "q_pain", "text": "มีอาการปวด (เช่น ปวดไหล่ข้างอ่อนแรง) ไหม", "stat": "comfort",
+      "options": [
+        { "id": "none", "label": "ไม่ปวด", "stage": null, "stats": { "comfort": 15 } },
+        { "id": "mild", "label": "ปวดเล็กน้อย", "stage": null, "stats": { "comfort": -10 } },
+        { "id": "severe", "label": "ปวดมาก", "stage": null, "stats": { "comfort": -30 } }
+      ]
+    }
+  ],
+  "freeReadout": {
+    "bed": {
+      "summary": "อยู่ในระยะติดเตียง เป้าหมายแรกคือป้องกันข้อติด แผลกดทับ และเริ่มกระตุ้นการเคลื่อนไหวเบา ๆ",
+      "starterTechniques": ["จัดท่านอนสลับทุก 2 ชม.", "ขยับข้อแขน-ขาเบา ๆ (passive ROM) วันละ 2 รอบ"]
+    },
+    "sit": {
+      "summary": "นั่งทรงตัวได้แล้ว เป้าหมายคือเพิ่มความมั่นคงของลำตัวและเตรียมการลงน้ำหนักเพื่อฝึกยืน",
+      "starterTechniques": ["ฝึกนั่งเอื้อมหยิบของข้างลำตัว", "ฝึกลงน้ำหนักผ่านแขนข้างที่แข็งแรง"]
+    },
+    "walk": {
+      "summary": "ยืน-เดินได้บ้างแล้ว เป้าหมายคือเพิ่มความแข็งแรง ความมั่นใจ และความปลอดภัยในการเดิน",
+      "starterTechniques": ["ฝึกลุก-นั่งจากเก้าอี้ช้า ๆ", "ฝึกยืนถ่ายน้ำหนักซ้าย-ขวา โดยมีที่จับ"]
+    }
+  }
+}
