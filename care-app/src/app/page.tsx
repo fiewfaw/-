@@ -22,9 +22,12 @@ export default function Page() {
           <button key={g.id} onClick={() => choose(g.id, g.packId)}
             className="holo-card flex items-center gap-3"
             disabled={!g.packId}>
-            <span className="text-2xl">{g.emoji}</span>
-            <span className="flex-1 font-medium">{g.label}</span>
-            {!g.packId && <span className="text-xs holo-cyan">เร็ว ๆ นี้</span>}
+            <span className="text-3xl">{g.emoji}</span>
+            <span className="flex-1">
+              <span className="block font-semibold">{g.label}</span>
+              <span className="mt-0.5 block text-xs holo-sub">{g.sub}</span>
+            </span>
+            {!g.packId && <span className="shrink-0 text-xs holo-cyan">เร็ว ๆ นี้</span>}
           </button>
         ))}
       </div>
