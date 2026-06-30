@@ -26,14 +26,16 @@ export default function Page() {
 
   return (
     <main className="mx-auto max-w-md px-4 py-8">
-      <p className="text-xs text-slate-400">
+      <p className="text-xs font-semibold holo-cyan">
         ข้อ {index + 1} / {pack.screeningQuestions.length}
       </p>
-      <h2 className="mt-2 text-xl font-bold text-[#0f3a5f]">{q.text}</h2>
+      <div className="holo-progress mt-3">
+        <div style={{ width: `${(index / pack.screeningQuestions.length) * 100}%` }} />
+      </div>
+      <h2 className="mt-4 text-xl font-bold holo-title">{q.text}</h2>
       <div className="mt-6 grid gap-3">
         {q.options.map((o) => (
-          <button key={o.id} onClick={() => answer(o.id)}
-            className="rounded-2xl border border-slate-200 bg-white p-4 text-left shadow-sm active:scale-[0.99]">
+          <button key={o.id} onClick={() => answer(o.id)} className="holo-card">
             {o.label}
           </button>
         ))}

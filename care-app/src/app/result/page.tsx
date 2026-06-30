@@ -7,7 +7,7 @@ import { resolveStage } from '@/lib/engine/scoring'
 import { computeStats } from '@/lib/engine/stats'
 import { selectReadout, detectRedFlags } from '@/lib/engine/readout'
 import { StatHexagon } from '@/components/StatHexagon'
-import { BodyChart } from '@/components/BodyChart'
+import { HologramAvatar } from '@/components/hologram/HologramAvatar'
 import { FadeIn } from '@/components/FadeIn'
 
 const DISCLAIMER =
@@ -32,37 +32,36 @@ export default function Page() {
 
   return (
     <main className="mx-auto max-w-md px-4 py-8">
-      <h1 className="text-xl font-bold text-[#0f3a5f]">{pack.name}</h1>
-      <p className="mt-1 text-sm font-medium text-[#2b7cb8]">ระยะของคุณ: {stage?.label}</p>
+      <h1 className="text-xl font-bold holo-title">{pack.name}</h1>
+      <p className="mt-1 text-sm font-semibold holo-cyan">ระยะของคุณ: {stage?.label}</p>
 
       <FadeIn>
-        <div className="mt-4 rounded-2xl bg-white p-4 shadow-sm">
-          <BodyChart markers={[]} />
-          <StatHexagon stats={stats} />
+        <div className="mt-4">
+          <HologramAvatar height={340} />
+          <div className="holo-panel mt-4 p-4">
+            <StatHexagon stats={stats} />
+          </div>
         </div>
       </FadeIn>
 
       {redFlags.length > 0 && (
-        <div className="mt-4 rounded-2xl border border-red-200 bg-red-50 p-4 text-sm text-red-700">
+        <div className="mt-4 rounded-2xl border border-red-400/50 bg-red-950/40 p-4 text-sm text-red-200">
           {redFlags.map((m, i) => <p key={i}>⚠ {m}</p>)}
         </div>
       )}
 
-      <section className="mt-4 rounded-2xl bg-white p-4 shadow-sm">
-        <p className="text-slate-700">{readout.summary}</p>
+      <section className="holo-panel mt-4 p-4">
+        <p className="leading-relaxed" style={{ color: '#cfe7f6' }}>{readout.summary}</p>
         {readout.starterTechniques.length > 0 && (
-          <ul className="mt-3 list-disc pl-5 text-sm text-slate-600">
+          <ul className="mt-3 list-disc pl-5 text-sm" style={{ color: '#bcd9ec' }}>
             {readout.starterTechniques.map((t, i) => <li key={i}>{t}</li>)}
           </ul>
         )}
       </section>
 
-      <a href="#consult"
-        className="mt-6 block rounded-2xl bg-[#0f3a5f] py-4 text-center font-semibold text-white">
-        ปรึกษานักกายภาพ
-      </a>
+      <a href="#consult" className="holo-cta mt-6">⚡ ปรึกษานักกายภาพ</a>
 
-      <p className="mt-4 text-xs text-slate-400">{DISCLAIMER}</p>
+      <p className="mt-4 text-xs holo-sub">{DISCLAIMER}</p>
     </main>
   )
 }
