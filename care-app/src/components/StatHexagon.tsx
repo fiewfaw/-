@@ -15,11 +15,17 @@ export function StatHexagon({ stats }: { stats: StatRadar }) {
   const gridPoints = STAT_KEYS.map((_, i) => point(i, R).join(',')).join(' ')
   const valueXY = STAT_KEYS.map((k, i) => point(i, (stats[k] / 100) * R))
   const valuePoints = valueXY.map((p) => p.join(',')).join(' ')
+  // value polygon as % of the square box → clip the radar sweep to the blue area only
+  const clipPoly = valueXY
+    .map(([x, y]) => `${((x / SIZE) * 100).toFixed(2)}% ${((y / SIZE) * 100).toFixed(2)}%`)
+    .join(', ')
 
   return (
     <div className="hex-wrap">
-      {/* clockwise radar sweep behind the chart */}
-      <div className="hex-radar" />
+      {/* clockwise radar sweep — clipped to the blue stat polygon only */}
+      <div className="hex-radar-clip" style={{ clipPath: `polygon(${clipPoly})` }}>
+        <div className="hex-radar-spin" />
+      </div>
       <svg
         viewBox={`0 0 ${SIZE} ${SIZE}`}
         className="relative block w-full"

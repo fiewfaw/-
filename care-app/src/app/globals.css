@@ -144,20 +144,23 @@ body {
   margin: 0 auto;
   aspect-ratio: 1 / 1;
 }
-.hex-radar {
+/* clip = stays fixed to the blue stat polygon; spin = rotating sweep inside it */
+.hex-radar-clip {
   position: absolute;
-  inset: 6%;
-  border-radius: 50%;
+  inset: 0;
   pointer-events: none;
   mix-blend-mode: screen;
+}
+.hex-radar-spin {
+  position: absolute;
+  inset: 0;
+  transform-origin: 50% 50%;
   background: conic-gradient(from 0deg,
     rgba(56, 225, 255, 0) 0deg,
-    rgba(56, 225, 255, 0) 270deg,
-    rgba(56, 225, 255, 0.08) 320deg,
-    rgba(56, 225, 255, 0.45) 358deg,
+    rgba(56, 225, 255, 0) 250deg,
+    rgba(56, 225, 255, 0.12) 310deg,
+    rgba(56, 225, 255, 0.6) 358deg,
     rgba(56, 225, 255, 0) 360deg);
-  -webkit-mask: radial-gradient(circle, #000 30%, #000 60%, transparent 74%);
-  mask: radial-gradient(circle, #000 30%, #000 60%, transparent 74%);
   animation: holoSpin 5s linear infinite;
 }
 .hex-node-a { animation: holoNodeA 1.5s ease-in-out infinite; }
