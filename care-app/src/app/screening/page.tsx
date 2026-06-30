@@ -8,7 +8,17 @@ export default function Page() {
   const router = useRouter()
   const packId = useSession((s) => s.packId)
   const setAnswer = useSession((s) => s.setAnswer)
+  const reset = useSession((s) => s.reset)
   const [index, setIndex] = useState(0)
+
+  function goHome() {
+    reset()
+    router.push('/')
+  }
+  function goBack() {
+    if (index > 0) setIndex(index - 1)
+    else goHome()
+  }
 
   useEffect(() => {
     if (!packId) router.push('/')
@@ -26,6 +36,10 @@ export default function Page() {
 
   return (
     <main className="mx-auto max-w-md px-4 py-8">
+      <div className="mb-4 flex items-center justify-between">
+        <button onClick={goBack} className="holo-back">← กลับ</button>
+        <button onClick={goHome} className="holo-back">หน้าแรก ⌂</button>
+      </div>
       <p className="text-xs font-semibold holo-cyan">
         ข้อ {index + 1} / {pack.screeningQuestions.length}
       </p>

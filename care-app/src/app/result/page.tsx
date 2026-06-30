@@ -17,6 +17,7 @@ export default function Page() {
   const router = useRouter()
   const packId = useSession((s) => s.packId)
   const answers = useSession((s) => s.answers)
+  const reset = useSession((s) => s.reset)
 
   useEffect(() => {
     if (!packId) router.push('/')
@@ -32,6 +33,12 @@ export default function Page() {
 
   return (
     <main className="mx-auto max-w-md px-4 py-8">
+      <button
+        onClick={() => { reset(); router.push('/') }}
+        className="holo-back mb-4"
+      >
+        ← กลับหน้าแรก
+      </button>
       <h1 className="text-xl font-bold holo-title">{pack.name}</h1>
       <p className="mt-1 text-sm font-semibold holo-cyan">ระยะของคุณ: {stage?.label}</p>
 
