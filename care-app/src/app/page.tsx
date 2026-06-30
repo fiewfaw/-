@@ -14,7 +14,7 @@ export default function Page() {
 
   return (
     <main className="mx-auto max-w-md px-4 py-8">
-      <div className="holo-brand">BAAN PHYSIO · CARE</div>
+      <div className="holo-brand">บ้านกายภาพบำบัด ชลบุรี</div>
       <h1 className="mt-2 text-2xl font-bold holo-title">เป้าหมายของคุณคืออะไร?</h1>
       <p className="mt-2 text-sm holo-sub">เลือกสิ่งที่อยากดูแล แล้วเราจะช่วยเช็กให้</p>
       <div className="mt-6 grid grid-cols-1 gap-3">

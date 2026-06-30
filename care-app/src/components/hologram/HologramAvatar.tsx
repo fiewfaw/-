@@ -19,7 +19,7 @@ const CSS = `
   animation: holoFloat 6s ease-in-out infinite;
   filter: drop-shadow(0 0 14px rgba(56,225,255,.4)); }
 .holo-frame{ position:absolute; inset:0; width:100%; height:100%; object-fit:contain;
-  opacity:0; transition:opacity .18s linear }
+  opacity:0; transition:opacity .32s linear }
 .holo-frame.on{ opacity:1 }
 .holo-scan{ position:absolute; left:0; right:0; height:38%; pointer-events:none; mix-blend-mode:screen;
   background:linear-gradient(180deg, transparent, rgba(56,225,255,.12), transparent);
@@ -30,7 +30,7 @@ export function HologramAvatar({ height = 380 }: { height?: number }) {
   const [step, setStep] = useState(0)
 
   useEffect(() => {
-    const id = setInterval(() => setStep((s) => (s + 1) % FRAMES.length), 180)
+    const id = setInterval(() => setStep((s) => (s + 1) % FRAMES.length), 380)
     return () => clearInterval(id)
   }, [])
 
