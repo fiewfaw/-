@@ -12,13 +12,13 @@ describe('Goal entry page', () => {
   it('renders all goals', () => {
     render(<Page />)
     expect(screen.getByText('ฟื้นฟูจากโรค')).toBeInTheDocument()
-    expect(screen.getByText('ดูแลสุขภาพทั่วไป')).toBeInTheDocument()
+    expect(screen.getByText('ชะลอความเสื่อม')).toBeInTheDocument()
+    expect(screen.getByText('เพิ่มศักยภาพกีฬา')).toBeInTheDocument()
   })
 
-  it('navigates to screening when a ready goal is chosen', () => {
+  it('routes the rehab goal to the conditions sub-picker', () => {
     render(<Page />)
     screen.getByText('ฟื้นฟูจากโรค').click()
-    expect(useSession.getState().packId).toBe('stroke')
-    expect(push).toHaveBeenCalledWith('/screening')
+    expect(push).toHaveBeenCalledWith('/conditions')
   })
 })

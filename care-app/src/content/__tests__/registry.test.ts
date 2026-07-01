@@ -1,10 +1,15 @@
 import { describe, it, expect } from 'vitest'
-import { GOALS, getPack } from '@/content/registry'
+import { GOALS, CONDITIONS, getPack } from '@/content/registry'
 
 describe('registry', () => {
-  it('exposes the rehab goal mapped to stroke pack', () => {
+  it('routes the rehab goal to the conditions sub-picker', () => {
     const rehab = GOALS.find((g) => g.id === 'rehab')
-    expect(rehab?.packId).toBe('stroke')
+    expect(rehab?.href).toBe('/conditions')
+  })
+
+  it('maps the stroke condition to the stroke pack', () => {
+    const stroke = CONDITIONS.find((c) => c.id === 'stroke')
+    expect(stroke?.packId).toBe('stroke')
   })
 
   it('loads and validates the stroke pack', () => {

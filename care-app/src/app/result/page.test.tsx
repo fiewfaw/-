@@ -24,6 +24,6 @@ describe('Result page', () => {
     render(<Page />)
     expect(screen.getByText(/ปวดรุนแรง/)).toBeInTheDocument()
     expect(screen.getByText(/ไม่ใช่การวินิจฉัย/)).toBeInTheDocument()
-    expect(screen.getByText('ปรึกษานักกายภาพ')).toBeInTheDocument()
+    expect(screen.getByText('⚡ ปรึกษานักกายภาพ')).toBeInTheDocument()
   })
 })

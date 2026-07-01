@@ -1,0 +1,22 @@
+# === Agent/editor tooling (large, machine-local) ===
+.claude/
+.codex/
+
+# === Build output & deps ===
+node_modules/
+.next/
+dist/
+build/
+
+# === Temp / scratch ===
+tmp/
+*.tmp
+
+# === Nested exports / backups (not part of this repo) ===
+_publish_english_adaptive_*/
+_old-logo-backup/
+
+# === OS ===
+Thumbs.db
+Desktop.ini
+.DS_Store

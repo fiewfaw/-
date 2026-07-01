@@ -7,9 +7,15 @@ export default function Page() {
   const router = useRouter()
   const selectGoal = useSession((s) => s.selectGoal)
 
-  function choose(goalId: string, packId: string | null) {
-    selectGoal(goalId, packId)
-    if (packId) router.push('/screening')
+  function choose(g: (typeof GOALS)[number]) {
+    if (g.href) {
+      router.push(g.href)
+      return
+    }
+    if (g.packId) {
+      selectGoal(g.id, g.packId)
+      router.push('/screening')
+    }
   }
 
   return (
@@ -19,15 +25,15 @@ export default function Page() {
       <p className="mt-2 text-sm holo-sub">เลือกสิ่งที่อยากดูแล แล้วเราจะช่วยเช็กให้</p>
       <div className="mt-6 grid grid-cols-1 gap-3">
         {GOALS.map((g) => (
-          <button key={g.id} onClick={() => choose(g.id, g.packId)}
+          <button key={g.id} onClick={() => choose(g)}
             className="holo-card flex items-center gap-3"
-            disabled={!g.packId}>
+            disabled={!(g.packId || g.href)}>
             <span className="text-3xl">{g.emoji}</span>
             <span className="flex-1">
               <span className="block font-semibold">{g.label}</span>
               <span className="mt-0.5 block text-xs holo-sub">{g.sub}</span>
             </span>
-            {!g.packId && <span className="shrink-0 text-xs holo-cyan">เร็ว ๆ นี้</span>}
+            {!(g.packId || g.href) && <span className="shrink-0 text-xs holo-cyan">เร็ว ๆ นี้</span>}
           </button>
         ))}
       </div>
