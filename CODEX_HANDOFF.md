@@ -55,7 +55,9 @@ npm run start    # prod
 - ✅ ธีมโฮโลแกรม + radar sweep เฉพาะพื้นที่ + จุดยอดกระพริบ + brand flicker + ปุ่มกลับ + hover เดียวกันทุกปุ่ม
 - ✅ 3 หมวดตั้งชื่อจบ: **ฟื้นฟูจากโรค** (พร้อม → /conditions) / **ชะลอความเสื่อม** (เร็ว ๆ นี้) / **เพิ่มศักยภาพกีฬา** (เร็ว ๆ นี้)
 - ✅ หน้าเลือกโรคย่อย `/conditions` — Stroke พร้อม, พาร์กินสัน/หลังผ่าตัด/มะเร็ง = เร็ว ๆ นี้ (build+test ผ่าน, verify ด้วย screenshot แล้ว)
-- ⛔ ยังไม่มี: content pack หมวด 2–3 + โรคย่อยอื่น, ปุ่มปรึกษาจริง/เก็บ lead, payment
+- ✅ content pack "ชะลอความเสื่อม" (`elderly.json`, wellness) — 4 คำถาม / 3 ระยะ (แข็งแรง/เริ่มถดถอย/เสี่ยงล้ม) การ์ดหมวด 2 ใช้งานได้แล้ว
+  - ⚠ เกณฑ์/ตัวเลข (เช่น ">10 วินาที", "≥3 วัน/สัปดาห์", ค่า stats deltas) เป็น draft รอเฟี้ยวรีวิว/ปรับ
+- ⛔ ยังไม่มี: content pack หมวดกีฬา + โรคย่อยอื่น (พาร์กินสัน/หลังผ่าตัด/มะเร็ง), ปุ่มปรึกษาจริง/เก็บ lead, payment
 
 ## 7. Backlog (ทำจากบนลงล่าง)
 
@@ -63,11 +65,9 @@ npm run start    # prod
 - [x] **1. หน้าเลือกโรคย่อยของ "ฟื้นฟูจากโรค" (/conditions)** — ✅ เสร็จ 2026-07-01
   (registry: Goal.href + CONDITIONS; page.tsx choose() รองรับ href; conditions/page.tsx; อัปเดต test; build+test ผ่าน)
 
-- [ ] **2. Content pack หมวด "ชะลอความเสื่อม" (ผู้สูงวัย)**
-  - สร้าง `src/content/elderly.json` โครงเดียวกับ `stroke.json` (screeningQuestions ~3 ข้อ + stages + readouts + redFlags)
-  - หัวข้อคัดกรอง: ความเสี่ยงล้ม, แรงขา/ลุกนั่ง, การทรงตัว/เดิน, ข้อฝืด
-  - register ใน `registry.ts` (RAW_PACKS + ผูก goal elderly packId `'elderly'`) → ปลดการ์ดจาก "เร็ว ๆ นี้"
-  - **เนื้อหาให้เฟี้ยวรีวิว/แก้เอง** (เขาเป็น PT — เจ้าของคะแนนคลินิก) อย่าใส่ตัวเลข/เกณฑ์มั่ว
+- [x] **2. Content pack หมวด "ชะลอความเสื่อม" (ผู้สูงวัย)** — ✅ เสร็จ 2026-07-01
+  (`elderly.json` wellness, 4 คำถาม/3 ระยะ; register + ปลดการ์ด; test เพิ่ม; build+test ผ่าน; verify screenshot)
+  - ⚠ ตัวเลข/เกณฑ์เป็น draft รอเฟี้ยวรีวิว
 
 - [ ] **3. Content pack หมวด "เพิ่มศักยภาพกีฬา"**
   - `src/content/sport.json` แนวเดียวกับข้อ 2 (บาดเจ็บเดิม, ความยืดหยุ่น, ความแข็งแรง/พาวเวอร์, การฟื้นตัว)

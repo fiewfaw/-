@@ -18,6 +18,13 @@ describe('registry', () => {
     expect(pack.screeningQuestions.length).toBe(3)
   })
 
+  it('loads and validates the elderly pack', () => {
+    const pack = getPack('elderly')
+    expect(pack.type).toBe('wellness')
+    expect(pack.screeningQuestions.length).toBe(4)
+    expect(pack.stages.length).toBe(3)
+  })
+
   it('throws on unknown pack', () => {
     expect(() => getPack('nope')).toThrow()
   })
