@@ -58,7 +58,8 @@ npm run start    # prod
 - ✅ content pack "ชะลอความเสื่อม" (`elderly.json`, wellness) — 4 คำถาม / 3 ระยะ (แข็งแรง/เริ่มถดถอย/เสี่ยงล้ม) การ์ดหมวด 2 ใช้งานได้แล้ว
 - ✅ content pack "เพิ่มศักยภาพกีฬา" (`sport.json`, wellness) — 4 คำถาม / 3 ระยะ (ฟอร์มดี/กำลังสร้าง/ต้องระวัง) การ์ดหมวด 3 ใช้งานได้แล้ว → **ครบ 3 หมวดหลัก**
   - ⚠ เกณฑ์/ตัวเลข + ค่า stats deltas ของ elderly + sport เป็น draft รอเฟี้ยวรีวิว/ปรับ
-- ⛔ ยังไม่มี: โรคย่อยอื่น (พาร์กินสัน/หลังผ่าตัด/มะเร็ง), ไอคอนหมวดแบบเคลื่อนไหว (รอไฟล์จาก ChatGPT), ปุ่มปรึกษาจริง/เก็บ lead, payment
+- ✅ ไอคอนหมวดแบบเคลื่อนไหว (hover) — 3 ชุด webp ใน `public/icons/` (rehab คทาปีกกระพือ / elderly นาฬิกาทรายพลิก / sport ดัมเบลกระดิก) cross-fade ตอน hover ผ่าน `CardIcon.tsx`
+- ⛔ ยังไม่มี: โรคย่อยอื่น (พาร์กินสัน/หลังผ่าตัด/มะเร็ง), ปุ่มปรึกษาจริง/เก็บ lead, payment
 
 ## 7. Backlog (ทำจากบนลงล่าง)
 
@@ -73,12 +74,8 @@ npm run start    # prod
 - [x] **3. Content pack หมวด "เพิ่มศักยภาพกีฬา"** — ✅ เสร็จ 2026-07-01
   (`sport.json` wellness, 4 คำถาม/3 ระยะ; register + ปลดการ์ด; test เพิ่ม; build+test ผ่าน; verify screenshot) ⚠ ตัวเลข draft
 
-- [ ] **3.5 ไอคอนหมวดแบบเคลื่อนไหว (รอไฟล์ ChatGPT)**
-  - เฟี้ยวสั่ง ChatGPT ทำ zip ไอคอน holographic โปร่งใส ธีมเดียวกับแอป (cyan glow) เคลื่อนไหวตอน hover:
-    - rehab = คทาเฮอร์มีส (แบบตรากระทรวงสาธารณสุข) · movement: ปีกกระพือคล้ายจะบิน
-    - elderly = นาฬิกาทราย · movement: พลิกกลับหัว + ทรายไหล สื่อ "ย้อนเวลา/ย้อนวัย"
-    - sport = ดัมเบล · movement: ใหญ่ขึ้นแล้วกระดิกไปมา
-  - แผน in-app: วางไฟล์ frames ที่ `care-app/public/icons/<cat>/` แล้ว cross-fade + CSS เหมือน HologramAvatar; แทน emoji ในการ์ด `page.tsx`
+- [x] **3.5 ไอคอนหมวดแบบเคลื่อนไหว (hover)** — ✅ เสร็จ 2026-07-01
+  (frames webp ใน `public/icons/{rehab,elderly,sport}/`; map `content/icons.ts`; `components/CardIcon.tsx` cross-fade ตอน hover; refactor `page.tsx` จัดการ hover state; CSS `.card-icon` ใน globals.css; build+test ผ่าน; verify hover screenshot)
 
 - [ ] **4. ปุ่ม "ปรึกษานักกายภาพ" จริง + เก็บ Lead (P2) — สำคัญสุดทางธุรกิจ**
   - ปุ่มใน `result/page.tsx` (ตอนนี้เป็น placeholder `href="#consult"`) → เปิดฟอร์ม: ชื่อ, เบอร์/LINE, เขต/อำเภอ, สรุปอาการ (auto จากผลคัดกรอง)
