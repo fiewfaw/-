@@ -1,10 +1,12 @@
 import { loadJourneyPack, type JourneyPack } from '@/lib/engine/pack'
 import strokeRaw from '@/content/stroke.json'
 import elderlyRaw from '@/content/elderly.json'
+import sportRaw from '@/content/sport.json'
 
 const RAW_PACKS: Record<string, unknown> = {
   stroke: strokeRaw,
   elderly: elderlyRaw,
+  sport: sportRaw,
 }
 
 export type Goal = {
@@ -37,7 +39,7 @@ export const GOALS: Goal[] = [
     label: 'เพิ่มศักยภาพกีฬา',
     sub: 'สำหรับนักกีฬา–คนออกกำลังกาย',
     emoji: '🏃',
-    packId: null,
+    packId: 'sport',
   },
 ]
 

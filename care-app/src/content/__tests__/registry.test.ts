@@ -25,6 +25,13 @@ describe('registry', () => {
     expect(pack.stages.length).toBe(3)
   })
 
+  it('loads and validates the sport pack', () => {
+    const pack = getPack('sport')
+    expect(pack.type).toBe('wellness')
+    expect(pack.screeningQuestions.length).toBe(4)
+    expect(pack.stages.length).toBe(3)
+  })
+
   it('throws on unknown pack', () => {
     expect(() => getPack('nope')).toThrow()
   })
