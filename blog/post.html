@@ -10,6 +10,8 @@
     <title>บทความ | บ้านกายภาพ ชลบุรี</title>
     <meta name="description" content="">
     <meta property="og:type" content="article">
+    <meta property="og:site_name" content="บ้านกายภาพ ชลบุรี">
+    <meta property="og:locale" content="th_TH">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -62,6 +64,16 @@
     <article class="article-body" id="articleBody">
         <p style="color: var(--text-light);">กำลังโหลดเนื้อหา...</p>
     </article>
+
+    <aside class="article-author-box" aria-label="ข้อมูลผู้เขียนและผู้ทบทวนบทความ">
+        <img src="../รูปประกอบ/บ้านกายภาพ ชลบุรี.jpg" alt="รัชธรรม เชื้อแถว นักกายภาพบำบัด บ้านกายภาพ ชลบุรี">
+        <div>
+            <span class="article-author-label">เขียนและทบทวนเนื้อหาโดย</span>
+            <strong>กภ.รัชธรรม เชื้อแถว</strong>
+            <p>นักกายภาพบำบัด บ้านกายภาพ ชลบุรี · ใบประกอบวิชาชีพ ก.13360<br>สนใจงานฟื้นฟูระบบประสาทและผู้ป่วยโรคหลอดเลือดสมอง</p>
+            <small id="articleReviewDate"></small>
+        </div>
+    </aside>
 
     <!-- CTA -->
     <div class="article-cta">
@@ -163,6 +175,119 @@
             return `${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear() + 543}`;
         }
 
+        const SITE_ORIGIN = 'https://baankaiyaphap-chonburi.com';
+
+        function upsertMeta(attribute, key, content) {
+            let element = document.head.querySelector(`meta[${attribute}="${key}"]`);
+            if (!element) {
+                element = document.createElement('meta');
+                element.setAttribute(attribute, key);
+                document.head.appendChild(element);
+            }
+            element.content = content || '';
+        }
+
+        function setCanonicalUrl(url) {
+            let canonical = document.head.querySelector('link[rel="canonical"]');
+            if (!canonical) {
+                canonical = document.createElement('link');
+                canonical.setAttribute('rel', 'canonical');
+                document.head.appendChild(canonical);
+            }
+            canonical.href = url;
+        }
+
+        function applyArticleMetadata(meta, slug) {
+            const canonicalUrl = `${SITE_ORIGIN}/blog/post.html?slug=${encodeURIComponent(slug)}`;
+            const imageUrl = new URL(meta.image || '/favicon-512.png', `${SITE_ORIGIN}/blog/post.html`).href;
+            const displayTitle = meta.title || slug;
+            const seoTitle = meta.seo_title || displayTitle;
+            const description = meta.description || '';
+            const modifiedDate = meta.updated || meta.date;
+
+            document.title = `${seoTitle} | บ้านกายภาพ ชลบุรี`;
+            document.querySelector('meta[name="description"]').content = description;
+            setCanonicalUrl(canonicalUrl);
+
+            upsertMeta('property', 'og:type', 'article');
+            upsertMeta('property', 'og:title', displayTitle);
+            upsertMeta('property', 'og:description', description);
+            upsertMeta('property', 'og:image', imageUrl);
+            upsertMeta('property', 'og:image:alt', `ภาพปกบทความ ${displayTitle}`);
+            upsertMeta('property', 'og:url', canonicalUrl);
+            upsertMeta('property', 'article:published_time', meta.date || '');
+            upsertMeta('property', 'article:modified_time', modifiedDate || '');
+            upsertMeta('name', 'twitter:card', 'summary_large_image');
+            upsertMeta('name', 'twitter:title', displayTitle);
+            upsertMeta('name', 'twitter:description', description);
+            upsertMeta('name', 'twitter:image', imageUrl);
+
+            const structuredData = {
+                '@context': 'https://schema.org',
+                '@graph': [
+                    {
+                        '@type': 'Article',
+                        '@id': `${canonicalUrl}#article`,
+                        headline: displayTitle,
+                        description,
+                        "image": [imageUrl],
+                        datePublished: meta.date,
+                        dateModified: modifiedDate,
+                        inLanguage: 'th-TH',
+                        isAccessibleForFree: true,
+                        mainEntityOfPage: {
+                            '@type': 'WebPage',
+                            '@id': canonicalUrl
+                        },
+                        author: {
+                            '@type': 'Person',
+                            name: 'รัชธรรม เชื้อแถว',
+                            jobTitle: 'นักกายภาพบำบัด',
+                            url: `${SITE_ORIGIN}/`
+                        },
+                        publisher: {
+                            '@type': 'Organization',
+                            name: 'บ้านกายภาพ ชลบุรี',
+                            url: `${SITE_ORIGIN}/`,
+                            logo: {
+                                '@type': 'ImageObject',
+                                url: `${SITE_ORIGIN}/favicon-512.png`
+                            }
+                        }
+                    },
+                    {
+                        '@type': 'BreadcrumbList',
+                        itemListElement: [
+                            {
+                                '@type': 'ListItem',
+                                position: 1,
+                                name: 'หน้าหลัก',
+                                item: `${SITE_ORIGIN}/`
+                            },
+                            {
+                                '@type': 'ListItem',
+                                position: 2,
+                                name: 'บทความ',
+                                item: `${SITE_ORIGIN}/blog/`
+                            },
+                            {
+                                '@type': 'ListItem',
+                                position: 3,
+                                name: displayTitle,
+                                item: canonicalUrl
+                            }
+                        ]
+                    }
+                ]
+            };
+            const schema = document.createElement('script');
+            schema.type = 'application/ld+json';
+            schema.id = 'articleStructuredData';
+            schema.textContent = JSON.stringify(structuredData);
+            document.head.querySelector('#articleStructuredData')?.remove();
+            document.head.appendChild(schema);
+        }
+
         // Parse frontmatter from markdown
         function parseFrontmatter(md) {
             const match = md.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
@@ -204,11 +329,13 @@
                 const { meta, body } = parseFrontmatter(md);
 
                 // Update page
-                document.title = `${meta.title || slug} | บ้านกายภาพ ชลบุรี`;
-                document.querySelector('meta[name="description"]').content = meta.description || '';
+                applyArticleMetadata(meta, slug);
                 document.getElementById('articleTitle').textContent = meta.title || slug;
                 document.getElementById('breadcrumbTitle').textContent = meta.title || slug;
                 document.getElementById('articleDate').textContent = meta.date ? formatDate(meta.date) : '';
+                document.getElementById('articleReviewDate').textContent = meta.updated
+                    ? `ทบทวนเนื้อหาล่าสุด ${formatDate(meta.updated)}`
+                    : (meta.date ? `เผยแพร่ ${formatDate(meta.date)}` : '');
 
                 // Tags
                 const tags = Array.isArray(meta.tags) ? meta.tags : (meta.tags ? [meta.tags] : []);
@@ -218,36 +345,6 @@
 
                 // Render markdown
                 document.getElementById('articleBody').innerHTML = marked.parse(body);
-
-                // Update OG tags
-                const ogTitle = document.querySelector('meta[property="og:title"]');
-                if (!ogTitle) {
-                    const t = document.createElement('meta');
-                    t.setAttribute('property', 'og:title');
-                    t.content = meta.title || slug;
-                    document.head.appendChild(t);
-                }
-
-                // Add Article schema
-                const schema = {
-                    "@context": "https://schema.org",
-                    "@type": "Article",
-                    "headline": meta.title,
-                    "description": meta.description,
-                    "datePublished": meta.date,
-                    "author": {
-                        "@type": "Person",
-                        "name": "รัชธรรม เชื้อแถว (นักกายภาพเฟี้ยว)"
-                    },
-                    "publisher": {
-                        "@type": "Organization",
-                        "name": "บ้านกายภาพ ชลบุรี"
-                    }
-                };
-                const s = document.createElement('script');
-                s.type = 'application/ld+json';
-                s.textContent = JSON.stringify(schema);
-                document.head.appendChild(s);
 
                 // Load related articles
                 loadRelated(slug);
