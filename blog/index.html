@@ -51,18 +51,25 @@
         }
     </style>
 </head>
-<body>
+<body class="has-knowledge-subnav">
 
     <!-- NAV -->
     <nav class="nav" id="nav">
         <div class="nav-inner">
             <a href="../" class="nav-brand">บ้านกายภาพ <span>ชลบุรี</span></a>
             <div class="nav-links">
-                <a href="../" class="nav-link">หน้าหลัก</a>
-                <a href="./" class="nav-link" style="color: var(--blue); background: var(--light-blue);">บทความ</a>
-                <a href="../videos/" class="nav-link">วิดีโอ</a>
+                <a href="../" class="nav-link nav-link-home">หน้าหลัก</a>
+                <a href="./" class="nav-link active" aria-current="page">ความรู้</a>
+                <a href="../about.html" class="nav-link">เกี่ยวกับเรา</a>
                 <a href="#contact" class="nav-cta">ปรึกษาฟรี</a>
             </div>
+        </div>
+    </nav>
+
+    <nav class="knowledge-subnav" aria-label="หมวดความรู้">
+        <div class="knowledge-subnav-inner">
+            <a href="./" class="knowledge-subnav-link active" aria-current="page">บทความ</a>
+            <a href="../videos/" class="knowledge-subnav-link">วิดีโอ</a>
         </div>
     </nav>
 
