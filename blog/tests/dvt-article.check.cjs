@@ -83,6 +83,11 @@ assert.match(
   /weight-bearing-after-surgery/,
   'links to the related weight-bearing guide',
 );
+assert.doesNotMatch(
+  article,
+  /ใช้แอพติดตามอะไรได้บ้าง|แอพสามารถช่วยบันทึกข้อมูล/,
+  'keeps the DVT guide focused on patient safety instead of app promotion',
+);
 
 assert.ok(
   articles.some(
