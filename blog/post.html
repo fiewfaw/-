@@ -375,7 +375,7 @@
 
                 grid.innerHTML = related.map(a => `
                     <a href="./post.html?slug=${encodeURIComponent(a.slug)}" class="blog-card">
-                        <div class="blog-card-img" style="${a.image ? `background-image:url(${a.image}); background-size:cover; background-position:center;` : ''}"></div>
+                        <div class="blog-card-img" style="${a.image ? `background-image:url(${a.image});` : ''}"></div>
                         <div class="blog-card-body">
                             <div class="blog-card-tags">
                                 ${(a.tags || []).map(t => `<span class="blog-tag">${t}</span>`).join('')}
