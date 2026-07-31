@@ -223,7 +223,12 @@ export default defineConfig([
 `src/app/page.tsx` initially renders:
 
 ```tsx
-export default async function HomePage() {
+type HomePageProps = {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+};
+
+export default async function HomePage({ searchParams }: HomePageProps) {
+  await searchParams;
   return <main>ข้อมูลตัวอย่าง — ห้ามใช้ข้อมูลคนไข้จริง</main>;
 }
 ```
@@ -329,6 +334,11 @@ export interface MeasureResult {
   itemScores: Record<string, number>;
 }
 
+export interface ProgressSample {
+  value: number;
+  baselineValue?: number;
+}
+
 export interface SaveReceipt {
   revisionId: string;
   confirmedAt: string;
@@ -344,11 +354,11 @@ export interface ClinicalRepository {
 
 `PatientWorkspace` must contain patient, visits, active problems, measure results, SOAP by visit, approved-active EBP summaries, confirmed health items, current program, seven-day schedule, holistic snapshots and at most three Hermes-style priority proposals.
 
-`getProgressDisplay` uses these exact rules:
+`getProgressDisplay(definition: MeasureDefinition, sample: ProgressSample)` uses these exact rules:
 
 - `fixed-max`: `value / maximum`, allowed only for `higher-is-better`.
 - higher-is-better `normative-target`: `value / target`.
-- lower-is-better `normative-target`: `(baselineValue - value) / (baselineValue - target)`; if baseline already meets the target, return 100%.
+- lower-is-better `normative-target`: require `baselineValue`, then use `(baselineValue - value) / (baselineValue - target)`; if baseline already meets the target, return 100%.
 - clamp visual percent to 0–100 while preserving the raw label.
 - `trend-only`: return no percent and `targetAchieved: null`.
 
