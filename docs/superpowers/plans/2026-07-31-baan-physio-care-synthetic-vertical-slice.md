@@ -101,7 +101,7 @@ baan-physio-care/
 
 **Interfaces:**
 - Consumes: none.
-- Produces: `npm.cmd test`, `npm.cmd lint`, `npm.cmd build`; `HomePage` renders the synthetic-only warning.
+- Produces: `npm.cmd test`, `npm.cmd run lint`, `npm.cmd run build`; `HomePage` renders the synthetic-only warning.
 
 - [ ] **Step 1: Initialize only the new repository**
 
@@ -240,8 +240,8 @@ Run:
 ```powershell
 npm.cmd install
 npm.cmd test
-npm.cmd lint
-npm.cmd build
+npm.cmd run lint
+npm.cmd run build
 ```
 
 Expected: all four commands exit 0.
@@ -392,7 +392,7 @@ Run:
 
 ```powershell
 npm.cmd test -- src/features/clinical
-npm.cmd lint
+npm.cmd run lint
 ```
 
 Expected: progress, schema and repository tests pass; lint exits 0.
@@ -485,8 +485,8 @@ Run:
 
 ```powershell
 npm.cmd test -- src/features/workspace src/app/page.test.tsx
-npm.cmd lint
-npm.cmd build
+npm.cmd run lint
+npm.cmd run build
 ```
 
 Expected: all commands exit 0.
@@ -560,8 +560,8 @@ Run:
 
 ```powershell
 npm.cmd test -- src/features/record src/features/workspace
-npm.cmd lint
-npm.cmd build
+npm.cmd run lint
+npm.cmd run build
 ```
 
 Expected: item edit, prior-value guide, target display and failure retention tests pass.
@@ -632,8 +632,8 @@ Run:
 
 ```powershell
 npm.cmd test -- src/features/record
-npm.cmd lint
-npm.cmd build
+npm.cmd run lint
+npm.cmd run build
 ```
 
 Expected: one SOAP region only, date switching, EBP disclosure and collapsed health grouping pass.
@@ -711,8 +711,8 @@ Run:
 
 ```powershell
 npm.cmd test -- src/features/patient-view src/features/workspace
-npm.cmd lint
-npm.cmd build
+npm.cmd run lint
+npm.cmd run build
 ```
 
 Expected: SOAP/internal EBP absence, confirmed health visibility, natural dosage and seven-day schedule pass.
@@ -863,7 +863,7 @@ Write `README.md` with exact commands:
 
 ```powershell
 npm.cmd install
-npm.cmd dev
+npm.cmd run dev
 ```
 
 and exact trial URLs:
@@ -879,8 +879,8 @@ Run:
 
 ```powershell
 npm.cmd test
-npm.cmd lint
-npm.cmd build
+npm.cmd run lint
+npm.cmd run build
 git diff --check
 ```
 
@@ -888,7 +888,7 @@ Expected: all commands exit 0.
 
 - [ ] **Step 5: Perform mobile visual acceptance**
 
-Start `npm.cmd dev`, inspect at 390 × 844 px, and verify:
+Start `npm.cmd run dev`, inspect at 390 × 844 px, and verify:
 
 1. Calendar-style URL opens the correct synthetic visit.
 2. All three tabs are reachable without horizontal page scrolling.
@@ -938,8 +938,8 @@ Run:
 ```powershell
 git log --oneline --decorate -10
 npm.cmd test
-npm.cmd lint
-npm.cmd build
+npm.cmd run lint
+npm.cmd run build
 ```
 
 Expected: intentional task commits and all verification commands pass.
