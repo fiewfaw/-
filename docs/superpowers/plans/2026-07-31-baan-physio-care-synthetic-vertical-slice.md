@@ -378,7 +378,7 @@ Add three visits and two active problems so date switching and multiple measures
 
 - [ ] **Step 4: Implement validation and the in-memory adapter**
 
-Validate `patient` as opaque text and `visit` as `YYYY-MM-DD`. The adapter must clone fixtures on construction, update only its in-memory copy, wait for a short promise tick, and reject with `NetworkUnavailableError` when constructed with `{ failWrites: true }`.
+Validate `patientRef` as opaque text and `visitDate` as `YYYY-MM-DD`. The adapter must clone fixtures on construction, update only its in-memory copy, wait for a short promise tick, and reject with `NetworkUnavailableError` when constructed with `{ failWrites: true }`.
 
 ```ts
 export const createSyntheticRepository = (
