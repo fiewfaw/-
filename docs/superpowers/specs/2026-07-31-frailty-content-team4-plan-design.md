@@ -1,7 +1,7 @@
 # Frailty Knowledge Cluster and Team 4 Main Plan Design
 
-Date: 2026-07-31  
-Status: Ready for user review  
+Date: 2026-07-31
+Status: Ready for user review
 Project: บ้านกายภาพ ชลบุรี Care Navigator
 
 ## 1. Purpose

@@ -792,8 +792,8 @@ Run:
 
 ```powershell
 npm.cmd test -- src/features/holistic src/features/workspace
-npm.cmd lint
-npm.cmd build
+npm.cmd run lint
+npm.cmd run build
 ```
 
 Expected: full-history default, range filtering, seven accessible domains, no overall score and maximum-three priorities pass.
