@@ -461,13 +461,13 @@ Expected: FAIL because the workspace components do not exist.
 
 `src/app/page.tsx` awaits Next.js `searchParams`, defaults to the synthetic patient and latest fixture visit, and enables failure simulation only with `network=offline`.
 
+`page.tsx` must pass only serializable values across the Server Component boundary. `PatientWorkspace.tsx` exports a client-side `SyntheticPatientWorkspace` wrapper that creates one repository instance with `useState` and then renders the injectable `PatientWorkspace` used by tests:
+
 ```tsx
-<PatientWorkspace
+<SyntheticPatientWorkspace
   patientRef={parsed.patient}
   visitDate={parsed.visit}
-  repository={createSyntheticRepository({
-    failWrites: parsed.network === "offline",
-  })}
+  failWrites={parsed.network === "offline"}
 />
 ```
 
