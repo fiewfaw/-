@@ -8,6 +8,9 @@ export default defineConfig({
     environment: 'jsdom',
     globals: true,
     setupFiles: ['./vitest.setup.ts'],
+    pool: 'threads',
+    fileParallelism: false,
+    maxWorkers: 1,
   },
   resolve: {
     alias: { '@': path.resolve(__dirname, './src') },
