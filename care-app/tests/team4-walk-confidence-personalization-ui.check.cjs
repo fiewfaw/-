@@ -39,8 +39,14 @@ assert.match(html, /แนบตำแหน่งไว้กับข้อม
 assert.doesNotMatch(html, /data-exercise="new-exercise"/, 'does not add an unnecessary new exercise');
 
 assert.match(html, /js\/frailty-content\.js/, 'loads the frailty education registry inside Plan 01');
+assert.doesNotMatch(html, /class="frailty-context"/, 'removes the standalone frailty knowledge block');
+assert.doesNotMatch(html, /class="frailty-links"/, 'removes the standalone frailty link grid');
+assert.doesNotMatch(html, /คำสำคัญสำหรับครอบครัวผู้สูงอายุเปราะบาง/, 'removes the detached knowledge heading');
+assert.match(html, /data-c="frailty"/, 'offers frailty as a related condition chip');
+assert.match(html, /id="conditionArticleLink"/, 'uses one optional article row in the shared condition detail');
+assert.match(html, /\.condition-article-link\[hidden\]\{display:none!important\}/, 'fully hides the optional article row for unrelated conditions');
 for (const key of ['definition', 'assessment', 'recovery', 'care']) {
-  assert.match(html, new RegExp(`data-article="${key}"`), `links the ${key} frailty article`);
+  assert.match(html, new RegExp(`data-article-key="${key}"`), `keeps the ${key} frailty article in the condition detail`);
 }
 assert.match(html, /id="chairTimer"/, 'keeps the 30-second chair-rise timer in Plan 01');
 assert.match(html, /id="chairClock"/, 'shows the chair-rise countdown');
