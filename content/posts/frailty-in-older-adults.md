@@ -55,7 +55,7 @@ British Geriatrics Society อธิบายว่า ภาวะเปรา�
 </tr>
 <tr>
 <td><strong>โรคประจำตัว</strong></td>
-<td>เช่น เบาหวาน โรคหัวใจ โรคปอด</td>
+<td>เช่น เบาหวาน โรคหัวใจ โรคปอด หรือ<a href="/blog/post.html?slug=osteoporosis-falls-safe-exercise">กระดูกพรุน</a></td>
 <td>โรคอาจลดพลังสำรอง แต่ชื่อโรคอย่างเดียวไม่บอกการใช้ชีวิตจริง</td>
 </tr>
 <tr>
