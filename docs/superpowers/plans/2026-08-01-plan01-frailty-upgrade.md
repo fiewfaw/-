@@ -4,13 +4,14 @@
 
 **Goal:** Fold frailty education and personalization into the existing Plan 01 while standardizing 10-digit phone validation across all approved Team 4 plans.
 
-**Architecture:** Preserve the approved standalone HTML plan pages and their existing personalization engines. Add one small shared phone-input module, enrich the existing return-strength Plan 01 with frailty content and quantitative interactions, and turn the obsolete frailty page into a compatibility redirect.
+**Architecture:** Preserve the approved standalone HTML plan pages and their existing personalization engines. Add one small shared phone-input module, enrich the existing walk-confidence Plan 01 with frailty content and quantitative interactions, keep return-strength as Plan 02, and turn the obsolete frailty page into a compatibility redirect.
 
 **Tech Stack:** Static HTML/CSS/JavaScript, CommonJS-compatible JavaScript modules, Node assertion tests, local mobile browser QA.
 
 ## Global Constraints
 
-- User-facing Plan 01 stays named `แผนฟื้นกำลัง กลับมาช่วยเหลือตัวเอง`.
+- User-facing Plan 01 stays named `แผนเดินมั่นใจ ลดเสี่ยงล้ม`.
+- User-facing Plan 02 stays named `แผนคืนแรงหลังกลับบ้าน`.
 - `FRAIL-01` is internal only and must not appear as a separate plan.
 - Exercise previews use the approved two-frame animation pattern.
 - Phone fields accept digits only, maximum 10 digits, and final generation requires exactly 10 digits.
@@ -54,12 +55,12 @@
 ### Task 3: Merge frailty into Plan 01
 
 **Files:**
-- Modify: `care-app/public/team4-return-strength-mockup.html`
-- Modify: `care-app/public/js/return-strength-personalization.js`
+- Modify: `care-app/public/team4-walk-confidence-mockup.html`
+- Modify: `care-app/public/js/walk-confidence-personalization.js`
 - Modify: `care-app/public/js/frailty-content.js`
 - Modify: `care-app/public/team4-frailty-independence-mockup.html`
-- Test: `care-app/tests/team4-return-strength.check.cjs`
-- Test: `care-app/tests/return-strength-personalization.check.cjs`
+- Test: `care-app/tests/team4-walk-confidence-personalization-ui.check.cjs`
+- Test: `care-app/tests/walk-confidence-personalization.check.cjs`
 
 **Interfaces:**
 - Consumes: Team 1-3 context, chair-rise count, walking tolerance, fatigue/recovery, comorbid modifiers, and internal frailty profile.
@@ -67,9 +68,9 @@
 
 - [ ] **Step 1: Add failing assertions for Plan 01 naming, four frailty article links, 30-second timer controls, two-frame previews, detailed result sections, and absence of a second FRAIL-01 page.**
 - [ ] **Step 2: Run the Plan 01 tests and confirm the new assertions fail.**
-- [ ] **Step 3: Update Plan 01 copy and UI, embed the optional timer in the chair-rise assessment, and connect frailty education inline.**
+- [ ] **Step 3: Update the walk-confidence Plan 01 copy and UI, retain its 30-second chair-rise timer, and connect frailty education inline.**
 - [ ] **Step 4: Extend the personalization output to include summary, up to four exercises, FITT, weekly schedule, progression, precautions, and PT-only assessments when required.**
-- [ ] **Step 5: Replace the old frailty page content with a redirect to `team4-return-strength-mockup.html` while preserving query parameters.**
+- [ ] **Step 5: Replace the old frailty page content with a redirect to `team4-walk-confidence-mockup.html` while preserving query parameters.**
 - [ ] **Step 6: Run all Plan 01 and frailty tests and confirm they pass.**
 
 ### Task 4: Verify content and interaction boundaries
@@ -103,4 +104,3 @@
 - [ ] **Step 2: Inspect the staged allowlist before committing.**
 - [ ] **Step 3: Commit the implementation and report the working local review URL.**
 - [ ] **Step 4: Publish only after confirming the repository's live deployment branch and verifying the live article URLs.**
-
