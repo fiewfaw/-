@@ -694,6 +694,9 @@ body.has-knowledge-subnav {
     border-radius: var(--radius-sm);
     overflow: hidden;
 }
+.article-body .comparison-table--readable {
+    min-width: 640px;
+}
 .article-body .comparison-table thead {
     background: var(--blue);
     color: white;
