@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ตารางตรวจแผนเฉพาะตัว · เดินมั่นใจ ลดเสี่ยงล้ม</title>
+  <style>
+    :root{--ink:#18283b;--muted:#647585;--line:#d5e4e8;--paper:#fff;--teal:#0d8584;--teal-pale:#eef9f8;--blue:#187cab;--red:#ae4e55;--red-pale:#fff5f5;--gold:#9a7225;--gold-pale:#fff9eb}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);font-family:"Noto Sans Thai","Leelawadee UI",Tahoma,sans-serif;background:#eef7f8}button,select{font:inherit;letter-spacing:0}
+    .page{width:min(100%,1500px);margin:auto;background:#fff;min-height:100vh}.header{padding:26px clamp(18px,4vw,58px);border-bottom:1px solid var(--line);background:#f8fcfc}.eyebrow{margin:0;color:var(--teal);font-size:11px;font-weight:900}.header h1{margin:7px 0 8px;font-size:clamp(24px,3vw,40px);line-height:1.2;letter-spacing:0}.header>p{max-width:900px;margin:0;color:var(--muted);font-size:14px;line-height:1.7}.metrics{display:flex;gap:18px;flex-wrap:wrap;margin-top:18px}.metric{min-width:150px;padding:10px 0;border-top:2px solid var(--teal)}.metric span{display:block;color:var(--muted);font-size:10px}.metric strong{display:block;margin-top:2px;font-size:20px}
+    .filters{position:sticky;z-index:10;top:0;padding:13px clamp(18px,4vw,58px);display:grid;grid-template-columns:repeat(4,minmax(140px,1fr)) auto;gap:10px;align-items:end;border-bottom:1px solid var(--line);background:rgba(255,255,255,.96);backdrop-filter:blur(12px)}.filter label{display:block;margin-bottom:5px;color:#58717d;font-size:10px;font-weight:800}.filter select{width:100%;height:42px;padding:0 10px;border:1px solid #bed8de;border-radius:7px;color:var(--ink);background:#fff}.reset{height:42px;padding:0 16px;border:1px solid #bed8de;border-radius:7px;color:var(--teal);background:#f6fbfc;font-weight:800;cursor:pointer}
+    .content{padding:20px clamp(18px,4vw,58px) 60px}.result-bar{margin-bottom:11px;display:flex;justify-content:space-between;gap:12px;align-items:center;color:var(--muted);font-size:12px}.legend{display:flex;gap:7px;flex-wrap:wrap}.badge{display:inline-flex;padding:4px 7px;border-radius:999px;font-size:9px;font-weight:900}.badge.self{color:#086d6c;background:#e2f6f3}.badge.review{color:#8a641c;background:var(--gold-pale)}.badge.stop{color:#9e4048;background:#ffe7e8}
+    .table-wrap{overflow:auto;border:1px solid var(--line);border-radius:8px;background:#fff}table{width:100%;min-width:1280px;border-collapse:separate;border-spacing:0;font-size:11px}thead{position:sticky;z-index:2;top:68px}th{padding:11px 10px;color:#49626f;background:#edf6f7;text-align:left;font-size:10px}td{padding:12px 10px;border-top:1px solid #e4edef;vertical-align:top;line-height:1.55}tbody tr:hover{background:#f8fcfc}.input-summary strong,.cell-title{display:block;margin-bottom:4px;font-size:11px}.input-summary span{display:block;color:var(--muted)}.route-cell{min-width:190px}.fitt{min-width:220px}.fitt dl{margin:0;display:grid;grid-template-columns:52px 1fr;gap:3px 7px}.fitt dt{color:#71848e}.fitt dd{margin:0;color:#284d59}.reason{min-width:260px}.reason p{margin:0 0 5px}.reason .warn{color:#945158}.empty{padding:38px;text-align:center;color:var(--muted)}.source{margin:16px 2px 0;color:#71808a;font-size:10px;line-height:1.6}
+    @media(max-width:920px){.filters{grid-template-columns:1fr 1fr;top:0}.reset{width:100%}thead{top:122px}}
+    @media(max-width:620px){.header{padding-top:20px}.metrics{gap:10px}.metric{min-width:calc(50% - 5px)}.filters{position:static;grid-template-columns:1fr}.content{padding-inline:12px}.result-bar{align-items:flex-start;flex-direction:column}.table-wrap{overflow:visible;border:0}table,tbody{display:block;min-width:0}thead{display:none}tr{display:block;margin-bottom:10px;border:1px solid var(--line);border-radius:8px;overflow:hidden}td{display:grid;grid-template-columns:105px 1fr;gap:10px;padding:10px;border-top:1px solid #e5edef}td:first-child{border-top:0}td:before{content:attr(data-label);color:#6e828d;font-size:9px;font-weight:900}.fitt,.reason,.route-cell{min-width:0}.fitt dl{grid-template-columns:48px 1fr}.empty{display:block}}
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="header">
+      <p class="eyebrow">TEAM 4 · PERSONALIZATION RULE REVIEW</p>
+      <h1>ตารางตรวจแผนเฉพาะตัว</h1>
+      <p>แผนเดินมั่นใจ ลดเสี่ยงล้ม · ตารางนี้ใช้ตัวคำนวณเดียวกับหน้าแอพ เพื่อให้ตรวจว่าข้อมูลเข้าแต่ละแบบเปลี่ยน FITT ระดับการพยุง การเปลี่ยนท่า และคำแนะนำเมื่อใด</p>
+      <div class="metrics"><div class="metric"><span>ชุดข้อมูลพื้นฐาน</span><strong>36 สถานการณ์</strong></div><div class="metric"><span>ท่าหลัก</span><strong>2 ท่า</strong></div><div class="metric"><span>หลักการ</span><strong>FITT + Safety</strong></div><div class="metric"><span>สถานะ</span><strong>รอตรวจ</strong></div></div>
+    </header>
+
+    <section class="filters" aria-label="ตัวกรองตาราง">
+      <div class="filter"><label for="fallsFilter">ล้มหรือเกือบล้มใน 30 วัน</label><select id="fallsFilter" data-filter="falls"><option value="all">ทั้งหมด</option><option value="0">0 ครั้ง</option><option value="1">1 ครั้ง</option><option value="2">2 ครั้งขึ้นไป</option></select></div>
+      <div class="filter"><label for="chairFilter">ผลลุกยืน 30 วินาที</label><select id="chairFilter" data-filter="chair"><option value="all">ทั้งหมด</option><option value="0">0 ครั้ง</option><option value="low">1-4 ครั้ง</option><option value="mid">5-9 ครั้ง</option><option value="high">10 ครั้งขึ้นไป</option></select></div>
+      <div class="filter"><label for="assistanceFilter">ระดับการช่วยเหลือ</label><select id="assistanceFilter" data-filter="assistance"><option value="all">ทั้งหมด</option><option value="independent">เดินเอง</option><option value="supervision">มีคนเฝ้าใกล้ ๆ</option><option value="physical_assist">ต้องช่วยออกแรง</option></select></div>
+      <div class="filter"><label for="modifierFilter">ลองใส่เงื่อนไขร่วม</label><select id="modifierFilter" data-filter="modifier"><option value="none">ไม่มี</option><option value="stroke">โรคหลอดเลือดสมอง</option><option value="osteoporosis">กระดูกพรุน</option><option value="diabetes_foot">เบาหวานหรือชาเท้า</option><option value="cardiac_bp">หัวใจหรือความดันแกว่ง</option><option value="dizziness">เวียนหัวเมื่อลุก</option><option value="kneePain">ปวดเข่า 6/10</option></select></div>
+      <button class="reset" id="resetFilters" type="button">ล้างตัวกรอง</button>
+    </section>
+
+    <section class="content">
+      <div class="result-bar"><strong id="resultCount">แสดง 36 จาก 36 สถานการณ์</strong><div class="legend"><span class="badge self">สร้างแผนเองได้</span><span class="badge review">ควรประเมินเพิ่ม</span><span class="badge stop">เปลี่ยนเส้นทาง</span></div></div>
+      <div class="table-wrap"><table><thead><tr><th>ข้อมูลเข้า</th><th>ผลจัดเส้นทาง</th><th>FITT · ลุกนั่ง</th><th>FITT · การทรงตัว</th><th>เหตุผลและข้อควรระวัง</th></tr></thead><tbody id="scenarioRows"></tbody></table></div>
+      <p class="source">ตารางนี้เป็นเครื่องมือตรวจ product rules ไม่ใช่เกณฑ์วินิจฉัยโรค · อ้างอิงโครงความปลอดภัยจาก CDC STEADI และ World Falls Guidelines · ค่าแต่ละแถวสร้างจาก <code>walk-confidence-personalization.js</code> ขณะเปิดหน้า</p>
+    </section>
+  </main>
+
+  <script src="js/walk-confidence-personalization.js"></script>
+  <script>
+    const fallBands=[0,1,2],chairBands=[0,3,7,12],assistanceBands=['independent','supervision','physical_assist'];
+    const baseScenarios=fallBands.flatMap(fallEvents=>chairBands.flatMap(chairReps=>assistanceBands.map(assistance=>({fallEvents,chairReps,assistance}))));
+    const assistanceLabels={independent:'เดินเอง',supervision:'มีคนเฝ้าใกล้ ๆ',physical_assist:'ต้องช่วยออกแรง'};
+    const routeLabels={self_training:'สร้างแผนฝึกได้',seated_only_review:'ใช้ท่านั่งและประเมินเพิ่ม',assisted_transfer_plan:'ส่งไปแผนย้ายตัว/มีผู้ช่วย',medical_review:'พบแพทย์ก่อน'};
+    const filters={falls:document.querySelector('[data-filter="falls"]'),chair:document.querySelector('[data-filter="chair"]'),assistance:document.querySelector('[data-filter="assistance"]'),modifier:document.querySelector('[data-filter="modifier"]')};
+    const rows=document.querySelector('#scenarioRows'),resultCount=document.querySelector('#resultCount');
+
+    function chairBand(value){return value===0?'0':value<=4?'low':value<=9?'mid':'high'}
+    function withModifier(scenario){const selected=filters.modifier.value,input={...scenario,canStand:true,dizziness:false,kneePain:0,redFlag:false,modifiers:[]};if(selected==='dizziness')input.dizziness=true;else if(selected==='kneePain')input.kneePain=6;else if(selected!=='none')input.modifiers=[selected];return input}
+    function routeBadge(plan){const type=!plan.eligible?'stop':plan.ptPriority==='recommended'?'review':'self';return '<span class="badge '+type+'">'+routeLabels[plan.route]+'</span>'}
+    function fittCell(item){if(!item)return '<span class="badge stop">ไม่มี standing self-program</span>';return '<div class="fitt"><strong class="cell-title">'+item.type+'</strong><dl><dt>ความถี่</dt><dd>'+item.frequency+'</dd><dt>ความหนัก</dt><dd>'+item.intensity+'</dd><dt>เวลา</dt><dd>'+item.time+'</dd><dt>ช่วยเหลือ</dt><dd>'+item.support+'</dd></dl></div>'}
+    function reasonCell(plan){const changes=[plan.sitToStand&&plan.sitToStand.substitutionReasonTh,plan.weightShift&&plan.weightShift.substitutionReasonTh].filter(Boolean);const warnings=(plan.warningsTh||[]).slice(0,2);return '<div class="reason"><p>'+plan.summaryTh+'</p>'+changes.map(text=>'<p><strong>เปลี่ยนท่า:</strong> '+text+'</p>').join('')+warnings.map(text=>'<p class="warn">'+text+'</p>').join('')+'</div>'}
+    function matches(scenario){return (filters.falls.value==='all'||Number(filters.falls.value)===scenario.fallEvents)&&(filters.chair.value==='all'||filters.chair.value===chairBand(scenario.chairReps))&&(filters.assistance.value==='all'||filters.assistance.value===scenario.assistance)}
+    function render(){const visible=baseScenarios.filter(matches);resultCount.textContent='แสดง '+visible.length+' จาก 36 สถานการณ์';if(!visible.length){rows.innerHTML='<tr><td class="empty" colspan="5">ไม่พบสถานการณ์ตามตัวกรองนี้</td></tr>';return}rows.innerHTML=visible.map(scenario=>{const plan=WalkConfidencePersonalization.buildWalkConfidencePlan(withModifier(scenario));return '<tr><td data-label="ข้อมูลเข้า"><div class="input-summary"><strong>ล้ม/เกือบล้ม '+scenario.fallEvents+' ครั้ง</strong><span>ลุกยืน '+scenario.chairReps+' ครั้ง</span><span>'+assistanceLabels[scenario.assistance]+'</span></div></td><td data-label="ผลจัดเส้นทาง" class="route-cell">'+routeBadge(plan)+'<strong class="cell-title">'+plan.levelLabelTh+'</strong><span>'+plan.route+'</span></td><td data-label="FITT · ลุกนั่ง">'+fittCell(plan.sitToStand)+'</td><td data-label="FITT · การทรงตัว">'+fittCell(plan.weightShift)+'</td><td data-label="เหตุผล">'+reasonCell(plan)+'</td></tr>'}).join('')}
+    Object.values(filters).forEach(filter=>filter.addEventListener('change',render));
+    document.querySelector('#resetFilters').addEventListener('click',()=>{filters.falls.value='all';filters.chair.value='all';filters.assistance.value='all';filters.modifier.value='none';render()});
+    render();
+  </script>
+</body>
+</html>

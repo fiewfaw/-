@@ -1,0 +1,58 @@
+const assert = require('node:assert');
+const fs = require('node:fs');
+const path = require('node:path');
+
+const htmlPath = path.join(__dirname, '..', 'public', 'team4-return-strength-mockup.html');
+assert.ok(fs.existsSync(htmlPath), 'team4 return-strength mockup should exist');
+
+const html = fs.readFileSync(htmlPath, 'utf8');
+const walkHtml = fs.readFileSync(path.join(__dirname, '..', 'public', 'team4-walk-confidence-mockup.html'), 'utf8');
+const count = (pattern) => (html.match(pattern) || []).length;
+
+assert.match(html, /แผนคืนแรงหลังกลับบ้าน/, 'shows the approved plan title');
+assert.match(html, /ความทนทานต่อกิจกรรมยังไม่เพียงพอ/, 'uses the formal activity-endurance wording');
+assert.doesNotMatch(html, /ความอึด/, 'does not use the informal endurance wording');
+assert.match(html, /เดินต่อเนื่อง 2 นาที/, 'includes a walking-specific self assessment');
+assert.match(html, /data-metric="walkDistance"/, 'records two-minute walk distance');
+assert.doesNotMatch(html, /data-metric="activityMinutes"/, 'does not use generic activity minutes instead of a walking test');
+assert.doesNotMatch(html, /Barthel|บาร์เธล/i, 'does not add Barthel to this high-function plan');
+assert.equal(count(/class="problem-card"/g), 3, 'shows exactly three patient problems');
+assert.equal(count(/class="exercise-card/g), 2, 'shows exactly two starter exercises');
+assert.equal(count(/<div class="self-card quant-assessment/g), 2, 'uses two non-button assessment containers');
+assert.doesNotMatch(html, /<button class="self-card/, 'does not nest form controls inside a button');
+assert.match(html, /แผน 02/, 'shows the Thai plan number');
+assert.match(walkHtml, /แผน 01/, 'plan 01 shows the Thai plan number');
+assert.match(html, /js\/return-strength-personalization\.js/, 'loads the shared return-strength engine');
+assert.match(html, /data-metric="recoveryMinutes"/, 'collects recovery time after walking');
+assert.equal(count(/<input[^>]+data-metric=/g), 4, 'collects four quantitative values');
+assert.match(html, /id="returnStrengthPlan"/, 'contains the upgraded plan container');
+assert.match(html, /id="personalLevel"/, 'contains the patient-facing plan level');
+assert.ok(count(/data-fitt="frequency"/g) >= 2, 'shows FITT frequency for both exercises');
+assert.ok(count(/data-fitt="intensity"/g) >= 2, 'shows FITT intensity for both exercises');
+assert.ok(count(/data-fitt="time"/g) >= 2, 'shows FITT time for both exercises');
+assert.ok(count(/data-fitt="type"/g) >= 2, 'shows FITT type for both exercises');
+assert.match(html, /id="weeklySchedule"/, 'contains the seven-day schedule');
+assert.match(html, /id="progressionGuidance"/, 'contains progression guidance');
+assert.match(html, /id="regressionGuidance"/, 'contains regression guidance');
+assert.match(html, /id="modifierNotes"/, 'contains modifier-specific guidance');
+assert.match(html, /id="personalPt"/, 'contains personalized physio assessment tasks');
+assert.match(html, /buildReturnStrengthPlan/, 'calls the shared return-strength engine');
+assert.match(html, /trackingBaseline/, 'keeps the two-minute distance as a progress baseline');
+assert.match(html, /starter\.classList\.add\(['"]personalized['"]\)/, 'upgrades the starter program in place');
+assert.match(html, /scrollIntoView/, 'returns the user to the upgraded plan');
+assert.match(html, /js\/current-location-lead\.js/, 'loads the shared current-location module');
+assert.match(html, /id="useCurrentLocation"/, 'shows the current-location action');
+assert.match(html, /id="manualAreaFields" hidden/, 'hides manual area entry initially');
+assert.match(html, /permission_denied/, 'handles explicit location denial');
+assert.match(html, /locationButton\.disabled=true/, 'disables the location action after denial');
+assert.match(html, /manualAreaFields\.hidden=false/, 'reveals manual area only as denial fallback');
+assert.match(html, /แนบตำแหน่งไว้กับข้อมูลเคสในหน้านี้แล้ว/, 'confirms a shared map pin is attached to the case');
+assert.match(html, /ระบุพื้นที่ .* ไว้กับข้อมูลเคสในหน้านี้แล้ว/, 'confirms the manual denial fallback is attached to the case');
+assert.ok(count(/class="locked-card"/g) >= 2, 'shows at least two compact physio-only blocks');
+assert.ok(count(/class="pose-frame frame-a"/g) >= 2, 'each exercise has a first pose');
+assert.ok(count(/class="pose-frame frame-b"/g) >= 2, 'each exercise has a second pose');
+assert.ok(count(/class="demo-mini"/g) >= 2, 'both self tests include a visual demonstration');
+assert.match(html, /plan-return-strength\.png/, 'references the return-strength hero');
+assert.match(html, /team4-return-strength-demo-grid\.png/, 'references the return-strength exercise grid');
+
+console.log('PASS team4-return-strength structure');

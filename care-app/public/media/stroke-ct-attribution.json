@@ -1,0 +1,38 @@
+{
+  "asset": "team4-stroke-lesion-atlas.png",
+  "noticeTh": "ภาพ CT ตัวอย่างและวงตำแหน่งโดยประมาณ ไม่ใช่ภาพ CT ของคุณ ตำแหน่งจริงควรตรวจสอบจากใบสรุปการรักษาหรือแพทย์ผู้ดูแล",
+  "sources": [
+    {
+      "title": "CT Brain MCA Infarct.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:CT_Brain_MCA_Infarct.jpg",
+      "creator": "Lucien Monfils",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "modifications": "Cropped to a square CT frame, normalized for the app, mirrored for the opposite-side reference, and overlaid with an educational location circle."
+    },
+    {
+      "title": "CT of a normal brain, axial 6.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:CT_of_a_normal_brain,_axial_6.png",
+      "creator": "Mikael Häggström, M.D.",
+      "license": "CC0 1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "modifications": "Cropped to the axial CT frame, normalized for the app, and overlaid with approximate ACA location circles."
+    },
+    {
+      "title": "CT of a normal brain, axial 21.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:CT_of_a_normal_brain,_axial_21.png",
+      "creator": "Mikael Häggström, M.D.",
+      "license": "CC0 1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "modifications": "Cropped to the axial CT frame, normalized for the app, and used for approximate PCA, bilateral, and unknown reference states."
+    },
+    {
+      "title": "CT of a normal brain, axial 34.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:CT_of_a_normal_brain,_axial_34.png",
+      "creator": "Mikael Häggström, M.D.",
+      "license": "CC0 1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "modifications": "Cropped to the axial CT frame, normalized for the app, and overlaid with an approximate brainstem location circle."
+    }
+  ]
+}

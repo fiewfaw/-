@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>แผนคืนแรงหลังกลับบ้าน</title>
+  <style>
+    :root{
+      --ink:#17263a;--muted:#66788a;--line:#d7e7eb;--paper:#fff;
+      --teal:#168f8d;--teal-dark:#08716f;--blue:#147fb4;--cyan:#42e5eb;
+      --gold:#c49a43;--gold-pale:#fff8e7;--red:#b85359;--red-pale:#fff7f7;
+      --shadow:0 18px 55px rgba(37,101,125,.14)
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;overflow-x:hidden}
+    body{min-width:0;margin:0;overflow-x:hidden;color:var(--ink);font-family:"Noto Sans Thai","Leelawadee UI",Tahoma,sans-serif;background:linear-gradient(rgba(24,142,151,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(24,142,151,.035) 1px,transparent 1px),#ecf7f9;background-size:32px 32px}
+    button,input{font:inherit}
+    button{letter-spacing:0}
+    .stage{width:min(100%,1120px);margin:auto;padding:32px 20px 80px;display:grid;grid-template-columns:minmax(0,470px) minmax(260px,1fr);gap:52px;align-items:start}
+    .phone{width:100%;padding:11px;border:1px solid rgba(116,168,181,.28);border-radius:38px;background:rgba(255,255,255,.76);box-shadow:var(--shadow)}
+    .app{overflow:hidden;border-radius:29px;background:#fbfeff}
+    .topbar{min-height:68px;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;background:#fff;border-bottom:1px solid #e6f0f3}
+    .brand{display:flex;gap:10px;align-items:center}.brand-mark{width:38px;height:38px;display:grid;place-items:center;border:1px solid #b8dce4;border-radius:10px;color:var(--teal-dark);background:#effafc;font-size:20px}.brand-name{font-size:13px;font-weight:800}.brand-sub{margin-top:2px;color:var(--teal);font-size:9px;font-weight:900;letter-spacing:.12em}.step{padding:7px 10px;border-radius:999px;color:#397084;background:#edf7f9;font-size:10px;font-weight:800}
+    .content{min-width:0;padding:15px 14px 30px}.eyebrow{margin:1px 2px 10px;color:var(--teal-dark);font-size:10px;font-weight:900;letter-spacing:.06em}
+
+    .hero{position:relative;height:410px;overflow:hidden;border-radius:20px;background:#193b40;isolation:isolate}
+    .hero:before{content:"";position:absolute;inset:-20px;z-index:-3;background:url("media/plan-return-strength.png") center/cover no-repeat;filter:blur(18px) brightness(.64);transform:scale(1.12)}
+    .hero:after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(6,30,35,.01) 35%,rgba(6,30,35,.1) 58%,rgba(5,29,36,.93) 100%);pointer-events:none}
+    .hero>img{position:absolute;inset:0;z-index:-1;width:100%;height:100%;object-fit:contain;object-position:center}
+    .hero-fx{position:absolute;z-index:0;top:0;left:50%;height:100%;aspect-ratio:941/1672;overflow:hidden;transform:translateX(-50%);pointer-events:none}
+    .hero-fx svg{width:100%;height:100%;overflow:visible}
+    .recovery-trace{fill:none;stroke:#bafcff;stroke-width:6;stroke-linecap:round;stroke-dasharray:34 190;filter:drop-shadow(0 0 9px #32e3ec);opacity:.78;animation:pathFlow 5.2s linear infinite}
+    .recovery-trace.gold{stroke:#ffe4a1;stroke-width:3;stroke-dasharray:8 215;filter:drop-shadow(0 0 7px #e9b94f);animation-duration:6.4s;animation-delay:-1.8s}
+    .checkpoint{fill:none;stroke:#aefbff;stroke-width:2;filter:drop-shadow(0 0 8px #31e3ec);transform-box:fill-box;transform-origin:center;animation:checkpoint 3.1s ease-out infinite}
+    .checkpoint.g2{animation-delay:.75s}.checkpoint.g3{animation-delay:1.5s}.checkpoint.g4{animation-delay:2.25s}
+    @keyframes pathFlow{to{stroke-dashoffset:-620}}
+    @keyframes checkpoint{0%{opacity:.12;transform:scale(.7)}32%{opacity:.82}100%{opacity:0;transform:scale(1.35)}}
+    .hero-copy{position:absolute;z-index:2;left:18px;right:18px;bottom:18px;color:#fff}.tag{display:inline-flex;align-items:center;gap:6px;margin-bottom:9px;padding:6px 9px;border:1px solid rgba(107,239,243,.36);border-radius:999px;color:#d9fdff;background:rgba(10,58,64,.69);backdrop-filter:blur(10px);font-size:9px;font-weight:900}.tag i{width:6px;height:6px;border-radius:50%;background:#4eeff4;box-shadow:0 0 10px #45efff}h1{margin:0;font-size:28px;line-height:1.23;letter-spacing:0}.hero-copy p{margin:8px 0 0;color:rgba(255,255,255,.86);font-size:13px;line-height:1.6}
+
+    .section,.unlock{margin-top:13px;padding:17px;border:1px solid var(--line);border-radius:18px;background:#fff}.title{margin:0;font-size:17px;line-height:1.4}.lead{margin:6px 0 0;color:var(--muted);font-size:12px;line-height:1.65}
+    .chips{display:flex;max-width:100%;gap:7px;flex-wrap:wrap;margin-top:13px}.chip{max-width:100%;white-space:normal;border:1px solid #bddde5;border-radius:999px;padding:8px 11px;color:#31677a;background:#f4fbfc;font-size:11px;font-weight:800;cursor:pointer;transition:.2s}.chip:hover,.chip.active{color:#fff;border-color:var(--teal);background:var(--teal);transform:translateY(-2px)}.condition{min-height:81px;margin-top:11px;padding:13px;border-left:3px solid var(--gold);border-radius:0 11px 11px 0;background:var(--gold-pale);font-size:12px;line-height:1.65}.condition strong{display:block;margin-bottom:3px;color:#85651f}
+    .assessment-head{display:flex;justify-content:space-between;gap:12px}.ring{flex:0 0 38px;width:38px;height:38px;display:grid;place-items:center;border-radius:50%;background:conic-gradient(var(--teal) var(--progress,0%),#e4eff2 0);position:relative;font-size:9px;font-weight:900;color:var(--teal-dark)}.ring:before{content:"";position:absolute;inset:5px;border-radius:50%;background:#fff}.ring span{position:relative}
+    .problems{display:grid;gap:12px;margin-top:15px}.problem-card{overflow:hidden;border:1px solid #d4e5ea;border-radius:16px;background:#fff;box-shadow:0 7px 18px rgba(34,104,126,.055)}.problem-head{padding:15px;display:grid;grid-template-columns:32px 1fr;gap:11px;align-items:start}.problem-number{width:32px;height:32px;display:grid;place-items:center;border-radius:10px;color:#fff;background:linear-gradient(145deg,var(--teal),var(--blue));font-size:12px;font-weight:900}.problem-card:nth-child(3) .problem-number{background:linear-gradient(145deg,#9b7a34,var(--teal))}.problem-head h3{margin:0;font-size:16px;line-height:1.45}.problem-head p{margin:5px 0 0;color:#596c7d;font-size:11px;line-height:1.65}
+    .problem-plan{margin:0 12px 12px;padding:14px;border:1px solid #d7efeb;border-radius:12px;background:#edf9f8}.problem-plan-label{display:flex;align-items:center;gap:7px;margin:0 0 7px;color:var(--teal-dark);font-size:13px;font-weight:900}.problem-plan-label:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--teal)}.problem-plan p{margin:0;color:#315c65;font-size:12px;line-height:1.7}.problem-action{padding:0 12px 11px}.problem-action-title{margin:0 0 5px;color:#63808c;font-size:9px;font-weight:800}
+    .self-card{width:100%;margin:0;padding:0;overflow:hidden;border:1px solid #cfe4e8;border-radius:12px;text-align:left;background:#f8fcfd;transition:transform .2s,box-shadow .2s,border-color .2s}.self-card:hover{transform:translateY(-2px);border-color:#76c2c7;box-shadow:0 8px 18px rgba(34,142,151,.1)}.self-card:focus-within{outline:3px solid rgba(23,160,164,.18);outline-offset:2px}.summary{width:100%;min-height:68px;padding:10px 11px;display:grid;grid-template-columns:31px 1fr 18px;gap:9px;align-items:center;border:0;color:inherit;background:transparent;text-align:left;cursor:pointer}.icon{width:31px;height:31px;display:grid;place-items:center;border-radius:9px;color:var(--teal-dark);background:#e3f4f5;font-size:15px;font-weight:900}.copy strong{display:block;font-size:12px;line-height:1.45}.copy span{display:block;margin-top:2px;color:var(--muted);font-size:9px;line-height:1.45}.chev{color:var(--teal);font-size:17px;font-weight:900;transition:transform .2s}.self-card.open .chev{transform:rotate(90deg)}
+    .body{display:block;max-height:0;overflow:hidden;padding:0 13px;border-top:0 solid #dcecef;background:#fff;transition:max-height .35s,padding .35s,border-width .2s}.self-card.open .body{max-height:620px;padding:13px;border-top-width:1px}.body p{margin:0 0 10px;color:#526679;font-size:11px;line-height:1.65}.self-card.done{border-color:#70c7b7;background:#f2fbf8}.self-card.done .icon{color:#fff;background:#36a993}
+    .demo-mini{position:relative;display:block;height:140px;margin-bottom:11px;overflow:hidden;border-radius:10px;background:#eef5f5}.mini-frame{position:absolute;inset:0;opacity:0}.mini-frame.frame-a{opacity:1}.mini-photo{display:block;width:100%;height:100%;background-image:url("media/team4-return-strength-demo-grid.png");background-repeat:no-repeat;background-size:200% 200%}.mini-photo.sit{background-position:0 0}.mini-photo.stand{background-position:100% 0}.mini-photo.walk-a{background-position:0 100%}.mini-photo.walk-b{background-position:100% 100%}.self-card.open .mini-frame.frame-a{animation:frameA 2.8s ease-in-out infinite}.self-card.open .mini-frame.frame-b{animation:frameB 2.8s ease-in-out infinite}
+    .metric-grid{display:grid;grid-template-columns:1fr;gap:10px}.metric-field{display:block}.metric-label{display:block;margin-bottom:5px;color:#476979;font-size:10px;font-weight:800}.metric-input-wrap{height:56px;display:grid;grid-template-columns:1fr auto;align-items:center;border:2px solid #8bcbd0;border-radius:11px;background:#fff;overflow:hidden;box-shadow:0 4px 14px rgba(23,145,154,.08)}.metric-input{min-width:0;width:100%;height:52px;padding:8px 12px;border:0;outline:0;color:#123d4b;background:transparent;font-size:24px;font-weight:900}.metric-unit{padding:0 11px;color:#6c8290;font-size:10px;font-weight:800}.range-hint{margin:5px 2px 0;color:#7b8994;font-size:9px;line-height:1.45}.input-error{display:none;margin:5px 2px 0;color:#aa4f56;font-size:9px}.metric-field.invalid .metric-input-wrap{border-color:#cf6a70}.metric-field.invalid .input-error{display:block}
+    .locked-card{position:relative;width:100%;margin:0;padding:9px 10px;display:grid;grid-template-columns:28px 1fr auto;gap:8px;align-items:center;border:1px solid #eed4d6;border-left:3px solid #c45c63;border-radius:10px;color:#74595b;background:var(--red-pale);text-align:left;cursor:default;opacity:.68}.warning-icon{position:relative;width:25px;height:23px;color:#b04a52}.warning-icon:before{content:"";position:absolute;inset:0;background:currentColor;clip-path:polygon(50% 3%,98% 93%,2% 93%)}.warning-icon:after{content:"!";position:absolute;left:0;right:0;top:6px;color:#fff;text-align:center;font:900 13px/1 Arial,sans-serif}.locked-card strong{display:block;color:#70464a;font-size:11px;line-height:1.4}.locked-card span{display:block;margin-top:2px;color:#997477;font-size:9px;line-height:1.4}.physio-mark{align-self:start;padding:3px 5px;border:1px solid #eccace;border-radius:999px;color:#9f4b52;background:#fff;font-size:7px;font-weight:900;white-space:nowrap}
+    .simple-list{margin:0;padding:0;list-style:none;display:grid;gap:8px}.simple-list li{display:grid;grid-template-columns:19px 1fr;gap:7px;align-items:start;color:#385d68;font-size:12px;line-height:1.58}.simple-list li:before{content:"✓";width:18px;height:18px;display:grid;place-items:center;border-radius:50%;color:#fff;background:var(--teal);font-size:9px;font-weight:900}
+
+    .starter{margin-top:13px;padding:18px;border-radius:18px;color:#fff;background:linear-gradient(145deg,#08777d,#0d949d 56%,#b08a3b 145%);box-shadow:0 14px 28px rgba(18,129,151,.2)}.starter .mini{color:#c8f5f5;font-size:10px;font-weight:900}.starter h2{margin:6px 0 8px;font-size:18px}.starter>p{margin:0;color:rgba(255,255,255,.86);font-size:12px;line-height:1.65}.exercise-grid{margin-top:14px;display:grid;gap:10px}.exercise-card{overflow:hidden;border:1px solid rgba(255,255,255,.35);border-radius:14px;color:#183443;background:#fff;box-shadow:0 9px 18px rgba(2,65,77,.18);transition:transform .2s,box-shadow .2s}.exercise-card:hover,.exercise-card.is-playing,.exercise-card:focus-within{transform:translateY(-2px);box-shadow:0 13px 24px rgba(1,53,66,.26)}.demo-stage{position:relative;height:220px;overflow:hidden;background:#eef5f6}.pose-frame{position:absolute;inset:0;display:grid;place-items:center;opacity:0}.pose-frame.frame-a{opacity:1}.demo-photo{width:100%;height:100%;background-image:url("media/team4-return-strength-demo-grid.png");background-repeat:no-repeat;background-size:200% 200%}.demo-photo.sit{background-position:0 0}.demo-photo.stand{background-position:100% 0}.demo-photo.walk-a{background-position:0 100%}.demo-photo.walk-b{background-position:100% 100%}.exercise-card.is-playing .frame-a,.exercise-card:hover .frame-a,.exercise-card:focus-within .frame-a{animation:frameA 2.8s ease-in-out infinite}.exercise-card.is-playing .frame-b,.exercise-card:hover .frame-b,.exercise-card:focus-within .frame-b{animation:frameB 2.8s ease-in-out infinite}.play-state{position:absolute;z-index:4;top:10px;right:10px;padding:5px 8px;border-radius:999px;color:#17626c;background:rgba(255,255,255,.88);backdrop-filter:blur(6px);font-size:8px;font-weight:900}.exercise-card.is-playing .play-state,.exercise-card:hover .play-state{color:#fff;background:#128a92}.exercise-copy{padding:13px}.exercise-index{color:#0b7e85;font-size:9px;font-weight:900}.exercise-copy h3{margin:3px 0 5px;font-size:15px}.exercise-purpose{margin:0;color:#607683;font-size:10px;line-height:1.55}.dose{margin-top:9px;padding:8px 10px;display:grid;grid-template-columns:1fr 1fr;gap:8px;border-radius:9px;background:#edf8f8}.dose span{display:block;color:#66808b;font-size:8px}.dose strong{display:block;margin-top:2px;color:#15626d;font-size:11px}.exercise-detail-toggle{width:100%;margin-top:9px;padding:8px;border:1px solid #cee2e5;border-radius:9px;color:#117d86;background:#fff;font-size:9px;font-weight:900;cursor:pointer}.exercise-details{display:none;margin:8px 0 0;padding:9px;border-radius:9px;color:#546d78;background:#f5fafb;font-size:9px;line-height:1.55}.exercise-card.details-open .exercise-details{display:block}
+    @keyframes frameA{0%,43%{opacity:1}52%,92%{opacity:0}100%{opacity:1}}@keyframes frameB{0%,43%{opacity:0}52%,92%{opacity:1}100%{opacity:0}}
+
+    .status{margin:13px 0 0;padding:10px 12px;border-radius:10px;color:#557080;background:#f0f7f9;font-size:11px;line-height:1.5}.primary,.secondary,.consult{width:100%;min-height:50px;margin-top:10px;border-radius:13px;font-weight:900;transition:.2s}.primary{border:0;color:#75818a;background:#e1e8eb;cursor:not-allowed}.primary.ready{color:#fff;background:linear-gradient(90deg,var(--teal),var(--blue));cursor:pointer;box-shadow:0 10px 23px rgba(10,137,169,.2)}.primary.ready:hover,.consult:hover{transform:translateY(-2px)}.consult{border:0;color:#fff;background:linear-gradient(95deg,#0e86c2,#24a791);box-shadow:0 10px 24px rgba(18,142,161,.25);cursor:pointer}.secondary{border:1px solid #bddce4;color:#117eaa;background:#fff;cursor:pointer}.secondary:hover{background:#f3fbfd}.ai-note{margin:9px 5px 0;color:#6c7b8a;font-size:10px;line-height:1.55;text-align:center}
+    .lead-form,.personal-plan{display:none;margin-top:12px}.lead-form.show,.personal-plan.show{display:block}.form-title{margin:0 0 10px;font-size:15px}.form-grid{display:grid;gap:8px}.form-input{width:100%;height:46px;padding:0 12px;border:1px solid #c7dfe5;border-radius:10px;color:var(--ink);background:#f8fcfd}.location-control{margin-top:8px;padding:9px;border:1px solid #d8e8ec;border-radius:10px;background:#f8fcfd}.location-button{width:100%;min-height:42px;padding:8px 11px;display:flex;justify-content:center;align-items:center;gap:7px;border:1px solid #8fcbd0;border-radius:9px;color:#0b777c;background:#fff;font-size:10px;font-weight:900;cursor:pointer;transition:.18s}.location-button:hover{border-color:var(--teal);background:#eefafa}.location-button:disabled{opacity:.65;cursor:wait}.location-button.captured{color:#fff;border-color:#2da893;background:#2da893}.location-button.denied:disabled,.location-button.denied:disabled:hover{opacity:.72;color:#778991;border-color:#d2dfe2;background:#e9eff1;cursor:not-allowed}.location-button svg{flex:0 0 17px;width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}.location-status{margin:7px 2px 0;color:#647985;font-size:9px;line-height:1.5}.location-status:empty{display:none}.location-status.success{color:#137265}.location-status.error{color:#9c5358}.location-map-link{display:none;margin:6px 2px 0;color:#0c7ca7;font-size:9px;font-weight:800;text-decoration:none}.location-map-link.show{display:inline-flex}.manual-area-fields{margin-top:8px}.manual-area-label{display:block;margin:0 2px 5px;color:#526e79;font-size:9px;font-weight:800}.personal-plan{padding:15px;border:1px solid #c7e6d8;border-radius:13px;background:#f3fbf7}.personal-plan h3{margin:0;color:#126a61;font-size:15px}.personal-plan p{margin:7px 0 0;color:#4d6f68;font-size:11px;line-height:1.65}
+    .toast{position:fixed;z-index:20;left:50%;bottom:26px;padding:11px 16px;border-radius:999px;color:#fff;background:#173f4c;box-shadow:0 12px 30px rgba(0,0,0,.18);font-size:12px;opacity:0;pointer-events:none;transform:translate(-50%,12px);transition:.25s}.toast.show{opacity:1;transform:translate(-50%,0)}
+    .notes{position:sticky;top:34px;padding-top:52px}.notes-kicker{color:var(--teal-dark);font-size:12px;font-weight:900}.notes h2{max-width:520px;margin:10px 0 13px;font-size:clamp(28px,4vw,48px);line-height:1.12;letter-spacing:0}.notes>p{max-width:520px;margin:0;color:#566e7e;font-size:15px;line-height:1.75}.legend{margin-top:27px;display:grid;gap:10px;max-width:500px}.legend-row{padding:14px;display:grid;grid-template-columns:12px 1fr;gap:11px;border:1px solid rgba(130,178,187,.25);border-radius:13px;background:rgba(255,255,255,.58)}.legend-dot{width:10px;height:10px;margin-top:5px;border-radius:50%;background:var(--teal)}.legend-row.gold .legend-dot{background:var(--gold)}.legend-row.red .legend-dot{background:var(--red)}.legend-row strong{display:block;font-size:13px}.legend-row span{display:block;margin-top:3px;color:#6b7d89;font-size:12px;line-height:1.55}
+    @media(max-width:840px){.stage{width:100%;max-width:520px;grid-template-columns:minmax(0,1fr);padding:0;gap:0}.phone{min-width:0;padding:0;border:0;border-radius:0;box-shadow:none}.app{min-width:0;border-radius:0}.notes{display:none}.content{padding-bottom:44px}}
+    @media(max-width:520px){.step{font-size:0}.step:after{content:"ทีม 4";font-size:10px}.hero-copy p{max-width:95%}}
+    @media(max-width:420px){.hero{height:390px;border-radius:17px}h1{font-size:25px}.section,.unlock,.starter{border-radius:16px}.locked-card{grid-template-columns:26px 1fr}.physio-mark{grid-column:2;justify-self:start}.demo-stage{height:205px}}
+    .personal-level,.fitt-grid,.plan-results,.personal-pt{display:none}.starter.personalized .personal-level,.starter.personalized .fitt-grid,.starter.personalized .plan-results,.personal-pt.show{display:grid}.personal-level{margin:12px 0 0;padding:10px 12px;border:1px solid rgba(255,255,255,.38);border-radius:10px;color:#fff;background:rgba(7,74,77,.35);font-size:11px;font-weight:900}.fitt-grid{margin-top:9px;grid-template-columns:1fr 1fr;gap:7px}.fitt-cell{padding:8px;border-radius:9px;background:#edf8f8}.fitt-cell span{display:block;color:#66808b;font-size:8px}.fitt-cell strong{display:block;margin-top:3px;color:#155f69;font-size:10px;line-height:1.4}.plan-results{margin-top:13px;gap:9px}.result-panel{padding:12px;border:1px solid rgba(255,255,255,.3);border-radius:12px;background:rgba(5,78,80,.32)}.result-panel h3{margin:0 0 8px;font-size:13px}.week-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}.week-day,.guidance-box{padding:8px;border-radius:8px;color:#245963;background:#f3fbfa;font-size:9px;line-height:1.5}.week-day strong{display:block;color:#087878}.guidance-list{margin:0;padding-left:17px;font-size:9px;line-height:1.6}.modifier-notes:empty,.personal-pt:empty{display:none}.personal-pt{padding:9px 10px;border-left:3px solid #c45c63;border-radius:8px;color:#754d51;background:#fff4f4;font-size:9px;line-height:1.55}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}.recovery-trace,.checkpoint{animation:none!important;opacity:.28}.demo-stage,.demo-mini{display:grid;grid-template-columns:1fr 1fr}.pose-frame,.mini-frame{position:relative;inset:auto;opacity:1!important;animation:none!important}}
+  </style>
+</head>
+<body>
+  <main class="stage">
+    <div class="phone"><div class="app">
+      <header class="topbar">
+        <div class="brand"><div class="brand-mark" aria-hidden="true">⌂</div><div><div class="brand-name">บ้านกายภาพ ชลบุรี</div><div class="brand-sub">PHYSIO AT HOME</div></div></div>
+        <div class="step">ผลลัพธ์ของคุณ</div>
+      </header>
+      <div class="content">
+        <div class="eyebrow">แผน 02 · CARE PLAN TYPE 02 · TEAM 4</div>
+        <section class="hero">
+          <img src="media/plan-return-strength.png" alt="ผู้สูงอายุเริ่มกลับมาเดินทำกิจวัตรในบ้าน โดยมีนักกายภาพคอยดูแลอยู่ใกล้ ๆ">
+          <div class="hero-fx" aria-hidden="true">
+            <svg viewBox="0 0 941 1672" preserveAspectRatio="xMidYMid meet">
+              <path class="recovery-trace" pathLength="620" d="M145 1030 C260 1024 410 1070 475 1164 C520 1232 505 1330 530 1415 C552 1490 575 1570 580 1675"/>
+              <path class="recovery-trace gold" pathLength="620" d="M145 1030 C260 1024 410 1070 475 1164 C520 1232 505 1330 530 1415 C552 1490 575 1570 580 1675"/>
+              <ellipse class="checkpoint g1" cx="165" cy="1113" rx="54" ry="19"/>
+              <ellipse class="checkpoint g2" cx="445" cy="1197" rx="72" ry="23"/>
+              <ellipse class="checkpoint g3" cx="490" cy="1360" rx="86" ry="27"/>
+              <ellipse class="checkpoint g4" cx="565" cy="1575" rx="112" ry="34"/>
+            </svg>
+          </div>
+          <div class="hero-copy"><div class="tag"><i></i> แผนฟื้นฟูหลักของคุณ</div><h1>แผนคืนแรง<br>หลังกลับบ้าน</h1><p>ค่อย ๆ นำแรงและความทนทานกลับมาใช้กับกิจวัตรจริง โดยไม่เร่งจนหมดแรงหรือพักนานจนร่างกายถดถอย</p></div>
+        </section>
+
+        <section class="section">
+          <h2 class="title">โรค/ภาวะที่เกี่ยวข้อง</h2>
+          <p class="lead">กดที่หัวข้อเพื่อดูว่าแต่ละภาวะเกี่ยวข้องกับการคืนแรงหลังกลับบ้านอย่างไร</p>
+          <div class="chips">
+            <button class="chip active" data-condition="decondition">อ่อนแรงหลังนอนโรงพยาบาล</button>
+            <button class="chip" data-condition="muscle">กล้ามเนื้อลดจากการพักนาน</button>
+            <button class="chip" data-condition="illness">หลังติดเชื้อหรือป่วยหนัก</button>
+            <button class="chip" data-condition="chronic">โรคประจำตัวจำกัดความทนทาน</button>
+          </div>
+          <div class="condition" id="condition"><strong>อ่อนแรงหลังนอนโรงพยาบาล</strong>ช่วงที่นอนพักและเคลื่อนไหวน้อย ร่างกายอาจสูญเสียทั้งแรง ความทนทาน และความมั่นใจ แม้โรคหลักจะดีขึ้นแล้ว จึงควรเพิ่มกิจกรรมกลับมาอย่างเป็นลำดับ</div>
+        </section>
+
+        <section class="section">
+          <div class="assessment-head">
+            <div><h2 class="title">3 ปัญหาหลักที่ควรจัดการก่อน</h2><p class="lead">เริ่มจากสิ่งที่ทำเองได้ก่อน และใช้การประเมินเพิ่มเติมเฉพาะจุดที่ช่วยให้แผนแม่นขึ้น</p></div>
+            <div class="ring" id="ring"><span id="progress">0/4</span></div>
+          </div>
+
+          <div class="problems">
+            <article class="problem-card">
+              <div class="problem-head"><div class="problem-number">01</div><div><h3>ความทนทานต่อกิจกรรมยังไม่เพียงพอ</h3><p>อาบน้ำ แต่งตัว เดินในบ้าน หรือทำงานเบา ๆ แล้วต้องหยุดพักเร็วกว่าก่อนป่วย แสดงว่าร่างกายยังมีแรงสำรองไม่พอกับชีวิตประจำวัน</p></div></div>
+              <div class="problem-plan"><div class="problem-plan-label">แผนจัดการปัญหานี้</div><p>แบ่งกิจกรรมเป็นช่วงสั้น สลับพักก่อนเหนื่อยมาก และเพิ่มเวลาทีละน้อย เป้าหมายแรกไม่ใช่ทำให้หนัก แต่ทำให้ทำกิจกรรมจำเป็นได้ต่อเนื่องขึ้นโดยอาการไม่ทรุด</p></div>
+              <div class="problem-action">
+                <div class="problem-action-title">ประเมินเพิ่มด้วยตัวเอง</div>
+                <div class="self-card quant-assessment">
+                  <button class="summary" type="button" aria-expanded="false"><span class="icon">+</span><span class="copy"><strong>เดินต่อเนื่อง 2 นาที</strong><span>เก็บระยะทางและระดับเหนื่อย เพื่อปรับช่วงเดินกับช่วงพัก</span></span><span class="chev">›</span></button>
+                  <div class="body"><span class="demo-mini" aria-hidden="true"><span class="mini-frame frame-a"><span class="mini-photo walk-a"></span></span><span class="mini-frame frame-b"><span class="mini-photo walk-b"></span></span></span><p>เลือกทางเดินราบที่คุ้นเคยและไม่มีสิ่งกีดขวาง ให้ผู้ดูแลช่วยจับเวลา 2 นาที แล้ววัดระยะทางรวม หากมีเจ็บหน้าอก หน้ามืด หรือหอบผิดปกติให้หยุดทันที</p><span class="metric-grid">
+                    <label class="metric-field"><span class="metric-label">ระยะทางที่เดินได้ใน 2 นาที</span><span class="metric-input-wrap"><input class="metric-input" data-metric="walkDistance" type="number" inputmode="numeric" min="1" max="500" placeholder="0"><span class="metric-unit">เมตร</span></span><span class="range-hint">ใช้เป็นค่าตั้งต้นสำหรับเปรียบเทียบครั้งถัดไป</span><span class="input-error">กรุณากรอกระยะทาง 1-500 เมตร</span></label>
+                    <label class="metric-field"><span class="metric-label">เหนื่อยหลังเดินระดับ</span><span class="metric-input-wrap"><input class="metric-input" data-metric="fatigueScore" type="number" inputmode="numeric" min="0" max="10" placeholder="0"><span class="metric-unit">/ 10</span></span><span class="range-hint">0 = ไม่เหนื่อย, 10 = เหนื่อยมากที่สุด</span><span class="input-error">กรุณากรอกคะแนน 0-10</span></label>
+                    <label class="metric-field"><span class="metric-label">พักกี่นาทีจนความเหนื่อยกลับมาไม่เกิน 2/10</span><span class="metric-input-wrap"><input class="metric-input" data-metric="recoveryMinutes" type="number" inputmode="decimal" min="0" max="30" step="0.5" placeholder="0"><span class="metric-unit">นาที</span></span><span class="range-hint">ใช้เวลาฟื้นกำหนดช่วงเดินและช่วงพัก ไม่ใช้ระยะทางคำนวณความหนักโดยตรง</span><span class="input-error">กรุณากรอกเวลา 0-30 นาที</span></label>
+                  </span></div>
+                </div>
+              </div>
+              <div class="problem-action"><div class="problem-action-title">ประเมินโดยนักกายภาพเมื่อจำเป็น</div><div class="locked-card"><span class="warning-icon" aria-hidden="true"></span><span><strong>การตอบสนองของร่างกายขณะออกแรง</strong><span>ชีพจร ความดัน อาการหน้ามืด และความทนต่อกิจกรรม</span></span><span class="physio-mark">นักกายภาพประเมิน</span></div></div>
+            </article>
+
+            <article class="problem-card">
+              <div class="problem-head"><div class="problem-number">02</div><div><h3>แรงขาลด ทำให้ลุกยืนและเดินต่อได้ไม่นาน</h3><p>การนอนหรือนั่งนานทำให้แรงที่ใช้ยกตัวจากเก้าอี้ลดลง เมื่อการลุกแต่ละครั้งใช้แรงมาก จึงเหลือแรงสำหรับเดินและทำกิจกรรมอื่นน้อยลง</p></div></div>
+              <div class="problem-plan"><div class="problem-plan-label">แผนจัดการปัญหานี้</div><p>ฝึกลุกยืนจากเก้าอี้ที่มั่นคงด้วยจังหวะควบคุม แล้วนำแรงที่ได้กลับไปใช้กับการเดินระยะสั้นจริงในบ้าน เพิ่มจำนวนครั้งก่อนเพิ่มความเร็ว</p></div>
+              <div class="problem-action">
+                <div class="problem-action-title">ประเมินเพิ่มด้วยตัวเอง</div>
+                <div class="self-card quant-assessment">
+                  <button class="summary" type="button" aria-expanded="false"><span class="icon">+</span><span class="copy"><strong>ลุกยืนจากเก้าอี้ใน 30 วินาที</strong><span>นับจำนวนครั้งที่ยืนตรงแล้วกลับมานั่งได้อย่างควบคุม</span></span><span class="chev">›</span></button>
+                  <div class="body"><span class="demo-mini" aria-hidden="true"><span class="mini-frame frame-a"><span class="mini-photo sit"></span></span><span class="mini-frame frame-b"><span class="mini-photo stand"></span></span></span><p>ใช้เก้าอี้ที่ไม่เลื่อน วางใกล้ผนัง และมีคนอยู่ใกล้ถ้าปกติยังลุกไม่มั่นใจ หากยังไม่พร้อมทำ สามารถเว้นข้อนี้ไว้ได้</p><span class="metric-grid"><label class="metric-field"><span class="metric-label">ลุกยืนได้ทั้งหมด</span><span class="metric-input-wrap"><input class="metric-input" data-metric="chairReps" type="number" inputmode="numeric" min="0" max="30" placeholder="0"><span class="metric-unit">ครั้ง</span></span><span class="range-hint">นับเฉพาะครั้งที่ยืนตรงและนั่งลงได้</span><span class="input-error">กรุณากรอก 0-30 ครั้ง</span></label></span></div>
+                </div>
+              </div>
+              <div class="problem-action"><div class="problem-action-title">ประเมินโดยนักกายภาพเมื่อจำเป็น</div><div class="locked-card"><span class="warning-icon" aria-hidden="true"></span><span><strong>แรงเชิงหน้าที่และรูปแบบการชดเชย</strong><span>ดูการลงน้ำหนัก การใช้มือดัน และคุณภาพการเดินหลังลุก</span></span><span class="physio-mark">นักกายภาพประเมิน</span></div></div>
+            </article>
+
+            <article class="problem-card">
+              <div class="problem-head"><div class="problem-number">03</div><div><h3>จังหวะกิจกรรมและการพักยังไม่ช่วยให้ร่างกายฟื้นตัว</h3><p>การทำรวดเดียวจนหมดแรงอาจทำให้วันถัดไปทำได้น้อยลง ขณะที่การพักทั้งวันก็ทำให้แรงกลับมาช้า จึงต้องหาจังหวะที่ทำซ้ำได้ทุกวัน</p></div></div>
+              <div class="problem-plan"><div class="problem-plan-label">แผนจัดการปัญหานี้</div><p>เลือกกิจกรรมสำคัญก่อน แบ่งเป็นช่วง และพักก่อนหมดแรง ใช้วันที่อาการดีเพิ่มเพียงเล็กน้อย ไม่เร่งชดเชยจนเหนื่อยสะสม</p></div>
+              <div class="problem-action"><ul class="simple-list"><li>วางกิจกรรมที่จำเป็นในช่วงเวลาที่มีแรงมากที่สุด</li><li>จบแต่ละรอบโดยยังรู้สึกว่าสามารถทำต่อได้อีกเล็กน้อย</li></ul></div>
+              <div class="problem-action"><div class="problem-action-title">ประเมินโดยนักกายภาพเมื่อจำเป็น</div><div class="locked-card"><span class="warning-icon" aria-hidden="true"></span><span><strong>โรคประจำตัว ยา และระดับการเพิ่มกิจกรรม</strong><span>ช่วยแยกว่าเหนื่อยจากการพักนานหรือมีข้อจำกัดที่ต้องปรับแผนเฉพาะ</span></span><span class="physio-mark">นักกายภาพประเมิน</span></div></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="starter" id="returnStrengthPlan">
+          <div class="mini">โปรแกรมเริ่มต้น</div><h2>คืนแรงด้วยกิจกรรมสั้นที่ทำซ้ำได้</h2><p>เริ่มจาก 2 ท่าที่พาแรงกลับไปใช้กับการลุกและเดินจริง หยุดทันทีหากมีเจ็บหน้าอก หน้ามืด หอบผิดปกติ หรืออาการทรุด</p>
+          <div class="personal-level" id="personalLevel" hidden></div>
+          <div class="exercise-grid">
+            <article class="exercise-card is-playing" tabindex="0">
+              <div class="demo-stage"><div class="pose-frame frame-a"><div class="demo-photo sit"></div></div><div class="pose-frame frame-b"><div class="demo-photo stand"></div></div><div class="play-state">ภาพสาธิต</div></div>
+              <div class="exercise-copy"><div class="exercise-index">ท่าที่ 1 · สร้างแรงขา</div><h3 id="sitTitle">ลุกยืนจากเก้าอี้แบบควบคุม</h3><p class="exercise-purpose">ฝึกแรงที่จำเป็นต่อการลุกจากเตียง เข้าห้องน้ำ และเริ่มเดิน</p><div class="dose"><div><span>จำนวนเริ่มต้น</span><strong>3-5 ครั้ง</strong></div><div><span>จำนวนรอบ</span><strong>1-2 รอบ</strong></div></div><div class="fitt-grid" id="sitFitt"><div class="fitt-cell" data-fitt="frequency"><span>ความถี่</span><strong data-dose="sit-frequency"></strong></div><div class="fitt-cell" data-fitt="intensity"><span>ความหนัก</span><strong data-dose="sit-intensity"></strong></div><div class="fitt-cell" data-fitt="time"><span>เวลาและปริมาณ</span><strong data-dose="sit-time"></strong></div><div class="fitt-cell" data-fitt="type"><span>รูปแบบ</span><strong data-dose="sit-type"></strong></div></div><button class="exercise-detail-toggle" type="button">ดูวิธีทำและข้อควรระวัง</button><div class="exercise-details">วางเท้าใต้เข่า โน้มตัวไปข้างหน้าเล็กน้อย ยืนขึ้นช้า ๆ แล้วนั่งกลับอย่างควบคุม ใช้มือช่วยได้ถ้าจำเป็น และเลือกเก้าอี้ที่ไม่เลื่อน</div></div>
+            </article>
+            <article class="exercise-card" tabindex="0">
+              <div class="demo-stage"><div class="pose-frame frame-a"><div class="demo-photo walk-a"></div></div><div class="pose-frame frame-b"><div class="demo-photo walk-b"></div></div><div class="play-state">ภาพสาธิต</div></div>
+              <div class="exercise-copy"><div class="exercise-index">ท่าที่ 2 · เพิ่มความทนทาน</div><h3 id="walkTitle">เดินเป็นช่วงสั้นในบ้าน</h3><p class="exercise-purpose">เพิ่มเวลาที่เคลื่อนไหวได้โดยไม่สะสมความเหนื่อยมากเกินไป</p><div class="dose"><div><span>เดินต่อรอบ</span><strong>1-3 นาที</strong></div><div><span>จำนวนรอบ</span><strong>2-3 รอบ</strong></div></div><div class="fitt-grid" id="walkFitt"><div class="fitt-cell" data-fitt="frequency"><span>ความถี่</span><strong data-dose="walk-frequency"></strong></div><div class="fitt-cell" data-fitt="intensity"><span>ความหนัก</span><strong data-dose="walk-intensity"></strong></div><div class="fitt-cell" data-fitt="time"><span>เวลาและปริมาณ</span><strong data-dose="walk-time"></strong></div><div class="fitt-cell" data-fitt="type"><span>รูปแบบ</span><strong data-dose="walk-type"></strong></div></div><button class="exercise-detail-toggle" type="button">ดูวิธีทำและข้อควรระวัง</button><div class="exercise-details">เลือกทางเดินโล่งและมีเก้าอี้พักใกล้ ๆ เดินด้วยความเร็วที่ยังพูดเป็นประโยคสั้นได้ พักจนหายเหนื่อยก่อนเริ่มรอบถัดไป</div></div>
+            </article>
+          </div>
+          <div class="plan-results" id="planResults" hidden><section class="result-panel"><h3>ตารางฝึก 7 วัน</h3><div class="week-grid" id="weeklySchedule"></div></section><section class="result-panel"><h3>เมื่อไรจึงเพิ่มระดับ</h3><ul class="guidance-list" id="progressionGuidance"></ul></section><section class="result-panel"><h3>เมื่อไรควรลดระดับหรือหยุด</h3><ul class="guidance-list" id="regressionGuidance"></ul></section><section class="result-panel modifier-notes" id="modifierNotes"><h3>สิ่งที่ปรับตามโรคประจำตัว</h3><ul class="guidance-list" id="modifierGuidance"></ul></section><div class="personal-pt" id="personalPt"></div></div>
+        </section>
+
+        <section class="unlock">
+          <h2 class="title">ปรับโปรแกรมให้เฉพาะตัวขึ้น</h2><p class="lead">ตัวเลขที่คุณกรอกจะช่วยปรับเวลาฝึก จำนวนครั้ง จุดพัก และลำดับกิจกรรมให้เหมาะกับกำลังตอนนี้</p>
+          <div class="status" id="status">ตอบแบบประเมินเพิ่มอีก 2 หัวข้อ เพื่อสร้างแผนเฉพาะตัว</div>
+          <button class="primary" id="buildPlan" type="button" disabled>ตอบแบบประเมินให้ครบ เพื่อสร้างแผนเฉพาะตัว</button>
+          <div class="lead-form" id="leadForm"><h3 class="form-title">รับแผนเฉพาะตัวฉบับละเอียด</h3><div class="form-grid"><input class="form-input" id="name" autocomplete="name" placeholder="ชื่อ"><input class="form-input" id="phone" type="tel" inputmode="numeric" maxlength="10" autocomplete="tel" placeholder="เบอร์โทรศัพท์ 10 หลัก"></div><div class="location-control"><button class="location-button" id="useCurrentLocation" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>ใช้ตำแหน่งปัจจุบัน</span></button><p class="location-status" id="locationStatus" aria-live="polite"></p><a class="location-map-link" id="locationMapLink" target="_blank" rel="noopener noreferrer">ดูตำแหน่งบน Google Maps</a></div><div class="manual-area-fields" id="manualAreaFields" hidden><label class="manual-area-label" for="area">กรอกอำเภอหรือพื้นที่ที่พัก</label><input class="form-input" id="area" autocomplete="street-address" placeholder="เช่น เมืองชลบุรี บางแสน หรือจุดสังเกต"></div><button class="primary ready" id="submitPlan" type="button" disabled>สร้างแผนเฉพาะตัวของฉัน</button></div>
+          <div class="personal-plan" id="personalPlan"><h3>แผนของคุณได้รับการปรับแล้ว</h3><p id="personalCopy"></p></div>
+          <button class="consult" type="button">ปรึกษานักกายภาพ</button>
+          <button class="secondary" id="copySummary" type="button">นำผลของฉันไปถาม AI ต่อ</button>
+          <p class="ai-note">นำข้อความนี้ไปวางใน AI ที่คุณใช้ เช่น ChatGPT, Claude, Gemini, Grok หรือแอปอื่น ๆ เพื่อให้ช่วยวิเคราะห์อาการและถามต่อจากข้อมูลของคุณได้</p>
+        </section>
+      </div>
+    </div></div>
+
+    <aside class="notes">
+      <div class="notes-kicker">TEAM 4 · PLAN TYPE 02</div><h2>แผนคืนแรง<br>หลังกลับบ้าน</h2><p>แผนนี้ตั้งใจแยกจาก “เดินมั่นใจ ลดเสี่ยงล้ม” อย่างชัดเจน โดยโฟกัสแรงสำรอง ความทนทาน และจังหวะฟื้นตัวหลังนอนโรงพยาบาล</p>
+      <div class="legend"><div class="legend-row"><span class="legend-dot"></span><div><strong>สีเขียวอมฟ้า</strong><span>สิ่งที่ผู้ใช้เริ่มทำและเก็บข้อมูลได้ด้วยตัวเอง</span></div></div><div class="legend-row gold"><span class="legend-dot"></span><div><strong>แสงสีทอง</strong><span>สื่อถึงพลังที่กำลังกลับมา โดยยังอยู่ในระบบสีเดียวกับแบรนด์</span></div></div><div class="legend-row red"><span class="legend-dot"></span><div><strong>กรอบเตือนขนาดเล็ก</strong><span>สิ่งที่นักกายภาพช่วยประเมินเพิ่มเติม ไม่แย่งความสำคัญจากแผนจัดการปัญหา</span></div></div></div>
+    </aside>
+  </main>
+  <div class="toast" id="toast">คัดลอกข้อความแล้ว</div>
+  <script src="js/return-strength-personalization.js"></script>
+  <script src="js/current-location-lead.js"></script>
+  <script src="js/lead-phone.js"></script>
+  <script>
+    const conditionCopy = {
+      decondition:['อ่อนแรงหลังนอนโรงพยาบาล','ช่วงที่นอนพักและเคลื่อนไหวน้อย ร่างกายอาจสูญเสียทั้งแรง ความทนทาน และความมั่นใจ แม้โรคหลักจะดีขึ้นแล้ว จึงควรเพิ่มกิจกรรมกลับมาอย่างเป็นลำดับ'],
+      muscle:['กล้ามเนื้อลดจากการพักนาน','เมื่อกล้ามเนื้อไม่ได้ใช้งาน แรงที่ใช้ลุกยืน เดิน และพยุงตัวจะลดลง การฝึกแรงควรเริ่มจากกิจกรรมจริงที่ทำซ้ำได้อย่างปลอดภัย'],
+      illness:['หลังติดเชื้อหรือป่วยหนัก','การเจ็บป่วยหนักอาจทำให้เหนื่อยง่าย กินได้น้อย และฟื้นตัวช้ากว่าที่คาด แผนจึงต้องเพิ่มกิจกรรมทีละน้อยและติดตามอาการหลังฝึก'],
+      chronic:['โรคประจำตัวจำกัดความทนทาน','โรคหัวใจ ปอด ไต เบาหวาน หรือยาบางชนิดอาจเปลี่ยนการตอบสนองต่อการออกแรง จึงต้องใช้ข้อมูลเหล่านี้ปรับระดับและข้อควรระวังของโปรแกรม']
+    };
+    const condition = document.getElementById('condition');
+    document.querySelectorAll('.chip').forEach(chip=>chip.addEventListener('click',()=>{
+      document.querySelectorAll('.chip').forEach(item=>item.classList.remove('active'));
+      chip.classList.add('active');
+      const [title,copy]=conditionCopy[chip.dataset.condition];
+      condition.innerHTML='<strong>'+title+'</strong>'+copy;
+    }));
+
+    const cards=[...document.querySelectorAll('.self-card')];
+    cards.forEach(card=>card.querySelector('.summary').addEventListener('click',()=>{
+      card.classList.toggle('open');
+      card.querySelector('.summary').setAttribute('aria-expanded',String(card.classList.contains('open')));
+    }));
+
+    const metricRules={walkDistance:[1,1000],fatigueScore:[0,10],recoveryMinutes:[0,30],chairReps:[0,30]};
+    const inputs=[...document.querySelectorAll('[data-metric]')];
+    const progress=document.getElementById('progress');
+    const ring=document.getElementById('ring');
+    const status=document.getElementById('status');
+    const buildPlan=document.getElementById('buildPlan');
+    const valid=input=>{
+      if(input.value==='') return false;
+      const [min,max]=metricRules[input.dataset.metric];
+      const value=Number(input.value);
+      return Number.isFinite(value)&&value>=min&&value<=max;
+    };
+    function updateReadiness(markInvalid=false){
+      inputs.forEach(input=>input.closest('.metric-field').classList.toggle('invalid',markInvalid&&input.value!==''&&!valid(input)));
+      cards.forEach(card=>card.classList.toggle('done',[...card.querySelectorAll('[data-metric]')].every(valid)));
+      const completed=inputs.filter(valid).length;
+      progress.textContent=completed+'/4';ring.style.setProperty('--progress',(completed/4*100)+'%');
+      if(completed===4){status.textContent='ข้อมูลพร้อมแล้ว สามารถสร้างแผนเฉพาะตัวได้';buildPlan.disabled=false;buildPlan.classList.add('ready');buildPlan.textContent='สร้างแผนเฉพาะตัวของฉัน'}
+      else{status.textContent='กรอกข้อมูลเชิงปริมาณเพิ่มอีก '+(4-completed)+' ค่า เพื่อสร้างแผนเฉพาะตัว';buildPlan.disabled=true;buildPlan.classList.remove('ready');buildPlan.textContent='ตอบแบบประเมินให้ครบ เพื่อสร้างแผนเฉพาะตัว'}
+    }
+    inputs.forEach(input=>input.addEventListener('input',()=>updateReadiness(true)));
+
+    const leadForm=document.getElementById('leadForm');
+    const starter=document.getElementById('returnStrengthPlan');
+    const planResults=document.getElementById('planResults');
+    const locationButton=document.getElementById('useCurrentLocation');
+    const locationStatus=document.getElementById('locationStatus');
+    const locationMapLink=document.getElementById('locationMapLink');
+    const manualAreaFields=document.getElementById('manualAreaFields');
+    const areaInput=document.getElementById('area');
+    const team3Context={assistance:'independent',redFlag:false,modifiers:[],painScore:0};
+    let currentPlan=null,capturedLocation=null,currentLeadData=null;
+    const phoneController=CareLeadPhone.bindPhoneInput({input:document.getElementById('phone'),button:document.getElementById('submitPlan')});
+    function renderLocationState(type,message){locationStatus.className='location-status'+(type?' '+type:'');locationStatus.textContent=message||'';locationMapLink.classList.toggle('show',Boolean(capturedLocation));if(capturedLocation)locationMapLink.href=capturedLocation.googleMapsUrl;else locationMapLink.removeAttribute('href')}
+    locationButton.onclick=async()=>{
+      capturedLocation=null;currentLeadData=null;manualAreaFields.hidden=true;areaInput.value='';locationMapLink.classList.remove('show');locationMapLink.removeAttribute('href');locationButton.disabled=true;locationButton.classList.remove('captured','denied');locationButton.querySelector('span').textContent='กำลังระบุตำแหน่ง...';renderLocationState('','');
+      const result=await CurrentLocationLead.requestCurrentLocation(navigator.geolocation);
+      if(!result.ok){if(result.code==='permission_denied'){locationButton.classList.add('denied');locationButton.querySelector('span').textContent='ไม่ได้แชร์ตำแหน่ง';locationButton.disabled=true;manualAreaFields.hidden=false;areaInput.focus();renderLocationState('error',result.messageTh);return}locationButton.disabled=false;locationButton.querySelector('span').textContent='ลองระบุตำแหน่งอีกครั้ง';renderLocationState('error',result.messageTh);return}
+      locationButton.disabled=false;capturedLocation=result.location;locationButton.classList.add('captured');locationButton.querySelector('span').textContent='ระบุตำแหน่งใหม่';const accuracy=capturedLocation.accuracyMeters===null?'':' ความแม่นยำประมาณ '+Math.round(capturedLocation.accuracyMeters)+' เมตร';renderLocationState('success','ปักหมุดตำแหน่งแล้ว'+accuracy);
+    };
+    const metric=name=>document.querySelector('[data-metric="'+name+'"]').value;
+    const setText=(selector,value)=>{const node=document.querySelector(selector);if(node)node.textContent=value};
+    const fillList=(id,items)=>{
+      const list=document.getElementById(id);list.replaceChildren();
+      items.forEach(item=>{const li=document.createElement('li');li.textContent=item;list.appendChild(li)});
+    };
+    function renderPlan(result){
+      currentPlan=result;
+      const level=document.getElementById('personalLevel');
+      level.hidden=false;level.textContent='ระดับแผน: '+result.levelLabelTh;
+      setText('[data-dose="sit-frequency"]',result.sitToStand.frequency);
+      setText('[data-dose="sit-intensity"]',result.sitToStand.intensity);
+      setText('[data-dose="sit-time"]',result.sitToStand.time);
+      setText('[data-dose="sit-type"]',result.sitToStand.type);
+      setText('[data-dose="walk-frequency"]',result.intervalWalking.frequency);
+      setText('[data-dose="walk-intensity"]',result.intervalWalking.intensity);
+      setText('[data-dose="walk-time"]',result.intervalWalking.time);
+      setText('[data-dose="walk-type"]',result.intervalWalking.type);
+      const weekly=document.getElementById('weeklySchedule');weekly.replaceChildren();
+      result.schedule.forEach(day=>{const item=document.createElement('div');item.className='week-day';const strong=document.createElement('strong');strong.textContent=day.dayTh;const span=document.createElement('span');span.textContent=day.activityTh;item.append(strong,span);weekly.appendChild(item)});
+      fillList('progressionGuidance',result.progressionRulesTh);
+      fillList('regressionGuidance',result.regressionRulesTh);
+      fillList('modifierGuidance',result.modifierNotesTh);
+      document.getElementById('modifierNotes').hidden=result.modifierNotesTh.length===0;
+      const pt=document.getElementById('personalPt');
+      pt.textContent='ควรให้นักกายภาพประเมินเพิ่มเติม: '+result.ptAssessmentTh.join(' · ');
+      pt.classList.toggle('show',result.ptPriority==='recommended');
+      starter.classList.add('personalized');planResults.hidden=false;
+      const locationNote=currentLeadData&&currentLeadData.location?' แนบตำแหน่งไว้กับข้อมูลเคสในหน้านี้แล้ว':' ระบุพื้นที่ '+currentLeadData.area+' ไว้กับข้อมูลเคสในหน้านี้แล้ว';
+      document.getElementById('personalCopy').textContent='ระยะเดิน 2 นาที '+result.trackingBaseline.walkDistanceMeters+' เมตรถูกเก็บเป็นค่าตั้งต้นสำหรับเปรียบเทียบครั้งต่อไป ส่วน FITT ปรับจากความเหนื่อย '+result.trackingBaseline.postWalkExertion+'/10 เวลาฟื้น '+result.trackingBaseline.recoveryMinutes+' นาที และผลลุกยืน '+result.trackingBaseline.chairStandReps+' ครั้งแล้ว'+locationNote;
+      document.getElementById('personalPlan').classList.add('show');leadForm.classList.remove('show');buildPlan.hidden=true;
+      starter.scrollIntoView({behavior:'smooth',block:'start'});showToast('สร้างแผนเฉพาะตัวแล้ว');
+    }
+    buildPlan.addEventListener('click',()=>{if(!buildPlan.disabled){leadForm.classList.add('show');leadForm.scrollIntoView({behavior:'smooth',block:'center'})}});
+    document.getElementById('submitPlan').addEventListener('click',()=>{
+      const name=document.getElementById('name').value.trim();
+      const phone=document.getElementById('phone').value.trim();
+      const area=areaInput.value.trim();
+      const manualAllowed=!manualAreaFields.hidden;
+      if(!name||!phoneController.isValid()){showToast('กรอกชื่อและเบอร์โทรศัพท์ 10 หลักก่อน');return}
+      if(!capturedLocation&&!manualAllowed){showToast('ใช้ตำแหน่งปัจจุบันก่อน');return}
+      if(manualAllowed&&!area){showToast('กรอกอำเภอหรือพื้นที่ที่พักก่อน');areaInput.focus();return}
+      currentLeadData={name,phone,area,location:capturedLocation};
+      const result=ReturnStrengthPersonalization.buildReturnStrengthPlan({
+        ...team3Context,
+        walkTestCompleted:true,
+        walkDistanceMeters:Number(metric('walkDistance')),
+        postWalkExertion:Number(metric('fatigueScore')),
+        recoveryMinutes:Number(metric('recoveryMinutes')),
+        chairStandReps:Number(metric('chairReps'))
+      });
+      if(result.route!=='personal_plan'){showToast(result.routeMessageTh||'ยังสร้างแผนละเอียดไม่ได้');return}
+      renderPlan(result);
+    });
+
+    const exercises=[...document.querySelectorAll('.exercise-card')];let activeExercise=0;
+    function setActiveExercise(index){exercises.forEach((card,i)=>card.classList.toggle('is-playing',i===index));activeExercise=index}
+    exercises.forEach((card,index)=>{card.addEventListener('mouseenter',()=>setActiveExercise(index));card.addEventListener('focusin',()=>setActiveExercise(index))});
+    setInterval(()=>{if(!document.querySelector('.exercise-card:hover'))setActiveExercise((activeExercise+1)%exercises.length)},5200);
+    document.querySelectorAll('.exercise-detail-toggle').forEach(button=>button.addEventListener('click',()=>{const card=button.closest('.exercise-card');card.classList.toggle('details-open');button.textContent=card.classList.contains('details-open')?'ซ่อนรายละเอียด':'ดูวิธีทำและข้อควรระวัง'}));
+
+    const toast=document.getElementById('toast');let toastTimer;
+    function showToast(message){toast.textContent=message;toast.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove('show'),2200)}
+    document.getElementById('copySummary').addEventListener('click',async()=>{
+      const values=Object.fromEntries(inputs.map(input=>[input.dataset.metric,input.value||'ยังไม่ได้กรอก']));
+      const fitt=currentPlan?'\nระดับแผน: '+currentPlan.levelLabelTh+'\nFITT ลุกยืน: '+currentPlan.sitToStand.frequency+', '+currentPlan.sitToStand.intensity+', '+currentPlan.sitToStand.time+', '+currentPlan.sitToStand.type+'\nFITT เดินเป็นช่วง: '+currentPlan.intervalWalking.frequency+', '+currentPlan.intervalWalking.intensity+', '+currentPlan.intervalWalking.time+', '+currentPlan.intervalWalking.type+'\nข้อควรระวังเฉพาะ: '+(currentPlan.modifierNotesTh.join(' · ')||'ไม่มีข้อมูลเพิ่ม'):'';
+      const summary='ข้อมูลสำหรับ AI: ผู้ใช้ได้รับผลเป็น แผน 02 คืนแรงหลังกลับบ้าน ปัญหาหลักคือความทนทานต่อกิจกรรมยังไม่เพียงพอ แรงขาลด และยังจัดจังหวะกิจกรรมกับการพักไม่เหมาะสม เดินต่อเนื่อง 2 นาทีได้ '+values.walkDistance+' เมตร ซึ่งใช้เป็นค่าติดตาม ไม่ใช้คำนวณความหนัก เหนื่อยหลังเดิน '+values.fatigueScore+'/10 ฟื้นถึงระดับไม่เกิน 2/10 ใน '+values.recoveryMinutes+' นาที และลุกยืนใน 30 วินาทีได้ '+values.chairReps+' ครั้ง'+fitt+'\nกรุณาช่วยตั้งคำถามเพิ่มเติมเพื่อวิเคราะห์ความปลอดภัยและปรับแผน โดยไม่วินิจฉัยโรคแทนผู้เชี่ยวชาญ';
+      try{await navigator.clipboard.writeText(summary);showToast('คัดลอกข้อความสำหรับ AI แล้ว')}catch{showToast('เบราว์เซอร์นี้ยังไม่อนุญาตให้คัดลอก')}
+    });
+    updateReadiness();
+  </script>
+</body>
+</html>
