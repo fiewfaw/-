@@ -49,4 +49,26 @@ for (const [slug, cover] of records) {
   );
 }
 
+const frailtyOverview = fs.readFileSync(
+  path.join(root, 'content', 'posts', 'frailty-in-older-adults.md'),
+  'utf8',
+);
+assert.match(
+  frailtyOverview,
+  /<div class="comparison-table-wrapper">[\s\S]*<table class="comparison-table comparison-table--readable">/,
+  'frailty overview renders confusing terms as the responsive comparison table',
+);
+assert.doesNotMatch(
+  frailtyOverview,
+  /^\| คำที่มักสับสน \|/m,
+  'frailty overview does not rely on unsupported Markdown table rendering',
+);
+
+const sharedStyles = fs.readFileSync(path.join(root, 'css', 'shared.css'), 'utf8');
+assert.match(
+  sharedStyles,
+  /\.article-body \.comparison-table--readable\s*\{[^}]*min-width:\s*640px;/s,
+  'long comparison tables keep readable columns and scroll inside their wrapper on mobile',
+);
+
 console.log('PASS frailty article cluster, covers, index, and sitemap');
