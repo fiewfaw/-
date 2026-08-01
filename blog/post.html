@@ -67,6 +67,10 @@
         </div>
     </header>
 
+    <figure class="article-cover" id="articleCover" hidden>
+        <img id="articleCoverImage" src="" alt="" loading="eager" decoding="async" fetchpriority="high">
+    </figure>
+
     <!-- ARTICLE BODY -->
     <article class="article-body" id="articleBody">
         <p style="color: var(--text-light);">กำลังโหลดเนื้อหา...</p>
@@ -295,9 +299,29 @@
             document.head.appendChild(schema);
         }
 
+        function applyArticleCover(meta, title) {
+            const cover = document.getElementById('articleCover');
+            const coverImage = document.getElementById('articleCoverImage');
+
+            if (!meta.image) {
+                cover.hidden = true;
+                coverImage.removeAttribute('src');
+                coverImage.alt = '';
+                return;
+            }
+
+            coverImage.src = new URL(meta.image, window.location.href).href;
+            coverImage.alt = `ภาพปกบทความ ${title}`;
+            coverImage.onerror = () => {
+                cover.hidden = true;
+            };
+            cover.hidden = false;
+        }
+
         // Parse frontmatter from markdown
         function parseFrontmatter(md) {
-            const match = md.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+            const normalized = md.replace(/\r\n/g, '\n');
+            const match = normalized.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
             if (!match) return { meta: {}, body: md };
 
             const meta = {};
@@ -337,6 +361,7 @@
 
                 // Update page
                 applyArticleMetadata(meta, slug);
+                applyArticleCover(meta, meta.title || slug);
                 document.getElementById('articleTitle').textContent = meta.title || slug;
                 document.getElementById('breadcrumbTitle').textContent = meta.title || slug;
                 document.getElementById('articleDate').textContent = meta.date ? formatDate(meta.date) : '';
