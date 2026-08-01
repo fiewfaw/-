@@ -45,6 +45,13 @@ assert.doesNotMatch(html, /คำสำคัญสำหรับครอบ�
 assert.match(html, /data-c="frailty"/, 'offers frailty as a related condition chip');
 assert.match(html, /id="conditionArticleLink"/, 'uses one optional article row in the shared condition detail');
 assert.match(html, /\.condition-article-link\[hidden\]\{display:none!important\}/, 'fully hides the optional article row for unrelated conditions');
+assert.match(html, /stroke:[\s\S]*?slug=stroke-ep1/, 'links the stroke condition to the full stroke article');
+assert.match(
+  html,
+  /osteoporosis:[\s\S]*?slug=osteoporosis-falls-safe-exercise/,
+  'links the osteoporosis condition to its fall and safe-exercise article',
+);
+assert.match(html, /articleUrl/, 'supports direct condition article links outside the frailty registry');
 for (const key of ['definition', 'assessment', 'recovery', 'care']) {
   assert.match(html, new RegExp(`data-article-key="${key}"`), `keeps the ${key} frailty article in the condition detail`);
 }
