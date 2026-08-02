@@ -1,0 +1,1030 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>บ้านกายภาพ Care Navigator - Team 2/3 Mockup</title>
+  <style>
+    :root {
+      --blue: #0077b6;
+      --blue-dark: #005a8c;
+      --green: #2a9d8f;
+      --green-dark: #1e7a6e;
+      --green-soft: #e6f5f2;
+      --ink: #172334;
+      --muted: #637282;
+      --line: #d7e8ef;
+      --soft: #f4fafc;
+      --paper: #ffffff;
+      --warn: #b45309;
+      --warn-soft: #fff7ed;
+      --danger: #b91c1c;
+      --danger-soft: #fef2f2;
+      --shadow: 0 24px 70px rgba(0, 90, 140, .16);
+      font-family: Inter, "Noto Sans Thai", "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 20% 10%, rgba(42, 157, 143, .13), transparent 30%),
+        radial-gradient(circle at 82% 0%, rgba(0, 119, 182, .15), transparent 28%),
+        linear-gradient(180deg, #f9fcfd 0%, #eaf6fa 100%);
+    }
+
+    main {
+      min-height: 100vh;
+      padding: 28px 18px 40px;
+    }
+
+    .review-header {
+      max-width: 1120px;
+      margin: 0 auto 18px;
+      display: grid;
+      gap: 6px;
+    }
+
+    .review-header span {
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+    }
+
+    .review-header h1 {
+      margin: 0;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+
+    .review-header p {
+      max-width: 720px;
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    .team-system {
+      margin-top: 12px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .team-token {
+      min-height: 76px;
+      border-radius: 18px;
+      padding: 11px;
+      display: grid;
+      align-content: start;
+      gap: 4px;
+      background: #fff;
+      border: 1px solid var(--line);
+      box-shadow: 0 12px 30px rgba(0, 90, 140, .06);
+    }
+
+    .team-token b {
+      color: var(--token);
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .team-token strong {
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    .team-token small {
+      color: var(--muted);
+      font-size: 11.5px;
+      line-height: 1.45;
+    }
+
+    .screen-grid {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(280px, 1fr));
+      gap: 18px;
+      align-items: start;
+    }
+
+    .phone {
+      border-radius: 34px;
+      padding: 12px;
+      background: rgba(255, 255, 255, .62);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(0, 119, 182, .08);
+    }
+
+    .screen {
+      position: relative;
+      min-height: 760px;
+      border-radius: 26px;
+      overflow: hidden;
+      display: grid;
+      align-content: start;
+      gap: 16px;
+      padding: 20px 18px 22px;
+      background:
+        linear-gradient(180deg, rgba(232, 244, 248, .8), rgba(255, 255, 255, .96) 28%),
+        var(--paper);
+      border: 1px solid rgba(0, 119, 182, .12);
+    }
+
+    .screen > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .screen::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0) 0 42%, var(--team-wash, rgba(0, 119, 182, .08)) 42% 58%, rgba(255,255,255,0) 58%),
+        repeating-linear-gradient(90deg, transparent 0 34px, rgba(0, 119, 182, .035) 34px 35px);
+      pointer-events: none;
+    }
+
+    .team-condition {
+      --team: #2a9d8f;
+      --team-dark: #1e7a6e;
+      --team-soft: #e6f5f2;
+      --team-wash: rgba(42, 157, 143, .1);
+      background:
+        linear-gradient(180deg, rgba(230, 245, 242, .95), rgba(255, 255, 255, .96) 30%),
+        var(--paper);
+      border-color: rgba(42, 157, 143, .22);
+    }
+
+    .team-safety {
+      --team: #e76f51;
+      --team-dark: #9f3b20;
+      --team-soft: #fff3ea;
+      --team-wash: rgba(231, 111, 81, .1);
+      background:
+        linear-gradient(180deg, rgba(255, 243, 234, .96), rgba(255, 255, 255, .96) 30%),
+        var(--paper);
+      border-color: rgba(231, 111, 81, .22);
+    }
+
+    .team-functional {
+      --team: #0077b6;
+      --team-dark: #005a8c;
+      --team-soft: #e8f4f8;
+      --team-wash: rgba(0, 119, 182, .1);
+      background:
+        linear-gradient(180deg, rgba(232, 244, 248, .96), rgba(255, 255, 255, .96) 30%),
+        var(--paper);
+      border-color: rgba(0, 119, 182, .2);
+    }
+
+    .team-ribbon {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 10px;
+      align-items: center;
+      border-radius: 18px;
+      padding: 10px 12px;
+      background: color-mix(in srgb, var(--team-soft) 80%, #fff);
+      border: 1px solid color-mix(in srgb, var(--team) 24%, #fff);
+    }
+
+    .team-number {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: var(--team);
+      color: #fff;
+      font-weight: 900;
+    }
+
+    .team-ribbon strong {
+      display: block;
+      color: var(--team-dark);
+      font-size: 14px;
+      line-height: 1.3;
+    }
+
+    .team-ribbon small {
+      color: var(--muted);
+      font-size: 11.5px;
+      line-height: 1.4;
+    }
+
+    .brand {
+      display: grid;
+      grid-template-columns: 46px 1fr;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .brand-mark {
+      width: 46px;
+      height: 46px;
+      border-radius: 15px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--team, var(--blue)), var(--green));
+      color: #fff;
+      font-weight: 900;
+    }
+
+    .brand strong {
+      display: block;
+      font-size: 14px;
+      line-height: 1.25;
+    }
+
+    .brand small {
+      display: block;
+      color: var(--team, var(--blue));
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .08em;
+    }
+
+    .stepper {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 7px;
+    }
+
+    .step {
+      height: 7px;
+      border-radius: 999px;
+      background: #d9e9ef;
+    }
+
+    .step.is-done {
+      background: var(--green);
+    }
+
+    .step.is-active {
+      background: var(--team, var(--blue));
+    }
+
+    .screen-title {
+      display: grid;
+      gap: 6px;
+    }
+
+    .eyebrow {
+      margin: 0;
+      color: var(--team, var(--blue));
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    h2,
+    h3,
+    h4,
+    p {
+      margin: 0;
+    }
+
+    h2 {
+      font-size: 24px;
+      line-height: 1.22;
+      letter-spacing: 0;
+    }
+
+    .screen-title p,
+    .section-copy,
+    .helper,
+    .choice-copy {
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 13px;
+    }
+
+    .helper {
+      border-radius: 16px;
+      padding: 11px 12px;
+      background: color-mix(in srgb, var(--team-soft, var(--soft)) 60%, #fff);
+      border: 1px solid color-mix(in srgb, var(--team, var(--blue)) 18%, #fff);
+    }
+
+    .condition-group {
+      display: grid;
+      gap: 9px;
+    }
+
+    .group-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      color: var(--team-dark, var(--green-dark));
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .condition-card,
+    .question-card,
+    .flag-card,
+    .module-card {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, .92);
+      box-shadow: 0 12px 30px rgba(0, 90, 140, .06);
+    }
+
+    .condition-card {
+      min-height: 74px;
+      border: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 60px 1fr 24px;
+      gap: 12px;
+      align-items: center;
+      padding: 10px;
+      color: inherit;
+      text-align: left;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .condition-card.is-selected {
+      border-color: color-mix(in srgb, var(--team, var(--green)) 50%, #fff);
+      background: linear-gradient(180deg, #fff, color-mix(in srgb, var(--team-soft, #f4fbfa) 70%, #fff));
+      box-shadow: 0 16px 34px color-mix(in srgb, var(--team, var(--green)) 14%, transparent);
+    }
+
+    .condition-card.is-disabled {
+      opacity: .46;
+      cursor: not-allowed;
+    }
+
+    .condition-img {
+      width: 60px;
+      height: 60px;
+      border-radius: 14px;
+      background: var(--soft);
+      background-size: cover;
+      background-position: center;
+    }
+
+    .condition-main {
+      display: grid;
+      gap: 3px;
+    }
+
+    .condition-main strong {
+      font-size: 14px;
+      line-height: 1.35;
+    }
+
+    .condition-main small {
+      color: var(--muted);
+      line-height: 1.45;
+      font-size: 12px;
+    }
+
+    .check {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 119, 182, .28);
+      display: grid;
+      place-items: center;
+      color: transparent;
+      background: #fff;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .condition-card.is-selected .check {
+      color: #fff;
+      border-color: var(--team, var(--green));
+      background: var(--team, var(--green));
+    }
+
+    .badge {
+      width: fit-content;
+      border-radius: 999px;
+      padding: 3px 8px;
+      color: var(--warn);
+      background: var(--warn-soft);
+      font-size: 10px;
+      font-weight: 900;
+    }
+
+    .sticky-next {
+      position: sticky;
+      bottom: 0;
+      z-index: 2;
+      margin: 4px -8px -8px;
+      padding: 10px 8px 8px;
+      background: linear-gradient(180deg, rgba(255,255,255,0), #fff 38%);
+      display: grid;
+      gap: 8px;
+    }
+
+    .primary-btn,
+    .secondary-btn,
+    .danger-btn {
+      min-height: 48px;
+      border-radius: 15px;
+      border: 0;
+      display: grid;
+      place-items: center;
+      padding: 0 14px;
+      font: inherit;
+      font-weight: 900;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .primary-btn {
+      background: linear-gradient(135deg, var(--team, var(--blue)), var(--green));
+      color: #fff;
+      box-shadow: 0 14px 30px color-mix(in srgb, var(--team, var(--blue)) 22%, transparent);
+    }
+
+    .primary-btn:disabled {
+      cursor: not-allowed;
+      background: #d8e2e8;
+      color: #6b7c88;
+      box-shadow: none;
+    }
+
+    .secondary-btn {
+      border: 1px solid rgba(0, 119, 182, .18);
+      background: #fff;
+      color: var(--blue);
+    }
+
+    .danger-btn {
+      background: var(--danger);
+      color: #fff;
+    }
+
+    .flag-list,
+    .question-list,
+    .module-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .flag-card {
+      display: grid;
+      grid-template-columns: 38px 1fr;
+      gap: 10px;
+      align-items: start;
+      padding: 12px;
+    }
+
+    .flag-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 13px;
+      display: grid;
+      place-items: center;
+      color: var(--danger);
+      background: var(--danger-soft);
+      font-weight: 900;
+    }
+
+    .flag-card strong {
+      display: block;
+      margin-bottom: 3px;
+      font-size: 13.5px;
+      line-height: 1.35;
+    }
+
+    .flag-card span {
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.5;
+    }
+
+    .flag-actions {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+
+    .stop-panel {
+      display: none;
+      border: 1px solid rgba(185, 28, 28, .16);
+      border-radius: 18px;
+      padding: 14px;
+      background: var(--danger-soft);
+      color: var(--danger);
+    }
+
+    .stop-panel.is-open {
+      display: grid;
+      gap: 8px;
+    }
+
+    .stop-panel p {
+      color: #7f1d1d;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .question-card {
+      display: grid;
+      gap: 11px;
+      padding: 13px;
+    }
+
+    .question-head {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 9px;
+      align-items: start;
+    }
+
+    .q-number {
+      width: 28px;
+      height: 28px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      background: var(--team-soft, var(--green-soft));
+      color: var(--team-dark, var(--green-dark));
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .question-head strong {
+      font-size: 14px;
+      line-height: 1.35;
+    }
+
+    .option-row {
+      display: grid;
+      gap: 7px;
+    }
+
+    .pill-option {
+      min-height: 37px;
+      border: 1px solid rgba(0, 119, 182, .16);
+      border-radius: 12px;
+      padding: 8px 10px;
+      background: var(--soft);
+      color: var(--ink);
+      font: inherit;
+      font-size: 12.5px;
+      line-height: 1.35;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .pill-option.is-selected {
+      border-color: color-mix(in srgb, var(--team, var(--green)) 48%, #fff);
+      background: var(--team-soft, var(--green-soft));
+      color: var(--team-dark, var(--green-dark));
+      font-weight: 900;
+    }
+
+    .selected-summary {
+      border: 1px solid color-mix(in srgb, var(--team, var(--green)) 22%, #fff);
+      border-radius: 18px;
+      padding: 13px;
+      background: linear-gradient(180deg, #fff, color-mix(in srgb, var(--team-soft, #f4fbfa) 74%, #fff));
+      display: grid;
+      gap: 10px;
+    }
+
+    .summary-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.45;
+    }
+
+    .score-chip {
+      border-radius: 999px;
+      padding: 4px 8px;
+      background: var(--team-soft, var(--green-soft));
+      color: var(--team-dark, var(--green-dark));
+      font-weight: 900;
+    }
+
+    .module-card {
+      padding: 13px;
+      display: grid;
+      gap: 10px;
+      background: #fff;
+    }
+
+    .module-card h3 {
+      font-size: 16px;
+      line-height: 1.35;
+    }
+
+    .mini-list {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.7;
+    }
+
+    .unlock-preview {
+      border-radius: 18px;
+      padding: 14px;
+      background: linear-gradient(135deg, color-mix(in srgb, var(--team, var(--blue)) 10%, #fff), rgba(42, 157, 143, .14));
+      border: 1px solid color-mix(in srgb, var(--team, var(--green)) 22%, #fff);
+      display: grid;
+      gap: 8px;
+    }
+
+    .unlock-preview h3 {
+      font-size: 16px;
+      line-height: 1.35;
+    }
+
+    @media (max-width: 980px) {
+      .team-system {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .screen-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .phone {
+        max-width: 430px;
+        margin: 0 auto;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .team-system {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header class="review-header">
+      <span>Team 2/3 Mockup</span>
+      <h1>Condition Select + Functional Screening</h1>
+      <p>โครงนี้ต่อจากข้อมูล Deep Research รอบสอง โดยเน้นให้คนไข้หรือญาติเลือกภาวะได้ง่าย แล้วเข้าสู่แบบคัดกรองสั้น ๆ ที่ส่งข้อมูลไปสร้างหน้า result ได้</p>
+      <div class="team-system" aria-label="design system by team">
+        <div class="team-token" style="--token:#0077b6"><b>Team 1</b><strong>ตั้งเป้าหมาย</strong><small>โทน clinic calm เริ่มต้นง่าย ไม่กดดัน</small></div>
+        <div class="team-token" style="--token:#2a9d8f"><b>Team 2</b><strong>เลือกเส้นทาง</strong><small>โทน explorer เลือกปัญหาที่ใกล้ตัว</small></div>
+        <div class="team-token" style="--token:#e76f51"><b>Team 3</b><strong>คัดกรอง</strong><small>safety checkpoint + assessment lab</small></div>
+        <div class="team-token" style="--token:#005a8c"><b>Team 4</b><strong>ผลลัพธ์</strong><small>clinical map + แผนเฉพาะตัว</small></div>
+      </div>
+    </header>
+
+    <section class="screen-grid">
+      <article class="phone">
+        <div class="screen team-condition">
+          <div class="brand">
+            <div class="brand-mark">บก</div>
+            <div>
+              <strong>บ้านกายภาพ ชลบุรี</strong>
+              <small>CARE NAVIGATOR</small>
+            </div>
+          </div>
+
+          <div class="stepper" aria-label="progress">
+            <span class="step is-done"></span>
+            <span class="step is-active"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+          </div>
+
+          <div class="team-ribbon">
+            <span class="team-number">2</span>
+            <div><strong>เลือกเส้นทางปัญหา</strong><small>เหมือนเลือกแผนที่ก่อนเริ่มคัดกรอง</small></div>
+          </div>
+
+          <section class="screen-title">
+            <p class="eyebrow">Step 2 / เลือกภาวะ</p>
+            <h2>ปัญหาตอนนี้ใกล้เคียงข้อไหนบ้าง</h2>
+            <p>เลือกได้ 1-3 ข้อ เพื่อให้คำถามถัดไปสั้นและตรงกับบ้านนี้มากขึ้น</p>
+          </section>
+
+          <p class="helper" id="selectionHelper">เลือกได้สูงสุด 3 ข้อ ถ้าไม่แน่ใจ เลือก “ไม่แน่ใจ” ได้ ระบบจะช่วยคัดกรองให้ก่อน</p>
+
+          <section class="condition-group">
+            <div class="group-title">หลังกลับจากโรงพยาบาล <span id="selectedCount">0/3</span></div>
+            <button class="condition-card" data-condition="stroke">
+              <span class="condition-img" style="background-image:url('/media/goal-recovery-movement.jpg')"></span>
+              <span class="condition-main"><strong>หลังสโตรก</strong><small>อ่อนแรง เดินไม่มั่นคง ใช้มือหรือสื่อสารยังจำกัด</small></span>
+              <span class="check">✓</span>
+            </button>
+            <button class="condition-card" data-condition="post-hospital">
+              <span class="condition-img" style="background-image:url('/media/goal-active-recovery.jpg')"></span>
+              <span class="condition-main"><strong>อ่อนแรงหลังป่วย/นอนโรงพยาบาล</strong><small>ก่อนป่วยทำได้มากกว่า ตอนนี้แรงตกและเหนื่อยง่าย</small></span>
+              <span class="check">✓</span>
+            </button>
+            <button class="condition-card" data-condition="bedbound">
+              <span class="condition-img" style="background-image:url('/media/goal-fall-prevention.jpg')"></span>
+              <span class="condition-main"><strong>ขยับตัวลดลงมากหรือเริ่มติดเตียง</strong><small>นอนหรือนั่งมากขึ้น ย้ายตัวและลุกนั่งลำบาก</small></span>
+              <span class="check">✓</span>
+            </button>
+          </section>
+
+          <section class="condition-group">
+            <div class="group-title">ความปลอดภัยและการเดิน</div>
+            <button class="condition-card" data-condition="frailty">
+              <span class="condition-img" style="background-image:url('/media/goal-fall-prevention.jpg')"></span>
+              <span class="condition-main"><strong>ผู้สูงอายุเปราะบาง</strong><small>เหนื่อยง่าย ฟื้นช้า ลุกเดินไม่มั่นใจ</small></span>
+              <span class="check">✓</span>
+            </button>
+            <button class="condition-card" data-condition="falls">
+              <span class="condition-img" style="background-image:url('/media/goal-fall-prevention.jpg')"></span>
+              <span class="condition-main"><strong>เคยล้มหรือเสี่ยงล้ม</strong><small>เดินในบ้านไม่มั่นใจ เกือบล้ม หรือจับของตลอด</small></span>
+              <span class="check">✓</span>
+            </button>
+            <button class="condition-card" data-condition="bone">
+              <span class="condition-img" style="background-image:url('/media/goal-fall-prevention.jpg')"></span>
+              <span class="condition-main"><span class="badge">Safety</span><strong>กระดูกเปราะ ต้องระวังล้ม</strong><small>เน้นความปลอดภัย ท่าทาง และการจัดบ้าน</small></span>
+              <span class="check">✓</span>
+            </button>
+          </section>
+
+          <section class="condition-group">
+            <div class="group-title">แรงและอายุสุขภาพ</div>
+            <button class="condition-card" data-condition="sarcopenia">
+              <span class="condition-img" style="background-image:url('/media/goal-active-recovery.jpg')"></span>
+              <span class="condition-main"><strong>แรงตก กล้ามเนื้อน้อย น้ำหนักลด</strong><small>ลุกเก้าอี้ยาก กินได้น้อย หรือเดินช้าลง</small></span>
+              <span class="check">✓</span>
+            </button>
+            <button class="condition-card" data-condition="unsure">
+              <span class="condition-img" style="background:linear-gradient(135deg,#e8f4f8,#e6f5f2)"></span>
+              <span class="condition-main"><strong>ไม่แน่ใจ ให้ช่วยคัดกรอง</strong><small>เริ่มจากคำถามกลาง แล้วระบบช่วยสรุปปัญหาหลัก</small></span>
+              <span class="check">✓</span>
+            </button>
+          </section>
+
+          <div class="sticky-next">
+            <button class="primary-btn" id="conditionNext" disabled>เลือกภาวะเพื่อไปต่อ</button>
+            <p class="helper" id="suggestText" hidden>เลือก “ไม่แน่ใจ” แล้ว ระบบจะถามแบบกลางก่อน จากนั้นค่อยสรุปปัญหาที่ใกล้เคียงให้</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="phone">
+        <div class="screen team-safety">
+          <div class="brand">
+            <div class="brand-mark">บก</div>
+            <div>
+              <strong>บ้านกายภาพ ชลบุรี</strong>
+              <small>CARE NAVIGATOR</small>
+            </div>
+          </div>
+
+          <div class="stepper" aria-label="progress">
+            <span class="step is-done"></span>
+            <span class="step is-done"></span>
+            <span class="step is-active"></span>
+            <span class="step"></span>
+          </div>
+
+          <div class="team-ribbon">
+            <span class="team-number">3A</span>
+            <div><strong>ด่านความปลอดภัย</strong><small>หยุดก่อนถ้ามีสัญญาณที่ควรให้แพทย์ดู</small></div>
+          </div>
+
+          <section class="screen-title">
+            <p class="eyebrow">Step 3A / Safety first</p>
+            <h2>เช็กอาการที่ควรพบแพทย์ก่อน</h2>
+            <p>ถ้ามีข้อใดข้อหนึ่งด้านล่าง แนะนำให้หยุดแบบประเมินก่อน และไปพบแพทย์หรือฉุกเฉินตามความเหมาะสม</p>
+          </section>
+
+          <div class="flag-list">
+            <div class="flag-card">
+              <span class="flag-icon">!</span>
+              <div><strong>อ่อนแรงใหม่หรือพูดไม่ชัดแบบเพิ่งเกิด</strong><span>หน้าเบี้ยว มองเห็นเปลี่ยน เดินเซ หรือปวดหัวรุนแรงฉับพลัน</span></div>
+            </div>
+            <div class="flag-card">
+              <span class="flag-icon">!</span>
+              <div><strong>เหนื่อยมาก เจ็บหน้าอก หรือพูดไม่เป็นประโยค</strong><span>หอบตอนพัก ปากเขียว หรือแน่นหน้าอกผิดปกติ</span></div>
+            </div>
+            <div class="flag-card">
+              <span class="flag-icon">!</span>
+              <div><strong>ไข้ แผลแดงบวมร้อน หรือขาบวมข้างเดียว</strong><span>รวมถึงซึมลง สับสนใหม่ เป็นลม หรืออาการทรุดเร็ว</span></div>
+            </div>
+          </div>
+
+          <div class="flag-actions">
+            <button class="secondary-btn" id="noFlagButton">ไม่มีอาการเหล่านี้ ไปต่อได้</button>
+            <button class="danger-btn" id="hasFlagButton">มีข้อใดข้อหนึ่ง</button>
+          </div>
+
+          <section class="stop-panel" id="stopPanel">
+            <h3>ตอนนี้ควรให้แพทย์ประเมินก่อน</h3>
+            <p>แอพจะหยุดคำแนะนำ self-care ไว้ก่อน เพราะอาการบางอย่างต้องแยกภาวะฉุกเฉินหรือภาวะแทรกซ้อนก่อนเริ่มฝึก</p>
+            <button class="danger-btn">ดูคำแนะนำเร่งด่วน</button>
+            <button class="secondary-btn">ให้ทีมโทรกลับหลังพบแพทย์แล้ว</button>
+          </section>
+
+          <section class="selected-summary" id="safetyClearPanel">
+            <div class="summary-row"><span>สถานะความปลอดภัย</span><span class="score-chip">ไปต่อได้</span></div>
+            <p class="section-copy">ถัดไปจะถามเฉพาะความสามารถที่ทำได้จริงในช่วงนี้ เช่น ลุก เดิน ล้ม เหนื่อย และความปลอดภัยในบ้าน</p>
+          </section>
+        </div>
+      </article>
+
+      <article class="phone">
+        <div class="screen team-functional">
+          <div class="brand">
+            <div class="brand-mark">บก</div>
+            <div>
+              <strong>บ้านกายภาพ ชลบุรี</strong>
+              <small>CARE NAVIGATOR</small>
+            </div>
+          </div>
+
+          <div class="stepper" aria-label="progress">
+            <span class="step is-done"></span>
+            <span class="step is-done"></span>
+            <span class="step is-active"></span>
+            <span class="step"></span>
+          </div>
+
+          <div class="team-ribbon">
+            <span class="team-number">3B</span>
+            <div><strong>วัดความสามารถจริง</strong><small>ตอบจากสิ่งที่ทำได้ในบ้านตอนนี้</small></div>
+          </div>
+
+          <section class="screen-title">
+            <p class="eyebrow">Step 3B / Functional screening</p>
+            <h2>ตอนนี้ทำอะไรได้แค่ไหนอย่างปลอดภัย</h2>
+            <p>ตอบจากสิ่งที่ทำได้จริงในช่วงนี้ ถ้าไม่แน่ใจให้เลือกข้อที่ปลอดภัยกว่า</p>
+          </section>
+
+          <div class="question-list">
+            <section class="question-card">
+              <div class="question-head"><span class="q-number">1</span><strong>ลุกจากเตียงหรือเก้าอี้ได้อย่างไร</strong></div>
+              <div class="option-row" data-question="transfer">
+                <button class="pill-option" data-score="0">ได้เอง</button>
+                <button class="pill-option" data-score="1">ต้องใช้มือดันมาก</button>
+                <button class="pill-option" data-score="2">ต้องมีคนเฝ้าใกล้ ๆ</button>
+                <button class="pill-option" data-score="3">ต้องมีคนช่วยยกหรือพยุง</button>
+              </div>
+            </section>
+
+            <section class="question-card">
+              <div class="question-head"><span class="q-number">2</span><strong>เดินในบ้านได้แค่ไหน</strong></div>
+              <div class="option-row" data-question="walking">
+                <button class="pill-option" data-score="0">เดินได้มั่นคง</button>
+                <button class="pill-option" data-score="1">ต้องจับของ</button>
+                <button class="pill-option" data-score="2">ใช้ไม้เท้าหรือ walker</button>
+                <button class="pill-option" data-score="3">ต้องมีคนพยุงหรือแทบไม่ได้เดิน</button>
+              </div>
+            </section>
+
+            <section class="question-card">
+              <div class="question-head"><span class="q-number">3</span><strong>เคยล้มหรือเกือบล้มในช่วงหลังไหม</strong></div>
+              <div class="option-row" data-question="falls">
+                <button class="pill-option" data-score="0">ไม่เคย</button>
+                <button class="pill-option" data-score="1">เกือบล้มบ่อย</button>
+                <button class="pill-option" data-score="2">ล้ม 1 ครั้ง</button>
+                <button class="pill-option" data-score="3">ล้ม 2 ครั้งขึ้นไป</button>
+              </div>
+            </section>
+
+            <section class="question-card">
+              <div class="question-head"><span class="q-number">4</span><strong>ทำกิจกรรมง่าย ๆ แล้วเหนื่อยแค่ไหน</strong></div>
+              <div class="option-row" data-question="endurance">
+                <button class="pill-option" data-score="0">ยังไหว</button>
+                <button class="pill-option" data-score="1">ต้องพักบ้าง</button>
+                <button class="pill-option" data-score="2">ทำต่อเนื่องไม่ค่อยได้</button>
+                <button class="pill-option" data-score="3">เหนื่อยแม้กิจกรรมเบา</button>
+              </div>
+            </section>
+          </div>
+
+          <section class="module-card">
+            <h3>ถามเพิ่มจากสิ่งที่เลือก</h3>
+            <p class="section-copy">ตัวอย่างเมื่อเลือก “หลังสโตรก” + “เคยล้มหรือเสี่ยงล้ม”</p>
+            <ul class="mini-list">
+              <li>มือหรือขาข้างที่อ่อนแรงใช้งานได้แค่ไหน</li>
+              <li>เวลายืนหรือเดิน มีเท้าลาก เข่าทรุด หรือเสียการทรงตัวไหม</li>
+              <li>ตอนกลางคืนเข้าห้องน้ำต้องมีคนช่วยไหม</li>
+            </ul>
+          </section>
+
+          <section class="selected-summary" id="logicPreview">
+            <div class="summary-row"><span>Problem blocks ที่น่าจะขึ้น</span><span class="score-chip" id="blockCount">0</span></div>
+            <p class="section-copy" id="blockText">เลือกคำตอบด้านบนเพื่อดูว่า result จะโฟกัสปัญหาไหนก่อน</p>
+          </section>
+
+          <section class="unlock-preview">
+            <h3>ถ้าสะดวก ตอบเพิ่มเพื่อปลดล็อกแผนที่เฉพาะขึ้น</h3>
+            <p class="section-copy">คำถามบ้านไทย เช่น ห้องน้ำเปียก เตียงต่ำ ส้วมนั่งยอง ทางเดินแคบ บันได และผู้ดูแล จะถูกย้ายไปใช้ปรับแผนเฉพาะตัวในหน้า result</p>
+            <button class="primary-btn">ไปดูผลสรุป</button>
+          </section>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    const selectedConditions = new Set();
+    const maxConditions = 3;
+    const conditionCards = document.querySelectorAll('.condition-card');
+    const selectedCount = document.getElementById('selectedCount');
+    const conditionNext = document.getElementById('conditionNext');
+    const suggestText = document.getElementById('suggestText');
+
+    function updateConditionState() {
+      const hasUnsure = selectedConditions.has('unsure');
+      conditionCards.forEach((card) => {
+        const key = card.dataset.condition;
+        card.classList.toggle('is-selected', selectedConditions.has(key));
+        card.classList.toggle('is-disabled', !selectedConditions.has(key) && selectedConditions.size >= maxConditions && !hasUnsure);
+      });
+      selectedCount.textContent = `${selectedConditions.size}/${maxConditions}`;
+      conditionNext.disabled = selectedConditions.size === 0;
+      conditionNext.textContent = selectedConditions.size === 0 ? 'เลือกภาวะเพื่อไปต่อ' : 'ไปเช็กอาการอันตราย';
+      suggestText.hidden = !hasUnsure;
+    }
+
+    conditionCards.forEach((card) => {
+      card.addEventListener('click', () => {
+        const key = card.dataset.condition;
+        if (key === 'unsure') {
+          selectedConditions.clear();
+          selectedConditions.add('unsure');
+          updateConditionState();
+          return;
+        }
+        if (selectedConditions.has('unsure')) selectedConditions.clear();
+        if (selectedConditions.has(key)) {
+          selectedConditions.delete(key);
+        } else if (selectedConditions.size < maxConditions) {
+          selectedConditions.add(key);
+        }
+        updateConditionState();
+      });
+    });
+
+    document.getElementById('hasFlagButton').addEventListener('click', () => {
+      document.getElementById('stopPanel').classList.add('is-open');
+      document.getElementById('safetyClearPanel').style.display = 'none';
+    });
+
+    document.getElementById('noFlagButton').addEventListener('click', () => {
+      document.getElementById('stopPanel').classList.remove('is-open');
+      document.getElementById('safetyClearPanel').style.display = 'grid';
+    });
+
+    const problemScores = {
+      transfer: 0,
+      walking: 0,
+      falls: 0,
+      endurance: 0,
+    };
+
+    const blockMap = {
+      transfer: 'ลุกนั่งและย้ายตัว',
+      walking: 'เดินไม่มั่นคง',
+      falls: 'เสี่ยงล้ม',
+      endurance: 'แรงและความอึด',
+    };
+
+    function updateLogicPreview() {
+      const active = Object.entries(problemScores)
+        .filter(([, score]) => score > 0)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 3)
+        .map(([key, score]) => `${blockMap[key]} +${score}`);
+      document.getElementById('blockCount').textContent = active.length;
+      document.getElementById('blockText').textContent = active.length
+        ? active.join(' / ')
+        : 'เลือกคำตอบด้านบนเพื่อดูว่า result จะโฟกัสปัญหาไหนก่อน';
+    }
+
+    document.querySelectorAll('.option-row').forEach((row) => {
+      row.addEventListener('click', (event) => {
+        const button = event.target.closest('.pill-option');
+        if (!button) return;
+        row.querySelectorAll('.pill-option').forEach((option) => option.classList.remove('is-selected'));
+        button.classList.add('is-selected');
+        problemScores[row.dataset.question] = Number(button.dataset.score || 0);
+        updateLogicPreview();
+      });
+    });
+
+    updateConditionState();
+    updateLogicPreview();
+  </script>
+</body>
+</html>

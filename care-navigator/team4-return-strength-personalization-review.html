@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ตรวจแผน 02 · คืนแรงหลังกลับบ้าน</title>
+  <style>
+    :root{--ink:#193044;--muted:#607483;--line:#cfdee3;--teal:#167f83;--blue:#2b72a1;--gold:#9b742c;--red:#a64f57;--paper:#fff;--bg:#eef6f7}
+    *{box-sizing:border-box}body{margin:0;color:var(--ink);font-family:"Noto Sans Thai","Leelawadee UI",Tahoma,sans-serif;background:var(--bg)}
+    main{width:min(1180px,100%);margin:auto;padding:28px 18px 70px}.eyebrow{color:var(--teal);font-size:11px;font-weight:900}.hero{padding-bottom:18px;border-bottom:1px solid var(--line)}h1{margin:7px 0 5px;font-size:clamp(24px,4vw,38px);letter-spacing:0}.hero p{max-width:850px;margin:0;color:var(--muted);font-size:13px;line-height:1.7}.legend{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap}.legend span{padding:6px 8px;border:1px solid var(--line);border-radius:6px;background:#fff;font-size:10px}
+    .cases{display:grid;gap:18px;margin-top:20px}.review-case{border:1px solid var(--line);border-top:5px solid var(--teal);border-radius:8px;background:var(--paper);overflow:hidden}.review-case[data-tone="rebuilding"]{border-top-color:var(--gold)}.review-case[data-tone="advancing"]{border-top-color:var(--blue)}.review-case[data-tone="route"]{border-top-color:var(--red)}
+    .case-head{padding:16px 17px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:14px;align-items:start}.case-no{color:var(--muted);font-size:10px;font-weight:900}.case-head h2{margin:3px 0 0;font-size:18px}.result-badge{padding:7px 9px;border-radius:6px;color:#fff;background:var(--teal);font-size:10px;font-weight:900;text-align:right}.review-case[data-tone="rebuilding"] .result-badge{background:var(--gold)}.review-case[data-tone="advancing"] .result-badge{background:var(--blue)}.review-case[data-tone="route"] .result-badge{background:var(--red)}
+    .case-body{padding:16px;display:grid;grid-template-columns:minmax(220px,.8fr) minmax(0,1.7fr);gap:15px}.input-panel,.output-panel{min-width:0}.panel-title{margin:0 0 8px;color:var(--muted);font-size:10px;font-weight:900;text-transform:uppercase}.input-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}.metric{padding:9px;border:1px solid #dce8eb;border-radius:6px;background:#f8fbfc}.metric span{display:block;color:var(--muted);font-size:9px}.metric strong{display:block;margin-top:3px;font-size:13px}.reason{margin-top:9px;padding:10px;border-left:3px solid var(--gold);background:#fff9ed;font-size:11px;line-height:1.6}.reason strong{display:block;margin-bottom:3px;color:#7d5b20}
+    table{width:100%;border-collapse:collapse;font-size:10px}th,td{padding:8px;border:1px solid var(--line);vertical-align:top;text-align:left;line-height:1.55}th{width:130px;color:#43606f;background:#f4f8f9}.schedule{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px}.day{padding:7px;border:1px solid #d9e7e9;border-radius:5px;background:#f6fbfb}.day strong{display:block;color:var(--teal);font-size:9px}.day span{display:block;margin-top:2px;font-size:9px;line-height:1.45}.empty{color:var(--muted)}
+    @media(max-width:760px){main{padding:18px 10px 50px}.case-head{display:block}.result-badge{display:inline-block;margin-top:9px;text-align:left}.case-body{grid-template-columns:1fr}.schedule{grid-template-columns:1fr 1fr}th{width:95px}}
+  </style>
+</head>
+<body>
+  <main>
+    <header class="hero">
+      <div class="eyebrow">TEAM 4 REVIEW · แผน 02</div>
+      <h1>ตารางตรวจระบบคืนแรงหลังกลับบ้าน</h1>
+      <p>หน้านี้ใช้ตัวคำนวณเดียวกับหน้าแอพ เพื่ออ่านความเชื่อมโยงจากข้อมูลเข้าไปยังระดับแผน FITT ตาราง 7 วัน Modifiers และงานที่นักกายภาพควรประเมิน ระยะเดิน 2 นาทีใช้ติดตามความก้าวหน้าเท่านั้น</p>
+      <div class="legend"><span>ข้อมูลเข้า</span><span>เหตุผล</span><span>FITT ลุกยืน</span><span>FITT เดินเป็นช่วง</span><span>ตาราง 7 วัน</span><span>นักกายภาพ</span></div>
+    </header>
+
+    <section class="cases" aria-label="กรณีตัวอย่างสำหรับตรวจ">
+      <article class="review-case" id="case-cautious" data-tone="cautious"><header class="case-head"><div><span class="case-no">เคส 01</span><h2>เหนื่อยมาก ฟื้นช้า และแรงขายังน้อย</h2></div><span class="result-badge"></span></header><div class="case-body"></div></article>
+      <article class="review-case" id="case-rebuilding" data-tone="rebuilding"><header class="case-head"><div><span class="case-no">เคส 02</span><h2>เริ่มทำกิจกรรมได้ แต่ยังต้องแบ่งช่วง</h2></div><span class="result-badge"></span></header><div class="case-body"></div></article>
+      <article class="review-case" id="case-advancing" data-tone="advancing"><header class="case-head"><div><span class="case-no">เคส 03</span><h2>ตอบสนองดี พร้อมเพิ่มความทนทาน</h2></div><span class="result-badge"></span></header><div class="case-body"></div></article>
+      <article class="review-case" id="case-lowest" data-tone="cautious"><header class="case-head"><div><span class="case-no">เคส 04</span><h2>เดินตอบสนองดี แต่ผลลุกยืนเป็นคอขวด</h2></div><span class="result-badge"></span></header><div class="case-body"></div></article>
+      <article class="review-case" id="case-cardio" data-tone="cautious"><header class="case-head"><div><span class="case-no">เคส 05</span><h2>ตัวเลขดี แต่มีข้อจำกัดจากหัวใจหรือปอด</h2></div><span class="result-badge"></span></header><div class="case-body"></div></article>
+      <article class="review-case" id="case-route" data-tone="route"><header class="case-head"><div><span class="case-no">เคส 06</span><h2>ต้องมีคนออกแรงช่วย ไม่ควรสร้างแผนยืนเอง</h2></div><span class="result-badge"></span></header><div class="case-body"></div></article>
+    </section>
+  </main>
+  <script src="js/return-strength-personalization.js"></script>
+  <script>
+    const base={walkTestCompleted:true,walkDistanceMeters:120,postWalkExertion:3,recoveryMinutes:2,chairStandReps:10,assistance:'independent',redFlag:false,modifiers:[],painScore:0};
+    const cases=[
+      {id:'case-cautious',input:{...base,walkDistanceMeters:55,postWalkExertion:8,recoveryMinutes:8,chairStandReps:3},reasonTh:'มีอย่างน้อยหนึ่งค่าถึงระดับระมัดระวัง และระบบใช้ความสามารถที่ต่ำที่สุดกำหนดความปลอดภัย'},
+      {id:'case-rebuilding',input:{...base,walkDistanceMeters:90,postWalkExertion:5,recoveryMinutes:4,chairStandReps:7},reasonTh:'ทุกค่ากระจุกในช่วงกลาง จึงเพิ่มกิจกรรมทีละช่วงและมีวันพักคั่น'},
+      {id:'case-advancing',input:{...base},reasonTh:'เหนื่อยไม่เกิน 3/10 ฟื้นภายใน 2 นาที ลุกยืนอย่างน้อย 10 ครั้ง และไม่ต้องมีคนช่วย'},
+      {id:'case-lowest',input:{...base,walkDistanceMeters:150,postWalkExertion:2,recoveryMinutes:1,chairStandReps:4},reasonTh:'ผลเดินตอบสนองดี แต่จำนวนลุกยืนยังต่ำ ระบบจึงไม่ให้ผลเดินกลบคอขวดด้านแรงขา'},
+      {id:'case-cardio',input:{...base,modifiers:['stable_cardiopulmonary_limit']},reasonTh:'ข้อจำกัดหัวใจหรือปอดที่คงที่แต่มีอาการเมื่อออกแรง cap โปรแกรมไว้ที่ระดับระมัดระวัง'},
+      {id:'case-route',input:{...base,assistance:'physical_assist'},reasonTh:'ต้องมีคนออกแรงช่วยลุกหรือเดิน จึงส่งไปแผนย้ายตัวหรือการประเมิน ไม่สร้าง FITT ท่ายืนเอง'}
+    ];
+
+    function metric(label,value){const box=document.createElement('div');box.className='metric';const span=document.createElement('span');span.textContent=label;const strong=document.createElement('strong');strong.textContent=value;box.append(span,strong);return box}
+    function row(label,content){const tr=document.createElement('tr');const th=document.createElement('th');th.textContent=label;const td=document.createElement('td');if(content instanceof Node)td.appendChild(content);else td.textContent=content;tr.append(th,td);return tr}
+    function scheduleNode(days){const grid=document.createElement('div');grid.className='schedule';days.forEach(day=>{const box=document.createElement('div');box.className='day';const strong=document.createElement('strong');strong.textContent=day.dayTh;const span=document.createElement('span');span.textContent=day.activityTh;box.append(strong,span);grid.appendChild(box)});return grid}
+    function renderReviewCase(item){
+      const result=ReturnStrengthPersonalization.buildReturnStrengthPlan(item.input);
+      const root=document.getElementById(item.id);root.querySelector('.result-badge').textContent=result.levelLabelTh||result.routeMessageTh;
+      const body=root.querySelector('.case-body');const inputPanel=document.createElement('section');inputPanel.className='input-panel';const inputTitle=document.createElement('h3');inputTitle.className='panel-title';inputTitle.textContent='ข้อมูลเข้า';const inputGrid=document.createElement('div');inputGrid.className='input-grid';inputGrid.append(metric('ระยะเดิน 2 นาที',item.input.walkDistanceMeters+' เมตร'),metric('ความเหนื่อยหลังเดิน',item.input.postWalkExertion+'/10'),metric('เวลาฟื้น',item.input.recoveryMinutes+' นาที'),metric('ลุกยืน 30 วินาที',item.input.chairStandReps+' ครั้ง'));
+      const reason=document.createElement('div');reason.className='reason';const reasonTitle=document.createElement('strong');reasonTitle.textContent='เหตุผล';reason.append(reasonTitle,document.createTextNode(item.reasonTh));inputPanel.append(inputTitle,inputGrid,reason);
+      const output=document.createElement('section');output.className='output-panel';const outputTitle=document.createElement('h3');outputTitle.className='panel-title';outputTitle.textContent='ผลลัพธ์';const table=document.createElement('table');const tbody=document.createElement('tbody');
+      if(result.route==='personal_plan'){
+        tbody.append(row('ระดับแผน',result.levelLabelTh),row('FITT ลุกยืน',Object.values(result.sitToStand).filter(Boolean).join(' · ')),row('FITT เดินเป็นช่วง',Object.values(result.intervalWalking).filter(Boolean).join(' · ')),row('ตาราง 7 วัน',scheduleNode(result.schedule)),row('Modifiers',result.modifierNotesTh.join(' · ')||'ไม่มี modifier เพิ่ม'),row('นักกายภาพ',result.ptAssessmentTh.join(' · ')));
+      }else{
+        tbody.append(row('เส้นทาง',result.routeMessageTh),row('FITT ลุกยืน','ไม่สร้าง'),row('FITT เดินเป็นช่วง','ไม่สร้าง'),row('ตาราง 7 วัน','ไม่สร้าง'),row('Modifiers','ส่งต่อก่อน'),row('นักกายภาพ',result.ptAssessmentTh.join(' · ')));
+      }
+      table.appendChild(tbody);output.append(outputTitle,table);body.append(inputPanel,output);
+    }
+    cases.forEach(renderReviewCase);
+  </script>
+</body>
+</html>

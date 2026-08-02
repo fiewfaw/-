@@ -321,16 +321,21 @@
         }
 
         .app-coming-soon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             min-height: 46px;
             padding: 11px 28px;
-            border: 1px solid #BBC4CA;
+            border: 1px solid #0C8E98;
             border-radius: 8px;
-            color: #66717A;
-            background: #DCE1E4;
+            color: #FFFFFF;
+            background: #0C8E98;
             font-family: 'Mitr', sans-serif;
             font-size: 1rem;
             font-weight: 600;
-            cursor: not-allowed;
+            text-decoration: none;
+            cursor: pointer;
+            box-shadow: 0 8px 18px rgba(12, 142, 152, 0.22);
         }
 
         .app-preview-visual {
@@ -976,13 +981,13 @@
                         <li>สรุปปัญหาและแผนเริ่มต้นที่อ่านเข้าใจง่าย</li>
                         <li>ติดตามความก้าวหน้าเพื่อปรับแผนให้เหมาะขึ้น</li>
                     </ul>
-                    <button class="app-coming-soon" type="button" disabled aria-disabled="true">เร็ว ๆ นี้</button>
+                    <a class="app-coming-soon" href="care-navigator/">ทดลองใช้ Care Navigator</a>
                 </div>
                 <div class="app-preview-visual" aria-label="ภาพตัวอย่างแอปบ้านกายภาพที่กำลังพัฒนา">
                     <div class="app-device"><img src="รูปประกอบ/care-app-coming-soon-preview.png" alt="ตัวอย่างหน้าจอแอปบ้านกายภาพสำหรับเลือกเป้าหมายการดูแล"></div>
                 </div>
             </div>
-            <p class="app-preview-note">อยู่ระหว่างพัฒนาและตรวจทานเนื้อหา เพื่อให้ใช้งานง่ายและปลอดภัยก่อนเปิดให้ทดลอง</p>
+            <p class="app-preview-note">เวอร์ชัน Beta สำหรับทดลองคัดกรองและดูแผนเริ่มต้น เนื้อหาอาจได้รับการปรับปรุงต่อเนื่อง</p>
         </div>
     </section>
 

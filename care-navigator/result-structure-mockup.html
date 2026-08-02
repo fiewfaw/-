@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Result Page Structure Mockup</title>
+  <style>
+    :root {
+      --blue: #0077b6;
+      --blue-dark: #005a8c;
+      --green: #2a9d8f;
+      --green-soft: #e6f5f2;
+      --bg: #f7fafb;
+      --line: #dbe8ee;
+      --text: #1a2332;
+      --muted: #4a5568;
+      --soft: #eef8fb;
+      --warning: #f59e0b;
+      --danger: #dc2626;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 12% 0%, rgba(42, 157, 143, .14), transparent 28rem),
+        radial-gradient(circle at 90% 0%, rgba(0, 119, 182, .14), transparent 28rem),
+        linear-gradient(180deg, #fff 0%, var(--bg) 48%, #e8f4f8 100%);
+      color: var(--text);
+      font-family: "Sarabun", "Noto Sans Thai", "Leelawadee UI", "Segoe UI", sans-serif;
+    }
+
+    main {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 32px 18px 56px;
+    }
+
+    .topline {
+      max-width: 860px;
+      margin: 0 auto 28px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.12;
+    }
+
+    .subtitle {
+      margin: 12px auto 0;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    .options {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      align-items: start;
+    }
+
+    .option {
+      border: 1px solid rgba(0, 119, 182, .18);
+      border-radius: 24px;
+      background: rgba(255, 255, 255, .92);
+      box-shadow: 0 20px 52px rgba(0, 90, 140, .12);
+      overflow: hidden;
+    }
+
+    .option.recommended {
+      outline: 3px solid rgba(42, 157, 143, .2);
+    }
+
+    .option-head {
+      padding: 18px 18px 14px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(135deg, rgba(232, 244, 248, .92), rgba(230, 245, 242, .86));
+    }
+
+    .option-head span {
+      display: inline-flex;
+      align-items: center;
+      min-height: 26px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #fff;
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .option-head h2 {
+      margin: 12px 0 0;
+      font-size: 22px;
+      line-height: 1.25;
+    }
+
+    .option-head p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .phone {
+      width: min(100%, 360px);
+      margin: 18px auto;
+      border: 1px solid rgba(0, 90, 140, .16);
+      border-radius: 30px;
+      background: #fff;
+      box-shadow: inset 0 0 0 8px #f5fbfd;
+      overflow: hidden;
+    }
+
+    .screen {
+      padding: 18px 16px 22px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--blue), var(--green));
+    }
+
+    .brand strong {
+      display: block;
+      font-size: 13px;
+    }
+
+    .brand small {
+      color: var(--blue);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .12em;
+    }
+
+    .hero {
+      border-radius: 20px;
+      padding: 16px;
+      background: #061627;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .hero .row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: 999px;
+      padding: 5px 9px;
+      background: rgba(0, 230, 255, .12);
+      color: #8df4ff;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .hero h3 {
+      margin: 12px 0 4px;
+      font-size: 22px;
+      line-height: 1.18;
+    }
+
+    .hero p {
+      margin: 0;
+      color: #b9d6e0;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .mini-holo {
+      height: 92px;
+      margin-top: 14px;
+      border: 1px solid rgba(0, 230, 255, .22);
+      border-radius: 16px;
+      background:
+        radial-gradient(circle at 50% 52%, rgba(0, 230, 255, .55), transparent 22%),
+        linear-gradient(90deg, rgba(0, 230, 255, .08) 1px, transparent 1px),
+        #020b16;
+      background-size: auto, 18px 18px, auto;
+    }
+
+    .card {
+      margin-top: 12px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 14px;
+      background: #fff;
+    }
+
+    .card h4 {
+      margin: 0 0 8px;
+      font-size: 16px;
+      line-height: 1.25;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .chip {
+      border-radius: 999px;
+      padding: 5px 9px;
+      background: var(--soft);
+      color: var(--blue-dark);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .split-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .mini {
+      min-height: 72px;
+      border-radius: 14px;
+      padding: 10px;
+      background: var(--soft);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .mini strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--blue-dark);
+    }
+
+    .warning {
+      border-color: rgba(245, 158, 11, .26);
+      background: #fffbeb;
+    }
+
+    .pt {
+      border-color: rgba(42, 157, 143, .24);
+      background: var(--green-soft);
+    }
+
+    .program-img {
+      height: 76px;
+      margin: 10px 0;
+      border-radius: 16px;
+      background:
+        linear-gradient(135deg, rgba(0, 119, 182, .18), rgba(42, 157, 143, .24)),
+        repeating-linear-gradient(90deg, rgba(255,255,255,.7) 0 8px, transparent 8px 18px);
+    }
+
+    .bottom-action {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .button {
+      min-height: 44px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--blue), var(--green));
+      color: #fff;
+      font-weight: 900;
+    }
+
+    .ghost {
+      background: #fff;
+      color: var(--blue);
+      border: 1px solid rgba(0, 119, 182, .18);
+    }
+
+    .notes {
+      padding: 0 18px 18px;
+    }
+
+    .notes h3 {
+      margin: 0 0 8px;
+      font-size: 16px;
+    }
+
+    .notes ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 14px;
+    }
+
+    @media (max-width: 980px) {
+      .options { grid-template-columns: 1fr; }
+      .option { max-width: 520px; margin: 0 auto; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="topline">
+      <p class="eyebrow">Team 4 / Result Page Structure</p>
+      <h1>โครงหน้า Result แบบใหม่</h1>
+      <p class="subtitle">
+        เป้าหมายคือให้คนไข้เข้าใจโรค ปัญหาหลัก วิธีประเมิน สิ่งที่ทำเองได้ และเหตุผลที่การจ้างนักกายภาพคุ้มค่าตรงไหน
+      </p>
+    </section>
+
+    <section class="options">
+      <article class="option recommended">
+        <div class="option-head">
+          <span>Recommended</span>
+          <h2>A. Clinical Map + Action Plan</h2>
+          <p>เริ่มจากสรุปภาพรวม แล้วไล่ลงไปยังโรค ปัญหา การประเมิน โปรแกรม และจุดตัดสินใจจ้าง</p>
+        </div>
+        <div class="phone">
+          <div class="screen">
+            <div class="brand">
+              <div class="mark"></div>
+              <div><strong>บ้านกายภาพ ชลบุรี</strong><small>PHYSIO AT HOME</small></div>
+            </div>
+            <div class="hero">
+              <div class="row">
+                <span class="status">Body Status</span>
+                <span class="status">คัดกรองเบื้องต้น</span>
+              </div>
+              <h3>ควรเริ่มจากความปลอดภัยในการลุกยืนและเดิน</h3>
+              <p>พบปัจจัยที่ควรเฝ้าระวังจากโรค/ภาวะที่เลือกและคำตอบแบบคัดกรอง</p>
+              <div class="mini-holo"></div>
+            </div>
+            <div class="card">
+              <h4>โรค/ภาวะที่เกี่ยวข้อง</h4>
+              <div class="chips">
+                <span class="chip">Stroke</span>
+                <span class="chip">Sarcopenia</span>
+                <span class="chip">Osteoporosis</span>
+              </div>
+            </div>
+            <div class="card">
+              <h4>ปัญหาหลักที่พบ</h4>
+              <div class="split-row">
+                <div class="mini"><strong>ทำเองได้</strong>เช็กแรงขา การลุกยืน และอาการเหนื่อย</div>
+                <div class="mini warning"><strong>ไม่ควรฝืน</strong>เดินไกลหรือขึ้นบันไดถ้ายังเสียสมดุล</div>
+              </div>
+            </div>
+            <div class="card pt">
+              <h4>นักกายภาพจะช่วยประเมินอะไร</h4>
+              <p>แยกว่าเดินไม่มั่นคงจากแรงกล้ามเนื้อ สมดุล การควบคุมการเคลื่อนไหว หรือความกลัวล้ม</p>
+            </div>
+            <div class="card">
+              <h4>โปรแกรมเริ่มต้น</h4>
+              <div class="program-img"></div>
+              <p>ฝึกลุกยืน นั่งทรงตัว และเดินในบ้านแบบมีจุดจับ 5-10 นาที</p>
+            </div>
+            <div class="bottom-action">
+              <div class="button">คัดลอกสรุปเคส</div>
+              <div class="button ghost">ปรึกษานักกายภาพ</div>
+            </div>
+          </div>
+        </div>
+        <div class="notes">
+          <h3>เหมาะกับ MVP ที่สุด</h3>
+          <ul>
+            <li>ขายคุณค่าการประเมินของนักกายภาพได้ชัด</li>
+            <li>รองรับ result blocks หลายโรคโดยไม่ต้องสร้างหลายสิบหน้า</li>
+            <li>คนไข้เห็นทั้งสิ่งที่ทำเองได้และจุดที่ควรจ่ายเงิน</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="option">
+        <div class="option-head">
+          <span>Education First</span>
+          <h2>B. Disease Guide First</h2>
+          <p>เริ่มด้วยความรู้เรื่องโรคก่อน แล้วค่อยสรุปปัญหาและแผนดูแล</p>
+        </div>
+        <div class="phone">
+          <div class="screen">
+            <div class="brand">
+              <div class="mark"></div>
+              <div><strong>บ้านกายภาพ ชลบุรี</strong><small>PHYSIO AT HOME</small></div>
+            </div>
+            <div class="card">
+              <h4>Stroke คืออะไร</h4>
+              <p>ภาวะที่สมองบางส่วนได้รับเลือดไม่พอ ส่งผลต่อแรง การทรงตัว การพูด หรือการใช้ชีวิตประจำวัน</p>
+            </div>
+            <div class="card">
+              <h4>โรคนี้มักกระทบอะไร</h4>
+              <div class="chips">
+                <span class="chip">แรงขา</span>
+                <span class="chip">การเดิน</span>
+                <span class="chip">ADL</span>
+              </div>
+            </div>
+            <div class="card">
+              <h4>ประเมินตัวเองเบื้องต้น</h4>
+              <p>เช็กการลุกยืน 5 ครั้ง การเดินในบ้าน และความมั่นใจของญาติ</p>
+            </div>
+            <div class="card pt">
+              <h4>ควรให้ PT ประเมินเพิ่ม</h4>
+              <p>tone, motor control, gait pattern, risk of fall</p>
+            </div>
+            <div class="bottom-action">
+              <div class="button">ดูแผนดูแล</div>
+            </div>
+          </div>
+        </div>
+        <div class="notes">
+          <h3>ข้อดี/ข้อเสีย</h3>
+          <ul>
+            <li>ให้ความรู้ดี เหมาะกับ SEO/education</li>
+            <li>แต่หน้า result อาจช้าในการตอบคำถาม “ต้องทำอะไรต่อ”</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="option">
+        <div class="option-head">
+          <span>Lead First</span>
+          <h2>C. Decision + CTA First</h2>
+          <p>เปิดด้วยคำตอบว่าควรจ้างไหม แล้วค่อยแสดงเหตุผลด้านล่าง</p>
+        </div>
+        <div class="phone">
+          <div class="screen">
+            <div class="brand">
+              <div class="mark"></div>
+              <div><strong>บ้านกายภาพ ชลบุรี</strong><small>PHYSIO AT HOME</small></div>
+            </div>
+            <div class="hero">
+              <span class="status">Recommendation</span>
+              <h3>ควรให้นักกายภาพประเมินที่บ้าน</h3>
+              <p>เพราะมีหลายปัจจัยที่ทำเองได้ยากและเกี่ยวกับความปลอดภัย</p>
+            </div>
+            <div class="bottom-action">
+              <div class="button">ทัก LINE เพื่อประเมิน</div>
+              <div class="button ghost">ดูสิ่งที่ทำเองได้ก่อน</div>
+            </div>
+            <div class="card">
+              <h4>ทำไมถึงแนะนำแบบนี้</h4>
+              <p>มีความเสี่ยงจากการล้ม แรงขาลดลง และโรคกระดูกพรุนร่วม</p>
+            </div>
+            <div class="card">
+              <h4>ถ้าทำเองก่อน</h4>
+              <p>เริ่มจากการเช็กอาการและกิจกรรมที่ปลอดภัยเท่านั้น</p>
+            </div>
+          </div>
+        </div>
+        <div class="notes">
+          <h3>ข้อดี/ข้อเสีย</h3>
+          <ul>
+            <li>ปิด lead ได้เร็วและชัด</li>
+            <li>แต่เสี่ยงดูขายแรงเกินไป ถ้ายังไม่ได้ให้คุณค่าความรู้ก่อน</li>
+          </ul>
+        </div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

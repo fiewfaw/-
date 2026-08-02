@@ -9,9 +9,9 @@ const aboutPath = path.join(root, 'about.html');
 assert.match(homepage, /href="about\.html"[^>]*>เกี่ยวกับเรา</, 'homepage navigation links to the About page');
 assert.match(homepage, /class="app-preview-banner"/, 'homepage has the Care Navigator preview banner');
 assert.match(homepage, /รูปประกอบ\/care-app-coming-soon-preview\.png/, 'app banner uses a real product preview');
-assert.match(homepage, /class="app-coming-soon"[^>]*disabled/, 'app CTA is visibly disabled before launch');
-assert.match(homepage, />เร็ว ๆ นี้</, 'disabled app CTA explains the launch status');
-assert.doesNotMatch(homepage, /href="[^"]*care-app/, 'unfinished app has no public link');
+assert.match(homepage, /class="app-coming-soon"[^>]*href="care-navigator\/"/, 'app CTA links to the public Care Navigator');
+assert.match(homepage, />ทดลองใช้ Care Navigator</, 'app CTA clearly invites Beta use');
+assert.match(homepage, /เวอร์ชัน Beta/, 'homepage labels the app as a Beta');
 assert.doesNotMatch(homepage, /AI ช่วยฟื้น stroke ได้ใน/, 'old AI course advertisement is removed');
 
 assert.match(homepage, /กายภาพบำบัดถึงบ้าน/, 'single home visit service is listed');

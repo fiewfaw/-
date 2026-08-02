@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>แผน 03 ฟื้นการใช้แขนขาหลังโรคหลอดเลือดสมอง</title>
+  <style>
+    :root{--ink:#17263a;--muted:#607386;--line:#d7e5e8;--paper:#fff;--motor:#0c968c;--neuro:#496dad;--cyan:#49e3e8;--gold:#d6a13c;--red:#b95862;--red-bg:#fff6f6;--wash:#edf7f8}
+    *{box-sizing:border-box}html{background:#eaf5f6}body{margin:0;color:var(--ink);font-family:"Noto Sans Thai","Leelawadee UI",Tahoma,sans-serif;background:linear-gradient(rgba(27,128,143,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(27,128,143,.04) 1px,transparent 1px),#edf7f8;background-size:30px 30px}
+    button{font:inherit;letter-spacing:0}.canvas{width:min(1180px,100%);margin:auto;padding:28px 18px 64px;display:grid;grid-template-columns:430px minmax(280px,1fr);gap:44px;align-items:start}.phone-shell{padding:10px;border:1px solid rgba(81,144,158,.23);border-radius:34px;background:rgba(255,255,255,.78);box-shadow:0 22px 60px rgba(39,100,119,.15)}.phone{overflow:hidden;border-radius:25px;background:#fbfeff}.topbar{height:66px;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;background:#fff;border-bottom:1px solid #e5eef1}.brand{display:flex;gap:9px;align-items:center}.mark{width:36px;height:36px;display:grid;place-items:center;border:1px solid #b9d9e0;border-radius:9px;color:#0a7c86;background:#eff9fa;font-weight:900}.brand b{display:block;font-size:12px}.brand small{display:block;margin-top:2px;color:#0e8a95;font-size:8px;font-weight:900}.step{padding:6px 9px;border-radius:999px;color:#466b82;background:#eef5f7;font-size:8px;font-weight:900}.content{padding:14px 13px 28px}.eyebrow{margin:0 2px 9px;color:var(--neuro);font-size:9px;font-weight:900}.hero{position:relative;height:407px;overflow:hidden;border-radius:18px;background:#233c4e;isolation:isolate}.hero:before{content:"";position:absolute;inset:-18px;z-index:-2;background:url("/files/plan03-stroke-hero-concept.png") center/cover no-repeat;filter:blur(18px) brightness(.62);transform:scale(1.12)}.hero img{position:absolute;inset:0;z-index:-1;width:100%;height:100%;object-fit:contain;object-position:center}.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 41%,rgba(8,27,37,.08) 55%,rgba(8,28,39,.95) 100%)}.pulse{position:absolute;z-index:2;width:42px;height:42px;border:1px solid rgba(98,241,245,.78);border-radius:50%;box-shadow:0 0 18px rgba(49,228,235,.6);animation:pulse 2.8s ease-out infinite}.pulse:after{content:"";position:absolute;inset:10px;border-radius:50%;background:rgba(101,244,247,.58);box-shadow:0 0 13px #45e6ea}.pulse.hand{left:68%;top:49%}.pulse.foot{left:48%;top:79%;animation-delay:1.25s}@keyframes pulse{0%{opacity:.25;transform:scale(.72)}45%{opacity:.9}100%{opacity:0;transform:scale(1.55)}}.hero-copy{position:absolute;z-index:3;left:17px;right:17px;bottom:17px;color:#fff}.hero-tag{display:inline-flex;margin-bottom:8px;padding:5px 8px;border:1px solid rgba(111,238,242,.35);border-radius:999px;color:#dcfdff;background:rgba(12,59,69,.7);font-size:8px;font-weight:900}.hero h1{margin:0;max-width:320px;font-size:25px;line-height:1.28}.hero p{margin:7px 0 0;color:rgba(255,255,255,.84);font-size:11px;line-height:1.55}.section{margin-top:12px;padding:15px;border:1px solid var(--line);border-radius:16px;background:#fff}.section h2{margin:0;font-size:16px}.section-lead{margin:5px 0 0;color:var(--muted);font-size:10px;line-height:1.55}.condition-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}.condition{min-height:34px;padding:7px 10px;border:1px solid #bfd9e1;border-radius:999px;color:#365f76;background:#f4fafb;font-size:9px;font-weight:800;cursor:pointer;transition:transform .18s,border-color .18s,box-shadow .18s,background .18s}.condition:after{content:"+";margin-left:5px;color:#7396a8}.condition:hover,.condition:focus-visible{border-color:#6aa9b8;box-shadow:0 5px 12px rgba(48,112,130,.12);transform:translateY(-1px)}.condition.active{color:#fff;border-color:var(--neuro);background:var(--neuro)}.condition.active:after{content:"−";color:#fff}.condition-detail{position:relative;margin-top:9px;padding:11px 34px 11px 11px;border:1px solid #ccdce9;border-radius:10px;background:#f5f8fe;box-shadow:inset 3px 0 0 var(--neuro)}.condition-detail[hidden]{display:none}.condition-detail h3{margin:0;color:#315c99;font-size:11px}.condition-detail p{margin:5px 0 0;color:#536b7d;font-size:9px;line-height:1.65}.condition-close{position:absolute;top:7px;right:7px;width:25px;height:25px;border:0;border-radius:50%;color:#647c8e;background:#e5edf3;font-size:15px;line-height:1;cursor:pointer}.condition-close:hover,.condition-close:focus-visible{color:#fff;background:var(--neuro)}.summary-note{margin-top:10px;padding:11px;border-left:3px solid var(--gold);border-radius:0 9px 9px 0;color:#715e2f;background:#fff9e9;font-size:10px;line-height:1.55}.problem-list{display:grid;gap:11px;margin-top:13px}.problem{overflow:hidden;border:1px solid #d4e3e7;border-radius:14px;background:#fff}.problem-head{padding:13px;display:grid;grid-template-columns:30px 1fr;gap:9px}.no{width:30px;height:30px;display:grid;place-items:center;border-radius:9px;color:#fff;background:linear-gradient(145deg,var(--neuro),var(--motor));font-size:10px;font-weight:900}.problem:nth-child(2) .no{background:linear-gradient(145deg,var(--motor),#1a779b)}.problem:nth-child(3) .no{background:linear-gradient(145deg,#b4822f,var(--neuro))}.problem h3{margin:0;font-size:14px;line-height:1.45}.problem-head p{margin:4px 0 0;color:#637482;font-size:9px;line-height:1.55}.plan-box{margin:0 11px 10px;padding:11px;border:1px solid #d5ece8;border-radius:10px;color:#315f64;background:#eef9f7;font-size:10px;line-height:1.6}.plan-box b{display:block;margin-bottom:4px;color:#08766e;font-size:11px}.assessment{width:calc(100% - 22px);min-height:58px;margin:0 11px 9px;padding:9px 10px;display:grid;grid-template-columns:28px 1fr auto;gap:8px;align-items:center;border:1px solid #cddfe5;border-radius:10px;color:inherit;text-align:left;background:#f8fcfd}.assessment .ico{width:28px;height:28px;display:grid;place-items:center;border-radius:8px;color:#fff;background:var(--neuro);font-size:12px;font-weight:900}.assessment b{display:block;font-size:10px}.assessment small{display:block;margin-top:2px;color:#71818d;font-size:8px}.score{color:var(--neuro);font-size:11px;font-weight:900}.pt{margin:0 11px 11px;padding:8px 9px;display:grid;grid-template-columns:21px 1fr;gap:7px;align-items:start;border:1px solid #eed4d6;border-radius:9px;color:#79575b;background:var(--red-bg);font-size:8px;line-height:1.5;opacity:.72}.warn{width:20px;height:18px;display:grid;place-items:center;color:#fff;background:var(--red);clip-path:polygon(50% 0,100% 100%,0 100%);font-size:10px;font-weight:900}.starter{margin-top:12px;padding:16px;border-radius:16px;color:#fff;background:linear-gradient(140deg,#365f9c,#127e89 58%,#159c8f);box-shadow:0 14px 28px rgba(45,105,139,.22)}.starter small{color:#cceef1;font-size:8px;font-weight:900}.starter h2{margin:5px 0 7px;font-size:17px}.starter>p{margin:0;color:rgba(255,255,255,.84);font-size:10px;line-height:1.55}.task-grid{display:grid;gap:8px;margin-top:11px}.task{padding:11px;border:1px solid rgba(255,255,255,.38);border-radius:11px;color:#234254;background:#fff}.task b{display:block;font-size:11px}.task span{display:block;margin-top:4px;color:#657c89;font-size:8px;line-height:1.5}.unlock{margin-top:10px;padding:11px;border:1px solid rgba(255,255,255,.32);border-radius:10px;background:rgba(10,57,82,.28)}.unlock b{font-size:10px}.unlock p{margin:4px 0 0;color:#d7f2f3;font-size:8px;line-height:1.5}.unlock button{width:100%;margin-top:8px;padding:10px;border:0;border-radius:9px;color:#5e7180;background:#dce7e9;font-size:9px;font-weight:900}.review{position:sticky;top:24px;padding:24px}.review .label{color:var(--motor);font-size:10px;font-weight:900}.review h2{margin:8px 0 10px;font-size:32px;line-height:1.25}.review>p{max-width:580px;margin:0;color:#587081;font-size:13px;line-height:1.7}.design-key{display:grid;gap:10px;margin-top:22px}.key{padding:13px 14px;border:1px solid #d2e3e7;border-radius:10px;background:rgba(255,255,255,.76)}.key b{display:block;font-size:12px}.key span{display:block;margin-top:4px;color:#607585;font-size:11px;line-height:1.55}.actions{display:flex;gap:9px;margin-top:20px;flex-wrap:wrap}.choice{padding:11px 16px;border:1px solid #9dcbd0;border-radius:9px;color:#0c777a;background:#fff;font-size:11px;font-weight:900;cursor:pointer}.choice.primary{color:#fff;border-color:var(--motor);background:var(--motor)}
+    .hero:before{background-image:url("media/plan-stroke-arm-leg.png")}
+    .hero-art{position:absolute;inset:0;z-index:-1;width:auto;height:100%;margin:auto;aspect-ratio:2/3}.hero-art img{inset:0;z-index:0;width:100%;height:100%}.hero-fx{position:absolute;inset:0;z-index:1;width:100%;height:100%;pointer-events:none;mix-blend-mode:screen}.fx-path{fill:none;stroke:#9cffff;stroke-width:7;stroke-linecap:round;stroke-dasharray:18 34;filter:url(#line-glow);animation:energy-flow 2.4s linear infinite}.leg-flow{animation-duration:2.9s}.waist-flow{fill:none;stroke:#ffe3a0;stroke-width:6;stroke-linecap:round;filter:url(#gold-glow);animation:waist-breathe 2.8s ease-in-out infinite}.joint-node{fill:#d9ffff;stroke:#78f7ff;stroke-width:5;filter:url(#line-glow);animation:node-pulse 2.2s ease-in-out infinite}.foot-ripple{fill:none;stroke:#7df9ff;stroke-width:5;filter:url(#line-glow);transform-box:fill-box;transform-origin:center;animation:foot-wave 2.6s ease-out infinite}.foot-ripple.delay{animation-delay:1.3s}@keyframes energy-flow{to{stroke-dashoffset:-104}}@keyframes waist-breathe{0%,100%{opacity:.35}50%{opacity:.95}}@keyframes node-pulse{0%,100%{opacity:.42}50%{opacity:1}}@keyframes foot-wave{0%{opacity:.8;transform:scale(.72)}100%{opacity:0;transform:scale(1.42)}}
+    .canvas{width:min(430px,100%);display:block;padding:18px 0 58px}.review{display:none}.phone-shell{width:100%}.hero img{content:url("media/plan-stroke-arm-leg.png")}
+    .inline-term{color:#166f9a;font-weight:900;text-decoration:none;border-bottom:1px dotted #4f9db5}.inline-term:hover,.inline-term:focus-visible{color:#315c99;border-bottom-style:solid;background:#e8f5f8;outline:2px solid transparent}
+    .followup-question{margin-top:11px;padding-top:11px;border-top:1px solid #d9e7ea}.followup-question>strong{display:block;margin-bottom:3px;font-size:10px}.followup-question>p{margin:0 0 8px;color:#687d89;font-size:8px;line-height:1.5}.spasticity-options .option-card{grid-template-columns:25px 1fr}.spasticity-options .level{background:#5872a5}.demo-photo.grid-spasticity{background-image:url("media/team4-stroke-spasticity-grid.png")}.demo-photo.tone-arm-start{background-position:0 0}.demo-photo.tone-arm-ready{background-position:100% 0}.demo-photo.tone-leg-start{background-position:0 100%}.demo-photo.tone-leg-ready{background-position:100% 100%}
+    .condition-article-link{min-height:44px;width:100%;margin-top:10px;padding:8px 9px;display:grid;grid-template-columns:30px minmax(0,1fr) auto;gap:9px;align-items:center;border:1px solid #b9d5e2;border-radius:10px;color:#294f83;background:#fff;text-decoration:none;box-shadow:0 4px 12px rgba(49,92,153,.07);transition:border-color .18s,box-shadow .18s,transform .18s}.condition-article-icon{width:30px;height:30px;display:grid;place-items:center;border-radius:8px;color:#fff;background:linear-gradient(145deg,var(--neuro),var(--motor));font-size:14px;font-weight:900}.condition-article-copy{min-width:0}.condition-article-copy small{display:block;color:#718493;font-size:8px;font-weight:800}.condition-article-copy strong{display:block;margin-top:1px;font-size:10px;line-height:1.4}.condition-article-action{color:#137f89;font-size:8px;font-weight:900;white-space:nowrap}.condition-article-link:hover,.condition-article-link:focus-visible{border-color:#6aa9b8;box-shadow:0 7px 16px rgba(48,112,130,.13);transform:translateY(-1px)}.condition-article-link[hidden]{display:none}
+    .knowledge-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.knowledge-edit{flex:0 0 auto;padding:6px 9px;border:1px solid #b8d5df;border-radius:8px;color:#246b82;background:#fff;font-size:8px;font-weight:900;cursor:pointer}.knowledge-edit:hover,.knowledge-edit:focus-visible{border-color:#4d93ad;background:#eff8fa}.stroke-knowledge-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:12px}.knowledge-card{overflow:hidden;border:1px solid #d0e1e7;border-radius:12px;background:#f8fcfd}.knowledge-visual{height:150px;background-color:#eaf4f7;background-repeat:no-repeat}.type-visual{background-image:url("media/team4-stroke-type-atlas.png");background-size:300% 100%;background-position:100% 0}.type-visual.type-ischemic{background-position:0 0}.type-visual.type-hemorrhagic{background-position:50% 0}.type-visual.type-unknown{background-position:100% 0}.lesion-visual{background-image:url("media/team4-stroke-lesion-atlas.png");background-size:300% 300%;background-position:100% 100%}.lesion-visual.lesion-left-mca{background-position:0 0}.lesion-visual.lesion-left-aca{background-position:50% 0}.lesion-visual.lesion-left-pca{background-position:100% 0}.lesion-visual.lesion-right-mca{background-position:0 50%}.lesion-visual.lesion-right-aca{background-position:50% 50%}.lesion-visual.lesion-right-pca{background-position:100% 50%}.lesion-visual.lesion-brainstem{background-position:0 100%}.lesion-visual.lesion-bilateral-other{background-position:50% 100%}.lesion-visual.lesion-unknown{background-position:100% 100%}.knowledge-copy{padding:10px}.knowledge-copy small{display:block;color:#63808d;font-size:7px;font-weight:900}.knowledge-copy h3{margin:3px 0 4px;color:#254b76;font-size:10px;line-height:1.4}.knowledge-copy p{margin:0;color:#607482;font-size:8px;line-height:1.55}.knowledge-editor{margin-top:10px;padding:11px;border:1px solid #cfe1e6;border-radius:11px;background:#f4fafb}.knowledge-editor[hidden]{display:none}.knowledge-editor p{margin:0 0 9px;color:#5e7582;font-size:8px;line-height:1.5}.knowledge-form{display:grid;gap:8px}.knowledge-field span{display:block;margin-bottom:4px;color:#31596e;font-size:8px;font-weight:900}.knowledge-field select{width:100%;height:40px;padding:0 9px;border:1px solid #bcd5dc;border-radius:8px;color:#25485a;background:#fff;font-size:9px}.knowledge-save{width:100%;height:40px;border:0;border-radius:8px;color:#fff;background:linear-gradient(135deg,var(--neuro),var(--motor));font-size:9px;font-weight:900;cursor:pointer}.stage-banner{margin-top:12px;padding:12px;border:1px solid #cbdfe6;border-radius:13px;background:linear-gradient(135deg,#f3f8fd,#effaf8)}.stage-main{display:grid;grid-template-columns:76px 1fr;gap:11px;align-items:center}.function-picto{display:block;background-image:url("media/team4-stroke-function-pictograms.png?v=male-cover-2");background-repeat:no-repeat;background-size:200% 200%;background-color:#eef6f8}.function-picto.pictogram-bed{background-position:0 0}.function-picto.pictogram-transfer{background-position:100% 0}.function-picto.pictogram-walk{background-position:0 100%}.function-picto.pictogram-arm{background-position:100% 100%}.stage-visual{width:76px;aspect-ratio:1;border-radius:11px}.stage-copy small{display:block;color:#4b70a6;font-size:8px;font-weight:900}.stage-copy h3{margin:4px 0;color:#1d4058;font-size:13px;line-height:1.4}.stage-copy p{margin:0;color:#647985;font-size:8px;line-height:1.5}.evidence-title{margin:12px 0 7px;font-size:10px}.evidence-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.evidence-card{min-width:0;padding:7px;border:1px solid #d5e5e9;border-radius:9px;background:#fff}.evidence-icon{width:100%;aspect-ratio:1.55;border-radius:7px}.evidence-card strong{display:block;margin-top:6px;font-size:8px;line-height:1.35}.evidence-card span:last-child{display:block;margin-top:2px;color:#71838d;font-size:7px;line-height:1.35}
+    .ct-disclaimer{margin:9px 2px 0;padding-left:9px;border-left:2px solid #74cbd1;color:#657985;font-size:7px;line-height:1.55}.image-credits{margin-top:6px;color:#6c7f8a;font-size:7px}.image-credits summary{width:max-content;max-width:100%;cursor:pointer;color:#3c7184;font-weight:900}.image-credits p{margin:6px 0 0;padding:8px;border:1px solid #dbe8eb;border-radius:8px;background:#f7fbfc;line-height:1.55}.image-credits a{color:#246f91;font-weight:800}
+    .assessment-head{display:flex;align-items:center;justify-content:space-between;gap:10px}.progress-pill{flex:0 0 auto;padding:7px 9px;border-radius:999px;color:#315e76;background:#edf5f8;font-size:9px;font-weight:900}.problem-card{overflow:hidden;border:1px solid #d4e3e7;border-radius:14px;background:#fff}.problem-card:nth-child(2) .no{background:linear-gradient(145deg,var(--motor),#1a779b)}.problem-card:nth-child(3) .no{background:linear-gradient(145deg,#b4822f,var(--neuro))}.problem-card h3{margin:0;font-size:14px;line-height:1.45}.problem-card .problem-head p{margin:4px 0 0;color:#637482;font-size:9px;line-height:1.55}.assessment-toggle{width:calc(100% - 22px);min-height:62px;margin:0 11px 9px;padding:9px 10px;display:grid;grid-template-columns:30px 1fr auto;gap:8px;align-items:center;border:1px solid #cddfe5;border-radius:10px;color:inherit;text-align:left;background:#f8fcfd;cursor:pointer;transition:.18s}.assessment-toggle:hover,.problem-card.open .assessment-toggle{border-color:#75bbc7;background:#f0fafb}.assessment-toggle .ico{width:30px;height:30px;display:grid;place-items:center;border-radius:8px;color:#fff;background:var(--neuro);font-size:11px;font-weight:900}.assessment-toggle b{display:block;font-size:10px}.assessment-toggle small{display:block;margin-top:2px;color:#71818d;font-size:8px}.assessment-panel{display:none;margin:0 11px 11px;padding:11px;border:1px solid #d6e5e9;border-radius:11px;background:#fbfeff}.problem-card.open .assessment-panel{display:block}.assessment-help{margin:0 0 9px;color:#5c7280;font-size:9px;line-height:1.55}.barthel-grid{display:grid;gap:7px}.barthel-item{padding:8px;border:1px solid #dbe8eb;border-radius:9px;background:#fff}.barthel-item>span{display:block;margin-bottom:5px;font-size:9px;font-weight:900}.barthel-item select{width:100%;min-height:38px;padding:5px 8px;border:1px solid #bdd8de;border-radius:8px;color:#234457;background:#f7fbfc;font-size:9px}.total-bar{position:sticky;bottom:6px;margin-top:8px;padding:9px 10px;display:flex;justify-content:space-between;border-radius:9px;color:#fff;background:#385f9b;font-size:10px;font-weight:900;box-shadow:0 5px 15px rgba(36,68,114,.2)}.option-list{display:grid;gap:7px}.option-card{width:100%;padding:9px 10px;display:grid;grid-template-columns:25px 1fr;gap:8px;align-items:start;border:1px solid #d7e5e8;border-radius:9px;color:#334e60;text-align:left;background:#fff;cursor:pointer}.option-card:hover,.option-card.selected{border-color:#557bb6;background:#edf2fb}.option-card .level{width:25px;height:25px;display:grid;place-items:center;border-radius:7px;color:#fff;background:#5576ad;font-size:10px;font-weight:900}.option-card b{display:block;font-size:9px}.option-card small{display:block;margin-top:2px;color:#6d7e89;font-size:8px;line-height:1.45}.heuristic-note{margin:8px 0 0;color:#77858e;font-size:8px;line-height:1.45}.pt{opacity:.64}.starter{position:relative}.exercise-grid{display:grid;gap:10px;margin-top:12px}.exercise-card{overflow:hidden;border:1px solid rgba(255,255,255,.36);border-radius:12px;color:#203e50;background:#fff}.demo-stage{position:relative;width:100%;aspect-ratio:1;overflow:hidden;background:#eef5f6}.demo-frame{position:absolute;inset:0;opacity:0}.demo-frame:first-child{opacity:1}.demo-photo{width:100%;height:100%;background-image:url("media/team4-stroke-demo-grid-a.png");background-repeat:no-repeat;background-size:200% 200%}.demo-photo.sit{background-position:0 0}.demo-photo.stand{background-position:100% 0}.demo-photo.arm-start{background-position:0 100%}.demo-photo.arm-end{background-position:100% 100%}.exercise-card.is-playing .demo-frame:first-child,.exercise-card:hover .demo-frame:first-child{animation:frameA 2.8s step-end infinite}.exercise-card.is-playing .demo-frame:last-child,.exercise-card:hover .demo-frame:last-child{animation:frameB 2.8s step-end infinite}@keyframes frameA{0%,49.9%{opacity:1}50%,100%{opacity:0}}@keyframes frameB{0%,49.9%{opacity:0}50%,100%{opacity:1}}.exercise-copy{padding:11px}.exercise-copy h3{margin:0;font-size:12px}.exercise-copy p{margin:4px 0 0;color:#637985;font-size:9px;line-height:1.5}.dose{margin-top:8px;padding:8px;border-radius:8px;background:#edf8f8;color:#1f5c66;font-size:9px;line-height:1.45}.exercise-detail-toggle{width:100%;margin-top:8px;padding:7px;border:1px solid #cee1e4;border-radius:8px;color:#147881;background:#fff;font-size:8px;font-weight:900}.exercise-details{display:none;margin-top:7px;color:#5c707d;font-size:8px;line-height:1.55}.exercise-card.details-open .exercise-details{display:block}.unlock-panel{margin-top:12px;padding:12px;border:1px solid rgba(255,255,255,.34);border-radius:11px;background:rgba(10,55,82,.28)}.unlock-panel h3{margin:0;font-size:12px}.unlock-panel p{margin:5px 0 0;color:#d9f0f2;font-size:9px;line-height:1.5}.status{margin-top:8px;color:#cceff2;font-size:9px;font-weight:800}.primary{width:100%;min-height:46px;margin-top:9px;border:0;border-radius:10px;color:#657782;background:#dbe5e7;font-size:10px;font-weight:900}.primary.ready{color:#fff;background:linear-gradient(135deg,#159d91,#147cad);cursor:pointer}.lead-form,.personal-plan,.personal-results{display:none}.lead-form.show,.personal-plan.show,.starter.personalized .personal-results{display:block}.lead-form{margin-top:11px;padding:11px;border-radius:10px;background:#fff}.form-title{margin:0 0 9px;color:#203d50;font-size:12px}.form-grid{display:grid;gap:8px}.form-input{width:100%;height:44px;padding:0 11px;border:1px solid #c5dce1;border-radius:9px;color:#193c4f;background:#f8fcfd}.location-control{margin-top:8px;padding:8px;border:1px solid #d8e8ec;border-radius:9px;background:#f8fcfd}.location-button{width:100%;min-height:42px;display:flex;justify-content:center;align-items:center;gap:7px;border:1px solid #8fcbd0;border-radius:8px;color:#0b777c;background:#fff;font-size:9px;font-weight:900}.location-button svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.9}.location-button.captured{color:#fff;border-color:#2da893;background:#2da893}.location-button.denied:disabled{color:#778991;border-color:#d2dfe2;background:#e9eff1}.location-status{margin:6px 2px 0;color:#667c87;font-size:8px;line-height:1.45}.location-status.success{color:#137265}.location-status.error{color:#9c5358}.location-map-link{display:none;margin:6px 2px 0;color:#0c7ca7;font-size:8px;font-weight:800}.location-map-link.show{display:inline-flex}.manual-area-fields{margin-top:8px}.manual-area-label{display:block;margin:0 2px 5px;color:#526e79;font-size:8px;font-weight:800}.personal-plan{margin-top:10px;padding:10px;border-radius:9px;color:#205f58;background:#effaf6;font-size:9px;line-height:1.55}.personal-level{margin-top:12px;padding:10px;border:1px solid rgba(255,255,255,.4);border-radius:10px;background:rgba(10,55,82,.32);font-size:11px;font-weight:900}.personal-results{margin-top:10px}.personalized-activities{display:grid;gap:8px}.personalized-activity{padding:10px;border-radius:10px;color:#234656;background:#fff}.personalized-activity h3{margin:0;font-size:11px}.personalized-activity p{margin:4px 0 0;color:#657a85;font-size:8px;line-height:1.5}.personal-demo{position:relative;width:min(150px,50%);aspect-ratio:1;margin:0 auto 9px;overflow:hidden;border-radius:9px;background:#eef5f6}.personal-demo .demo-frame:first-child{animation:frameA 3.2s step-end infinite}.personal-demo .demo-frame:last-child{animation:frameB 3.2s step-end infinite}.demo-photo.grid-b{background-image:url("media/team4-stroke-demo-grid-b.png")}.demo-photo.weight-start{background-position:0 0}.demo-photo.step-end{background-position:100% 0}.demo-photo.arm-grasp{background-position:0 100%}.demo-photo.arm-place{background-position:100% 100%}.demo-photo.grid-c{background-image:url("media/team4-stroke-demo-grid-c.png")}.demo-photo.bridge-start{background-position:0 0}.demo-photo.bridge-end{background-position:100% 0}.demo-photo.roll-start{background-position:0 100%}.demo-photo.roll-end{background-position:100% 100%}.fitt-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}.fitt-cell{padding:7px;border-radius:8px;background:#edf7f8}.fitt-cell span{display:block;color:#6b8089;font-size:7px}.fitt-cell strong{display:block;margin-top:2px;color:#155f69;font-size:8px;line-height:1.4}.result-panel{margin-top:9px;padding:10px;border:1px solid rgba(255,255,255,.35);border-radius:10px;background:rgba(10,55,82,.28)}.result-panel h3{margin:0 0 7px;font-size:11px}.week-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px}.week-day{padding:7px;border-radius:7px;color:#22525e;background:#f2fbfa;font-size:8px;line-height:1.4}.week-day strong{display:block;color:#087878}.guidance-list{margin:0;padding-left:16px;font-size:8px;line-height:1.55}.personal-pt{margin-top:9px;padding:8px 9px;border-left:3px solid #c45c63;border-radius:8px;color:#754d51;background:#fff4f4;font-size:8px;line-height:1.5}.bottom-actions{display:grid;gap:8px;margin-top:12px}.consult-button,.copy-button{min-height:48px;display:flex;align-items:center;justify-content:center;border-radius:10px;font-size:10px;font-weight:900;text-decoration:none}.consult-button{color:#fff;background:linear-gradient(135deg,#1187bd,#18a28e);box-shadow:0 9px 20px rgba(20,135,163,.28)}.copy-button{border:1px solid #aed6df;color:#0d7c9f;background:#fff}.ai-note{margin:7px 3px 0;color:#677c88;font-size:8px;line-height:1.5}.toast{position:fixed;left:50%;bottom:20px;z-index:20;max-width:calc(100% - 30px);padding:9px 12px;border-radius:9px;color:#fff;background:#163f52;font-size:9px;opacity:0;transform:translate(-50%,12px);transition:.2s;pointer-events:none}.toast.show{opacity:1;transform:translate(-50%,0)}
+    @media(max-width:850px){.canvas{padding:0 0 42px}.phone-shell{width:100%;margin:auto;padding:0;border-radius:0;border-left:0;border-right:0}.phone{border-radius:0}.hero{height:395px}}
+    @media(max-width:360px){.hero{height:380px}.hero h1{font-size:22px}.content{padding-left:11px;padding-right:11px}.fitt-grid{grid-template-columns:1fr}.week-grid{grid-template-columns:1fr}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important}.hero-fx{opacity:.55}.demo-stage{display:grid;grid-template-columns:1fr 1fr}.demo-frame{position:relative;opacity:1!important}}
+    .brand-icon{display:block;width:31px;height:31px;object-fit:contain}
+  </style>
+</head>
+<body>
+  <main class="canvas">
+    <div class="phone-shell">
+      <div class="phone">
+        <header class="topbar"><div class="brand"><div class="mark"><img class="brand-icon" src="site-favicon-512.png" alt=""></div><div><b>บ้านกายภาพ ชลบุรี</b><small>PHYSIO AT HOME</small></div></div><span class="step">ผลลัพธ์ของคุณ</span></header>
+        <div class="content">
+          <p class="eyebrow">แผน 03 · CARE PLAN TYPE 03 · TEAM 4</p>
+          <section class="hero">
+            <div class="hero-art">
+              <img src="media/plan-stroke-arm-leg.png" alt="ผู้ป่วยหลังโรคหลอดเลือดสมองฝึกเดินกับนักกายภาพที่บ้าน">
+              <svg class="hero-fx" viewBox="0 0 1024 1536" aria-hidden="true">
+                <defs>
+                  <filter id="line-glow" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="8" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                  <filter id="gold-glow" x="-50%" y="-100%" width="200%" height="300%"><feGaussianBlur stdDeviation="7" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                </defs>
+                <path class="fx-path arm-flow" d="M 666 466 C 678 532 688 612 695 679 S 704 792 711 858"/>
+                <path class="fx-path leg-flow" d="M 614 852 C 610 934 600 1023 581 1102 S 552 1262 535 1367"/>
+                <path class="waist-flow" d="M 328 711 C 430 737 575 739 670 711"/>
+                <circle class="joint-node" cx="666" cy="466" r="17"/><circle class="joint-node" cx="695" cy="679" r="15"/><circle class="joint-node" cx="711" cy="858" r="17"/>
+                <circle class="joint-node" cx="614" cy="852" r="17"/><circle class="joint-node" cx="581" cy="1102" r="15"/><circle class="joint-node" cx="535" cy="1367" r="16"/>
+                <ellipse class="foot-ripple" cx="500" cy="1422" rx="92" ry="35"/><ellipse class="foot-ripple delay" cx="500" cy="1422" rx="68" ry="25"/>
+              </svg>
+            </div>
+            <div class="hero-copy"><span class="hero-tag">ฟื้นแขนขาข้างอ่อนแรงกลับสู่กิจวัตร</span><h1>ฟื้นการใช้แขนขา<br>หลังโรคหลอดเลือดสมอง</h1><p>เป้าหมายคือช่วยให้ลุก เดิน และใช้มือข้างอ่อนแรงได้จริงในบ้านอย่างปลอดภัยขึ้น</p></div>
+          </section>
+
+          <section class="section" id="strokeKnowledge">
+            <div class="knowledge-head"><div><h2>ข้อมูล Stroke ของคุณ</h2><p class="section-lead">แสดงเฉพาะข้อมูลที่เลือกไว้ เพื่อช่วยอธิบายโรคและข้อควรระวัง ไม่ใช้แทนการตรวจของแพทย์</p></div><button class="knowledge-edit" id="strokeKnowledgeEdit" type="button" aria-expanded="false" aria-controls="strokeKnowledgeEditor">แก้ไขข้อมูล</button></div>
+            <div class="stroke-knowledge-grid">
+              <article class="knowledge-card"><div class="knowledge-visual type-visual type-unknown" id="strokeTypeVisual" role="img" aria-label="ภาพประเภทโรคหลอดเลือดสมอง"></div><div class="knowledge-copy"><small>ประเภทที่เลือก</small><h3 id="strokeTypeTitle">ยังไม่ทราบประเภทของโรคหลอดเลือดสมอง</h3><p id="strokeTypeBody">ตรวจสอบได้จากใบสรุปการรักษา ระบบจะไม่คาดเดาประเภทจากอาการแทนข้อมูลโรงพยาบาล</p></div></article>
+              <article class="knowledge-card"><div class="knowledge-visual lesion-visual lesion-unknown" id="strokeLesionVisual" role="img" aria-label="ภาพตำแหน่งสมองที่เกี่ยวข้อง"></div><div class="knowledge-copy"><small>ตำแหน่งที่เลือก</small><h3 id="strokeLesionTitle">ยังไม่ทราบตำแหน่งรอยโรค</h3><p id="strokeLesionBody">ตรวจสอบได้จากใบสรุปการรักษาหรือสอบถามทีมโรงพยาบาล ระบบจะไม่คาดเดาตำแหน่งจากอาการเพียงอย่างเดียว</p></div></article>
+            </div>
+            <p class="ct-disclaimer">ภาพ CT ตัวอย่างและวงตำแหน่งโดยประมาณ ไม่ใช่ภาพ CT ของคุณ ตำแหน่งจริงควรตรวจสอบจากใบสรุปการรักษาหรือแพทย์ผู้ดูแล</p>
+            <details class="image-credits" id="strokeImageCredits"><summary>แหล่งภาพ CT และสิทธิ์การใช้</summary><p>ภาพรอยโรค MCA ดัดแปลงจาก <a href="https://commons.wikimedia.org/wiki/File:CT_Brain_MCA_Infarct.jpg" target="_blank" rel="noopener">CT Brain MCA Infarct</a> โดย Lucien Monfils (CC BY-SA 4.0) และภาพอ้างอิงตำแหน่งอื่นจาก <a href="https://commons.wikimedia.org/wiki/Category:Computed_tomography_of_normal_brain_in_axial_plane_(case_1)" target="_blank" rel="noopener">ชุด CT สมองปกติ</a> โดย Mikael Häggström, M.D. (CC0) มีการครอบตัด ปรับขนาด กลับด้านบางภาพ และเพิ่มวงตำแหน่งเพื่อการศึกษา</p></details>
+            <div class="knowledge-editor" id="strokeKnowledgeEditor" hidden>
+              <p>เลือกตามข้อมูลในใบสรุปการรักษา หากไม่แน่ใจให้คงคำว่า “ยังไม่ทราบ” ไว้ก่อน</p>
+              <div class="knowledge-form">
+                <label class="knowledge-field"><span>ประเภท Stroke</span><select id="strokeTypeSelect"><option value="unknown">ยังไม่ทราบ</option><option value="ischemic">เส้นเลือดสมองตีบหรืออุดตัน</option><option value="hemorrhagic">เส้นเลือดสมองแตก</option></select></label>
+                <label class="knowledge-field"><span>ซีกสมอง</span><select id="strokeHemisphereSelect"><option value="unknown">ยังไม่ทราบ</option><option value="left">สมองซีกซ้าย</option><option value="right">สมองซีกขวา</option><option value="bilateral">สมองทั้งสองซีก</option></select></label>
+                <label class="knowledge-field"><span>ตำแหน่งที่แพทย์แจ้ง</span><select id="strokeLesionSelect"><option value="unknown">ยังไม่ทราบ</option><option value="mca">หลอดเลือดสมองส่วนกลาง (MCA)</option><option value="aca">หลอดเลือดสมองส่วนหน้า (ACA)</option><option value="pca">หลอดเลือดสมองส่วนหลัง (PCA)</option><option value="brainstem">ก้านสมอง</option><option value="other">ตำแหน่งอื่น</option></select></label>
+                <button class="knowledge-save" id="strokeKnowledgeSave" type="button">แสดงข้อมูลที่เลือก</button>
+              </div>
+            </div>
+
+            <div class="stage-banner">
+              <div class="stage-main"><span class="function-picto stage-visual pictogram-bed" id="planStageVisual" role="img" aria-label="ภาพกิจกรรมตามขั้นการฝึก"></span><div class="stage-copy"><small>ขั้นการฝึกของคุณตอนนี้</small><h3 id="planStageTitle">เคลื่อนไหวบนเตียง</h3><p id="planStageBody">เริ่มจากกิจกรรมที่ปลอดภัยตามความสามารถจริง แล้วค่อยปรับเมื่อข้อมูลการย้ายตัวและการเดินครบขึ้น</p></div></div>
+              <h3 class="evidence-title">ข้อมูลที่ใช้จัดแผนของคุณ</h3>
+              <div class="evidence-grid">
+                <div class="evidence-card"><span class="function-picto evidence-icon pictogram-bed" aria-hidden="true"></span><strong>กิจวัตรประจำวัน</strong><span id="evidenceBarthel">รอคำตอบเพิ่มเติม</span></div>
+                <div class="evidence-card"><span class="function-picto evidence-icon pictogram-transfer" aria-hidden="true"></span><strong>การนั่งและย้ายตัว</strong><span id="evidenceTransfer">รอคำตอบเพิ่มเติม</span></div>
+                <div class="evidence-card"><span class="function-picto evidence-icon pictogram-walk" aria-hidden="true"></span><strong>การเดินในบ้าน</strong><span id="evidenceWalking">รอคำตอบเพิ่มเติม</span></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="section">
+            <h2>โรคและภาวะที่เกี่ยวข้อง</h2><p class="section-lead">กดอ่านรายละเอียดเพื่อเข้าใจว่าผลของโรคเชื่อมกับกิจวัตรอย่างไร</p>
+            <div class="condition-row"><button class="condition active" type="button" data-condition-id="stroke" aria-expanded="true" aria-controls="conditionDetail">โรคหลอดเลือดสมอง</button><button class="condition" type="button" data-condition-id="hemiparesis" aria-expanded="false" aria-controls="conditionDetail">อ่อนแรงครึ่งซีก</button><button class="condition" type="button" data-condition-id="weak-shoulder" aria-expanded="false" aria-controls="conditionDetail">ไหล่ข้างอ่อนแรง</button></div>
+            <div class="condition-detail" id="conditionDetail"><button class="condition-close" id="conditionDetailClose" type="button" aria-label="ปิดรายละเอียดโรค">×</button><h3 id="conditionDetailTitle">โรคหลอดเลือดสมอง</h3><p id="conditionDetailBody">เกิดจากเลือดไปเลี้ยงสมองผิดปกติ ทำให้สมองส่วนที่ควบคุมแรง การเคลื่อนไหว การทรงตัว การรับรู้ หรือการสื่อสารทำงานลดลง การฟื้นฟูอาศัย <a class="inline-term" href="https://baankaiyaphap-chonburi.com/blog/post.html?slug=neuroplasticity-stroke-recovery" target="_blank" rel="noopener" title="อ่านเรื่อง Neuroplasticity">Neuroplasticity</a> เพื่อเรียนรู้การเคลื่อนไหวอีกครั้ง และต้องปรับกิจกรรมหากมี <a class="inline-term" href="https://baankaiyaphap-chonburi.com/blog/post.html?slug=spasticity-after-stroke" target="_blank" rel="noopener" title="อ่านเรื่อง Spasticity">Spasticity หรืออาการเกร็ง</a> รบกวนการใช้แขนขา</p><a class="condition-article-link" id="conditionArticleLink" href="https://baankaiyaphap-chonburi.com/blog/post.html?slug=stroke-ep1" target="_blank" rel="noopener"><span class="condition-article-icon" aria-hidden="true">↗</span><span class="condition-article-copy"><small>ความรู้เพิ่มเติม</small><strong id="conditionArticleLabel">อ่านเรื่องโรคหลอดเลือดสมองฉบับเต็ม</strong></span><span class="condition-article-action">เปิดบทความ</span></a></div>
+            <div class="summary-note"><b>กรอบวิเคราะห์ของแผนนี้</b><br>คุณนั่งได้เอง แต่การลุกยืน เดิน และใช้แขนข้างอ่อนแรงยังต้องอาศัยผู้ช่วย จึงควรฟื้นทั้งลำตัว ขา และแขนให้เชื่อมกลับไปยังกิจวัตรเดียวกัน</div>
+          </section>
+
+          <section class="section">
+            <div class="assessment-head"><div><h2>3 ปัญหาหลักที่ควรจัดการก่อน</h2><p class="section-lead">ตอบจากสิ่งที่ทำได้จริง ไม่ต้องทดลองกิจกรรมเสี่ยงเพื่อกรอกคะแนน</p></div><span class="progress-pill" id="assessmentProgress">0/3</span></div>
+            <div class="problem-list">
+              <article class="problem-card" data-assessment-card="barthel">
+                <div class="problem-head"><span class="no">01</span><div><h3>ลำตัวและการย้ายตัวยังต้องมีคนช่วย</h3><p>ความมั่นคงของลำตัวและลำดับการเคลื่อนไหวยังจำกัดการเข้าห้องน้ำ แต่งตัว และลุกจากเตียง</p></div></div>
+                <div class="plan-box" id="transferProblemPlan"><b>แผนจัดการปัญหานี้</b>เริ่มจากจัดแนว พลิกตัว และลำดับการย้ายตัว แล้วค่อยเพิ่มการลุกยืนเมื่อความสามารถจริงปลอดภัยพอ</div>
+                <button class="assessment-toggle" type="button" aria-expanded="false"><span class="ico">10</span><span><b>Barthel Index ฉบับ 0–20</b><small>ประเมินกิจวัตร 10 ข้อ · ต้องตอบก่อนสร้างแผน</small></span><span class="score" id="barthelScoreLabel">0/20</span></button>
+                <div class="assessment-panel"><p class="assessment-help">เลือกคำตอบที่ใกล้กับสิ่งที่ทำได้จริงในช่วงนี้ที่สุด หากบางวันทำได้ไม่เท่ากัน ให้เลือกวันที่ต้องการความช่วยเหลือมากกว่า</p>
+                  <div class="barthel-grid">
+                    <label class="barthel-item" data-barthel-item="bowels"><span>1. การควบคุมอุจจาระ</span><select data-barthel-select><option value="">เลือกคำตอบ</option><option value="0">ควบคุมไม่ได้</option><option value="1">มีพลาดเป็นครั้งคราว</option><option value="2">ควบคุมได้</option></select></label>
+                    <label class="barthel-item" data-barthel-item="bladder"><span>2. การควบคุมปัสสาวะ</span><select data-barthel-select><option value="">เลือกคำตอบ</option><option value="0">ควบคุมไม่ได้หรือดูแลสายสวนเองไม่ได้</option><option value="1">มีพลาดเป็นครั้งคราว</option><option value="2">ควบคุมได้หรือดูแลสายสวนเองได้</option></select></label>
+                    <label class="barthel-item" data-barthel-item="grooming"><span>3. ล้างหน้า หวีผม แปรงฟัน</span><select data-barthel-select><option value="">เลือกคำตอบ</option><option value="0">ต้องมีคนช่วย</option><option value="1">ทำเองได้</option></select></label>
+                    <label class="barthel-item" data-barthel-item="toilet"><span>4. การใช้ห้องน้ำ</span><select data-barthel-select><option value="">เลือกคำตอบ</option><option value="0">ทำเองไม่ได้</option><option value="1">ต้องช่วยบางส่วน</option><option value="2">ทำเองได้</option></select></label>
+                    <label class="barthel-item" data-barthel-item="feeding"><span>5. การรับประทานอาหาร</span><select data-barthel-select><option value="">เลือกคำตอบ</option><option value="0">รับประทานเองไม่ได้</option><option value="1">ต้องช่วยจัดหรือเตรียมบางส่วน</option><option value="2">รับประทานเองได้</option></select></label>
+                    <label class="barthel-item" data-barthel-item="transfer"><span>6. การนั่งทรงตัวและย้ายจากเตียงไปเก้าอี้</span><select data-barthel-select><option value="">เลือกคำตอบ</option><option value="0">นั่งทรงตัวไม่ได้หรือย้ายตัวไม่ได้</option><option value="1">นั่งได้ แต่ต้องช่วยย้ายตัวมาก</option><option value="2">ต้องช่วยเล็กน้อยหรือเฝ้าใกล้ ๆ</option><option value="3">ทำเองได้</option></select></label>
+                    <label class="barthel-item" data-barthel-item="mobility"><span>7. การเคลื่อนที่ในบ้าน</span><select data-barthel-select><option value="">เลือกคำตอบ</option><option value="0">เคลื่อนที่เองไม่ได้</option><option value="1">ใช้รถเข็นได้เอง</option><option value="2">เดินโดยมีคนช่วย</option><option value="3">เดินเองได้</option></select></label>
+                    <label class="barthel-item" data-barthel-item="dressing"><span>8. การแต่งตัว</span><select data-barthel-select><option value="">เลือกคำตอบ</option><option value="0">ต้องช่วยทั้งหมด</option><option value="1">ทำเองได้บางส่วน</option><option value="2">ทำเองได้</option></select></label>
+                    <label class="barthel-item" data-barthel-item="stairs"><span>9. การขึ้นลงบันได</span><select data-barthel-select><option value="">เลือกคำตอบ</option><option value="0">ทำไม่ได้</option><option value="1">ต้องช่วยหรือเฝ้าใกล้ ๆ</option><option value="2">ทำเองได้</option></select></label>
+                    <label class="barthel-item" data-barthel-item="bathing"><span>10. การอาบน้ำ</span><select data-barthel-select><option value="">เลือกคำตอบ</option><option value="0">ต้องมีคนช่วย</option><option value="1">ทำเองได้</option></select></label>
+                  </div>
+                  <div class="total-bar"><span>คะแนนรวมปัจจุบัน</span><strong id="barthelTotal">0/20</strong></div>
+                </div>
+                <div class="pt"><span class="warn">!</span><span><b>นักกายภาพประเมิน:</b> การควบคุมลำตัว วิธีช่วยย้ายตัว และความปลอดภัยของไหล่</span></div>
+              </article>
+
+              <article class="problem-card" data-assessment-card="fac">
+                <div class="problem-head"><span class="no">02</span><div><h3 id="mobilityProblemTitle">ขาข้างอ่อนแรงยังจำกัดการย้ายตัวหรือการเดิน</h3><p id="mobilityProblemCopy">ต้องดูความสามารถในการนั่ง ยืน และระดับผู้ช่วยจริงก่อนเลือกว่าจะเริ่มบนเตียงหรือเริ่มฝึกก้าว</p></div></div>
+                <div class="plan-box" id="mobilityProblemPlan"><b>แผนจัดการปัญหานี้</b>เริ่มจากกิจกรรมที่ทำได้จริง หากยังยืนไม่ได้จะเตรียมแรงบนเตียงและท่านั่งก่อน หากยืนได้จึงค่อยฝึกลงน้ำหนักและก้าว</div>
+                <button class="assessment-toggle" type="button" aria-expanded="false"><span class="ico">6</span><span><b>ระดับการช่วยเดิน FAC 0–5</b><small>เลือกจากการเดินจริง ไม่ต้องทดลองเดินใหม่</small></span><span class="score" id="facScoreLabel">ยังไม่ตอบ</span></button>
+                <div class="assessment-panel"><p class="assessment-help">เลือกจากการเดินที่เกิดขึ้นจริงในช่วงนี้ ไม่ต้องลุกมาทดลองเดินเพื่อทำแบบประเมิน</p><div class="option-list">
+                  <button class="option-card" type="button" data-fac-option="0"><span class="level">0</span><span><b>ยังเดินใช้งานไม่ได้</b><small>ต้องใช้คนช่วยมากหรือยังเน้นการย้ายตัว</small></span></button>
+                  <button class="option-card" type="button" data-fac-option="1"><span class="level">1</span><span><b>ต้องมีคนออกแรงช่วยตลอด</b><small>ผู้ช่วยต้องประคองน้ำหนักตัวต่อเนื่อง</small></span></button>
+                  <button class="option-card" type="button" data-fac-option="2"><span class="level">2</span><span><b>ต้องมีคนช่วยเป็นบางช่วง</b><small>เช่น ตอนทรงตัว ก้าว หรือเปลี่ยนทิศ</small></span></button>
+                  <button class="option-card" type="button" data-fac-option="3"><span class="level">3</span><span><b>เดินได้เมื่อมีคนเฝ้าหรือบอก</b><small>ไม่ต้องออกแรงพยุง แต่ยังไม่ควรเดินลำพัง</small></span></button>
+                  <button class="option-card" type="button" data-fac-option="4"><span class="level">4</span><span><b>เดินพื้นราบเองได้</b><small>ยังอาจลำบากบนบันได พื้นต่างระดับ หรือทางไกล</small></span></button>
+                  <button class="option-card" type="button" data-fac-option="5"><span class="level">5</span><span><b>เดินเองได้ทุกพื้นผิว</b><small>รวมบันได พื้นต่างระดับ และพื้นที่นอกบ้าน</small></span></button>
+                </div>
+                  <div class="followup-question"><strong>ขาข้างอ่อนแรงมีอาการเกร็งรบกวนแค่ไหน</strong><p>ตอบจากอาการที่เกิดขึ้นจริง เช่น ขาเหยียดแข็ง ปลายเท้าจิก เท้าบิด หรือยิ่งรีบเดินยิ่งเกร็ง</p><div class="option-list spasticity-options">
+                    <button class="option-card" type="button" data-leg-spasticity-option="0"><span class="level">0</span><span><b>ไม่สังเกตว่ามีอาการเกร็ง</b><small>ขาไม่ได้แข็งหรือดึงรั้งผิดปกติระหว่างกิจกรรม</small></span></button>
+                    <button class="option-card" type="button" data-leg-spasticity-option="1"><span class="level">1</span><span><b>มีบางครั้ง แต่ยังไม่รบกวนการใช้ขา</b><small>รู้สึกตึงหรือแข็งชั่วคราว แต่กิจกรรมยังใกล้เดิม</small></span></button>
+                    <button class="option-card" type="button" data-leg-spasticity-option="2"><span class="level">2</span><span><b>เกิดบ่อยและรบกวนการยืนหรือเดิน</b><small>เช่น ขาเหยียดแข็ง ปลายเท้าจิก หรือวางเท้ายากขึ้น</small></span></button>
+                    <button class="option-card" type="button" data-leg-spasticity-option="3"><span class="level">3</span><span><b>รบกวนมาก มีปวด ข้อติด หรือจัดท่ายาก</b><small>ควรให้ผู้เชี่ยวชาญแยกอาการเกร็งจากข้อติดและสาเหตุอื่น</small></span></button>
+                  </div></div>
+                </div>
+                <div class="pt"><span class="warn">!</span><span><b>นักกายภาพประเมิน:</b> การควบคุมเข่า เท้าตก โทนกล้ามเนื้อ การทรงตัว และอุปกรณ์ช่วยเดิน</span></div>
+              </article>
+
+              <article class="problem-card" data-assessment-card="arm">
+                <div class="problem-head"><span class="no">03</span><div><h3>แขนและมือข้างอ่อนแรงยังไม่กลับมาใช้ในกิจวัตร</h3><p>ถ้าใช้เฉพาะข้างแข็งแรงต่อเนื่อง แขนข้างอ่อนแรงจะยิ่งไม่มีโอกาสร่วมกับงานจริง</p></div></div>
+                <div class="plan-box"><b>แผนจัดการปัญหานี้</b>เริ่มจากเลื่อนมือ เอื้อม แตะ ประคองของ แล้วค่อยเพิ่มจับและปล่อยในงานที่ผู้ป่วยอยากทำเอง</div>
+                <button class="assessment-toggle" type="button" aria-expanded="false"><span class="ico">6</span><span><b>ระดับการใช้แขนข้างอ่อนแรง 0–5</b><small>ตอบจากสิ่งที่ใช้จริงในช่วง 7 วันที่ผ่านมา</small></span><span class="score" id="armScoreLabel">ยังไม่ตอบ</span></button>
+                <div class="assessment-panel"><p class="assessment-help">แบบนี้เป็นตัวช่วยจัดแผนของ MVP ไม่ใช่แบบวินิจฉัย เลือกระดับที่ตรงกับการใช้แขนจริงใน 7 วันที่ผ่านมา</p><div class="option-list">
+                  <button class="option-card" type="button" data-arm-option="0"><span class="level">0</span><span><b>ยังไม่ได้ใช้แขนข้างนี้ทำกิจกรรม</b><small>ต้องใช้แขนอีกข้างหรือผู้ดูแลทั้งหมด</small></span></button>
+                  <button class="option-card" type="button" data-arm-option="1"><span class="level">1</span><span><b>ขยับได้เล็กน้อย แต่ยังไม่ช่วยงาน</b><small>ใช้เพื่อจัดท่าหรือวางแขนให้ปลอดภัยเป็นหลัก</small></span></button>
+                  <button class="option-card" type="button" data-arm-option="2"><span class="level">2</span><span><b>ช่วยพยุงหรือกดของได้เมื่อจัดมือให้</b><small>ต้องใช้มืออีกข้างหรือผู้ดูแลช่วยวางตำแหน่ง</small></span></button>
+                  <button class="option-card" type="button" data-arm-option="3"><span class="level">3</span><span><b>ช่วยงานสองมือแบบง่ายได้</b><small>เช่น จับผ้า พยุงกล่อง หรือเลื่อนของบนโต๊ะ</small></span></button>
+                  <button class="option-card" type="button" data-arm-option="4"><span class="level">4</span><span><b>ทำงานง่ายด้วยแขนข้างนี้ได้บางอย่าง</b><small>ยังช้าหรือไม่คล่อง แต่เริ่มใช้จริงในชีวิตประจำวัน</small></span></button>
+                  <button class="option-card" type="button" data-arm-option="5"><span class="level">5</span><span><b>ใช้แขนข้างนี้ในกิจวัตรได้เกือบตามปกติ</b><small>ยังอาจจำกัดในงานละเอียด เร็ว หรือใช้แรงมาก</small></span></button>
+                </div><p class="heuristic-note">ระดับนี้เป็นเกณฑ์ภายในแอพเพื่อช่วยปรับแผน ไม่ใช่คะแนนมาตรฐานทางคลินิก</p>
+                  <div class="followup-question"><strong>แขนหรือมือข้างอ่อนแรงมีอาการเกร็งรบกวนแค่ไหน</strong><p>ตอบจากอาการที่เกิดขึ้นจริง เช่น ข้อศอกงอ มือกำ เปิดมือยาก หรือยิ่งรีบขยับยิ่งเกร็ง</p><div class="option-list spasticity-options">
+                    <button class="option-card" type="button" data-arm-spasticity-option="0"><span class="level">0</span><span><b>ไม่สังเกตว่ามีอาการเกร็ง</b><small>แขนหรือมือไม่ได้แข็งหรือดึงรั้งผิดปกติ</small></span></button>
+                    <button class="option-card" type="button" data-arm-spasticity-option="1"><span class="level">1</span><span><b>มีบางครั้ง แต่ยังไม่รบกวนกิจวัตร</b><small>ตึงหรือกำมือเป็นช่วง ๆ แต่ยังจัดท่าและดูแลได้</small></span></button>
+                    <button class="option-card" type="button" data-arm-spasticity-option="2"><span class="level">2</span><span><b>เกิดบ่อยและรบกวนการใช้แขนหรือมือ</b><small>เปิดมือ เอื้อม แต่งตัว หรือทำความสะอาดได้ยากขึ้น</small></span></button>
+                    <button class="option-card" type="button" data-arm-spasticity-option="3"><span class="level">3</span><span><b>รบกวนมาก มีปวด ข้อติด หรือดูแลผิวยาก</b><small>ควรให้ผู้เชี่ยวชาญประเมินก่อนเพิ่มแรงหรือช่วงการเคลื่อนไหว</small></span></button>
+                  </div></div>
+                  <div class="followup-question"><strong>อาการปวดหรือความไม่มั่นคงของไหล่รบกวนแค่ไหน</strong><p>ใช้คะแนนปวด 0–10 ร่วมกับสิ่งที่เกิดขึ้นจริง เช่น แขนห้อย ไหล่ดูตก หรือต้องประคองแขนระหว่างกิจวัตร</p><div class="option-list shoulder-options">
+                    <button class="option-card" type="button" data-shoulder-pain-option="0"><span class="level">0</span><span><b>ไม่ปวดและไม่สังเกตว่าไหล่ไม่มั่นคง</b><small>วางแขนและทำกิจกรรมระดับเดิมได้โดยอาการไม่เพิ่ม</small></span></button>
+                    <button class="option-card" type="button" data-shoulder-pain-option="1"><span class="level">1</span><span><b>ปวดเล็กน้อย 1–3/10</b><small>รู้สึกหนักหรือตึงเป็นบางครั้ง แต่ยังจัดท่าและทำกิจวัตรได้</small></span></button>
+                    <button class="option-card" type="button" data-shoulder-pain-option="2"><span class="level">2</span><span><b>ปวดปานกลาง 4–6/10 หรือเห็นไหล่ตก</b><small>แขนห้อย ต้องประคอง หรืออาการเริ่มรบกวนการแต่งตัวและใช้แขน</small></span></button>
+                    <button class="option-card" type="button" data-shoulder-pain-option="3"><span class="level">3</span><span><b>ปวดมาก 7–10/10 หรืออาการแย่ลงชัดเจน</b><small>ปวดจนจัดท่าไม่ได้ บวม ร้อน หรือกิจวัตรลดลง ควรประเมินสาเหตุก่อนเพิ่มการฝึกแขน</small></span></button>
+                  </div></div>
+                </div>
+                <div class="pt"><span class="warn">!</span><span><b>นักกายภาพประเมิน:</b> Fugl-Meyer โทนกล้ามเนื้อ การควบคุมสะบัก อาการปวด และการรับความรู้สึก</span></div>
+              </article>
+            </div>
+          </section>
+
+          <section class="starter" id="starterPlan">
+            <small id="starterLabel">โปรแกรมเริ่มต้น · แผน 03</small><h2>เชื่อมลำตัว แขน และขากลับสู่กิจวัตร</h2><p>เริ่มจากสองกิจกรรมหลักที่ทำได้โดยมีผู้ช่วย ก่อนปรับจำนวนครั้ง ระดับการช่วย และงานจริงตามผลประเมิน</p>
+            <div class="personal-level" id="personalLevel" hidden></div>
+            <div class="exercise-grid">
+              <article class="exercise-card is-playing" id="starterActivityOne" tabindex="0"><div class="demo-stage"><div class="demo-frame"><div class="demo-photo sit" data-starter-demo-frame="first"></div></div><div class="demo-frame"><div class="demo-photo stand" data-starter-demo-frame="second"></div></div></div><div class="exercise-copy"><h3 id="starterActivityOneTitle">กิจกรรม 1 · จัดแนวลำตัวและฝึกลุกยืน</h3><p id="starterActivityOneCopy">วางเท้าและลำตัวให้เหมาะสม ผู้ช่วยอยู่ใกล้ลำตัวหรือเชิงกราน ไม่ดึงแขนข้างอ่อนแรง</p><div class="dose" id="starterActivityOneDose">เริ่มต้น 3-5 ครั้ง · 1-2 รอบ · พัก 90 วินาที</div><button class="exercise-detail-toggle" type="button">ดูวิธีทำและข้อควรระวัง</button><div class="exercise-details" id="starterActivityOneDetails">ใช้เก้าอี้มั่นคงและสูงพอเหมาะ โน้มตัวไปข้างหน้าแล้วลุกช้า ๆ หยุดเมื่อเข่าทรุด ลำตัวเอียงมาก หน้ามืด หรือผู้ช่วยต้องยกน้ำหนักตัวมาก</div></div></article>
+              <article class="exercise-card" id="starterActivityTwo" tabindex="0"><div class="demo-stage"><div class="demo-frame"><div class="demo-photo arm-start" data-starter-two-frame="first"></div></div><div class="demo-frame"><div class="demo-photo arm-end" data-starter-two-frame="second"></div></div></div><div class="exercise-copy"><h3 id="starterActivityTwoTitle">กิจกรรม 2 · เลื่อนแขนข้างอ่อนแรงบนโต๊ะ</h3><p id="starterActivityTwoCopy">ลดน้ำหนักของแขนด้วยผ้าหรือพื้นลื่น แล้วเลื่อนไปข้างหน้าโดยไม่ยกไหล่ชดเชย</p><div class="dose">เริ่มต้น 5-8 ครั้ง · 1-2 รอบ · วันละ 1-2 ช่วง</div><button class="exercise-detail-toggle" type="button">ดูวิธีทำและข้อควรระวัง</button><div class="exercise-details" id="starterActivityTwoDetails">วางแขนบนโต๊ะในระยะใกล้ลำตัว ประคองข้อศอกเมื่อจำเป็น ไม่ดึงมือหรือยกแขนจากปลายแขน หยุดเมื่อปวดไหล่เพิ่มหรือรู้สึกข้อไหล่ไม่มั่นคง</div></div></article>
+            </div>
+
+            <div class="personal-results" id="personalResults"><div class="personalized-activities" id="personalizedActivities"></div><section class="result-panel"><h3>ตารางฝึก 7 วัน</h3><div class="week-grid" id="weeklySchedule"></div></section><section class="result-panel"><h3>เมื่อไรจึงเพิ่มระดับ</h3><ul class="guidance-list" id="progressionGuidance"></ul></section><section class="result-panel"><h3>เมื่อไรควรลดระดับหรือหยุด</h3><ul class="guidance-list" id="regressionGuidance"></ul></section><section class="result-panel" id="modifierPanel" hidden><h3>สิ่งที่ปรับตามข้อมูลเพิ่มเติม</h3><ul class="guidance-list" id="modifierGuidance"></ul></section><div class="personal-pt" id="personalPt"></div></div>
+
+            <div class="unlock-panel"><h3>ปรับโปรแกรมให้เฉพาะตัวขึ้น</h3><p>คะแนนทั้งสามส่วน อาการเกร็ง และอาการไหล่จะช่วยเลือกระดับผู้ช่วย ความถี่ ความหนัก เวลา และลำดับกิจกรรมให้เหมาะกับกำลังตอนนี้</p><div class="status" id="status">เหลือแบบประเมินอีก 3 หัวข้อ</div><button class="primary" id="buildPlan" type="button" disabled>ตอบแบบประเมินให้ครบ เพื่อสร้างแผนเฉพาะตัว</button>
+              <div class="lead-form" id="leadForm"><h3 class="form-title">รับแผนเฉพาะตัวฉบับละเอียด</h3><div class="form-grid"><input class="form-input" id="name" autocomplete="name" placeholder="ชื่อ"><input class="form-input" id="phone" inputmode="tel" autocomplete="tel" placeholder="เบอร์โทรศัพท์"></div><div class="location-control"><button class="location-button" id="useCurrentLocation" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>ใช้ตำแหน่งปัจจุบัน</span></button><p class="location-status" id="locationStatus" aria-live="polite"></p><a class="location-map-link" id="locationMapLink" target="_blank" rel="noopener noreferrer">ดูตำแหน่งบน Google Maps</a></div><div class="manual-area-fields" id="manualAreaFields" hidden><label class="manual-area-label" for="area">กรอกอำเภอหรือพื้นที่ที่พัก</label><input class="form-input" id="area" autocomplete="street-address" placeholder="เช่น เมืองชลบุรี บางแสน หรือจุดสังเกต"></div><button class="primary ready" id="submitPlan" type="button">สร้างแผนเฉพาะตัวของฉัน</button></div>
+              <div class="personal-plan" id="personalPlan"><strong>แผนของคุณได้รับการปรับแล้ว</strong><p id="personalSummary"></p></div>
+            </div>
+          </section>
+
+          <div class="bottom-actions"><a class="consult-button" href="https://baankaiyaphap-chonburi.com/">ปรึกษานักกายภาพ</a><button class="copy-button" id="copySummary" type="button">นำผลของฉันไปถาม AI ต่อ</button></div><p class="ai-note">นำข้อความนี้ไปวางใน AI ที่คุณใช้ เช่น ChatGPT, Claude, Gemini, Grok หรือแอปอื่น ๆ เพื่อให้ช่วยวิเคราะห์อาการและถามต่อจากข้อมูลของคุณได้</p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="js/exercise-library.js"></script>
+  <script src="js/stroke-arm-leg-personalization.js"></script>
+  <script src="js/current-location-lead.js"></script>
+  <script src="js/stroke-knowledge-profile.js"></script>
+  <script>
+    const state={barthelTotal:0,barthelComplete:false,transferLevel:null,facLevel:null,armUseLevel:null,armSpasticityImpact:null,legSpasticityImpact:null,shoulderPainImpact:null,strokeKnowledge:null,capturedLocation:null,currentLeadData:null,currentPlan:null};
+    const conditionDetails={
+      stroke:{title:'โรคหลอดเลือดสมอง',bodyHtml:'เกิดจากเลือดไปเลี้ยงสมองผิดปกติ ทำให้สมองส่วนที่ควบคุมแรง การเคลื่อนไหว การทรงตัว การรับรู้ หรือการสื่อสารทำงานลดลง การฟื้นฟูอาศัย <a class="inline-term" href="https://baankaiyaphap-chonburi.com/blog/post.html?slug=neuroplasticity-stroke-recovery" target="_blank" rel="noopener" title="อ่านเรื่อง Neuroplasticity">Neuroplasticity</a> เพื่อเรียนรู้การเคลื่อนไหวอีกครั้ง และต้องปรับกิจกรรมหากมี <a class="inline-term" href="https://baankaiyaphap-chonburi.com/blog/post.html?slug=spasticity-after-stroke" target="_blank" rel="noopener" title="อ่านเรื่อง Spasticity">Spasticity หรืออาการเกร็ง</a> รบกวนการใช้แขนขา',articleUrl:'https://baankaiyaphap-chonburi.com/blog/post.html?slug=stroke-ep1',articleLabel:'อ่านเรื่องโรคหลอดเลือดสมองฉบับเต็ม'},
+      hemiparesis:{title:'อ่อนแรงครึ่งซีก',body:'แขนและขาด้านหนึ่งมีแรงหรือการควบคุมลดลง ทำให้ลำตัวเอียง ถ่ายน้ำหนักไม่สมดุล ลุก เดิน หรือใช้มือได้ยาก เป้าหมายคือฝึกให้ด้านที่อ่อนแรงกลับมามีส่วนร่วมอย่างปลอดภัย โดยไม่ปล่อยให้ด้านแข็งแรงทำแทนทั้งหมด'},
+      'weak-shoulder':{title:'ไหล่ข้างอ่อนแรง',bodyHtml:'กล้ามเนื้อรอบสะบักและหัวไหล่ควบคุมข้อได้ไม่ดี แขนอาจรู้สึกหนัก เคลื่อนไหวยาก หรือปวดเมื่อยกและดึงผิดวิธี บางรายอาจมี <a class="inline-term" href="https://baankaiyaphap-chonburi.com/blog/post.html?slug=shoulder-pain-after-stroke" target="_blank" rel="noopener" title="อ่านเรื่อง Shoulder Subluxation">Subluxation หรือข้อไหล่เคลื่อนบางส่วน</a> ร่วมด้วย ควรจัดแนวและประคองให้เหมาะ หลีกเลี่ยงการดึงแขนข้างอ่อนแรง แล้วค่อยฝึกใช้แขนในกิจกรรมจริง',articleUrl:'https://baankaiyaphap-chonburi.com/blog/post.html?slug=shoulder-pain-after-stroke',articleLabel:'อ่านเรื่องปวดไหล่และข้อไหล่เคลื่อนบางส่วน'}
+    };
+    const conditionButtons=[...document.querySelectorAll('[data-condition-id]')];
+    const conditionDetail=document.getElementById('conditionDetail');
+    const conditionDetailTitle=document.getElementById('conditionDetailTitle');
+    const conditionDetailBody=document.getElementById('conditionDetailBody');
+    const conditionArticleLink=document.getElementById('conditionArticleLink');
+    const conditionArticleLabel=document.getElementById('conditionArticleLabel');
+    function closeConditionDetail(){conditionDetail.hidden=true;conditionButtons.forEach((button)=>{button.classList.remove('active');button.setAttribute('aria-expanded','false')})}
+    function toggleConditionDetail(event){
+      const button=event.currentTarget;
+      const isCurrentOpen=button.classList.contains('active')&&!conditionDetail.hidden;
+      if(isCurrentOpen){closeConditionDetail();return}
+      const detail=conditionDetails[button.dataset.conditionId];
+      conditionButtons.forEach((item)=>{const active=item===button;item.classList.toggle('active',active);item.setAttribute('aria-expanded',String(active))});
+      conditionDetailTitle.textContent=detail.title;
+      if(detail.bodyHtml)conditionDetailBody.innerHTML=detail.bodyHtml;else conditionDetailBody.textContent=detail.body;
+      conditionArticleLink.hidden=!detail.articleUrl;
+      if(detail.articleUrl){conditionArticleLink.href=detail.articleUrl;conditionArticleLabel.textContent=detail.articleLabel||'อ่านบทความฉบับเต็ม'}
+      conditionDetail.hidden=false;
+    }
+    conditionButtons.forEach((button)=>button.addEventListener('click',toggleConditionDetail));
+    document.getElementById('conditionDetailClose').addEventListener('click',closeConditionDetail);
+    const strokeTypeVisual=document.getElementById('strokeTypeVisual');
+    const strokeLesionVisual=document.getElementById('strokeLesionVisual');
+    const strokeKnowledgeEditor=document.getElementById('strokeKnowledgeEditor');
+    const strokeKnowledgeEdit=document.getElementById('strokeKnowledgeEdit');
+    const strokeTypeSelect=document.getElementById('strokeTypeSelect');
+    const strokeHemisphereSelect=document.getElementById('strokeHemisphereSelect');
+    const strokeLesionSelect=document.getElementById('strokeLesionSelect');
+    const queryParams=new URLSearchParams(window.location.search);
+    function safeStrokeKnowledge(input){
+      try{return StrokeKnowledgeProfile.buildStrokeKnowledgeProfile(input)}catch(error){return StrokeKnowledgeProfile.buildStrokeKnowledgeProfile()}
+    }
+    function renderStrokeKnowledge(profile){
+      state.strokeKnowledge=profile;
+      strokeTypeVisual.className='knowledge-visual type-visual '+profile.typeSprite;
+      strokeLesionVisual.className='knowledge-visual lesion-visual '+profile.lesionSprite;
+      document.getElementById('strokeTypeTitle').textContent=profile.typeTitleTh;
+      document.getElementById('strokeTypeBody').textContent=profile.typeBodyTh;
+      document.getElementById('strokeLesionTitle').textContent=profile.lesionTitleTh;
+      document.getElementById('strokeLesionBody').textContent=profile.lesionBodyTh;
+      strokeTypeSelect.value=profile.type;strokeHemisphereSelect.value=profile.hemisphere;strokeLesionSelect.value=profile.lesion;
+    }
+    const initialStrokeKnowledge=safeStrokeKnowledge({
+      type:queryParams.get('strokeType')||'unknown',
+      hemisphere:queryParams.get('strokeHemisphere')||'unknown',
+      lesion:queryParams.get('strokeLesion')||'unknown'
+    });
+    renderStrokeKnowledge(initialStrokeKnowledge);
+    strokeKnowledgeEdit.addEventListener('click',()=>{
+      const willOpen=strokeKnowledgeEditor.hidden;
+      strokeKnowledgeEditor.hidden=!willOpen;
+      strokeKnowledgeEdit.setAttribute('aria-expanded',String(willOpen));
+      strokeKnowledgeEdit.textContent=willOpen?'ปิดการแก้ไข':'แก้ไขข้อมูล';
+    });
+    document.getElementById('strokeKnowledgeSave').addEventListener('click',()=>{
+      renderStrokeKnowledge(safeStrokeKnowledge({type:strokeTypeSelect.value,hemisphere:strokeHemisphereSelect.value,lesion:strokeLesionSelect.value}));
+      strokeKnowledgeEditor.hidden=true;strokeKnowledgeEdit.setAttribute('aria-expanded','false');strokeKnowledgeEdit.textContent='แก้ไขข้อมูล';
+    });
+    const stageDefinitions={
+      bed:{title:'เคลื่อนไหวบนเตียง',body:'เน้นจัดท่า พลิกตัว และเตรียมลำตัวกับขา โดยมีผู้ดูแลช่วยตามความจำเป็น',pictogram:'pictogram-bed'},
+      transfer:{title:'ฝึกนั่งและย้ายตัว',body:'ฝึกควบคุมลำตัวในท่านั่งและย้ายระหว่างเตียงกับเก้าอี้ ก่อนเร่งการยืน',pictogram:'pictogram-transfer'},
+      stand:{title:'ฝึกลุกยืนและเริ่มก้าว',body:'เริ่มรับน้ำหนักและก้าวใกล้จุดจับมั่นคง โดยมีผู้ช่วยตามระดับที่ต้องใช้จริง',pictogram:'pictogram-walk'},
+      walk:{title:'ฝึกเดินและใช้แขนในชีวิตประจำวัน',body:'เชื่อมการเดิน การใช้มือ และกิจกรรมในบ้านเข้าด้วยกัน เพื่อกลับไปทำสิ่งสำคัญได้มากขึ้น',pictogram:'pictogram-arm'}
+    };
+    let stageKey=['bed','transfer','stand','walk'].includes(queryParams.get('stage'))?queryParams.get('stage'):'bed';
+    function renderStage(){
+      if(state.transferLevel===0||state.facLevel===0)stageKey='bed';
+      else if(state.transferLevel===1||(state.transferLevel===2&&state.facLevel===null))stageKey='transfer';
+      else if(state.facLevel!==null&&state.facLevel<=2)stageKey='stand';
+      else if(state.facLevel!==null&&state.facLevel>=3)stageKey='walk';
+      const stage=stageDefinitions[stageKey];
+      document.getElementById('planStageVisual').className='function-picto stage-visual '+stage.pictogram;
+      document.getElementById('planStageTitle').textContent=stage.title;
+      document.getElementById('planStageBody').textContent=stage.body;
+      document.getElementById('evidenceBarthel').textContent=state.barthelComplete?state.barthelTotal+'/20 คะแนน':'รอคำตอบเพิ่มเติม';
+      const transferText=['ต้องช่วยมาก','ต้องช่วยย้ายตัวมาก','ช่วยเล็กน้อยหรือเฝ้า','ทำเองได้'];
+      document.getElementById('evidenceTransfer').textContent=state.transferLevel===null?'รอคำตอบเพิ่มเติม':transferText[state.transferLevel];
+      const walkingText=['ยังเดินไม่ได้','ต้องช่วยสองคน','ต้องช่วยพยุงต่อเนื่อง','ช่วยแตะหรือเฝ้าใกล้','เดินเองบนพื้นราบ','เดินเองได้หลายสภาพ'];
+      document.getElementById('evidenceWalking').textContent=state.facLevel===null?'รอคำตอบเพิ่มเติม':walkingText[state.facLevel];
+    }
+    renderStage();
+    const starterPlan=document.getElementById('starterPlan');
+    const buildPlan=document.getElementById('buildPlan');
+    const leadForm=document.getElementById('leadForm');
+    const manualAreaFields=document.getElementById('manualAreaFields');
+    const areaInput=document.getElementById('area');
+    const locationButton=document.getElementById('useCurrentLocation');
+    const locationStatus=document.getElementById('locationStatus');
+    const locationMapLink=document.getElementById('locationMapLink');
+    const starterActivitySettings={
+      assisted:{exerciseId:'caregiver_bed_rolling',dose:'ข้างละ 3-5 ครั้ง · 1-2 รอบ · ทำช้าและหยุดเมื่อเจ็บ'},
+      bed:{exerciseId:'partial_bridge_supported',dose:'เริ่มต้น 3-5 ครั้ง · 1-2 รอบ · พัก 60-90 วินาที'},
+      standing:{exerciseId:'trunk_transfer_supported',dose:'เริ่มต้น 3-5 ครั้ง · 1-2 รอบ · พัก 90 วินาที'}
+    };
+    function exerciseFrameClasses(exercise){
+      const assetClass=exercise.visual.asset.includes('grid-b')
+        ?'grid-b'
+        :exercise.visual.asset.includes('grid-c')
+          ?'grid-c'
+          :exercise.visual.asset.includes('spasticity-grid')
+            ?'grid-spasticity'
+            :'';
+      return exercise.visual.frames.map(frame=>(assetClass+' '+frame).trim());
+    }
+    function resolveStarterActivity(config){
+      const exercise=CareExerciseLibrary.getExercise(config.exerciseId);
+      return {title:'กิจกรรม 1 · '+exercise.titleTh,copy:exercise.purposeTh,dose:config.dose,details:exercise.safetyTh,frames:exerciseFrameClasses(exercise)};
+    }
+    function initializeSecondStarterActivity(){
+      const exercise=CareExerciseLibrary.getExercise('arm_table_slide');
+      const frames=exerciseFrameClasses(exercise);
+      document.getElementById('starterActivityTwoTitle').textContent='กิจกรรม 2 · '+exercise.titleTh;
+      document.getElementById('starterActivityTwoCopy').textContent=exercise.purposeTh;
+      document.getElementById('starterActivityTwoDetails').textContent=exercise.safetyTh;
+      const frameElements=document.querySelectorAll('[data-starter-two-frame]');
+      frameElements[0].className='demo-photo '+frames[0];frameElements[1].className='demo-photo '+frames[1];
+    }
+    initializeSecondStarterActivity();
+    function setProblemPlan(id,text){document.getElementById(id).innerHTML='<b>แผนจัดการปัญหานี้</b>'+text}
+    function updateProblemGuidance(){
+      const title=document.getElementById('mobilityProblemTitle');const copy=document.getElementById('mobilityProblemCopy');
+      if(state.transferLevel===0){
+        setProblemPlan('transferProblemPlan','เน้นการจัดท่า พลิกตัว และวิธีช่วยบนเตียงโดยผู้ดูแล ยังไม่ให้ทดลองลุกยืนหรือทำท่าฝึกเอง');
+        title.textContent='การนั่งทรงตัวและย้ายตัวยังต้องมีผู้ดูแลช่วย';copy.textContent='เมื่อยังนั่งทรงตัวไม่ได้ เป้าหมายแรกคือการจัดท่า พลิกตัว และลดภาระผู้ดูแลอย่างปลอดภัย';
+        setProblemPlan('mobilityProblemPlan','ยังไม่ฝึกยืน ก้าว หรือเดิน จนกว่านักกายภาพจะประเมินความพร้อมและสอนวิธีช่วยที่เหมาะกับบ้านนี้');return;
+      }
+      if(state.facLevel===0||(state.transferLevel!==null&&state.facLevel===null)){
+        setProblemPlan('transferProblemPlan','ฝึกพลิกตัว ยกสะโพกเล็กน้อย และควบคุมลำตัวในท่านั่ง เพื่อเตรียมการย้ายตัวก่อนฝึกลุกยืน');
+        title.textContent='ยังเดินใช้งานไม่ได้ ต้องเตรียมลำตัวและขาก่อน';copy.textContent='ตอนนี้ควรเพิ่มแรงและการควบคุมในท่านอนกับท่านั่งก่อน ไม่เร่งให้ยืนหรือเดินเกินความสามารถจริง';
+        setProblemPlan('mobilityProblemPlan','ใช้ Partial Bridging การพลิกตัว และการทรงตัวในท่านั่ง ยังไม่ใส่ท่ายืน ถ่ายน้ำหนัก ก้าว หรือเดิน');return;
+      }
+      if(state.facLevel!==null){
+        setProblemPlan('transferProblemPlan','ฝึกจัดแนวลำตัว ถ่ายน้ำหนัก และลำดับการลุกยืน พร้อมสอนญาติช่วยเฉพาะจุดที่จำเป็น');
+        title.textContent='ขาข้างอ่อนแรงยังรับน้ำหนักและก้าวไม่มั่นคง';copy.textContent='การลงน้ำหนักไม่เท่ากันและระดับผู้ช่วยที่ยังจำเป็น ทำให้การเดินในบ้านไม่ต่อเนื่อง';
+        setProblemPlan('mobilityProblemPlan','ฝึกลงน้ำหนักข้างอ่อนแรง ยืนก้าวใกล้จุดจับ และเดินตามระดับผู้ช่วย ไม่เร่งระยะก่อนควบคุมท่าได้');return;
+      }
+      setProblemPlan('transferProblemPlan','เริ่มจากจัดแนว พลิกตัว และลำดับการย้ายตัว แล้วค่อยเพิ่มการลุกยืนเมื่อความสามารถจริงปลอดภัยพอ');
+      title.textContent='ขาข้างอ่อนแรงยังจำกัดการย้ายตัวหรือการเดิน';copy.textContent='ต้องดูความสามารถในการนั่ง ยืน และระดับผู้ช่วยจริงก่อนเลือกว่าจะเริ่มบนเตียงหรือเริ่มฝึกก้าว';
+      setProblemPlan('mobilityProblemPlan','เริ่มจากกิจกรรมที่ทำได้จริง หากยังยืนไม่ได้จะเตรียมแรงบนเตียงและท่านั่งก่อน หากยืนได้จึงค่อยฝึกลงน้ำหนักและก้าว');
+    }
+    function updateStarterActivity(){
+      let mode='standing';
+      if(state.transferLevel===0)mode='assisted';
+      else if(state.facLevel===0||(state.transferLevel!==null&&state.facLevel===null))mode='bed';
+      const setting=resolveStarterActivity(starterActivitySettings[mode]);
+      document.getElementById('starterActivityOneTitle').textContent=setting.title;
+      document.getElementById('starterActivityOneCopy').textContent=setting.copy;
+      document.getElementById('starterActivityOneDose').textContent=setting.dose;
+      document.getElementById('starterActivityOneDetails').textContent=setting.details;
+      const frames=document.querySelectorAll('[data-starter-demo-frame]');
+      frames[0].className='demo-photo '+setting.frames[0];frames[1].className='demo-photo '+setting.frames[1];
+      updateProblemGuidance();
+    }
+
+    document.querySelectorAll('.assessment-toggle').forEach(button=>button.addEventListener('click',()=>{
+      const card=button.closest('.problem-card');
+      const open=!card.classList.contains('open');
+      document.querySelectorAll('.problem-card').forEach(item=>{item.classList.remove('open');item.querySelector('.assessment-toggle').setAttribute('aria-expanded','false')});
+      if(open){card.classList.add('open');button.setAttribute('aria-expanded','true')}
+    }));
+
+    const barthelSelects=[...document.querySelectorAll('[data-barthel-select]')];
+    const transferSelect=document.querySelector('[data-barthel-item="transfer"] [data-barthel-select]');
+    function updateBarthel(){
+      state.barthelComplete=barthelSelects.every(select=>select.value!=='');
+      state.barthelTotal=barthelSelects.reduce((total,select)=>total+(select.value===''?0:Number(select.value)),0);
+      state.transferLevel=transferSelect.value===''?null:Number(transferSelect.value);
+      document.getElementById('barthelTotal').textContent=state.barthelTotal+'/20';
+      document.getElementById('barthelScoreLabel').textContent=state.barthelComplete?state.barthelTotal+'/20':barthelSelects.filter(select=>select.value!=='').length+'/10 ข้อ';
+      updateStarterActivity();renderStage();updateReadiness();
+    }
+    barthelSelects.forEach(select=>select.addEventListener('change',updateBarthel));
+
+    document.querySelectorAll('[data-fac-option]').forEach(button=>button.addEventListener('click',()=>{
+      document.querySelectorAll('[data-fac-option]').forEach(item=>item.classList.remove('selected'));
+      button.classList.add('selected');state.facLevel=Number(button.dataset.facOption);
+      document.getElementById('facScoreLabel').textContent='ระดับ '+state.facLevel;updateStarterActivity();renderStage();updateReadiness();
+    }));
+    document.querySelectorAll('[data-arm-option]').forEach(button=>button.addEventListener('click',()=>{
+      document.querySelectorAll('[data-arm-option]').forEach(item=>item.classList.remove('selected'));
+      button.classList.add('selected');state.armUseLevel=Number(button.dataset.armOption);
+      document.getElementById('armScoreLabel').textContent='ระดับ '+state.armUseLevel;updateReadiness();
+    }));
+    document.querySelectorAll('[data-leg-spasticity-option]').forEach(button=>button.addEventListener('click',()=>{
+      document.querySelectorAll('[data-leg-spasticity-option]').forEach(item=>item.classList.remove('selected'));
+      button.classList.add('selected');state.legSpasticityImpact=Number(button.dataset.legSpasticityOption);updateReadiness();
+    }));
+    document.querySelectorAll('[data-arm-spasticity-option]').forEach(button=>button.addEventListener('click',()=>{
+      document.querySelectorAll('[data-arm-spasticity-option]').forEach(item=>item.classList.remove('selected'));
+      button.classList.add('selected');state.armSpasticityImpact=Number(button.dataset.armSpasticityOption);updateReadiness();
+    }));
+    document.querySelectorAll('[data-shoulder-pain-option]').forEach(button=>button.addEventListener('click',()=>{
+      document.querySelectorAll('[data-shoulder-pain-option]').forEach(item=>item.classList.remove('selected'));
+      button.classList.add('selected');state.shoulderPainImpact=Number(button.dataset.shoulderPainOption);updateReadiness();
+    }));
+
+    function updateReadiness(){
+      const complete=[
+        state.barthelComplete,
+        state.facLevel!==null&&state.legSpasticityImpact!==null,
+        state.armUseLevel!==null&&state.armSpasticityImpact!==null&&state.shoulderPainImpact!==null,
+      ];
+      const done=complete.filter(Boolean).length;
+      const remaining=3-done;
+      document.getElementById('assessmentProgress').textContent=done+'/3';
+      document.getElementById('status').textContent=remaining===0?'แบบประเมินครบแล้ว พร้อมสร้างแผนเฉพาะตัว':'เหลือแบบประเมินอีก '+remaining+' หัวข้อ';
+      buildPlan.disabled=remaining!==0;
+      buildPlan.classList.toggle('ready',remaining===0);
+      buildPlan.textContent=remaining===0?'สร้างแผนเฉพาะตัวของฉัน':'ตอบแบบประเมินให้ครบ เพื่อสร้างแผนเฉพาะตัว';
+    }
+
+    const toast=document.getElementById('toast');let toastTimer;
+    function showToast(message){clearTimeout(toastTimer);toast.textContent=message;toast.classList.add('show');toastTimer=setTimeout(()=>toast.classList.remove('show'),2400)}
+    function renderLocationState(type,message){
+      locationStatus.className='location-status'+(type?' '+type:'');locationStatus.textContent=message||'';
+      locationMapLink.classList.toggle('show',Boolean(state.capturedLocation));
+      if(state.capturedLocation)locationMapLink.href=state.capturedLocation.googleMapsUrl;else locationMapLink.removeAttribute('href');
+    }
+
+    locationButton.addEventListener('click',async()=>{
+      state.capturedLocation=null;state.currentLeadData=null;manualAreaFields.hidden=true;areaInput.value='';
+      locationButton.disabled=true;locationButton.classList.remove('captured','denied');locationButton.querySelector('span').textContent='กำลังระบุตำแหน่ง...';renderLocationState('','');
+      const result=await CurrentLocationLead.requestCurrentLocation(navigator.geolocation);
+      if(!result.ok){
+        if(result.code==='permission_denied'){
+          locationButton.classList.add('denied');locationButton.querySelector('span').textContent='ไม่ได้แชร์ตำแหน่ง';locationButton.disabled=true;manualAreaFields.hidden=false;areaInput.focus();renderLocationState('error',result.messageTh);return;
+        }
+        locationButton.disabled=false;locationButton.querySelector('span').textContent='ลองระบุตำแหน่งอีกครั้ง';renderLocationState('error',result.messageTh);return;
+      }
+      locationButton.disabled=false;state.capturedLocation=result.location;locationButton.classList.add('captured');locationButton.querySelector('span').textContent='ระบุตำแหน่งใหม่';
+      const accuracy=result.location.accuracyMeters===null?'':' ความแม่นยำประมาณ '+Math.round(result.location.accuracyMeters)+' เมตร';renderLocationState('success','ปักหมุดตำแหน่งแล้ว'+accuracy);
+    });
+
+    function escapeHtml(value){return String(value).replace(/[&<>'"]/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char]))}
+    function renderList(id,items){document.getElementById(id).innerHTML=items.map(item=>'<li>'+escapeHtml(item)+'</li>').join('')}
+    function demoMarkup(item){
+      const visual=item&&item.visual;
+      if(!visual||!Array.isArray(visual.frames)||visual.frames.length!==2)return '';
+      const assetClass=visual.asset.includes('grid-b')
+        ?'grid-b'
+        :visual.asset.includes('grid-c')
+          ?'grid-c'
+          :visual.asset.includes('spasticity-grid')
+            ?'grid-spasticity'
+            :'';
+      return '<div class="personal-demo" role="img" aria-label="'+escapeHtml(visual.altTh||item.titleTh)+'"><div class="demo-frame"><div class="demo-photo '+assetClass+' '+escapeHtml(visual.frames[0])+'"></div></div><div class="demo-frame"><div class="demo-photo '+assetClass+' '+escapeHtml(visual.frames[1])+'"></div></div></div>';
+    }
+    function renderPersonalPlan(result){
+      state.currentPlan=result;
+      starterPlan.classList.add('personalized');
+      document.getElementById('starterLabel').textContent='แผนเฉพาะตัวของฉัน · FITT';
+      const level=document.getElementById('personalLevel');level.hidden=false;level.textContent=result.levelLabelTh;
+      document.getElementById('personalizedActivities').innerHTML=result.activities.map((item,index)=>'<article class="personalized-activity">'+demoMarkup(item)+'<h3>'+(index+1)+'. '+escapeHtml(item.titleTh)+'</h3><p>'+escapeHtml(item.purposeTh)+'</p><div class="fitt-grid"><div class="fitt-cell"><span>ความถี่</span><strong>'+escapeHtml(item.fitt.frequency)+'</strong></div><div class="fitt-cell"><span>ความหนัก</span><strong>'+escapeHtml(item.fitt.intensity)+'</strong></div><div class="fitt-cell"><span>เวลาและปริมาณ</span><strong>'+escapeHtml(item.fitt.time)+'</strong></div><div class="fitt-cell"><span>รูปแบบ</span><strong>'+escapeHtml(item.fitt.type)+'</strong></div></div><p><b>ข้อควรระวัง:</b> '+escapeHtml(item.safetyTh)+'</p></article>').join('');
+      document.getElementById('weeklySchedule').innerHTML=result.schedule.map(item=>'<div class="week-day"><strong>'+escapeHtml(item.dayTh)+'</strong>'+escapeHtml(item.activityTh)+'</div>').join('');
+      renderList('progressionGuidance',result.progressionRulesTh);renderList('regressionGuidance',result.regressionRulesTh);
+      const modifierPanel=document.getElementById('modifierPanel');modifierPanel.hidden=result.modifierNotesTh.length===0;if(result.modifierNotesTh.length)renderList('modifierGuidance',result.modifierNotesTh);
+      document.getElementById('personalPt').innerHTML='<b>นักกายภาพจะช่วยทำให้แผนละเอียดขึ้น:</b><br>'+result.ptAssessmentTh.map(escapeHtml).join(' · ');
+      const locationNote=state.currentLeadData.location?'พร้อมพิกัดตำแหน่งที่เลือกไว้ในหน้านี้':'พร้อมพื้นที่ '+state.currentLeadData.area;
+      document.getElementById('personalSummary').textContent='ใช้ Barthel '+state.barthelTotal+'/20, การย้ายตัวระดับ '+state.transferLevel+', FAC '+state.facLevel+', การใช้แขนระดับ '+state.armUseLevel+', ผลกระทบจากอาการเกร็งแขน '+state.armSpasticityImpact+'/3 ขา '+state.legSpasticityImpact+'/3 และอาการไหล่ '+state.shoulderPainImpact+'/3 เพื่อปรับระดับผู้ช่วย FITT และลำดับกิจกรรมแล้ว '+locationNote;
+      document.getElementById('personalPlan').classList.add('show');leadForm.classList.remove('show');buildPlan.hidden=true;
+      starterPlan.scrollIntoView({behavior:'smooth',block:'start'});showToast('สร้างแผนเฉพาะตัวแล้ว');
+    }
+
+    function renderReroute(result){
+      document.getElementById('personalSummary').textContent=result.routeMessageTh;
+      document.getElementById('personalPlan').classList.add('show');leadForm.classList.remove('show');
+      showToast(result.routeMessageTh);
+    }
+
+    buildPlan.addEventListener('click',()=>{if(!buildPlan.disabled){leadForm.classList.add('show');leadForm.scrollIntoView({behavior:'smooth',block:'center'})}});
+    document.getElementById('submitPlan').addEventListener('click',()=>{
+      const name=document.getElementById('name').value.trim();const phone=document.getElementById('phone').value.trim();const area=areaInput.value.trim();const manualAllowed=!manualAreaFields.hidden;
+      if(!name||!phone){showToast('กรอกชื่อและเบอร์โทรศัพท์ก่อน');return}
+      if(!state.capturedLocation&&!manualAllowed){showToast('ใช้ตำแหน่งปัจจุบันก่อน');return}
+      if(manualAllowed&&!area){showToast('กรอกอำเภอหรือพื้นที่ที่พักก่อน');areaInput.focus();return}
+      state.currentLeadData={name,phone,area,location:state.capturedLocation};
+      const result=StrokeArmLegPersonalization.buildStrokeArmLegPlan({barthelTotal:state.barthelTotal,transferLevel:state.transferLevel,facLevel:state.facLevel,armUseLevel:state.armUseLevel,armSpasticityImpact:state.armSpasticityImpact,legSpasticityImpact:state.legSpasticityImpact,shoulderPainImpact:state.shoulderPainImpact,redFlag:false,modifiers:[]});
+      if(result.route!=='personal_plan'){renderReroute(result);return}
+      renderPersonalPlan(result);
+    });
+
+    const exerciseCards=[...document.querySelectorAll('.exercise-card')];let activeExercise=0;
+    function setActiveExercise(index){activeExercise=index;exerciseCards.forEach((card,i)=>card.classList.toggle('is-playing',i===index))}
+    exerciseCards.forEach((card,index)=>{card.addEventListener('mouseenter',()=>setActiveExercise(index));card.addEventListener('focusin',()=>setActiveExercise(index));card.querySelector('.exercise-detail-toggle').addEventListener('click',event=>{event.stopPropagation();card.classList.toggle('details-open');event.currentTarget.textContent=card.classList.contains('details-open')?'ซ่อนรายละเอียด':'ดูวิธีทำและข้อควรระวัง'})});
+    setInterval(()=>{if(!document.querySelector('.exercise-card:hover'))setActiveExercise((activeExercise+1)%exerciseCards.length)},5200);
+
+    document.getElementById('copySummary').addEventListener('click',async()=>{
+      const plan=state.currentPlan;
+      const assessment='Barthel Index '+(state.barthelComplete?state.barthelTotal+'/20':'ยังตอบไม่ครบ')+'\nการนั่งและย้ายตัว '+(state.transferLevel===null?'ยังไม่ตอบ':state.transferLevel)+'/3\nFAC '+(state.facLevel===null?'ยังไม่ตอบ':state.facLevel)+'/5\nการใช้แขนข้างอ่อนแรง '+(state.armUseLevel===null?'ยังไม่ตอบ':state.armUseLevel)+'/5\nผลกระทบจากอาการเกร็งแขน '+(state.armSpasticityImpact===null?'ยังไม่ตอบ':state.armSpasticityImpact)+'/3\nผลกระทบจากอาการเกร็งขา '+(state.legSpasticityImpact===null?'ยังไม่ตอบ':state.legSpasticityImpact)+'/3\nผลกระทบจากอาการปวดหรือความไม่มั่นคงของไหล่ '+(state.shoulderPainImpact===null?'ยังไม่ตอบ':state.shoulderPainImpact)+'/3';
+      const detail=plan?'\nระดับแผน: '+plan.levelLabelTh+'\nกิจกรรมและ FITT:\n'+plan.activities.map((item,index)=>(index+1)+'. '+item.titleTh+' | '+item.fitt.frequency+' | '+item.fitt.intensity+' | '+item.fitt.time+' | '+item.fitt.type).join('\n')+'\nสิ่งที่นักกายภาพควรประเมิน: '+plan.ptAssessmentTh.join(' · '):'';
+      const summary='ข้อมูลเพื่อวิเคราะห์ต่อ: แผน 03 ฟื้นการใช้แขนขาหลังโรคหลอดเลือดสมอง\n'+assessment+detail+'\nกรุณาช่วยวิเคราะห์ข้อมูล ถามคำถามที่ยังขาด และอธิบายทางเลือกอย่างปลอดภัย โดยไม่วินิจฉัยหรือเปลี่ยนคำสั่งแพทย์แทนผู้เชี่ยวชาญ';
+      try{await navigator.clipboard.writeText(summary);showToast('คัดลอกข้อมูลสำหรับนำไปถาม AI แล้ว')}catch(_error){showToast('เบราว์เซอร์นี้ไม่อนุญาตให้คัดลอกอัตโนมัติ')}
+    });
+
+    updateReadiness();
+  </script>
+</body>
+</html>

@@ -1,0 +1,1103 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Result Page Structure Mockup V2</title>
+  <style>
+    :root {
+      --blue: #0077b6;
+      --blue-dark: #005a8c;
+      --green: #2a9d8f;
+      --green-dark: #1e7a6e;
+      --green-soft: #e6f5f2;
+      --bg: #f7fafb;
+      --line: #dbe8ee;
+      --text: #1a2332;
+      --muted: #4a5568;
+      --soft: #eef8fb;
+      --amber: #f59e0b;
+      --red: #dc2626;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 14% 0%, rgba(42, 157, 143, .14), transparent 28rem),
+        radial-gradient(circle at 88% 4%, rgba(0, 119, 182, .14), transparent 28rem),
+        linear-gradient(180deg, #fff 0%, var(--bg) 44%, #e8f4f8 100%);
+      color: var(--text);
+      font-family: "Sarabun", "Noto Sans Thai", "Leelawadee UI", "Segoe UI", sans-serif;
+    }
+
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 30px 18px 56px;
+    }
+
+    .topline {
+      max-width: 820px;
+      margin: 0 auto 24px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.12;
+    }
+
+    .subtitle {
+      margin: 12px auto 0;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(320px, 410px) 1fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .phone {
+      border: 1px solid rgba(0, 90, 140, .16);
+      border-radius: 32px;
+      background: #fff;
+      box-shadow: 0 24px 64px rgba(0, 90, 140, .14), inset 0 0 0 8px #f4fbfd;
+      overflow: hidden;
+    }
+
+    .screen {
+      padding: 18px 16px 22px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .mark {
+      width: 38px;
+      height: 38px;
+      flex: 0 0 auto;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--blue), var(--green));
+    }
+
+    .brand strong {
+      display: block;
+      font-size: 13px;
+    }
+
+    .brand small {
+      color: var(--blue);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .12em;
+    }
+
+    .case-hero {
+      position: relative;
+      min-height: 292px;
+      overflow: hidden;
+      border-radius: 24px;
+      background: #061627;
+      color: #fff;
+      box-shadow: 0 20px 46px rgba(0, 90, 140, .18);
+    }
+
+    .case-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: var(--hero-img);
+      background-size: cover;
+      background-position: center;
+      opacity: .84;
+      transform: scale(1.02);
+    }
+
+    .case-hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(2, 11, 22, .04) 0%, rgba(2, 11, 22, .42) 44%, rgba(2, 11, 22, .92) 100%),
+        radial-gradient(circle at 78% 12%, rgba(0, 230, 255, .25), transparent 14rem);
+    }
+
+    .hero-copy {
+      position: absolute;
+      inset: auto 15px 15px;
+      z-index: 2;
+    }
+
+    .case-pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .16);
+      color: #d9fbff;
+      font-size: 11px;
+      font-weight: 900;
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-copy h2 {
+      margin: 10px 0 5px;
+      font-size: 25px;
+      line-height: 1.15;
+    }
+
+    .hero-copy p {
+      margin: 0;
+      color: #e4f4f7;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .case-switcher {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 7px;
+      margin: 10px 0 2px;
+    }
+
+    .case-switcher button {
+      min-height: 34px;
+      border: 1px solid rgba(0, 119, 182, .16);
+      border-radius: 12px;
+      background: #fff;
+      color: var(--blue-dark);
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .case-switcher button.active {
+      background: linear-gradient(135deg, var(--blue), var(--green));
+      color: #fff;
+    }
+
+    .card {
+      margin-top: 12px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 14px;
+      background: #fff;
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+      line-height: 1.25;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.62;
+    }
+
+    .condition-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 10px 0;
+    }
+
+    .condition-chip {
+      border: 1px solid rgba(0, 119, 182, .16);
+      border-radius: 999px;
+      padding: 8px 11px;
+      background: var(--soft);
+      color: var(--blue-dark);
+      font-size: 12px;
+      font-weight: 900;
+      cursor: pointer;
+      transition: transform .16s ease, box-shadow .16s ease, background .16s ease;
+    }
+
+    .condition-chip:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 22px rgba(0, 119, 182, .13);
+    }
+
+    .condition-chip.active {
+      background: linear-gradient(135deg, var(--blue), var(--green));
+      color: #fff;
+    }
+
+    .condition-detail {
+      min-height: 132px;
+      border: 1px solid rgba(0, 119, 182, .12);
+      border-radius: 16px;
+      padding: 12px;
+      background: linear-gradient(135deg, #f6fbfd, #f0faf7);
+    }
+
+    .condition-detail strong {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--text);
+      font-size: 14px;
+    }
+
+    .problem-card {
+      border-color: rgba(42, 157, 143, .24);
+      background: linear-gradient(180deg, #fff 0%, #f7fdfb 100%);
+    }
+
+    .problem-block {
+      display: grid;
+      gap: 10px;
+      padding-top: 10px;
+      border-top: 1px solid var(--line);
+    }
+
+    .problem-title {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .problem-title strong {
+      font-size: 15px;
+      line-height: 1.35;
+    }
+
+    .severity {
+      flex: 0 0 auto;
+      border-radius: 999px;
+      padding: 4px 8px;
+      background: #fff7ed;
+      color: #b45309;
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .assessment-ladder {
+      display: grid;
+      gap: 8px;
+    }
+
+    .assessment-topic {
+      display: grid;
+      gap: 8px;
+      border: 1px solid rgba(0, 119, 182, .12);
+      border-radius: 16px;
+      padding: 11px;
+      background: #fff;
+    }
+
+    .assessment-topic h4 {
+      margin: 0;
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.35;
+    }
+
+    .assessment-topic > p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.6;
+    }
+
+    .assessment-step {
+      display: grid;
+      grid-template-columns: 76px 1fr;
+      gap: 10px;
+      border-radius: 14px;
+      padding: 9px 10px;
+      background: var(--soft);
+      border: 1px solid rgba(0, 119, 182, .1);
+    }
+
+    .assessment-step span {
+      color: var(--blue-dark);
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .assessment-step p {
+      font-size: 12.5px;
+    }
+
+    .assessment-step.self {
+      background: #f7fbfd;
+    }
+
+    .assessment-step.pt {
+      border-color: rgba(42, 157, 143, .24);
+      background: var(--green-soft);
+    }
+
+    .small-action {
+      display: inline-flex;
+      min-height: 34px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      padding: 7px 10px;
+      background: #fff;
+      color: var(--blue);
+      border: 1px solid rgba(0, 119, 182, .18);
+      font-size: 12px;
+      font-weight: 900;
+      text-decoration: none;
+    }
+
+    .small-action.is-done {
+      border-color: rgba(42, 157, 143, .34);
+      background: var(--green-soft);
+      color: var(--green);
+    }
+
+    .program-img {
+      height: 88px;
+      margin: 10px 0;
+      border-radius: 18px;
+      background:
+        linear-gradient(135deg, rgba(0, 119, 182, .16), rgba(42, 157, 143, .24)),
+        url("/media/goal-recovery-movement.jpg");
+      background-size: cover;
+      background-position: center;
+    }
+
+    .personal-plan-card {
+      display: grid;
+      gap: 10px;
+      border-color: rgba(42, 157, 143, .22);
+      background: linear-gradient(180deg, #fff, #f7fcfb);
+    }
+
+    .completion-list {
+      display: grid;
+      gap: 8px;
+      margin-top: 2px;
+    }
+
+    .completion-item {
+      display: grid;
+      grid-template-columns: 18px 1fr;
+      align-items: start;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.55;
+    }
+
+    .completion-dot {
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(0, 119, 182, .24);
+      color: transparent;
+      background: #fff;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .completion-item.is-done {
+      color: var(--text);
+    }
+
+    .completion-item.is-done .completion-dot {
+      border-color: rgba(42, 157, 143, .45);
+      background: var(--green);
+      color: #fff;
+    }
+
+    .plan-helper {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.6;
+    }
+
+    .plan-button {
+      width: 100%;
+      min-height: 52px;
+      border: 0;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      padding: 0 14px;
+      background: #d8e2e8;
+      color: #6b7c88;
+      font: inherit;
+      font-weight: 900;
+      cursor: not-allowed;
+      box-shadow: none;
+      transition: transform .16s ease, box-shadow .16s ease, background .16s ease;
+    }
+
+    .plan-button.is-ready {
+      background: linear-gradient(135deg, var(--green), var(--blue));
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 0 16px 34px rgba(42, 157, 143, .24);
+    }
+
+    .plan-button.is-ready:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 42px rgba(42, 157, 143, .3);
+    }
+
+    .lead-form {
+      display: none;
+      gap: 9px;
+      margin-top: 4px;
+      border-radius: 18px;
+      padding: 12px;
+      background: #fff;
+      border: 1px solid rgba(0, 119, 182, .14);
+    }
+
+    .lead-form.is-open {
+      display: grid;
+    }
+
+    .lead-form h4 {
+      margin: 0;
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.35;
+    }
+
+    .lead-form input {
+      min-height: 42px;
+      border-radius: 12px;
+      border: 1px solid rgba(0, 119, 182, .16);
+      padding: 0 12px;
+      font: inherit;
+      color: var(--text);
+      background: var(--soft);
+    }
+
+    .lead-submit {
+      min-height: 46px;
+      border: 0;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      padding: 0 14px;
+      background: linear-gradient(135deg, var(--blue), var(--green));
+      color: #fff;
+      font: inherit;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 14px 30px rgba(0, 119, 182, .2);
+    }
+
+    .is-hidden {
+      display: none !important;
+    }
+
+    .upgraded-plan-card {
+      display: none;
+      gap: 12px;
+      border-color: rgba(42, 157, 143, .28);
+      background: linear-gradient(180deg, #fff, #f4fbfa);
+      box-shadow: 0 18px 46px rgba(42, 157, 143, .12);
+    }
+
+    .upgraded-plan-card.is-open {
+      display: grid;
+    }
+
+    .plan-status {
+      width: fit-content;
+      border-radius: 999px;
+      padding: 5px 10px;
+      background: var(--green-soft);
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .plan-section {
+      display: grid;
+      gap: 8px;
+      border-radius: 16px;
+      padding: 12px;
+      background: #fff;
+      border: 1px solid rgba(0, 119, 182, .12);
+    }
+
+    .plan-section h4 {
+      margin: 0;
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.35;
+    }
+
+    .plan-section ul {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.65;
+    }
+
+    .pt-upgrade {
+      border-color: rgba(180, 83, 9, .18);
+      background: #fffaf0;
+    }
+
+    .actions {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .button {
+      min-height: 46px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--blue), var(--green));
+      color: #fff;
+      font-weight: 900;
+      text-decoration: none;
+      box-shadow: 0 14px 30px rgba(0, 119, 182, .2);
+      transition: transform .16s ease, box-shadow .16s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 38px rgba(0, 119, 182, .26);
+    }
+
+    .button.secondary {
+      border: 1px solid rgba(0, 119, 182, .18);
+      background: #fff;
+      color: var(--blue);
+      box-shadow: none;
+    }
+
+    .consult-button {
+      min-height: 54px;
+      border-radius: 18px;
+      background:
+        linear-gradient(135deg, rgba(0, 119, 182, .96), rgba(42, 157, 143, .98));
+      font-size: 16px;
+      box-shadow: 0 18px 42px rgba(42, 157, 143, .28);
+    }
+
+    .copy-helper {
+      margin: 2px 4px 0;
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.55;
+      text-align: center;
+    }
+
+    .side-panel {
+      display: grid;
+      gap: 14px;
+    }
+
+    .design-note {
+      border: 1px solid rgba(0, 119, 182, .15);
+      border-radius: 22px;
+      padding: 18px;
+      background: rgba(255, 255, 255, .9);
+      box-shadow: 0 16px 42px rgba(0, 90, 140, .09);
+    }
+
+    .design-note h2,
+    .design-note h3 {
+      margin: 0 0 8px;
+      line-height: 1.25;
+    }
+
+    .design-note p,
+    .design-note li {
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .design-note ul {
+      margin: 8px 0 0;
+      padding-left: 20px;
+    }
+
+    .flow {
+      display: grid;
+      gap: 8px;
+    }
+
+    .flow-row {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 10px;
+      padding: 10px;
+      border-radius: 14px;
+      background: var(--soft);
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .flow-row strong {
+      color: var(--blue-dark);
+    }
+
+    @media (max-width: 920px) {
+      .layout { grid-template-columns: 1fr; }
+      .phone { max-width: 420px; margin: 0 auto; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="topline">
+      <p class="eyebrow">Team 4 / Result Page V2</p>
+      <h1>Clinical Map + Personalized Visual</h1>
+      <p class="subtitle">
+        ปรับจากแบบ A ให้เปิดด้วยภาพที่เชื่อมโยงกับเคสแต่ละคน โรคกดอ่านได้ และรวมปัญหา-การประเมินไว้ในกรอบเดียว
+      </p>
+    </section>
+
+    <section class="layout">
+      <article class="phone">
+        <div class="screen">
+          <div class="brand">
+            <div class="mark"></div>
+            <div><strong>บ้านกายภาพ ชลบุรี</strong><small>PHYSIO AT HOME</small></div>
+          </div>
+
+          <div class="case-switcher" aria-label="ตัวอย่างภาพเปิดหน้า result">
+            <button class="active" data-case="stroke">Stroke</button>
+            <button data-case="frailty">Frail</button>
+            <button data-case="active">Active</button>
+          </div>
+
+          <section class="case-hero" id="caseHero" style="--hero-img: url('/media/goal-recovery-movement.jpg')">
+            <div class="hero-copy">
+              <span class="case-pill" id="casePill">ผลลัพธ์ของคุณ</span>
+              <h2 id="caseTitle">ปัญหาหลักอยู่ที่การลุกยืนและการเดินที่ยังไม่ปลอดภัย</h2>
+              <p id="caseText">ภาพเปิดควรเปลี่ยนตามเคส เพื่อให้คนไข้รู้สึกว่า “นี่คือปัญหาของฉันจริง ๆ” ก่อนอ่านรายละเอียดถัดไป</p>
+            </div>
+          </section>
+
+          <section class="card">
+            <h3>โรค/ภาวะที่เกี่ยวข้อง</h3>
+            <p>กดที่ชื่อโรคเพื่ออ่านคำอธิบายสั้น ๆ กดโรคอื่นเพื่อเปลี่ยนข้อความ</p>
+            <div class="condition-chips">
+              <button class="condition-chip active" data-condition="stroke">Stroke</button>
+              <button class="condition-chip" data-condition="sarcopenia">Sarcopenia</button>
+              <button class="condition-chip" data-condition="osteoporosis">Osteoporosis</button>
+            </div>
+            <div class="condition-detail" id="conditionDetail">
+              <strong>Stroke / อัมพฤกษ์ อัมพาต</strong>
+              <p>ภาวะที่สมองบางส่วนทำงานลดลง ทำให้แรง การควบคุมการเคลื่อนไหว การทรงตัว หรือกิจวัตรประจำวันเสียไป เป้าหมายกายภาพคือทำให้การเคลื่อนไหวปลอดภัยและใช้ชีวิตได้จริงมากขึ้น</p>
+            </div>
+          </section>
+
+          <section class="card problem-card">
+            <h3>ปัญหาหลัก + วิธีประเมิน</h3>
+            <div class="problem-block">
+              <div class="problem-title">
+                <strong>ลุกยืนและเดินยังไม่มั่นคง เสี่ยงล้มเมื่อทำกิจกรรมในบ้าน</strong>
+                <span class="severity">ควรโฟกัส</span>
+              </div>
+              <p>ปัญหานี้อาจเกิดจากแรงขาลดลง การควบคุมการเคลื่อนไหวหลัง Stroke สมดุลไม่พอ หรือความกลัวล้มร่วมกัน การประเมินจึงต้องแยกให้ได้ว่าอะไรเป็นสาเหตุหลัก เพื่อเลือกโปรแกรมที่ตรงกับปัญหาจริง</p>
+              <div class="assessment-ladder">
+                <div class="assessment-topic">
+                  <h4>1. แรงขาและการลุกยืน</h4>
+                  <p>ถ้าลุกจากเก้าอี้ยากหรือยืนไม่นิ่ง โปรแกรมควรเริ่มจากแรงขาและการควบคุมลำตัว ไม่ใช่เพิ่มระยะเดินทันที</p>
+                  <div class="assessment-step self">
+                    <span>ทำเอง</span>
+                    <div>
+                      <p>จับเวลาลุกนั่ง 5 ครั้ง หรือบันทึกว่าต้องใช้มือช่วยลุกมากแค่ไหน วิธีนี้ช่วยเห็นแรงขาและความมั่นใจเบื้องต้น</p>
+                      <a class="small-action" data-assessment="sit-to-stand" href="#">เพิ่มผลการลุกยืน</a>
+                    </div>
+                  </div>
+                  <div class="assessment-step pt">
+                    <span>นักกายภาพ</span>
+                    <div>
+                      <p>ประเมินแรงกล้ามเนื้อ รูปแบบการชดเชย และความปลอดภัยของท่าลุกยืน เพื่อกำหนดความหนักของการฝึกให้พอดี</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="assessment-topic">
+                  <h4>2. การทรงตัวและความเสี่ยงล้ม</h4>
+                  <p>หัวข้อนี้ใช้ดูว่าควรฝึกสมดุล เพิ่มอุปกรณ์ช่วยเดิน หรือปรับสิ่งแวดล้อมในบ้านก่อนเพิ่มกิจกรรม</p>
+                  <div class="assessment-step self">
+                    <span>ทำเอง</span>
+                    <div>
+                      <p>บันทึกช่วงที่เสียหลัก เกือบล้ม ต้องจับผนัง หรือเวียนหัวตอนเดิน ข้อมูลนี้ช่วยบอกสถานการณ์ที่เสี่ยงที่สุดในชีวิตจริง</p>
+                      <a class="small-action" data-assessment="balance" href="#">เพิ่มประวัติเสียหลัก</a>
+                    </div>
+                  </div>
+                  <div class="assessment-step pt">
+                    <span>นักกายภาพ</span>
+                    <div>
+                      <p>ใช้แบบทดสอบสมดุล เช่น Timed Up and Go หรือ Berg Balance Scale เพื่อวัดความเสี่ยงล้มและเลือกวิธีป้องกันที่เหมาะกับบ้าน</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="assessment-topic">
+                  <h4>3. รูปแบบการเดินและการควบคุมหลัง Stroke</h4>
+                  <p>ถ้าเดินลากเท้า เข่าทรุด หรือก้าวไม่เท่ากัน ต้องแยกว่าเกิดจากแรง กล้ามเนื้อตึง การรับความรู้สึก หรือการควบคุมการเคลื่อนไหว</p>
+                  <div class="assessment-step self">
+                    <span>ทำเอง</span>
+                    <div>
+                      <p>บันทึกว่าเดินแล้วติดจุดไหน เช่น ปลายเท้าสะดุด เข่าอ่อนแรง เหนื่อยเร็ว หรือเดินได้สั้นลงกว่าปกติ</p>
+                      <a class="small-action" data-assessment="gait" href="#">บันทึกอาการตอนเดิน</a>
+                    </div>
+                  </div>
+                  <div class="assessment-step pt">
+                    <span>นักกายภาพ</span>
+                    <div>
+                      <p>วิเคราะห์รูปแบบการเดิน กล้ามเนื้อตึง การลงน้ำหนัก และความจำเป็นของอุปกรณ์ช่วยเดินหรืออุปกรณ์พยุงข้อ</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="card" id="initialProgram">
+            <h3>โปรแกรมเริ่มต้น</h3>
+            <div class="program-img"></div>
+            <p>เริ่มจากฝึกลุกยืน นั่งทรงตัว และเดินระยะสั้นในบ้านแบบมีจุดจับ เน้นปลอดภัยก่อนเพิ่มความหนัก</p>
+          </section>
+
+          <section class="card personal-plan-card" id="personalPlanCard">
+            <h3>ปรับโปรแกรมให้เฉพาะตัวขึ้น</h3>
+            <p>ตอบแบบประเมินเพิ่มเติมด้านบนให้ครบ เพื่อให้ระบบปรับรายละเอียดของแผนให้ตรงกับอาการมากขึ้น</p>
+            <div class="completion-list" aria-label="สถานะแบบประเมินเพิ่มเติม">
+              <div class="completion-item" data-progress="sit-to-stand"><span class="completion-dot">✓</span><span>แรงขาและการลุกยืน</span></div>
+              <div class="completion-item" data-progress="balance"><span class="completion-dot">✓</span><span>การทรงตัวและความเสี่ยงล้ม</span></div>
+              <div class="completion-item" data-progress="gait"><span class="completion-dot">✓</span><span>รูปแบบการเดินและการควบคุมหลัง Stroke</span></div>
+            </div>
+            <button class="plan-button" id="planButton" type="button" disabled>ตอบแบบประเมินให้ครบ เพื่อสร้างแผนเฉพาะตัว</button>
+            <p class="plan-helper">ข้อมูลที่คุณตอบจะช่วยปรับระดับความหนัก จุดที่ควรระวัง และลำดับการฝึกให้เหมาะกับอาการของคุณมากขึ้น</p>
+            <form class="lead-form" id="leadForm">
+              <h4>รับแผนเฉพาะตัวฉบับละเอียด</h4>
+              <input id="leadName" type="text" placeholder="ชื่อ">
+              <input type="tel" placeholder="เบอร์โทร">
+              <input type="text" placeholder="พื้นที่รับบริการ">
+              <button class="lead-submit" type="submit">ดูแผนเฉพาะตัวฉบับละเอียด</button>
+            </form>
+          </section>
+
+          <section class="card upgraded-plan-card" id="upgradedPlan">
+            <span class="plan-status">สร้างจากผลประเมินของคุณแล้ว</span>
+            <h3 id="upgradedTitle">แผนเฉพาะตัวฉบับละเอียด</h3>
+            <p>แผนนี้อัปเกรดจากโปรแกรมเริ่มต้น โดยใช้ข้อมูลการลุกยืน การทรงตัว และรูปแบบการเดิน เพื่อปรับลำดับฝึกให้เหมาะกับปัญหาหลักมากขึ้น</p>
+
+            <div class="plan-section">
+              <h4>ช่วงที่ 1: ตั้งต้นให้ปลอดภัย</h4>
+              <ul>
+                <li>ฝึกลุกนั่งจากเก้าอี้มีพนักพิง 5-8 ครั้งต่อเซต 2 เซต ใช้มือช่วยได้ถ้ายังไม่มั่นคง</li>
+                <li>ยืนถ่ายน้ำหนักซ้าย-ขวาใกล้จุดจับ 30 วินาที 2 รอบ หยุดทันทีถ้าเวียนหัวหรือเสียหลัก</li>
+                <li>เดินระยะสั้นในบ้าน 3-5 นาที โดยมีจุดจับหรือญาติอยู่ใกล้ก่อนเพิ่มระยะ</li>
+              </ul>
+            </div>
+
+            <div class="plan-section">
+              <h4>สิ่งที่ต้องติดตามเอง</h4>
+              <ul>
+                <li>เวลาที่ใช้ลุกนั่ง 5 ครั้ง และจำนวนครั้งที่ต้องใช้มือช่วย</li>
+                <li>ช่วงเวลาที่เสียหลัก เกือบล้ม หรือเริ่มกลัวเดิน</li>
+                <li>ระยะเดินที่ทำได้โดยไม่เหนื่อยมาก ไม่เวียนหัว และไม่ลากเท้าเพิ่มขึ้น</li>
+              </ul>
+            </div>
+
+            <div class="plan-section pt-upgrade">
+              <h4>ถ้าให้นักกายภาพประเมินเพิ่ม แผนจะละเอียดขึ้นเรื่องนี้</h4>
+              <ul>
+                <li>Timed Up and Go หรือ Berg Balance Scale เพื่อระบุระดับความเสี่ยงล้ม</li>
+                <li>วิเคราะห์รูปแบบการเดิน กล้ามเนื้อตึง การลงน้ำหนัก และความจำเป็นของอุปกรณ์ช่วยเดิน</li>
+                <li>ประเมินแรงกล้ามเนื้อ ช่วงการเคลื่อนไหว และการชดเชย เพื่อปรับความหนักของโปรแกรมให้แม่นขึ้น</li>
+              </ul>
+            </div>
+          </section>
+
+          <div class="actions">
+            <a class="button consult-button" href="/">ปรึกษานักกายภาพ</a>
+            <a class="button secondary" href="#">คัดลอกสรุปผลของฉัน</a>
+            <p class="copy-helper">นำข้อความนี้ไปวางใน AI ที่คุณใช้ เช่น ChatGPT, Claude, Gemini, Grok หรือแอปอื่น ๆ เพื่อให้ช่วยวิเคราะห์อาการและถามต่อจากข้อมูลของคุณได้</p>
+          </div>
+        </div>
+      </article>
+
+      <aside class="side-panel">
+        <section class="design-note">
+          <h2>สิ่งที่ปรับจากแบบ A</h2>
+          <ul>
+            <li>Hero ไม่ล็อกเป็น hologram แล้ว แต่เปลี่ยนภาพ/ข้อความตามเคส เพื่อให้เกิดความรู้สึก “ตรงกับฉัน”</li>
+            <li>โรค/ภาวะเป็น chip ที่กดอ่านรายละเอียดได้ ข้อความแสดงในกรอบเดียว ไม่ทำให้ UI ยาวรก</li>
+            <li>รวม “ปัญหาหลัก” และ “วิธีประเมิน” เป็นกรอบเดียว โดยแยกเป็น 3 topic ที่เชื่อมปัญหา สาเหตุ และประโยชน์ของแบบประเมินเข้าด้วยกัน</li>
+            <li>แบบประเมินที่ยาวเกินไปไม่ยัดในหน้า screening แต่ให้กดกรอกเพิ่มเติมจาก result ได้</li>
+            <li>โปรแกรมเริ่มต้นแสดงได้ทันที ส่วนแผนเฉพาะตัวจะปลดล็อกเมื่อกรอกแบบประเมินเพิ่มเติมครบ</li>
+            <li>คำอธิบายการคัดลอกย้ายไปอยู่ใต้ปุ่ม เพื่อไม่แย่งความเด่นจาก CTA หลัก</li>
+            <li>ปุ่มปรึกษานักกายภาพเป็น CTA หลักและเด่นที่สุด</li>
+          </ul>
+        </section>
+
+        <section class="design-note">
+          <h3>ลำดับข้อมูลที่ผมแนะนำ</h3>
+          <div class="flow">
+            <div class="flow-row"><strong>1. ภาพเปิด</strong><span>ภาพและสรุปปัญหาเฉพาะคน สร้างความรู้สึกเชื่อมโยงทันที</span></div>
+            <div class="flow-row"><strong>2. โรค</strong><span>chip โรค/ภาวะ กดอ่านคำอธิบายแบบภาษาคนไข้</span></div>
+            <div class="flow-row"><strong>3. ปัญหา</strong><span>อธิบายปัญหา สาเหตุที่เป็นไปได้ และเหตุผลว่าทำไมควรแก้</span></div>
+            <div class="flow-row"><strong>4. ประเมิน</strong><span>เชื่อมแต่ละปัญหากับแบบประเมินที่เหมาะสม เรียงจากทำเองได้ไปจนถึงนักกายภาพควรประเมิน</span></div>
+            <div class="flow-row"><strong>5. โปรแกรม</strong><span>ภาพ + โปรแกรมเริ่มต้นที่ปลอดภัยและไม่เยอะเกินไป</span></div>
+            <div class="flow-row"><strong>6. แผนละเอียด</strong><span>ตอบแบบประเมินครบแล้วปุ่มจะเปลี่ยนเป็น “สร้างแผนเฉพาะตัวของฉัน” ก่อนเปิดฟอร์มรับแผนละเอียด</span></div>
+            <div class="flow-row"><strong>7. ส่งต่อ</strong><span>ปุ่มปรึกษานักกายภาพ + ปุ่มคัดลอกสรุปผลสำหรับส่งต่อให้ AI วิเคราะห์ต่อ</span></div>
+          </div>
+        </section>
+      </aside>
+    </section>
+  </main>
+
+  <script>
+    const conditionDetails = {
+      stroke: {
+        title: 'Stroke / อัมพฤกษ์ อัมพาต',
+        text: 'ภาวะที่สมองบางส่วนทำงานลดลง ทำให้แรง การควบคุมการเคลื่อนไหว การทรงตัว หรือกิจวัตรประจำวันเสียไป เป้าหมายกายภาพคือทำให้การเคลื่อนไหวปลอดภัยและใช้ชีวิตได้จริงมากขึ้น',
+      },
+      sarcopenia: {
+        title: 'Sarcopenia / กล้ามเนื้อน้อย',
+        text: 'ภาวะมวลกล้ามเนื้อและแรงลดลง ทำให้ลุกยืน เดิน ขึ้นบันได หรือฟื้นตัวหลังเจ็บป่วยได้ยากขึ้น การฝึกต้องเริ่มจากระดับที่ปลอดภัยและติดตามความก้าวหน้าได้',
+      },
+      osteoporosis: {
+        title: 'Osteoporosis / กระดูกพรุน',
+        text: 'ภาวะกระดูกเปราะและหักง่าย โดยเฉพาะเมื่อหกล้ม โปรแกรมควรเน้นความปลอดภัย การทรงตัว แรงกล้ามเนื้อ และหลีกเลี่ยงท่าที่เสี่ยงต่อกระดูกสันหลังหรือสะโพก',
+      },
+    };
+
+    const cases = {
+      stroke: {
+        img: "url('/media/goal-recovery-movement.jpg')",
+        pill: 'Post-discharge recovery',
+        title: 'ปัญหาหลักอยู่ที่การลุกยืนและการเดินที่ยังไม่ปลอดภัย',
+        text: 'ภาพเปิดควรสะท้อนผู้ป่วยที่กำลังฟื้นตัวหลังโรงพยาบาล ทำให้ญาติรู้สึกว่าแอพเข้าใจบริบทจริง',
+      },
+      frailty: {
+        img: "url('/media/goal-fall-prevention.jpg')",
+        pill: 'Frail elderly safety',
+        title: 'ความเสี่ยงสำคัญคือร่างกายเปราะบางและบาดเจ็บง่าย',
+        text: 'ภาพควรสื่อความปลอดภัยในบ้าน การดูแลของญาติ และการป้องกันภาวะทรุดลงหรือติดเตียง',
+      },
+      active: {
+        img: "url('/media/goal-active-recovery.jpg')",
+        pill: 'Health span planning',
+        title: 'เป้าหมายคือเพิ่มศักยภาพร่างกายโดยไม่ฝืนเกินความปลอดภัย',
+        text: 'ภาพควรสื่อการกลับมาใช้ร่างกายได้ดีขึ้น แข็งแรงขึ้น และมีเป้าหมายชัดเจน',
+      },
+    };
+
+    document.querySelectorAll('.condition-chip').forEach((button) => {
+      button.addEventListener('click', () => {
+        const key = button.dataset.condition;
+        const detail = conditionDetails[key];
+        document.querySelectorAll('.condition-chip').forEach((item) => item.classList.remove('active'));
+        button.classList.add('active');
+        document.getElementById('conditionDetail').innerHTML = `<strong>${detail.title}</strong><p>${detail.text}</p>`;
+      });
+    });
+
+    document.querySelectorAll('.case-switcher button').forEach((button) => {
+      button.addEventListener('click', () => {
+        const data = cases[button.dataset.case];
+        document.querySelectorAll('.case-switcher button').forEach((item) => item.classList.remove('active'));
+        button.classList.add('active');
+        document.getElementById('caseHero').style.setProperty('--hero-img', data.img);
+        document.getElementById('casePill').textContent = data.pill;
+        document.getElementById('caseTitle').textContent = data.title;
+        document.getElementById('caseText').textContent = data.text;
+      });
+    });
+
+    const problemCard = document.querySelector('.problem-card');
+    if (problemCard) {
+      problemCard.innerHTML = `
+        <h3>ปัญหาหลัก + วิธีประเมิน</h3>
+        <div class="problem-block">
+          <div class="problem-title">
+            <strong>ลุกยืนและเดินยังไม่มั่นคง เสี่ยงล้มเมื่อทำกิจกรรมในบ้าน</strong>
+            <span class="severity">ควรโฟกัส</span>
+          </div>
+          <p>ปัญหานี้อาจเกิดจากแรงขาลดลง การควบคุมการเคลื่อนไหวหลัง Stroke สมดุลไม่พอ หรือความกลัวล้มร่วมกัน การประเมินจึงต้องแยกให้ได้ว่าอะไรเป็นสาเหตุหลัก เพื่อเลือกโปรแกรมที่ตรงกับปัญหาจริง</p>
+
+          <div class="assessment-ladder">
+            <div class="assessment-topic">
+              <h4>1. แรงขาและการลุกยืน</h4>
+              <p>ถ้าลุกจากเก้าอี้ยากหรือยืนไม่นิ่ง โปรแกรมควรเริ่มจากแรงขาและการควบคุมลำตัว ไม่ใช่เพิ่มระยะเดินทันที</p>
+              <div class="assessment-step self">
+                <span>ทำเอง</span>
+                <div>
+                  <p>จับเวลาลุกนั่ง 5 ครั้ง หรือบันทึกว่าต้องใช้มือช่วยลุกมากแค่ไหน วิธีนี้ช่วยเห็นแรงขาและความมั่นใจเบื้องต้น</p>
+                  <a class="small-action" data-assessment="sit-to-stand" href="#">เพิ่มผลการลุกยืน</a>
+                </div>
+              </div>
+              <div class="assessment-step pt">
+                <span>นักกายภาพ</span>
+                <div>
+                  <p>ประเมินแรงกล้ามเนื้อ รูปแบบการชดเชย และความปลอดภัยของท่าลุกยืน เพื่อกำหนดความหนักของการฝึกให้พอดี</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="assessment-topic">
+              <h4>2. การทรงตัวและความเสี่ยงล้ม</h4>
+              <p>หัวข้อนี้ใช้ดูว่าควรฝึกสมดุล เพิ่มอุปกรณ์ช่วยเดิน หรือปรับสิ่งแวดล้อมในบ้านก่อนเพิ่มกิจกรรม</p>
+              <div class="assessment-step self">
+                <span>ทำเอง</span>
+                <div>
+                  <p>บันทึกช่วงที่เสียหลัก เกือบล้ม ต้องจับผนัง หรือเวียนหัวตอนเดิน ข้อมูลนี้ช่วยบอกสถานการณ์ที่เสี่ยงที่สุดในชีวิตจริง</p>
+                  <a class="small-action" data-assessment="balance" href="#">เพิ่มประวัติเสียหลัก</a>
+                </div>
+              </div>
+              <div class="assessment-step pt">
+                <span>นักกายภาพ</span>
+                <div>
+                  <p>ใช้แบบทดสอบสมดุล เช่น Timed Up and Go หรือ Berg Balance Scale เพื่อวัดความเสี่ยงล้มและเลือกวิธีป้องกันที่เหมาะกับบ้าน</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="assessment-topic">
+              <h4>3. รูปแบบการเดินและการควบคุมหลัง Stroke</h4>
+              <p>ถ้าเดินลากเท้า เข่าทรุด หรือก้าวไม่เท่ากัน ต้องแยกว่าเกิดจากแรง กล้ามเนื้อตึง การรับความรู้สึก หรือการควบคุมการเคลื่อนไหว</p>
+              <div class="assessment-step self">
+                <span>ทำเอง</span>
+                <div>
+                  <p>บันทึกว่าเดินแล้วติดจุดไหน เช่น ปลายเท้าสะดุด เข่าอ่อนแรง เหนื่อยเร็ว หรือเดินได้สั้นลงกว่าปกติ</p>
+                  <a class="small-action" data-assessment="gait" href="#">บันทึกอาการตอนเดิน</a>
+                </div>
+              </div>
+              <div class="assessment-step pt">
+                <span>นักกายภาพ</span>
+                <div>
+                  <p>วิเคราะห์รูปแบบการเดิน กล้ามเนื้อตึง การลงน้ำหนัก และความจำเป็นของอุปกรณ์ช่วยเดินหรืออุปกรณ์พยุงข้อ</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>`;
+    }
+
+    document.querySelector('.summary-prompt')?.remove();
+
+    const actions = document.querySelector('.actions');
+    if (actions) {
+      actions.innerHTML = `
+        <a class="button consult-button" href="/">ปรึกษานักกายภาพ</a>
+        <a class="button secondary" href="#">คัดลอกสรุปผลของฉัน</a>
+        <p class="copy-helper">นำข้อความนี้ไปวางใน AI ที่คุณใช้ เช่น ChatGPT, Claude, Gemini, Grok หรือแอปอื่น ๆ เพื่อให้ช่วยวิเคราะห์อาการและถามต่อจากข้อมูลของคุณได้</p>`;
+    }
+
+    const designList = document.querySelector('.side-panel .design-note ul');
+    if (designList) {
+      designList.innerHTML = `
+        <li>Hero ไม่ล็อกเป็น hologram แล้ว แต่เปลี่ยนภาพ/ข้อความตามเคส เพื่อให้เกิดความรู้สึก “ตรงกับฉัน”</li>
+        <li>โรค/ภาวะเป็น chip ที่กดอ่านรายละเอียดได้ ข้อความแสดงในกรอบเดียว ไม่ทำให้ UI ยาวรก</li>
+        <li>รวม “ปัญหาหลัก” และ “วิธีประเมิน” เป็นกรอบเดียว โดยแยกเป็น 3 topic ที่เชื่อมปัญหา สาเหตุ และประโยชน์ของแบบประเมินเข้าด้วยกัน</li>
+        <li>แบบประเมินที่ยาวเกินไปไม่ยัดในหน้า screening แต่ให้กดกรอกเพิ่มเติมจาก result ได้</li>
+        <li>โปรแกรมเริ่มต้นแสดงได้ทันที ส่วนแผนเฉพาะตัวจะปลดล็อกเมื่อกรอกแบบประเมินเพิ่มเติมครบ</li>
+        <li>คำอธิบายการคัดลอกย้ายไปอยู่ใต้ปุ่ม เพื่อไม่แย่งความเด่นจาก CTA หลัก</li>
+        <li>ปุ่มปรึกษานักกายภาพเป็น CTA หลักและเด่นที่สุด</li>`;
+    }
+
+    const flow = document.querySelector('.flow');
+    if (flow) {
+      flow.innerHTML = `
+        <div class="flow-row"><strong>1. ภาพเปิด</strong><span>ภาพและสรุปปัญหาเฉพาะคน สร้างความรู้สึกเชื่อมโยงทันที</span></div>
+        <div class="flow-row"><strong>2. โรค</strong><span>chip โรค/ภาวะ กดอ่านคำอธิบายแบบภาษาคนไข้</span></div>
+        <div class="flow-row"><strong>3. ปัญหา</strong><span>อธิบายปัญหา สาเหตุที่เป็นไปได้ และเหตุผลว่าทำไมควรแก้</span></div>
+        <div class="flow-row"><strong>4. ประเมิน</strong><span>เชื่อมแต่ละปัญหากับแบบประเมินที่เหมาะสม เรียงจากทำเองได้ไปจนถึงนักกายภาพควรประเมิน</span></div>
+        <div class="flow-row"><strong>5. โปรแกรม</strong><span>ภาพ + โปรแกรมเริ่มต้นที่ปลอดภัยและไม่เยอะเกินไป</span></div>
+        <div class="flow-row"><strong>6. แผนละเอียด</strong><span>ตอบแบบประเมินครบแล้วปุ่มจะเปลี่ยนเป็น “สร้างแผนเฉพาะตัวของฉัน” ก่อนเปิดฟอร์มรับแผนละเอียด</span></div>
+        <div class="flow-row"><strong>7. ส่งต่อ</strong><span>ปุ่มปรึกษานักกายภาพ + ปุ่มคัดลอกสรุปผลสำหรับส่งต่อให้ AI วิเคราะห์ต่อ</span></div>`;
+    }
+
+    const requiredAssessments = ['sit-to-stand', 'balance', 'gait'];
+    const completedAssessments = new Set();
+    const planButton = document.getElementById('planButton');
+    const leadForm = document.getElementById('leadForm');
+    const leadName = document.getElementById('leadName');
+    const initialProgram = document.getElementById('initialProgram');
+    const personalPlanCard = document.getElementById('personalPlanCard');
+    const upgradedPlan = document.getElementById('upgradedPlan');
+    const upgradedTitle = document.getElementById('upgradedTitle');
+
+    function updatePersonalPlanState() {
+      requiredAssessments.forEach((key) => {
+        document.querySelector(`[data-progress="${key}"]`)?.classList.toggle('is-done', completedAssessments.has(key));
+      });
+
+      const isReady = requiredAssessments.every((key) => completedAssessments.has(key));
+      if (!planButton) return;
+      planButton.disabled = !isReady;
+      planButton.classList.toggle('is-ready', isReady);
+      planButton.textContent = isReady
+        ? 'สร้างแผนเฉพาะตัวของฉัน'
+        : 'ตอบแบบประเมินให้ครบ เพื่อสร้างแผนเฉพาะตัว';
+    }
+
+    document.querySelectorAll('[data-assessment]').forEach((button) => {
+      button.addEventListener('click', (event) => {
+        event.preventDefault();
+        const key = button.dataset.assessment;
+        completedAssessments.add(key);
+        button.classList.add('is-done');
+        button.textContent = 'บันทึกแล้ว';
+        updatePersonalPlanState();
+      });
+    });
+
+    planButton?.addEventListener('click', () => {
+      if (planButton.disabled) return;
+      leadForm?.classList.add('is-open');
+      leadForm?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+
+    leadForm?.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const name = leadName?.value.trim();
+      if (name && upgradedTitle) {
+        upgradedTitle.textContent = `แผนเฉพาะตัวฉบับละเอียดของ ${name}`;
+      }
+      initialProgram?.classList.add('is-hidden');
+      personalPlanCard?.classList.add('is-hidden');
+      upgradedPlan?.classList.add('is-open');
+      upgradedPlan?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    updatePersonalPlanState();
+  </script>
+</body>
+</html>
