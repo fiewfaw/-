@@ -1,0 +1,74 @@
+.topbar .care-brand {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 10px;
+}
+
+.topbar .care-brand-mark {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid rgba(0, 119, 182, 0.18);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 10px 26px rgba(0, 90, 140, 0.12);
+}
+
+.topbar .care-brand-logo {
+  display: block;
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+}
+
+.topbar .care-brand-copy {
+  display: grid;
+  min-width: 0;
+  gap: 2px;
+}
+
+.topbar .care-brand-copy b {
+  color: #172033;
+  font-size: 14px;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.topbar .care-brand-copy small {
+  display: block;
+  color: #0077b6;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+@media (max-width: 360px) {
+  .topbar .care-brand {
+    gap: 8px;
+  }
+
+  .topbar .care-brand-mark {
+    width: 36px;
+    height: 36px;
+    flex-basis: 36px;
+  }
+
+  .topbar .care-brand-logo {
+    width: 31px;
+    height: 31px;
+  }
+
+  .topbar .care-brand-copy b {
+    font-size: 12px;
+  }
+
+  .topbar .care-brand-copy small {
+    font-size: 9px;
+  }
+}
