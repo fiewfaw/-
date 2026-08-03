@@ -18,6 +18,7 @@
   </style>
   <style>.edit-answers{display:inline-flex;min-height:32px;align-items:center;padding:6px 9px;border:1px solid #c8dfe3;border-radius:8px;background:#f7fbfc;color:#176f78;font-size:10px;font-weight:900;text-decoration:none}</style>
   <link rel="stylesheet" href="css/care-navigator-brand.css">
+  <link rel="stylesheet" href="css/assessment-attention.css">
 </head>
 <body>
   <main class="stage">
@@ -167,5 +168,6 @@
     document.querySelector("#copySummary").addEventListener("click",async()=>{const input=collectInput();const result=currentPlan||ParkinsonMobilityPersonalization.buildParkinsonMobilityPlan(input);const text=["ข้อมูลเพื่อวิเคราะห์ต่อ: แผนการเคลื่อนไหวสำหรับโรคพาร์กินสัน","ช่วงการเคลื่อนไหว: "+input.movementPeriod,"เท้าติดใน 7 วัน: "+input.freezingEpisodes7d+" ครั้ง","สิ่งกระตุ้น: "+(input.freezingTriggers.join(", ")||"ไม่ได้ระบุ"),"การลุกยืน: "+input.chairRise,"การเดิน: "+input.walkingAssistance,"ล้มหรือเกือบล้ม 30 วัน: "+input.fallEvents30d+" ครั้ง","ระดับแผน: "+(result.levelLabelTh||result.summaryTh),"ท่าที่แนะนำ: "+result.activities.map(item=>item.titleTh).join(" | "),"ข้อควรระวัง: "+result.warningsTh.join(" | ")].join("\n");try{await navigator.clipboard.writeText(text);showToast("คัดลอกข้อมูลแล้ว")}catch(_error){showToast("ไม่สามารถคัดลอกอัตโนมัติได้")}});
     assessmentState();
   </script>
+  <script src="js/assessment-attention.js" data-assessment-selector=".self-card"></script>
 </body>
 </html>

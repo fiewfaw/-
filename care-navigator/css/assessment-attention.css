@@ -1,0 +1,64 @@
+.assessment-attention-active {
+  position: relative;
+  isolation: isolate;
+  border-color: rgba(26, 165, 169, 0.72) !important;
+  animation: assessment-attention-breathe 2.2s ease-in-out infinite;
+}
+
+.assessment-attention-active::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  padding: 2px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg 242deg,
+    rgba(174, 251, 247, 0.12) 252deg,
+    #80ece6 278deg,
+    #ffffff 294deg,
+    #27b8bf 312deg,
+    transparent 329deg 360deg
+  );
+  opacity: 0;
+  pointer-events: none;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.assessment-attention-active.assessment-attention-intro::after {
+  opacity: 1;
+  animation: assessment-attention-edge 1.15s linear 2;
+}
+
+@keyframes assessment-attention-edge {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes assessment-attention-breathe {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(35, 179, 181, 0.08), 0 6px 16px rgba(27, 132, 148, 0.04);
+    translate: 0 0;
+  }
+  50% {
+    box-shadow: 0 0 0 4px rgba(35, 179, 181, 0.13), 0 10px 22px rgba(27, 132, 148, 0.12);
+    translate: 0 -1px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .assessment-attention-active {
+    animation: none;
+    outline: 2px solid rgba(31, 161, 165, 0.55);
+    outline-offset: 2px;
+  }
+
+  .assessment-attention-active::after {
+    display: none;
+  }
+}
