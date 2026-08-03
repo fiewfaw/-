@@ -215,7 +215,7 @@
     .status-dot { width: 19px; height: 19px; display: grid; place-items: center; border: 1px solid #b4c9c9; border-radius: 50%; color: white; background: white; font-size: 11px; }
     .completion-item.done { color: #286d65; font-weight: 700; }
     .completion-item.done .status-dot { border-color: var(--sea); background: var(--sea); }
-    .create-plan-button, .show-plan-button, .copy-button { width: 100%; min-height: 52px; border: 0; border-radius: 8px; font-size: 13px; font-weight: 900; }
+    .create-plan-button, .show-plan-button, .consult-button, .copy-button { width: 100%; min-height: 52px; border: 0; border-radius: 8px; font-size: 13px; font-weight: 900; }
     .create-plan-button { color: white; background: linear-gradient(110deg, var(--sea), var(--blue)); box-shadow: 0 10px 22px rgba(31, 127, 137, .2); }
     .create-plan-button:disabled { cursor: not-allowed; color: #8ba09e; background: #dce5e3; box-shadow: none; }
     .button-note { margin: 8px 4px 0; color: var(--muted); font-size: 10px; line-height: 1.6; text-align: center; }
@@ -262,6 +262,7 @@
     .personal-pt { margin-top: 14px; padding: 8px 9px; border: 1px solid rgba(255, 176, 180, .35); border-radius: 7px; color: #efcfd1; background: rgba(100, 28, 38, .17); font-size: 8px; line-height: 1.55; opacity: .75; }
     .personal-pt b { color: white; }
     .copy-section { padding: 18px 4px 0; }
+    .consult-button { display:flex;align-items:center;justify-content:center;margin-bottom:8px;color:white;text-decoration:none;background:linear-gradient(110deg,var(--sea),var(--blue));box-shadow:0 10px 22px rgba(31,127,137,.2) }
     .copy-button { color: var(--blue); border: 1px solid #bcd8e1; background: white; }
     .copy-help { margin: 8px 3px 0; color: var(--muted); font-size: 10px; line-height: 1.65; }
     .copy-status { min-height: 20px; margin-top: 6px; color: var(--sea); font-size: 9px; font-weight: 800; }
@@ -483,6 +484,7 @@
       </section>
 
       <section class="copy-section">
+        <a class="consult-button" href="https://baankaiyaphap-chonburi.com/#packages">ปรึกษานักกายภาพ</a>
         <button class="copy-button" id="copyAiButton" type="button">นำข้อมูลของฉันไปวิเคราะห์ต่อด้วย AI</button>
         <p class="copy-help">นำข้อความนี้ไปวางใน AI ที่คุณใช้ เช่น ChatGPT, Claude, Gemini, Grok หรือแอปอื่น ๆ เพื่อให้ช่วยวิเคราะห์อาการและถามต่อจากข้อมูลของคุณได้</p>
         <p class="copy-status" id="copyStatus" aria-live="polite"></p>
