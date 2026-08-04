@@ -5,6 +5,49 @@
   animation: assessment-attention-frame-flash 1.8s ease-in-out infinite;
 }
 
+.summary:has(.chev) {
+  grid-template-columns: auto minmax(0, 1fr) auto !important;
+}
+
+.chev {
+  min-width: max-content;
+  min-height: 28px;
+  padding: 5px 9px;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(17, 145, 154, 0.28);
+  border-radius: 999px;
+  color: #087d82 !important;
+  background: #e5f7f6;
+  font-size: 9px !important;
+  font-weight: 900;
+  line-height: 1.2 !important;
+  white-space: nowrap;
+  transform: none !important;
+}
+
+.self-card:hover .chev,
+.self-card:focus-visible .chev,
+.summary:hover .chev,
+.summary:focus-visible .chev {
+  color: #ffffff !important;
+  border-color: #087d82;
+  background: #087d82;
+}
+
+.self-card.open .chev {
+  transform: none !important;
+}
+
+@media (max-width: 360px) {
+  .chev {
+    min-height: 26px;
+    padding-inline: 7px;
+    font-size: 8px !important;
+  }
+}
+
 @keyframes assessment-attention-frame-flash {
   0%, 100% {
     border-color: rgba(38, 157, 166, 0.58) !important;
