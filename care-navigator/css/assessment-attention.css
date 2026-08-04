@@ -1,64 +1,30 @@
 .assessment-attention-active {
   position: relative;
   isolation: isolate;
-  border-color: rgba(26, 165, 169, 0.72) !important;
-  animation: assessment-attention-breathe 2.2s ease-in-out infinite;
+  border-color: #269da6 !important;
+  animation: assessment-attention-frame-flash 1.8s ease-in-out infinite;
 }
 
-.assessment-attention-active::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  padding: 2px;
-  border-radius: inherit;
-  background: conic-gradient(
-    from 0deg,
-    transparent 0deg 242deg,
-    rgba(174, 251, 247, 0.12) 252deg,
-    #80ece6 278deg,
-    #ffffff 294deg,
-    #27b8bf 312deg,
-    transparent 329deg 360deg
-  );
-  opacity: 0;
-  pointer-events: none;
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-}
-
-.assessment-attention-active.assessment-attention-intro::after {
-  opacity: 1;
-  animation: assessment-attention-edge 1.15s linear 2;
-}
-
-@keyframes assessment-attention-edge {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-@keyframes assessment-attention-breathe {
+@keyframes assessment-attention-frame-flash {
   0%, 100% {
-    box-shadow: 0 0 0 0 rgba(35, 179, 181, 0.08), 0 6px 16px rgba(27, 132, 148, 0.04);
-    translate: 0 0;
+    border-color: rgba(38, 157, 166, 0.58) !important;
+    box-shadow:
+      0 0 0 0 rgba(12, 145, 156, 0),
+      0 6px 16px rgba(27, 132, 148, 0.04);
   }
-  50% {
-    box-shadow: 0 0 0 4px rgba(35, 179, 181, 0.13), 0 10px 22px rgba(27, 132, 148, 0.12);
-    translate: 0 -1px;
+  48% {
+    border-color: #078b97 !important;
+    box-shadow:
+      0 0 0 4px rgba(18, 181, 188, 0.2),
+      0 0 22px rgba(12, 157, 168, 0.32),
+      0 10px 24px rgba(27, 132, 148, 0.12);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .assessment-attention-active {
     animation: none;
-    outline: 2px solid rgba(31, 161, 165, 0.55);
+    outline: 2px solid rgba(31, 161, 165, 0.62);
     outline-offset: 2px;
-  }
-
-  .assessment-attention-active::after {
-    display: none;
   }
 }

@@ -1,0 +1,143 @@
+.approved-assessment-icon {
+  display: block !important;
+  flex: 0 0 58px;
+  width: 58px !important;
+  height: 58px !important;
+  margin: 0 !important;
+  overflow: hidden;
+  border: 1px solid #cbdfe2;
+  border-radius: 10px !important;
+  background-color: #faf8f3 !important;
+  background-repeat: no-repeat !important;
+  box-shadow: 0 3px 10px rgba(35, 91, 105, 0.08);
+  clip-path: none !important;
+}
+
+.approved-assessment-icon::before,
+.approved-assessment-icon::after {
+  content: none !important;
+}
+
+.approved-icon-card {
+  min-height: 76px !important;
+}
+
+.approved-icon-card--self,
+.approved-icon-card--knowledge,
+.approved-icon-card--pt {
+  display: grid !important;
+  grid-template-columns: 58px minmax(0, 1fr) auto !important;
+  gap: 10px !important;
+  align-items: center !important;
+}
+
+.approved-icon-card--pt {
+  opacity: 0.76;
+}
+
+.approved-icon-card--pt > .approved-assessment-icon {
+  filter: saturate(0.76);
+}
+
+.approved-icon-card--knowledge {
+  padding: 9px 10px !important;
+  text-align: left;
+}
+
+.approved-assessment-icon.movement {
+  background-image: url("../media/icon-review/movement-pictograms-v4.png") !important;
+  background-size: 400% 200% !important;
+}
+
+.approved-assessment-icon.anatomy {
+  background-image: url("../media/icon-review/anatomy-pictograms-v4.png") !important;
+  background-size: 200% 200% !important;
+}
+
+.approved-assessment-icon.plan12 {
+  background-image: url("../media/icon-review/plan01-02-pictograms-v5.png") !important;
+  background-size: 400% 200% !important;
+}
+
+.approved-assessment-icon.stroke {
+  background-image: url("../media/icon-review/plan03-pictograms-v5.png") !important;
+  background-size: 200% 200% !important;
+}
+
+.approved-assessment-icon.plan45 {
+  background-image: url("../media/icon-review/plan04-05-pictograms-v6.png") !important;
+  background-size: 300% 200% !important;
+}
+
+.approved-assessment-icon.parkinson {
+  background-image: url("../media/icon-review/plan06-pictograms-v6.png") !important;
+  background-size: 300% 200% !important;
+}
+
+.approved-assessment-icon.finals {
+  background-image: url("../media/icon-review/plan07-pictograms-v7.png") !important;
+  background-size: 300% 200% !important;
+}
+
+.approved-assessment-icon.m1 { background-position: 0 0 !important; }
+.approved-assessment-icon.m2 { background-position: 33.333% 0 !important; }
+.approved-assessment-icon.m3 { background-position: 66.666% 0 !important; }
+.approved-assessment-icon.m4 { background-position: 100% 0 !important; }
+.approved-assessment-icon.m5 { background-position: 0 100% !important; }
+.approved-assessment-icon.m6 { background-position: 33.333% 100% !important; }
+.approved-assessment-icon.m7 { background-position: 66.666% 100% !important; }
+.approved-assessment-icon.a1 { background-position: 0 0 !important; }
+.approved-assessment-icon.a2 { background-position: 100% 0 !important; }
+.approved-assessment-icon.a3 { background-position: 0 100% !important; }
+.approved-assessment-icon.a4 { background-position: 100% 100% !important; }
+.approved-assessment-icon.b1 { background-position: 0 0 !important; }
+.approved-assessment-icon.b2 { background-position: 33.333% 0 !important; }
+.approved-assessment-icon.b3 { background-position: 66.666% 0 !important; }
+.approved-assessment-icon.b4 { background-position: 100% 0 !important; }
+.approved-assessment-icon.b5 { background-position: 0 100% !important; }
+.approved-assessment-icon.b6 { background-position: 33.333% 100% !important; }
+.approved-assessment-icon.b7 { background-position: 66.666% 100% !important; }
+.approved-assessment-icon.s1 { background-position: 0 0 !important; }
+.approved-assessment-icon.s2 { background-position: 100% 0 !important; }
+.approved-assessment-icon.s3 { background-position: 0 100% !important; }
+.approved-assessment-icon.c1 { background-position: 0 0 !important; }
+.approved-assessment-icon.c2 { background-position: 50% 0 !important; }
+.approved-assessment-icon.c3 { background-position: 100% 0 !important; }
+.approved-assessment-icon.c4 { background-position: 0 100% !important; }
+.approved-assessment-icon.c5 { background-position: 50% 100% !important; }
+.approved-assessment-icon.p1 { background-position: 0 0 !important; }
+.approved-assessment-icon.p2 { background-position: 50% 0 !important; }
+.approved-assessment-icon.p3 { background-position: 100% 0 !important; }
+.approved-assessment-icon.p4 { background-position: 0 100% !important; }
+.approved-assessment-icon.p5 { background-position: 50% 100% !important; }
+.approved-assessment-icon.p6 { background-position: 100% 100% !important; }
+.approved-assessment-icon.f1 { background-position: 0 0 !important; }
+.approved-assessment-icon.f2 { background-position: 50% 0 !important; }
+.approved-assessment-icon.f3 { background-position: 100% 0 !important; }
+.approved-assessment-icon.f4 { background-position: 0 100% !important; }
+.approved-assessment-icon.f5 { background-position: 50% 100% !important; }
+
+@media (max-width: 420px) {
+  .approved-assessment-icon {
+    flex-basis: 54px;
+    width: 54px !important;
+    height: 54px !important;
+  }
+
+  .approved-icon-card--self,
+  .approved-icon-card--knowledge,
+  .approved-icon-card--pt {
+    grid-template-columns: 54px minmax(0, 1fr) auto !important;
+  }
+
+  .approved-icon-card .physio-mark {
+    grid-column: 2 / -1;
+    justify-self: start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .approved-assessment-icon {
+    transition: none !important;
+  }
+}

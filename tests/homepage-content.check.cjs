@@ -15,9 +15,11 @@ const articleCatalog = JSON.parse(
 
 assert.match(homepage, /href="about\.html"[^>]*>เกี่ยวกับเรา</, 'homepage navigation links to the About page');
 assert.match(homepage, /class="app-preview-banner"/, 'homepage has the Care Navigator preview banner');
-assert.match(homepage, /รูปประกอบ\/care-app-coming-soon-preview\.png/, 'app banner uses a real product preview');
+assert.match(homepage, /class="app-preview-journey"/, 'app banner uses the approved Care Navigator journey artwork');
+assert.match(homepage, /class="app-journey-route"/, 'app banner visual connects screening to the personal plan');
+assert.match(homepage, /care-navigator\/brand-logo\.png/, 'app banner uses the formal Care Navigator brand');
 assert.match(homepage, /class="app-coming-soon"[^>]*href="care-navigator\/"/, 'app CTA links to the public Care Navigator');
-assert.match(homepage, />ทดลองใช้ Care Navigator</, 'app CTA clearly invites Beta use');
+assert.match(homepage, />ทดลองใช้แอพฟรี</, 'app CTA clearly invites free Beta use');
 assert.match(homepage, /เวอร์ชัน Beta/, 'homepage labels the app as a Beta');
 assert.doesNotMatch(homepage, /AI ช่วยฟื้น stroke ได้ใน/, 'old AI course advertisement is removed');
 

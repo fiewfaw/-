@@ -240,7 +240,7 @@
 
         /* ========== CARE NAVIGATOR APP PREVIEW ========== */
         .app-promo {
-            padding: 64px 24px;
+            padding: 48px 24px;
             background: #EAF4F5;
         }
 
@@ -251,73 +251,57 @@
         }
 
         .app-preview-banner {
-            min-height: 420px;
+            position: relative;
+            min-height: 232px;
             display: grid;
-            grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
+            grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
             overflow: hidden;
-            border: 1px solid #214A59;
+            border: 1px solid #9ECFD0;
             border-radius: 8px;
-            background: #103544;
-            box-shadow: 0 16px 44px rgba(16, 53, 68, 0.2);
+            background: #EDF8F6;
+            box-shadow: 0 14px 36px rgba(22, 95, 105, 0.13);
+        }
+
+        .app-preview-banner::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background-image: radial-gradient(circle at 1px 1px, rgba(9, 119, 128, 0.12) 1px, transparent 1px);
+            background-size: 22px 22px;
+            -webkit-mask-image: linear-gradient(90deg, transparent 5%, #000 55%, #000 100%);
+            mask-image: linear-gradient(90deg, transparent 5%, #000 55%, #000 100%);
         }
 
         .app-preview-copy {
-            padding: 48px;
+            position: relative;
+            z-index: 2;
+            padding: 34px 38px;
             align-self: center;
-            color: #fff;
+            color: var(--text-dark);
             text-align: left;
         }
 
         .app-preview-label {
-            display: inline-flex;
-            align-items: center;
-            min-height: 30px;
-            padding: 5px 12px;
-            border: 1px solid rgba(255,255,255,0.28);
-            border-radius: 999px;
-            color: #D8EFF1;
-            background: rgba(255,255,255,0.08);
+            color: #087D83;
             font-size: 0.78rem;
-            font-weight: 700;
+            font-weight: 800;
         }
 
         .app-preview-copy h2 {
-            margin: 16px 0 12px;
-            color: #fff;
+            margin: 8px 0;
+            color: var(--text-dark);
             font-family: 'Mitr', sans-serif;
-            font-size: 2.2rem;
+            font-size: 1.75rem;
             line-height: 1.3;
         }
 
-        .app-preview-copy h2 span { color: #84DCD5; }
-
         .app-preview-copy > p {
-            max-width: 560px;
-            color: #D6E6EA;
-            font-size: 1rem;
-            line-height: 1.75;
-        }
-
-        .app-feature-list {
-            margin: 20px 0 24px;
-            display: grid;
-            gap: 8px;
-            list-style: none;
-        }
-
-        .app-feature-list li {
-            position: relative;
-            padding-left: 24px;
-            color: #EFF8F9;
-            font-size: 0.92rem;
-        }
-
-        .app-feature-list li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: #84DCD5;
-            font-weight: 800;
+            max-width: 520px;
+            margin-bottom: 18px;
+            color: var(--text-mid);
+            font-size: 0.98rem;
+            line-height: 1.65;
         }
 
         .app-coming-soon {
@@ -338,36 +322,71 @@
             box-shadow: 0 8px 18px rgba(12, 142, 152, 0.22);
         }
 
-        .app-preview-visual {
-            min-height: 420px;
-            padding: 30px 26px 0;
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
+        .app-preview-journey {
+            position: relative;
+            z-index: 2;
+            min-height: 232px;
             overflow: hidden;
-            background: #CFE6E9;
         }
 
-        .app-device {
-            width: min(310px, 100%);
-            height: 390px;
-            padding: 8px;
-            overflow: hidden;
-            border: 1px solid #AEC8CE;
-            border-bottom: 0;
-            border-radius: 28px 28px 0 0;
-            background: #fff;
-            box-shadow: 0 18px 36px rgba(19, 67, 81, 0.24);
+        .app-preview-journey::before {
+            content: '';
+            position: absolute;
+            width: 240px;
+            height: 240px;
+            right: -36px;
+            top: -34px;
+            border: 1px solid rgba(19, 151, 156, 0.18);
+            border-radius: 50%;
+            box-shadow: 0 0 0 32px rgba(28, 168, 164, 0.06), 0 0 0 66px rgba(29, 124, 143, 0.04);
         }
 
-        .app-device img {
-            width: 100%;
-            height: 100%;
-            display: block;
-            object-fit: cover;
-            object-position: top left;
-            border-radius: 20px 20px 0 0;
+        .app-journey-path {
+            position: absolute;
+            inset: 28px 10px 18px 0;
+            width: calc(100% - 10px);
+            height: calc(100% - 46px);
+            overflow: visible;
         }
+
+        .app-journey-route-glow { fill: none; stroke: rgba(19, 151, 157, 0.15); stroke-width: 9; stroke-linecap: round; }
+        .app-journey-route { fill: none; stroke: #13979D; stroke-width: 2.4; stroke-linecap: round; stroke-dasharray: 5 7; animation: app-route-flow 6s linear infinite; }
+        .app-journey-point { fill: #fff; stroke: #13979D; stroke-width: 2; }
+        .app-journey-point-final { fill: #E9B84E; stroke: #fff; stroke-width: 3; filter: drop-shadow(0 0 5px rgba(214, 157, 38, 0.65)); }
+
+        .app-journey-brand {
+            position: absolute;
+            right: 64px;
+            top: 50%;
+            width: 82px;
+            height: 82px;
+            transform: translateY(-50%);
+            display: grid;
+            place-items: center;
+            border: 1px solid #B7DADD;
+            border-radius: 18px;
+            background: rgba(255,255,255,0.94);
+            box-shadow: 0 12px 24px rgba(15,93,105,0.15);
+        }
+
+        .app-journey-brand img { width: 62px; height: 62px; object-fit: contain; }
+
+        .app-journey-tag {
+            position: absolute;
+            padding: 4px 8px;
+            border-radius: 5px;
+            color: #336270;
+            background: rgba(255,255,255,0.92);
+            font-size: 0.68rem;
+            font-weight: 750;
+            box-shadow: 0 3px 10px rgba(28,91,100,0.08);
+        }
+
+        .app-journey-tag.step-one { left: 8px; top: 36px; }
+        .app-journey-tag.step-two { left: 40px; bottom: 28px; }
+        .app-journey-tag.step-three { right: 8px; bottom: 38px; color: #875F0D; }
+
+        @keyframes app-route-flow { to { stroke-dashoffset: -48; } }
 
         .app-preview-note {
             margin-top: 14px;
@@ -842,13 +861,19 @@
                 font-size: 1.75rem;
             }
 
-            .app-preview-visual {
-                min-height: 350px;
-                padding: 24px 20px 0;
+            .app-preview-journey {
+                min-height: 150px;
             }
 
-            .app-device {
-                height: 330px;
+            .app-journey-brand {
+                right: 48px;
+                width: 68px;
+                height: 68px;
+            }
+
+            .app-journey-brand img {
+                width: 52px;
+                height: 52px;
             }
 
             .pricing-grid {
@@ -893,6 +918,10 @@
         .hero-text { animation: fadeUp 0.8s ease-out; }
         .hero-carousel { animation: fadeUp 0.8s ease-out 0.2s both; }
         .app-preview-banner { animation: fadeUp 0.7s ease-out 0.3s both; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .app-journey-route { animation: none; }
+        }
     </style>
 
     <!-- Schema.org LocalBusiness -->
@@ -973,18 +1002,23 @@
         <div class="app-promo-inner">
             <div class="app-preview-banner">
                 <div class="app-preview-copy">
-                    <span class="app-preview-label">เวอร์ชัน Beta</span>
-                    <h2>แอปบ้านกายภาพ<br><span>ช่วยเริ่มดูแลให้ตรงจุด</span></h2>
-                    <p>ตอบคำถามจากเป้าหมายและปัญหาที่พบ เพื่อเห็นแนวทางดูแลตัวเอง สิ่งที่ควรติดตาม และจุดที่นักกายภาพช่วยได้</p>
-                    <ul class="app-feature-list">
-                        <li>คัดกรองปัญหาและความปลอดภัยเบื้องต้น</li>
-                        <li>สรุป 3 ปัญหาหลักและแผนเริ่มต้นที่อ่านเข้าใจง่าย</li>
-                        <li>ตอบเพิ่มเพื่อสร้างแผนเฉพาะตัวที่ละเอียดขึ้น</li>
-                    </ul>
-                    <a class="app-coming-soon" href="care-navigator/">ทดลองใช้ Care Navigator</a>
+                    <span class="app-preview-label">CARE NAVIGATOR · ใช้งานฟรี</span>
+                    <h2>ดูแนวทางฟื้นฟูเบื้องต้นของคุณ</h2>
+                    <p>คัดกรองความปลอดภัย สรุปปัญหา และสร้างแผนเฉพาะตัวจากข้อมูลของคุณ</p>
+                    <a class="app-coming-soon" href="care-navigator/">ทดลองใช้แอพฟรี</a>
                 </div>
-                <div class="app-preview-visual" aria-label="ภาพตัวอย่างแอปบ้านกายภาพที่กำลังพัฒนา">
-                    <div class="app-device"><img src="รูปประกอบ/care-app-coming-soon-preview.png" alt="ตัวอย่างหน้าจอแอปบ้านกายภาพสำหรับเลือกเป้าหมายการดูแล"></div>
+                <div class="app-preview-journey" aria-hidden="true">
+                    <svg class="app-journey-path" viewBox="0 0 260 170" preserveAspectRatio="none">
+                        <path class="app-journey-route-glow" d="M8 35 C58 30 56 135 118 126 S170 46 246 91"/>
+                        <path class="app-journey-route" d="M8 35 C58 30 56 135 118 126 S170 46 246 91"/>
+                        <circle class="app-journey-point" cx="8" cy="35" r="6"/>
+                        <circle class="app-journey-point" cx="118" cy="126" r="6"/>
+                        <circle class="app-journey-point-final" cx="246" cy="91" r="7"/>
+                    </svg>
+                    <span class="app-journey-tag step-one">คัดกรอง</span>
+                    <span class="app-journey-tag step-two">เข้าใจปัญหา</span>
+                    <span class="app-journey-tag step-three">แผนของคุณ</span>
+                    <span class="app-journey-brand"><img src="care-navigator/brand-logo.png" alt=""></span>
                 </div>
             </div>
             <p class="app-preview-note">เวอร์ชัน Beta สำหรับทดลองคัดกรองและดูแผนเริ่มต้น เนื้อหาอาจได้รับการปรับปรุงต่อเนื่อง</p>

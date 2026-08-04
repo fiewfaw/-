@@ -42,7 +42,9 @@
       observer = null
       if (introTimer) clearTimer(introTimer)
       introTimer = null
-      if (current) current.classList.remove(ACTIVE_CLASS, INTRO_CLASS)
+      if (current) {
+        current.classList.remove(ACTIVE_CLASS, INTRO_CLASS)
+      }
       current = null
     }
 
