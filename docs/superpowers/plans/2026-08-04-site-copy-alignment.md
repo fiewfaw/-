@@ -49,6 +49,7 @@
 
 **Files:**
 - Modify: `content/posts/กายภาพบำบัดถึงบ้าน-ชลบุรี.md`
+- Modify: `blog/articles.json`
 
 **Interfaces:**
 - Consumes: the homepage service and journey contract
@@ -56,13 +57,15 @@
 
 - [ ] **Step 1: Rewrite the service steps to begin with Care Navigator and continue to LINE OA.**
 - [ ] **Step 2: Replace the retired price list with free initial conversation, online 500, home visit 1,500, and ten visits 12,000.**
-- [ ] **Step 3: Run `node tests/homepage-content.check.cjs` and confirm it passes.**
+- [ ] **Step 3: Update the article card title and description for the wider audience.**
+- [ ] **Step 4: Run `node tests/homepage-content.check.cjs` and confirm it passes.**
 
 ### Task 4: Publish and verify
 
 **Files:**
 - Modify: `index.html`
 - Modify: `content/posts/กายภาพบำบัดถึงบ้าน-ชลบุรี.md`
+- Modify: `blog/articles.json`
 - Modify: `tests/homepage-content.check.cjs`
 
 **Interfaces:**
@@ -73,4 +76,3 @@
 - [ ] **Step 2: Commit only the spec, plan, homepage, service article, and content test.**
 - [ ] **Step 3: Push to GitHub Pages and wait for deployment.**
 - [ ] **Step 4: Verify the public homepage and service article return 200 and contain the approved copy.**
-

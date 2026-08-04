@@ -47,9 +47,10 @@ Update `content/posts/กายภาพบำบัดถึงบ้าน-ช
 
 The article must list only the current services: free initial conversation, online consultation at 500 baht per 30 minutes, single home visit at 1,500 baht, and ten visits at 12,000 baht.
 
+Update the corresponding `blog/articles.json` card title and description so the blog listing reflects the same wider audience.
+
 ## Verification
 
 - Extend the existing Node content check to assert the approved headline, service labels, prices, 20% calculation, and Care Navigator-first journey.
 - Explicitly reject the retired phrases: `Stroke ดีขึ้นได้`, `แลก content + รีวิว`, `52%`, `ผลลัพธ์เร็วสุด`, `ลง Manual ทุกครั้ง`, the 7,500-baht course, and the 2,500-baht program.
 - Verify the public homepage and article after deployment.
-
