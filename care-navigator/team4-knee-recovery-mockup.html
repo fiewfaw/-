@@ -289,7 +289,7 @@
   </style>
   <style>.edit-answers{display:inline-flex;min-height:32px;align-items:center;padding:6px 9px;border:1px solid #c8dfe3;border-radius:8px;background:#f7fbfc;color:#176f78;font-size:10px;font-weight:900;text-decoration:none}</style>
   <link rel="stylesheet" href="css/care-navigator-brand.css">
-  <link rel="stylesheet" href="css/assessment-attention.css?v=frame-flash-1">
+  <link rel="stylesheet" href="css/assessment-attention.css?v=click-label-2">
   <link rel="stylesheet" href="css/approved-assessment-icons.css?v=replace-original-1">
 </head>
 <body>
@@ -387,7 +387,7 @@
           <article class="problem-card">
             <div class="problem-head"><span class="problem-no">01</span><div><h3>อาการบวมและปวดกำลังบอกว่าร่างกายรับกิจกรรมได้แค่ไหน</h3><p>ติดตามปวด บวม แผล และอาการที่น่องร่วมกัน ไม่ดูเพียงคะแนนปวดอย่างเดียว</p></div></div>
             <div class="management"><b>แผนจัดการปัญหานี้</b><span>แบ่งกิจกรรมเป็นช่วงสั้นและใช้แนวโน้มอาการตัดสินว่าจะคง ลด หรือเพิ่ม FITT</span></div>
-            <button class="self-assess" type="button" data-assessment-target="symptomAssessment" aria-expanded="false"><span class="assess-icon">0–10</span><span><b>บันทึกอาการด้วยตัวเอง</b><small>คะแนนปวด แนวโน้มบวม และสัญญาณที่ต้องหยุด</small></span><span class="chevron" aria-hidden="true"></span></button>
+          <button class="self-assess" type="button" data-assessment-target="symptomAssessment" aria-expanded="false"><span class="assess-icon">0–10</span><span><b>บันทึกอาการด้วยตัวเอง</b><small>คะแนนปวด แนวโน้มบวม และสัญญาณที่ต้องหยุด</small></span><span class="assessment-click-prompt">คลิกเพื่อตอบ</span></button>
             <div class="assessment-drawer" id="symptomAssessment" tabindex="-1">
               <div class="drawer-heading"><b>บันทึกปวดและบวมวันนี้</b><span>หากมีอาการอันตราย ระบบจะหยุดการเพิ่มโปรแกรมก่อน</span></div>
               <div class="form-grid">
@@ -403,7 +403,7 @@
           <article class="problem-card">
             <div class="problem-head"><span class="problem-no">02</span><div><h3>เข่ายังเหยียดหรืองอได้ไม่พอกับกิจกรรมที่ต้องทำ</h3><p>การเหยียดมีผลต่อการยืนและเดิน ส่วนการงอมีผลต่อการนั่ง ลุก และขึ้นลงระดับ</p></div></div>
             <div class="management"><b>แผนจัดการปัญหานี้</b><span>เลือกเน้นการเหยียดหรือการงอจากค่าที่บันทึก และไม่ออกนอกมุมที่ทีมผ่าตัดกำหนด</span></div>
-            <button class="self-assess" id="rangeAssessmentButton" type="button" data-assessment-target="rangeAssessment" aria-expanded="false"><span class="assess-icon">°</span><span><b>บันทึกช่วงการเคลื่อนไหว</b><small id="rangeAssessmentHint">กรอกองศาที่วัดได้ หรือเว้นไว้ให้ผู้เชี่ยวชาญวัด</small></span><span class="chevron" aria-hidden="true"></span></button>
+          <button class="self-assess" id="rangeAssessmentButton" type="button" data-assessment-target="rangeAssessment" aria-expanded="false"><span class="assess-icon">°</span><span><b>บันทึกช่วงการเคลื่อนไหว</b><small id="rangeAssessmentHint">กรอกองศาที่วัดได้ หรือเว้นไว้ให้ผู้เชี่ยวชาญวัด</small></span><span class="assessment-click-prompt">คลิกเพื่อตอบ</span></button>
             <div class="assessment-drawer" id="rangeAssessment" tabindex="-1">
               <div class="drawer-heading"><b>บันทึกคำสั่งและมุมข้อเข่า</b><span>ถ้าไม่ทราบมุมจริง ไม่ต้องเดาตัวเลข ระบบยังสร้างแผนแบบระมัดระวังได้</span></div>
               <div class="form-grid">
@@ -420,7 +420,7 @@
           <article class="problem-card">
             <div class="problem-head"><span class="problem-no">03</span><div><h3>กำลังขาและการเดินยังไม่กลับมาเพียงพอสำหรับการใช้ชีวิตในบ้าน</h3><p>ความพร้อมขึ้นกับคำสั่งลงน้ำหนัก อุปกรณ์ ระดับการช่วยเหลือ และเส้นทางจริงในบ้าน</p></div></div>
             <div class="management"><b>แผนจัดการปัญหานี้</b><span>เริ่มจากระดับที่ทำได้จริง ใช้อุปกรณ์ตามคำสั่ง และเพิ่มเวลา จำนวนครั้ง หรือความช่วยเหลือทีละอย่าง</span></div>
-            <button class="self-assess" type="button" data-assessment-target="mobilityAssessment" aria-expanded="false"><span class="assess-icon">03</span><span><b>บันทึกการลุกและเดิน</b><small>ระดับความช่วยเหลือ อุปกรณ์ และเวลาที่เดินได้อย่างสบาย</small></span><span class="chevron" aria-hidden="true"></span></button>
+          <button class="self-assess" type="button" data-assessment-target="mobilityAssessment" aria-expanded="false"><span class="assess-icon">03</span><span><b>บันทึกการลุกและเดิน</b><small>ระดับความช่วยเหลือ อุปกรณ์ และเวลาที่เดินได้อย่างสบาย</small></span><span class="assessment-click-prompt">คลิกเพื่อตอบ</span></button>
             <div class="assessment-drawer" id="mobilityAssessment" tabindex="-1">
               <div class="drawer-heading"><b>ตอนนี้ช่วยเหลือตัวเองได้แค่ไหน</b><span>เลือกจากสิ่งที่ทำได้จริง ไม่ต้องทดลองท่าที่ไม่มั่นใจเพื่อกรอกแบบประเมิน</span></div>
               <div class="form-grid">

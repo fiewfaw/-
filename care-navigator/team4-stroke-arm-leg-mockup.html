@@ -24,7 +24,7 @@
   </style>
   <style>.edit-answers{display:inline-flex;min-height:32px;align-items:center;padding:6px 9px;border:1px solid #c8dfe3;border-radius:8px;background:#f7fbfc;color:#176f78;font-size:10px;font-weight:900;text-decoration:none}</style>
   <link rel="stylesheet" href="css/care-navigator-brand.css">
-  <link rel="stylesheet" href="css/assessment-attention.css?v=frame-flash-1">
+  <link rel="stylesheet" href="css/assessment-attention.css?v=click-label-2">
   <link rel="stylesheet" href="css/approved-assessment-icons.css?v=replace-original-1">
 </head>
 <body>
@@ -95,7 +95,7 @@
               <article class="problem-card" data-assessment-card="barthel">
                 <div class="problem-head"><span class="no">01</span><div><h3>ลำตัวและการย้ายตัวยังต้องมีคนช่วย</h3><p>ความมั่นคงของลำตัวและลำดับการเคลื่อนไหวยังจำกัดการเข้าห้องน้ำ แต่งตัว และลุกจากเตียง</p></div></div>
                 <div class="plan-box" id="transferProblemPlan"><b>แผนจัดการปัญหานี้</b>เริ่มจากจัดแนว พลิกตัว และลำดับการย้ายตัว แล้วค่อยเพิ่มการลุกยืนเมื่อความสามารถจริงปลอดภัยพอ</div>
-                <button class="assessment-toggle" type="button" aria-expanded="false"><span class="ico">10</span><span><b>Barthel Index ฉบับ 0–20</b><small>ประเมินกิจวัตร 10 ข้อ · ต้องตอบก่อนสร้างแผน</small></span><span class="score" id="barthelScoreLabel">0/20</span></button>
+                <button class="assessment-toggle" type="button" aria-expanded="false"><span class="ico">10</span><span><b>Barthel Index ฉบับ 0–20</b><small>ประเมินกิจวัตร 10 ข้อ · ต้องตอบก่อนสร้างแผน</small></span><span class="score assessment-score-prompt" id="barthelScoreLabel" data-click-prompt="คลิกเพื่อตอบ">0/20</span></button>
                 <div class="assessment-panel"><p class="assessment-help">เลือกคำตอบที่ใกล้กับสิ่งที่ทำได้จริงในช่วงนี้ที่สุด หากบางวันทำได้ไม่เท่ากัน ให้เลือกวันที่ต้องการความช่วยเหลือมากกว่า</p>
                   <div class="barthel-grid">
                     <label class="barthel-item" data-barthel-item="bowels"><span>1. การควบคุมอุจจาระ</span><select data-barthel-select><option value="">เลือกคำตอบ</option><option value="0">ควบคุมไม่ได้</option><option value="1">มีพลาดเป็นครั้งคราว</option><option value="2">ควบคุมได้</option></select></label>
@@ -117,7 +117,7 @@
               <article class="problem-card" data-assessment-card="fac">
                 <div class="problem-head"><span class="no">02</span><div><h3 id="mobilityProblemTitle">ขาข้างอ่อนแรงยังจำกัดการย้ายตัวหรือการเดิน</h3><p id="mobilityProblemCopy">ต้องดูความสามารถในการนั่ง ยืน และระดับผู้ช่วยจริงก่อนเลือกว่าจะเริ่มบนเตียงหรือเริ่มฝึกก้าว</p></div></div>
                 <div class="plan-box" id="mobilityProblemPlan"><b>แผนจัดการปัญหานี้</b>เริ่มจากกิจกรรมที่ทำได้จริง หากยังยืนไม่ได้จะเตรียมแรงบนเตียงและท่านั่งก่อน หากยืนได้จึงค่อยฝึกลงน้ำหนักและก้าว</div>
-                <button class="assessment-toggle" type="button" aria-expanded="false"><span class="ico">6</span><span><b>ระดับการช่วยเดิน FAC 0–5</b><small>เลือกจากการเดินจริง ไม่ต้องทดลองเดินใหม่</small></span><span class="score" id="facScoreLabel">ยังไม่ตอบ</span></button>
+                <button class="assessment-toggle" type="button" aria-expanded="false"><span class="ico">6</span><span><b>ระดับการช่วยเดิน FAC 0–5</b><small>เลือกจากการเดินจริง ไม่ต้องทดลองเดินใหม่</small></span><span class="score assessment-score-prompt" id="facScoreLabel" data-click-prompt="คลิกเพื่อตอบ">ยังไม่ตอบ</span></button>
                 <div class="assessment-panel"><p class="assessment-help">เลือกจากการเดินที่เกิดขึ้นจริงในช่วงนี้ ไม่ต้องลุกมาทดลองเดินเพื่อทำแบบประเมิน</p><div class="option-list">
                   <button class="option-card" type="button" data-fac-option="0"><span class="level">0</span><span><b>ยังเดินใช้งานไม่ได้</b><small>ต้องใช้คนช่วยมากหรือยังเน้นการย้ายตัว</small></span></button>
                   <button class="option-card" type="button" data-fac-option="1"><span class="level">1</span><span><b>ต้องมีคนออกแรงช่วยตลอด</b><small>ผู้ช่วยต้องประคองน้ำหนักตัวต่อเนื่อง</small></span></button>
@@ -139,7 +139,7 @@
               <article class="problem-card" data-assessment-card="arm">
                 <div class="problem-head"><span class="no">03</span><div><h3>แขนและมือข้างอ่อนแรงยังไม่กลับมาใช้ในกิจวัตร</h3><p>ถ้าใช้เฉพาะข้างแข็งแรงต่อเนื่อง แขนข้างอ่อนแรงจะยิ่งไม่มีโอกาสร่วมกับงานจริง</p></div></div>
                 <div class="plan-box"><b>แผนจัดการปัญหานี้</b>เริ่มจากเลื่อนมือ เอื้อม แตะ ประคองของ แล้วค่อยเพิ่มจับและปล่อยในงานที่ผู้ป่วยอยากทำเอง</div>
-                <button class="assessment-toggle" type="button" aria-expanded="false"><span class="ico">6</span><span><b>ระดับการใช้แขนข้างอ่อนแรง 0–5</b><small>ตอบจากสิ่งที่ใช้จริงในช่วง 7 วันที่ผ่านมา</small></span><span class="score" id="armScoreLabel">ยังไม่ตอบ</span></button>
+                <button class="assessment-toggle" type="button" aria-expanded="false"><span class="ico">6</span><span><b>ระดับการใช้แขนข้างอ่อนแรง 0–5</b><small>ตอบจากสิ่งที่ใช้จริงในช่วง 7 วันที่ผ่านมา</small></span><span class="score assessment-score-prompt" id="armScoreLabel" data-click-prompt="คลิกเพื่อตอบ">ยังไม่ตอบ</span></button>
                 <div class="assessment-panel"><p class="assessment-help">แบบนี้เป็นตัวช่วยจัดแผนของ MVP ไม่ใช่แบบวินิจฉัย เลือกระดับที่ตรงกับการใช้แขนจริงใน 7 วันที่ผ่านมา</p><div class="option-list">
                   <button class="option-card" type="button" data-arm-option="0"><span class="level">0</span><span><b>ยังไม่ได้ใช้แขนข้างนี้ทำกิจกรรม</b><small>ต้องใช้แขนอีกข้างหรือผู้ดูแลทั้งหมด</small></span></button>
                   <button class="option-card" type="button" data-arm-option="1"><span class="level">1</span><span><b>ขยับได้เล็กน้อย แต่ยังไม่ช่วยงาน</b><small>ใช้เพื่อจัดท่าหรือวางแขนให้ปลอดภัยเป็นหลัก</small></span></button>

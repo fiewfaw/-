@@ -5,11 +5,11 @@
   animation: assessment-attention-frame-flash 1.8s ease-in-out infinite;
 }
 
-.summary:has(.chev) {
+:where(.summary, .assessment-button, .self-assess):has(.assessment-click-prompt) {
   grid-template-columns: auto minmax(0, 1fr) auto !important;
 }
 
-.chev {
+.assessment-click-prompt {
   min-width: max-content;
   min-height: 28px;
   padding: 5px 9px;
@@ -27,24 +27,59 @@
   transform: none !important;
 }
 
-.self-card:hover .chev,
-.self-card:focus-visible .chev,
-.summary:hover .chev,
-.summary:focus-visible .chev {
+.self-card:hover .assessment-click-prompt,
+.self-card:focus-visible .assessment-click-prompt,
+.summary:hover .assessment-click-prompt,
+.summary:focus-visible .assessment-click-prompt,
+.assessment-button:hover .assessment-click-prompt,
+.assessment-button:focus-visible .assessment-click-prompt,
+.self-assess:hover .assessment-click-prompt,
+.self-assess:focus-visible .assessment-click-prompt {
   color: #ffffff !important;
   border-color: #087d82;
   background: #087d82;
 }
 
-.self-card.open .chev {
-  transform: none !important;
+.assessment-score-prompt {
+  display: grid;
+  gap: 3px;
+  justify-items: end;
+  white-space: nowrap;
+}
+
+.assessment-score-prompt::after {
+  content: attr(data-click-prompt);
+  min-width: max-content;
+  padding: 4px 7px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(17, 145, 154, 0.28);
+  border-radius: 999px;
+  color: #087d82;
+  background: #e5f7f6;
+  font-size: 8px;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.assessment-toggle:hover .assessment-score-prompt::after,
+.assessment-toggle:focus-visible .assessment-score-prompt::after {
+  color: #ffffff;
+  border-color: #087d82;
+  background: #087d82;
 }
 
 @media (max-width: 360px) {
-  .chev {
+  .assessment-click-prompt {
     min-height: 26px;
     padding-inline: 7px;
     font-size: 8px !important;
+  }
+
+  .assessment-score-prompt::after {
+    padding-inline: 6px;
+    font-size: 7px;
   }
 }
 
