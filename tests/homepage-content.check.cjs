@@ -27,6 +27,7 @@ assert.match(homepage, /updateCareBannerMotion/, 'app banner motion follows the 
 assert.match(homepage, /crossedCenter/, 'app banner still pops when a fast phone scroll crosses the viewport center');
 assert.match(homepage, /\.app-journey-tag\.step-two\s*\{[^}]*left:\s*50%[^}]*top:\s*50%/s, 'desktop journey centers the problem-understanding step');
 assert.match(homepage, /\.app-preview-journey\s*\{[^}]*background:\s*#0B4852/s, 'app journey uses the redesigned premium contrast panel');
+assert.match(homepage, /@media \(min-width: 641px\) and \(max-width: 768px\)/, 'narrow desktop keeps the two-panel banner instead of using the phone layout');
 assert.match(homepage, /class="app-coming-soon"[^>]*href="care-navigator\/"/, 'app CTA links to the public Care Navigator');
 assert.match(homepage, />ทดลองใช้แอพฟรี</, 'app CTA clearly invites free Beta use');
 assert.match(homepage, /เวอร์ชัน Beta/, 'homepage labels the app as a Beta');

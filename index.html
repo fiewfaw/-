@@ -996,6 +996,57 @@
             }
         }
 
+        @media (min-width: 641px) and (max-width: 768px) {
+            .app-preview-banner {
+                grid-template-columns: minmax(280px, 0.88fr) minmax(320px, 1.12fr);
+                min-height: 286px;
+            }
+
+            .app-preview-copy {
+                padding: 34px 30px 30px;
+            }
+
+            .app-preview-copy h2 {
+                font-size: 1.55rem;
+            }
+
+            .app-preview-copy > p {
+                font-size: 0.9rem;
+            }
+
+            .app-coming-soon {
+                padding-inline: 20px;
+            }
+
+            .app-preview-journey {
+                min-height: 286px;
+                border-top: 0;
+                border-left: 1px solid rgba(127, 224, 219, 0.3);
+            }
+
+            .app-journey-path {
+                inset: 38px 20px 28px;
+                width: calc(100% - 40px);
+                height: calc(100% - 66px);
+            }
+
+            .app-journey-brand {
+                right: 7%;
+                top: 69%;
+                width: 72px;
+                height: 72px;
+            }
+
+            .app-journey-brand img {
+                width: 54px;
+                height: 54px;
+            }
+
+            .app-journey-tag.step-one { left: 5%; top: 23%; }
+            .app-journey-tag.step-two { left: 50%; top: 50%; bottom: auto; transform: translate(-50%, -50%); }
+            .app-journey-tag.step-three { right: 4%; top: 22%; bottom: auto; }
+        }
+
         @media (max-width: 340px) {
             .app-promo { padding: 32px 12px; }
             .app-preview-copy { padding: 24px 18px 20px; }
