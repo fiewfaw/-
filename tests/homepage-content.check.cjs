@@ -22,6 +22,11 @@ assert.match(homepage, /@media \(hover: hover\) and \(pointer: fine\)/, 'app ban
 assert.match(homepage, /\.app-preview-banner:hover/, 'app banner lifts when the pointer moves over it');
 assert.match(homepage, /@media \(max-width: 340px\)/, 'app banner has a compact layout for narrow phones');
 assert.match(homepage, /\.app-preview-journey\s*\{[^}]*min-height:\s*180px/s, 'mobile app journey has enough room for all visual steps');
+assert.match(homepage, /\.app-preview-banner\.is-scroll-highlight/, 'app banner can pop when its center reaches the phone viewport center');
+assert.match(homepage, /updateCareBannerMotion/, 'app banner motion follows the scrolling viewport');
+assert.match(homepage, /crossedCenter/, 'app banner still pops when a fast phone scroll crosses the viewport center');
+assert.match(homepage, /\.app-journey-tag\.step-two\s*\{[^}]*left:\s*50%[^}]*top:\s*50%/s, 'desktop journey centers the problem-understanding step');
+assert.match(homepage, /\.app-preview-journey\s*\{[^}]*background:\s*#0B4852/s, 'app journey uses the redesigned premium contrast panel');
 assert.match(homepage, /class="app-coming-soon"[^>]*href="care-navigator\/"/, 'app CTA links to the public Care Navigator');
 assert.match(homepage, />ทดลองใช้แอพฟรี</, 'app CTA clearly invites free Beta use');
 assert.match(homepage, /เวอร์ชัน Beta/, 'homepage labels the app as a Beta');

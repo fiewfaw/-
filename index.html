@@ -241,7 +241,11 @@
         /* ========== CARE NAVIGATOR APP PREVIEW ========== */
         .app-promo {
             padding: 48px 24px;
-            background: #EAF4F5;
+            background:
+                linear-gradient(90deg, rgba(12, 117, 124, 0.035) 1px, transparent 1px),
+                linear-gradient(rgba(12, 117, 124, 0.035) 1px, transparent 1px),
+                #F3F7F7;
+            background-size: 36px 36px;
         }
 
         .app-promo-inner {
@@ -252,14 +256,14 @@
 
         .app-preview-banner {
             position: relative;
-            min-height: 232px;
+            min-height: 286px;
             display: grid;
-            grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+            grid-template-columns: minmax(320px, 0.88fr) minmax(360px, 1.12fr);
             overflow: hidden;
-            border: 1px solid #82C4C7;
+            border: 1px solid #9DC9C8;
             border-radius: 8px;
-            background: #EDF8F6;
-            box-shadow: 0 18px 46px rgba(22, 95, 105, 0.18), inset 0 1px 0 rgba(255,255,255,0.9);
+            background: #FFFFFF;
+            box-shadow: 0 22px 54px rgba(18, 68, 75, 0.17), inset 0 1px 0 rgba(255,255,255,0.9);
             transition: transform 0.32s cubic-bezier(.2,.8,.2,1), border-color 0.32s ease, box-shadow 0.32s ease;
             will-change: transform;
         }
@@ -267,21 +271,23 @@
         .app-preview-banner::before {
             content: '';
             position: absolute;
-            inset: 0;
+            z-index: 4;
+            inset: 0 0 auto;
+            height: 4px;
             pointer-events: none;
-            background-image: radial-gradient(circle at 1px 1px, rgba(9, 119, 128, 0.12) 1px, transparent 1px);
-            background-size: 22px 22px;
-            -webkit-mask-image: linear-gradient(90deg, transparent 5%, #000 55%, #000 100%);
-            mask-image: linear-gradient(90deg, transparent 5%, #000 55%, #000 100%);
-            animation: app-grid-drift 18s linear infinite;
+            background: linear-gradient(90deg, #0C8E98 0 46%, #47D7D2 46% 78%, #E4B950 78% 100%);
+        }
+
+        .app-preview-banner.is-scroll-highlight {
+            animation: app-banner-scroll-pop 0.68s cubic-bezier(.2,.85,.25,1);
         }
 
         @media (hover: hover) and (pointer: fine) {
             .app-preview-banner:hover,
             .app-preview-banner:focus-within {
-                transform: translateY(-7px) scale(1.008);
-                border-color: #30A7AC;
-                box-shadow: 0 28px 62px rgba(13, 108, 119, 0.26), 0 0 0 3px rgba(35, 183, 184, 0.11);
+                transform: translateY(-8px) scale(1.008);
+                border-color: #45BFC0;
+                box-shadow: 0 32px 70px rgba(11, 72, 82, 0.24), 0 0 0 3px rgba(71, 215, 210, 0.12);
             }
 
             .app-preview-banner:hover .app-journey-route,
@@ -294,29 +300,44 @@
         .app-preview-copy {
             position: relative;
             z-index: 2;
-            padding: 34px 38px;
+            padding: 42px 42px 38px;
             align-self: center;
             color: var(--text-dark);
             text-align: left;
+            background:
+                linear-gradient(135deg, rgba(228, 185, 80, 0.09), transparent 34%),
+                #FFFFFF;
         }
 
         .app-preview-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             color: #087D83;
             font-size: 0.78rem;
             font-weight: 800;
         }
 
+        .app-preview-label::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #E4B950;
+            box-shadow: 0 0 0 4px rgba(228, 185, 80, 0.16);
+        }
+
         .app-preview-copy h2 {
-            margin: 8px 0;
+            margin: 12px 0 8px;
             color: var(--text-dark);
             font-family: 'Mitr', sans-serif;
-            font-size: 1.75rem;
-            line-height: 1.3;
+            font-size: 1.9rem;
+            line-height: 1.28;
         }
 
         .app-preview-copy > p {
-            max-width: 520px;
-            margin-bottom: 18px;
+            max-width: 470px;
+            margin-bottom: 22px;
             color: var(--text-mid);
             font-size: 0.98rem;
             line-height: 1.65;
@@ -351,48 +372,62 @@
         .app-preview-journey {
             position: relative;
             z-index: 2;
-            min-height: 232px;
+            min-height: 286px;
             overflow: hidden;
+            border-left: 1px solid rgba(127, 210, 208, 0.24);
+            background: #0B4852;
         }
 
         .app-preview-journey::before {
             content: '';
             position: absolute;
-            width: 240px;
-            height: 240px;
-            right: -36px;
-            top: -34px;
-            border: 1px solid rgba(19, 151, 156, 0.18);
-            border-radius: 50%;
-            box-shadow: 0 0 0 32px rgba(28, 168, 164, 0.06), 0 0 0 66px rgba(29, 124, 143, 0.04);
+            inset: 0;
+            opacity: 0.54;
+            background:
+                linear-gradient(120deg, transparent 0 44%, rgba(71, 215, 210, 0.08) 44% 45%, transparent 45% 100%),
+                linear-gradient(90deg, rgba(255,255,255,0.055) 1px, transparent 1px),
+                linear-gradient(rgba(255,255,255,0.055) 1px, transparent 1px);
+            background-size: auto, 28px 28px, 28px 28px;
+        }
+
+        .app-preview-journey::after {
+            content: '';
+            position: absolute;
+            inset: 18px;
+            border: 1px solid rgba(105, 225, 220, 0.14);
+            border-radius: 6px;
+            pointer-events: none;
         }
 
         .app-journey-path {
             position: absolute;
-            inset: 28px 10px 18px 0;
-            width: calc(100% - 10px);
-            height: calc(100% - 46px);
+            z-index: 2;
+            inset: 38px 24px 28px;
+            width: calc(100% - 48px);
+            height: calc(100% - 66px);
             overflow: visible;
         }
 
-        .app-journey-route-glow { fill: none; stroke: rgba(19, 151, 157, 0.15); stroke-width: 9; stroke-linecap: round; }
-        .app-journey-route { fill: none; stroke: #13979D; stroke-width: 2.4; stroke-linecap: round; stroke-dasharray: 5 7; filter: drop-shadow(0 0 3px rgba(19, 151, 157, 0.25)); animation: app-route-flow 6s linear infinite; transition: stroke-width 0.3s ease, filter 0.3s ease; }
-        .app-journey-point { fill: #fff; stroke: #13979D; stroke-width: 2; }
-        .app-journey-point-final { fill: #E9B84E; stroke: #fff; stroke-width: 3; filter: drop-shadow(0 0 5px rgba(214, 157, 38, 0.65)); }
+        .app-journey-route-glow { fill: none; stroke: rgba(71, 215, 210, 0.18); stroke-width: 13; stroke-linecap: round; }
+        .app-journey-route { fill: none; stroke: #59E0DB; stroke-width: 2.8; stroke-linecap: round; stroke-dasharray: 6 8; filter: drop-shadow(0 0 5px rgba(89, 224, 219, 0.55)); animation: app-route-flow 5s linear infinite; transition: stroke-width 0.3s ease, filter 0.3s ease; }
+        .app-journey-point { fill: #0B4852; stroke: #8FF4EF; stroke-width: 3; filter: drop-shadow(0 0 6px rgba(89, 224, 219, 0.65)); }
+        .app-journey-point-middle { fill: #8FF4EF; }
+        .app-journey-point-final { fill: #E4B950; stroke: #FFF7DA; stroke-width: 3; filter: drop-shadow(0 0 8px rgba(228, 185, 80, 0.75)); }
 
         .app-journey-brand {
             position: absolute;
-            right: 64px;
-            top: 50%;
-            width: 82px;
-            height: 82px;
+            z-index: 3;
+            right: 9%;
+            top: 69%;
+            width: 84px;
+            height: 84px;
             transform: translateY(-50%);
             display: grid;
             place-items: center;
-            border: 1px solid #B7DADD;
-            border-radius: 18px;
-            background: rgba(255,255,255,0.94);
-            box-shadow: 0 12px 24px rgba(15,93,105,0.15);
+            border: 1px solid rgba(255, 247, 218, 0.9);
+            border-radius: 16px;
+            background: #FFFFFF;
+            box-shadow: 0 14px 30px rgba(0, 25, 31, 0.34), 0 0 0 5px rgba(228, 185, 80, 0.1);
             animation: app-brand-float 3.6s ease-in-out infinite;
         }
 
@@ -400,24 +435,31 @@
 
         .app-journey-tag {
             position: absolute;
-            padding: 4px 8px;
-            border-radius: 5px;
-            color: #336270;
-            background: rgba(255,255,255,0.92);
-            font-size: 0.68rem;
+            z-index: 3;
+            padding: 6px 10px;
+            border: 1px solid rgba(143, 244, 239, 0.24);
+            border-radius: 6px;
+            color: #E8FFFF;
+            background: rgba(6, 47, 55, 0.84);
+            font-size: 0.72rem;
             font-weight: 750;
-            box-shadow: 0 3px 10px rgba(28,91,100,0.08);
+            box-shadow: 0 8px 18px rgba(0, 26, 31, 0.25);
+            backdrop-filter: blur(5px);
         }
 
-        .app-journey-tag.step-one { left: 8px; top: 36px; }
-        .app-journey-tag.step-two { left: 40px; bottom: 28px; }
-        .app-journey-tag.step-three { right: 8px; bottom: 38px; color: #875F0D; }
+        .app-journey-tag.step-one { left: 6%; top: 23%; }
+        .app-journey-tag.step-two { left: 50%; top: 50%; transform: translate(-50%, -50%); }
+        .app-journey-tag.step-three { right: 4%; top: 22%; color: #4F3903; background: #FFF3C7; border-color: rgba(228, 185, 80, 0.72); }
 
         @keyframes app-route-flow { to { stroke-dashoffset: -48; } }
-        @keyframes app-grid-drift { to { background-position: 22px 22px; } }
         @keyframes app-brand-float {
             0%, 100% { transform: translateY(-50%); }
             50% { transform: translateY(calc(-50% - 5px)); }
+        }
+        @keyframes app-banner-scroll-pop {
+            0% { transform: scale(1); box-shadow: 0 22px 54px rgba(18, 68, 75, 0.17); }
+            46% { transform: translateY(-8px) scale(1.018); box-shadow: 0 34px 74px rgba(11, 72, 82, 0.27), 0 0 0 4px rgba(71, 215, 210, 0.16); }
+            100% { transform: scale(1); box-shadow: 0 22px 54px rgba(18, 68, 75, 0.17); }
         }
 
         .app-preview-note {
@@ -895,7 +937,8 @@
 
             .app-preview-journey {
                 min-height: 180px;
-                border-top: 1px solid rgba(76, 166, 171, 0.18);
+                border-top: 1px solid rgba(127, 224, 219, 0.3);
+                border-left: 0;
             }
 
             .app-journey-path {
@@ -917,7 +960,7 @@
             }
 
             .app-journey-tag.step-one { left: 12px; top: 30px; }
-            .app-journey-tag.step-two { left: 44px; bottom: 24px; }
+            .app-journey-tag.step-two { left: 44px; top: auto; bottom: 24px; transform: none; }
             .app-journey-tag.step-three { right: 12px; top: 24px; bottom: auto; }
 
             .pricing-grid {
@@ -984,7 +1027,7 @@
             .app-preview-banner:focus-within,
             .app-coming-soon:hover,
             .app-coming-soon:focus-visible { transform: none; }
-            .app-preview-banner::before,
+            .app-preview-banner.is-scroll-highlight,
             .app-journey-route,
             .app-journey-brand { animation: none; }
         }
@@ -1074,12 +1117,12 @@
                     <a class="app-coming-soon" href="care-navigator/">ทดลองใช้แอพฟรี</a>
                 </div>
                 <div class="app-preview-journey" aria-hidden="true">
-                    <svg class="app-journey-path" viewBox="0 0 260 170" preserveAspectRatio="none">
-                        <path class="app-journey-route-glow" d="M8 35 C58 30 56 135 118 126 S170 46 246 91"/>
-                        <path class="app-journey-route" d="M8 35 C58 30 56 135 118 126 S170 46 246 91"/>
-                        <circle class="app-journey-point" cx="8" cy="35" r="6"/>
-                        <circle class="app-journey-point" cx="118" cy="126" r="6"/>
-                        <circle class="app-journey-point-final" cx="246" cy="91" r="7"/>
+                    <svg class="app-journey-path" viewBox="0 0 420 210" preserveAspectRatio="none">
+                        <path class="app-journey-route-glow" d="M20 78 C92 26 138 44 210 105 S322 154 398 70"/>
+                        <path class="app-journey-route" d="M20 78 C92 26 138 44 210 105 S322 154 398 70"/>
+                        <circle class="app-journey-point" cx="20" cy="78" r="7"/>
+                        <circle class="app-journey-point app-journey-point-middle" cx="210" cy="105" r="7"/>
+                        <circle class="app-journey-point-final" cx="398" cy="70" r="8"/>
                     </svg>
                     <span class="app-journey-tag step-one">คัดกรอง</span>
                     <span class="app-journey-tag step-two">เข้าใจปัญหา</span>
@@ -1299,6 +1342,61 @@
         window.addEventListener('scroll', () => {
             document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
         });
+
+        // On phones, acknowledge the banner as it reaches the reading focus area.
+        (function setupCareBannerMotion() {
+            const banner = document.querySelector('.app-preview-banner');
+            const phoneViewport = window.matchMedia('(max-width: 768px)');
+            const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+            if (!banner) return;
+
+            let wasCentered = false;
+            let framePending = false;
+            let animationTimer;
+            let previousCenterOffset = null;
+
+            function updateCareBannerMotion() {
+                framePending = false;
+                if (!phoneViewport.matches || reducedMotion.matches) {
+                    wasCentered = false;
+                    previousCenterOffset = null;
+                    banner.classList.remove('is-scroll-highlight');
+                    return;
+                }
+
+                const rect = banner.getBoundingClientRect();
+                const centerOffset = rect.top + rect.height / 2 - window.innerHeight / 2;
+                const distanceFromCenter = Math.abs(centerOffset);
+                const activationDistance = Math.min(80, window.innerHeight * 0.11);
+                const isCentered = distanceFromCenter <= activationDistance;
+                const crossedCenter = previousCenterOffset !== null
+                    && ((previousCenterOffset > 0 && centerOffset <= 0)
+                        || (previousCenterOffset < 0 && centerOffset >= 0));
+
+                if ((isCentered || crossedCenter) && !wasCentered) {
+                    banner.classList.remove('is-scroll-highlight');
+                    void banner.offsetWidth;
+                    banner.classList.add('is-scroll-highlight');
+                    window.clearTimeout(animationTimer);
+                    animationTimer = window.setTimeout(() => banner.classList.remove('is-scroll-highlight'), 760);
+                    wasCentered = true;
+                } else if (distanceFromCenter > activationDistance * 1.8) {
+                    wasCentered = false;
+                }
+
+                previousCenterOffset = centerOffset;
+            }
+
+            function queueCareBannerMotion() {
+                if (framePending) return;
+                framePending = true;
+                window.requestAnimationFrame(updateCareBannerMotion);
+            }
+
+            window.addEventListener('scroll', queueCareBannerMotion, { passive: true });
+            window.addEventListener('resize', queueCareBannerMotion);
+            queueCareBannerMotion();
+        })();
 
         // Load latest articles
         (async function() {
