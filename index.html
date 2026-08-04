@@ -256,10 +256,12 @@
             display: grid;
             grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
             overflow: hidden;
-            border: 1px solid #9ECFD0;
+            border: 1px solid #82C4C7;
             border-radius: 8px;
             background: #EDF8F6;
-            box-shadow: 0 14px 36px rgba(22, 95, 105, 0.13);
+            box-shadow: 0 18px 46px rgba(22, 95, 105, 0.18), inset 0 1px 0 rgba(255,255,255,0.9);
+            transition: transform 0.32s cubic-bezier(.2,.8,.2,1), border-color 0.32s ease, box-shadow 0.32s ease;
+            will-change: transform;
         }
 
         .app-preview-banner::before {
@@ -271,6 +273,22 @@
             background-size: 22px 22px;
             -webkit-mask-image: linear-gradient(90deg, transparent 5%, #000 55%, #000 100%);
             mask-image: linear-gradient(90deg, transparent 5%, #000 55%, #000 100%);
+            animation: app-grid-drift 18s linear infinite;
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            .app-preview-banner:hover,
+            .app-preview-banner:focus-within {
+                transform: translateY(-7px) scale(1.008);
+                border-color: #30A7AC;
+                box-shadow: 0 28px 62px rgba(13, 108, 119, 0.26), 0 0 0 3px rgba(35, 183, 184, 0.11);
+            }
+
+            .app-preview-banner:hover .app-journey-route,
+            .app-preview-banner:focus-within .app-journey-route {
+                stroke-width: 3.2;
+                filter: drop-shadow(0 0 5px rgba(19, 151, 157, 0.55));
+            }
         }
 
         .app-preview-copy {
@@ -320,6 +338,14 @@
             text-decoration: none;
             cursor: pointer;
             box-shadow: 0 8px 18px rgba(12, 142, 152, 0.22);
+            transition: transform 0.22s ease, background 0.22s ease, box-shadow 0.22s ease;
+        }
+
+        .app-coming-soon:hover,
+        .app-coming-soon:focus-visible {
+            transform: translateY(-3px);
+            background: #077B85;
+            box-shadow: 0 12px 24px rgba(12, 142, 152, 0.32);
         }
 
         .app-preview-journey {
@@ -350,7 +376,7 @@
         }
 
         .app-journey-route-glow { fill: none; stroke: rgba(19, 151, 157, 0.15); stroke-width: 9; stroke-linecap: round; }
-        .app-journey-route { fill: none; stroke: #13979D; stroke-width: 2.4; stroke-linecap: round; stroke-dasharray: 5 7; animation: app-route-flow 6s linear infinite; }
+        .app-journey-route { fill: none; stroke: #13979D; stroke-width: 2.4; stroke-linecap: round; stroke-dasharray: 5 7; filter: drop-shadow(0 0 3px rgba(19, 151, 157, 0.25)); animation: app-route-flow 6s linear infinite; transition: stroke-width 0.3s ease, filter 0.3s ease; }
         .app-journey-point { fill: #fff; stroke: #13979D; stroke-width: 2; }
         .app-journey-point-final { fill: #E9B84E; stroke: #fff; stroke-width: 3; filter: drop-shadow(0 0 5px rgba(214, 157, 38, 0.65)); }
 
@@ -367,6 +393,7 @@
             border-radius: 18px;
             background: rgba(255,255,255,0.94);
             box-shadow: 0 12px 24px rgba(15,93,105,0.15);
+            animation: app-brand-float 3.6s ease-in-out infinite;
         }
 
         .app-journey-brand img { width: 62px; height: 62px; object-fit: contain; }
@@ -387,6 +414,11 @@
         .app-journey-tag.step-three { right: 8px; bottom: 38px; color: #875F0D; }
 
         @keyframes app-route-flow { to { stroke-dashoffset: -48; } }
+        @keyframes app-grid-drift { to { background-position: 22px 22px; } }
+        @keyframes app-brand-float {
+            0%, 100% { transform: translateY(-50%); }
+            50% { transform: translateY(calc(-50% - 5px)); }
+        }
 
         .app-preview-note {
             margin-top: 14px;
@@ -854,7 +886,7 @@
             }
 
             .app-preview-copy {
-                padding: 30px 24px;
+                padding: 28px 22px 24px;
             }
 
             .app-preview-copy h2 {
@@ -862,19 +894,31 @@
             }
 
             .app-preview-journey {
-                min-height: 150px;
+                min-height: 180px;
+                border-top: 1px solid rgba(76, 166, 171, 0.18);
+            }
+
+            .app-journey-path {
+                inset: 18px 8px 14px 6px;
+                width: calc(100% - 14px);
+                height: calc(100% - 32px);
             }
 
             .app-journey-brand {
-                right: 48px;
-                width: 68px;
-                height: 68px;
+                right: 22px;
+                top: 62%;
+                width: 64px;
+                height: 64px;
             }
 
             .app-journey-brand img {
-                width: 52px;
-                height: 52px;
+                width: 48px;
+                height: 48px;
             }
+
+            .app-journey-tag.step-one { left: 12px; top: 30px; }
+            .app-journey-tag.step-two { left: 44px; bottom: 24px; }
+            .app-journey-tag.step-three { right: 12px; top: 24px; bottom: auto; }
 
             .pricing-grid {
                 grid-template-columns: repeat(4, 260px);
@@ -909,6 +953,20 @@
             }
         }
 
+        @media (max-width: 340px) {
+            .app-promo { padding: 32px 12px; }
+            .app-preview-copy { padding: 24px 18px 20px; }
+            .app-preview-label { font-size: 0.7rem; }
+            .app-preview-copy h2 { font-size: 1.45rem; }
+            .app-preview-copy > p { font-size: 0.9rem; }
+            .app-coming-soon { width: 100%; padding-inline: 14px; }
+            .app-preview-journey { min-height: 180px; }
+            .app-journey-brand { right: 18px; width: 58px; height: 58px; }
+            .app-journey-brand img { width: 44px; height: 44px; }
+            .app-journey-tag { padding: 3px 6px; font-size: 0.62rem; }
+            .app-journey-tag.step-two { left: 34px; }
+        }
+
         /* ========== ANIMATIONS ========== */
         @keyframes fadeUp {
             from { opacity: 0; transform: translateY(30px); }
@@ -917,10 +975,18 @@
 
         .hero-text { animation: fadeUp 0.8s ease-out; }
         .hero-carousel { animation: fadeUp 0.8s ease-out 0.2s both; }
-        .app-preview-banner { animation: fadeUp 0.7s ease-out 0.3s both; }
+        .app-promo-inner { animation: fadeUp 0.7s ease-out 0.3s both; }
 
         @media (prefers-reduced-motion: reduce) {
-            .app-journey-route { animation: none; }
+            .app-preview-banner,
+            .app-coming-soon { transition: none; }
+            .app-preview-banner:hover,
+            .app-preview-banner:focus-within,
+            .app-coming-soon:hover,
+            .app-coming-soon:focus-visible { transform: none; }
+            .app-preview-banner::before,
+            .app-journey-route,
+            .app-journey-brand { animation: none; }
         }
     </style>
 

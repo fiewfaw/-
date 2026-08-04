@@ -18,6 +18,10 @@ assert.match(homepage, /class="app-preview-banner"/, 'homepage has the Care Navi
 assert.match(homepage, /class="app-preview-journey"/, 'app banner uses the approved Care Navigator journey artwork');
 assert.match(homepage, /class="app-journey-route"/, 'app banner visual connects screening to the personal plan');
 assert.match(homepage, /care-navigator\/brand-logo\.png/, 'app banner uses the formal Care Navigator brand');
+assert.match(homepage, /@media \(hover: hover\) and \(pointer: fine\)/, 'app banner hover motion only runs on pointer devices');
+assert.match(homepage, /\.app-preview-banner:hover/, 'app banner lifts when the pointer moves over it');
+assert.match(homepage, /@media \(max-width: 340px\)/, 'app banner has a compact layout for narrow phones');
+assert.match(homepage, /\.app-preview-journey\s*\{[^}]*min-height:\s*180px/s, 'mobile app journey has enough room for all visual steps');
 assert.match(homepage, /class="app-coming-soon"[^>]*href="care-navigator\/"/, 'app CTA links to the public Care Navigator');
 assert.match(homepage, />ทดลองใช้แอพฟรี</, 'app CTA clearly invites free Beta use');
 assert.match(homepage, /เวอร์ชัน Beta/, 'homepage labels the app as a Beta');
