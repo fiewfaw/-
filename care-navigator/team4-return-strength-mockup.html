@@ -170,7 +170,7 @@
           <h2 class="title">ปรับโปรแกรมให้เฉพาะตัวขึ้น</h2><p class="lead">ตัวเลขที่คุณกรอกจะช่วยปรับเวลาฝึก จำนวนครั้ง จุดพัก และลำดับกิจกรรมให้เหมาะกับกำลังตอนนี้</p>
           <div class="status" id="status">ตอบแบบประเมินเพิ่มอีก 2 หัวข้อ เพื่อสร้างแผนเฉพาะตัว</div>
           <button class="primary" id="buildPlan" type="button" disabled>ตอบแบบประเมินให้ครบ เพื่อสร้างแผนเฉพาะตัว</button>
-          <div class="lead-form" id="leadForm"><h3 class="form-title">รับแผนเฉพาะตัวฉบับละเอียด</h3><div class="form-grid"><input class="form-input" id="name" autocomplete="name" placeholder="ชื่อ"><input class="form-input" id="phone" inputmode="tel" autocomplete="tel" placeholder="เบอร์โทรศัพท์"></div><div class="location-control"><button class="location-button" id="useCurrentLocation" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>ใช้ตำแหน่งปัจจุบัน</span></button><p class="location-status" id="locationStatus" aria-live="polite"></p><a class="location-map-link" id="locationMapLink" target="_blank" rel="noopener noreferrer">ดูตำแหน่งบน Google Maps</a></div><div class="manual-area-fields" id="manualAreaFields" hidden><label class="manual-area-label" for="area">กรอกอำเภอหรือพื้นที่ที่พัก</label><input class="form-input" id="area" autocomplete="street-address" placeholder="เช่น เมืองชลบุรี บางแสน หรือจุดสังเกต"></div><button class="primary ready" id="submitPlan" type="button">สร้างแผนเฉพาะตัวของฉัน</button></div>
+          <div class="lead-form" id="leadForm"><h3 class="form-title">รับแผนเฉพาะตัวฉบับละเอียด</h3><div class="form-grid"><input class="form-input" id="name" autocomplete="name" placeholder="ชื่อ"><input class="form-input" id="phone" type="tel" inputmode="numeric" minlength="10" maxlength="10" pattern="[0-9]{10}" autocomplete="tel" placeholder="เบอร์โทรศัพท์ 10 หลัก"></div><div class="location-control"><button class="location-button" id="useCurrentLocation" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>ใช้ตำแหน่งปัจจุบัน</span></button><p class="location-status" id="locationStatus" aria-live="polite"></p><a class="location-map-link" id="locationMapLink" target="_blank" rel="noopener noreferrer">ดูตำแหน่งบน Google Maps</a></div><div class="manual-area-fields" id="manualAreaFields" hidden><label class="manual-area-label" for="area">กรอกอำเภอหรือพื้นที่ที่พัก</label><input class="form-input" id="area" autocomplete="street-address" placeholder="เช่น เมืองชลบุรี บางแสน หรือจุดสังเกต"></div><button class="primary ready" id="submitPlan" type="button">สร้างแผนเฉพาะตัวของฉัน</button></div>
           <div class="personal-plan" id="personalPlan"><h3>แผนของคุณได้รับการปรับแล้ว</h3><p id="personalCopy"></p></div>
           <button class="consult" type="button" onclick="location.href='https://baankaiyaphap-chonburi.com/#packages'">ปรึกษานักกายภาพ</button>
           <button class="secondary" id="copySummary" type="button">นำผลของฉันไปถาม AI ต่อ</button>
@@ -186,7 +186,7 @@
   </main>
   <div class="toast" id="toast">คัดลอกข้อความแล้ว</div>
   <script src="js/return-strength-personalization.js"></script>
-  <script src="js/current-location-lead.js"></script>
+  <script src="js/current-location-lead.js"></script><script src="js/lead-phone-validation.js"></script><script>LeadPhoneValidation.attachPhoneInput(document.querySelector("#phone"));</script>
   <script>
     const conditionCopy = {
       decondition:['อ่อนแรงหลังนอนโรงพยาบาล','ช่วงที่นอนพักและเคลื่อนไหวน้อย ร่างกายอาจสูญเสียทั้งแรง ความทนทาน และความมั่นใจ แม้โรคหลักจะดีขึ้นแล้ว จึงควรเพิ่มกิจกรรมกลับมาอย่างเป็นลำดับ'],
@@ -287,6 +287,7 @@
       const area=areaInput.value.trim();
       const manualAllowed=!manualAreaFields.hidden;
       if(!name||!phone){showToast('กรอกชื่อและเบอร์โทรศัพท์ก่อน');return}
+      if(!LeadPhoneValidation.isCompletePhone(phone)){showToast("กรุณากรอกเบอร์โทรศัพท์ให้ครบ 10 หลัก");return}
       if(!capturedLocation&&!manualAllowed){showToast('ใช้ตำแหน่งปัจจุบันก่อน');return}
       if(manualAllowed&&!area){showToast('กรอกอำเภอหรือพื้นที่ที่พักก่อน');areaInput.focus();return}
       currentLeadData={name,phone,area,location:capturedLocation};

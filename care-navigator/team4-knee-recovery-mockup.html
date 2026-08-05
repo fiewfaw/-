@@ -463,7 +463,7 @@
         <p>กรอกข้อมูลสั้น ๆ เพื่อเปิดแผน FITT ที่ปรับจากคำตอบของคุณ</p>
         <div class="form-grid">
           <input class="form-input" id="leadName" autocomplete="name" placeholder="ชื่อ">
-          <input class="form-input" id="leadPhone" type="tel" inputmode="tel" autocomplete="tel" placeholder="เบอร์โทรศัพท์">
+          <input class="form-input" id="leadPhone" type="tel" inputmode="numeric" minlength="10" maxlength="10" pattern="[0-9]{10}" autocomplete="tel" placeholder="เบอร์โทรศัพท์ 10 หลัก">
           <div class="location-control">
             <button class="location-button" id="locationButton" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s6-5.1 6-11a6 6 0 1 0-12 0c0 5.9 6 11 6 11Z"/><circle cx="12" cy="10" r="2.2"/></svg>ใช้ตำแหน่งปัจจุบัน</button>
             <p class="location-status" id="locationStatus">ใช้หมุดตำแหน่งเพื่อดูพื้นที่บริการ หากปฏิเสธสิทธิ์จึงจะแสดงช่องให้กรอกพื้นที่เอง</p>
@@ -497,7 +497,7 @@
   </main>
 
   <script src="js/knee-recovery-personalization.js"></script>
-  <script src="js/current-location-lead.js"></script>
+  <script src="js/current-location-lead.js"></script><script src="js/lead-phone-validation.js"></script><script>LeadPhoneValidation.attachPhoneInput(document.querySelector("#leadPhone"));</script>
   <script>
     (() => {
       const $ = (selector, root = document) => root.querySelector(selector);
@@ -889,6 +889,11 @@
         const manualArea = $('#manualArea').value.trim();
         if (!name || !phone) {
           $('#locationStatus').textContent = 'กรุณากรอกชื่อและเบอร์โทรศัพท์ก่อนเปิดแผน';
+          return;
+        }
+        if (!LeadPhoneValidation.isCompletePhone(phone)) {
+          $('#locationStatus').textContent = 'กรุณากรอกเบอร์โทรศัพท์ให้ครบ 10 หลัก';
+          $('#leadPhone').focus();
           return;
         }
         if (!state.location && !manualArea) {
