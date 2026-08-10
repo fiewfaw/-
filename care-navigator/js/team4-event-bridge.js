@@ -10,7 +10,7 @@
   const assetId = safeValue(fileName.replace(/\.html$/i, ''), 'team4')
   const search = new URLSearchParams(root.location?.search || '')
   const sourceValue = String(search.get('utm_source') || '').toLowerCase()
-  const campaignId = safeValue(search.get('utm_campaign'), '')
+  const campaignId = safeValue(search.get('utm_campaign'), '').slice(0, 100)
   const discoverySource = sourceValue.includes('facebook') || sourceValue === 'fb' || sourceValue === 'meta'
     ? (campaignId ? 'facebook_paid' : 'facebook_organic')
     : sourceValue.includes('google') ? 'google_organic'
@@ -22,7 +22,7 @@
     discovery_source: discoverySource,
     entry_variant: 'team4_result',
   }
-  const creativeId = safeValue(search.get('utm_content'), '')
+  const creativeId = safeValue(search.get('utm_content'), '').slice(0, 100)
   if (campaignId) dimensions.campaign_id = campaignId
   if (creativeId) dimensions.creative_id = creativeId
 
