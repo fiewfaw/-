@@ -38,6 +38,10 @@ for (const term of ['DVT', 'PE', 'ลิ่มเลือด', 'หลอดเ
   assert.match(article, new RegExp(term, 'i'), `article explains ${term}`);
 }
 
+for (const term of ['หลังนอนโรงพยาบาล', 'เคลื่อนไหวน้อย', 'เจ็บป่วย']) {
+  assert.match(article, new RegExp(term, 'i'), `article covers ${term} as a DVT context`);
+}
+
 assert.match(
   article,
   /บวม[\s\S]{0,500}(?:พบได้|เกิดขึ้นได้|ปกติ)[\s\S]{0,700}(?:บวมเพิ่ม|บวมใหม่|ปวดน่อง|ร้อน|แดง)/,
@@ -87,6 +91,11 @@ assert.doesNotMatch(
   article,
   /ใช้แอพติดตามอะไรได้บ้าง|แอพสามารถช่วยบันทึกข้อมูล/,
   'keeps the DVT guide focused on patient safety instead of app promotion',
+);
+assert.doesNotMatch(
+  article,
+  /อรรถเดช|เฉลิมผจง|Centrum|แป๊ะก๊วย/i,
+  'does not expose case-identifying details',
 );
 
 assert.ok(
