@@ -23,5 +23,8 @@ Never put either Script Property in browser JavaScript, source control, screensh
 - `confirmLead`
 - `updateLeadStatus`
 - `expireLeads`
+- `purgeLead` (server-only cleanup)
+
+The owner can run `purgeLeadByCode('CN-....')` manually in Apps Script to remove contact and plan cells immediately while retaining a minimal status-history row.
 
 Each request is a form POST with one `payload` field containing a JSON envelope. Responses are minimal JSON and never echo full Sheet rows.

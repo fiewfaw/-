@@ -13,7 +13,7 @@ const LOOKUP_AUDIT_HEADERS = [
 const LEAD_CODE_ALPHABET = '23456789ABCDEFGHJKLMNPQRSTUVWXYZ'
 const LEAD_CODE_PATTERN = /^CN-(?:[23456789ABCDEFGHJKLMNPQRSTUVWXYZ]{4}-){3}[23456789ABCDEFGHJKLMNPQRSTUVWXYZ]{4}$/
 const ALLOWED_ACTIONS = [
-  'createLead', 'recoverPlan', 'lookupLead', 'confirmLead', 'updateLeadStatus', 'expireLeads',
+  'createLead', 'recoverPlan', 'lookupLead', 'confirmLead', 'updateLeadStatus', 'expireLeads', 'purgeLead',
 ]
 const STATUS_TRANSITIONS = {
   pending: ['confirmed', 'closed', 'expired'],
@@ -27,6 +27,7 @@ const DAY_MS = 24 * 60 * 60 * 1000
 
 function verifyEnvelope(value, expectedSecret) {
   if (!value || typeof value !== 'object' || Array.isArray(value)) return { ok: false, error: 'invalid_envelope' }
+  if (Object.keys(value).some(function (key) { return !['action', 'gateway_secret', 'request_id', 'payload'].includes(key) })) return { ok: false, error: 'invalid_envelope' }
   if (!ALLOWED_ACTIONS.includes(value.action)) return { ok: false, error: 'invalid_action' }
   if (!expectedSecret || value.gateway_secret !== expectedSecret) return { ok: false, error: 'unauthorized' }
   if (!value.request_id || typeof value.request_id !== 'string') return { ok: false, error: 'invalid_request_id' }
@@ -144,8 +145,24 @@ function createMemoryRegistry(options) {
     const changedAt = iso(now())
     if (payload.to_status === 'confirmed') row.confirmed_at = changedAt
     if (payload.to_status === 'contacted') row.contacted_at = changedAt
+    if (['confirmed', 'contacted'].includes(payload.to_status)) row.expires_at = iso(now().getTime() + 90 * DAY_MS)
+    if (['converted', 'closed'].includes(payload.to_status)) row.expires_at = iso(now().getTime() + 30 * DAY_MS)
     history.push({ change_id: `CH-${uuid_()}`, lead_id: row.lead_id, changed_at: changedAt, from_status: from, to_status: row.status, actor_type: payload.actor_type || 'owner', reason_code: payload.reason_code || 'manual' })
     return { ok: true, status: row.status }
+  }
+
+  function purgeLead(payload) {
+    const row = find(payload.lead_code)
+    if (!row) return { ok: false, error: 'not_found' }
+    const from = row.status
+    row.contact_name = ''
+    row.phone = ''
+    row.service_area = ''
+    row.plan_summary = ''
+    row.resume_token_hash = ''
+    row.status = 'expired'
+    history.push({ change_id: `CH-${uuid_()}`, lead_id: row.lead_id, changed_at: iso(now()), from_status: from, to_status: 'expired', actor_type: payload.actor_type || 'owner', reason_code: payload.reason_code || 'manual_purge' })
+    return { ok: true, status: 'expired' }
   }
 
   function expireLeads() {
@@ -171,7 +188,7 @@ function createMemoryRegistry(options) {
     return { ok: true, purged }
   }
 
-  return { rows, history, audit, existingCodes, createLead, recoverPlan, lookupLead, updateStatus, expireLeads }
+  return { rows, history, audit, existingCodes, createLead, recoverPlan, lookupLead, updateStatus, purgeLead, expireLeads }
 }
 
 function doPost(event) {
@@ -196,7 +213,8 @@ function dispatchStorageAction_(envelope) {
   if (envelope.action === 'lookupLead') return lookupLead_(envelope.payload)
   if (envelope.action === 'confirmLead') return updateLeadStatus_({ ...envelope.payload, to_status: 'confirmed' })
   if (envelope.action === 'updateLeadStatus') return updateLeadStatus_(envelope.payload)
-  if (envelope.action === 'expireLeads') return expireLeads()
+  if (envelope.action === 'expireLeads') return expireLeads_()
+  if (envelope.action === 'purgeLead') return purgeLead_(envelope.payload)
   return { ok: false, error: 'invalid_action' }
 }
 
@@ -224,7 +242,17 @@ function installDailyExpiryTrigger() {
 }
 
 function createLead_(payload) {
-  if (!payload || !payload.request_id || !payload.recovery_token || !LEADS_HEADERS.every(function (key) { return key !== 'phone' || /^[0-9]{10}$/.test(String(payload.phone || '')) })) return { ok: false, error: 'invalid_payload' }
+  const allowedKeys = ['schema_version', 'request_id', 'contact_name', 'phone', 'service_area', 'plan_type', 'plan_summary', 'consent_version', 'consented_at', 'app_version', 'source', 'recovery_token']
+  const valid = payload && typeof payload === 'object' && !Array.isArray(payload)
+    && !Object.keys(payload).some(function (key) { return !allowedKeys.includes(key) })
+    && payload.schema_version === 1
+    && /^[0-9]{10}$/.test(String(payload.phone || ''))
+    && String(payload.contact_name || '').trim().length > 0 && String(payload.contact_name || '').trim().length <= 80
+    && String(payload.service_area || '').length <= 120 && !/(?:https?:\/\/|maps\.|goo\.gl)/i.test(String(payload.service_area || ''))
+    && String(payload.plan_summary || '').length > 0 && String(payload.plan_summary || '').length <= 12288
+    && payload.consent_version === 'lead-temp-v1'
+    && payload.request_id && payload.recovery_token
+  if (!valid) return { ok: false, error: 'invalid_payload' }
   const sheet = getSheet_('Leads', LEADS_HEADERS)
   const rows = readRows_(sheet, LEADS_HEADERS)
   const duplicate = rows.find(function (row) { return row.request_id === payload.request_id })
@@ -271,13 +299,18 @@ function updateLeadStatus_(payload) {
   found.data.status = payload.to_status
   if (payload.to_status === 'confirmed') found.data.confirmed_at = changedAt
   if (payload.to_status === 'contacted') found.data.contacted_at = changedAt
+  if (['confirmed', 'contacted'].includes(payload.to_status)) found.data.expires_at = new Date(Date.now() + 90 * DAY_MS).toISOString()
+  if (['converted', 'closed'].includes(payload.to_status)) found.data.expires_at = new Date(Date.now() + 30 * DAY_MS).toISOString()
   found.sheet.getRange(found.rowNumber, 1, 1, LEADS_HEADERS.length).setValues([LEADS_HEADERS.map(function (key) { return found.data[key] })])
   appendObject_('Status History', STATUS_HISTORY_HEADERS, { change_id: `CH-${Utilities.getUuid()}`, lead_id: found.data.lead_id, changed_at: changedAt, from_status: from, to_status: payload.to_status, actor_type: String(payload.actor_type || 'owner'), reason_code: String(payload.reason_code || 'manual') })
   return { ok: true, status: payload.to_status }
 }
 
 function expireLeads() {
-  return withScriptLock_(function () {
+  return withScriptLock_(expireLeads_)
+}
+
+function expireLeads_() {
     const sheet = getSheet_('Leads', LEADS_HEADERS)
     const rows = readRows_(sheet, LEADS_HEADERS)
     const history = readRows_(getSheet_('Status History', STATUS_HISTORY_HEADERS), STATUS_HISTORY_HEADERS)
@@ -297,7 +330,26 @@ function expireLeads() {
       purged += 1
     })
     return { ok: true, purged: purged }
-  })
+}
+
+function purgeLeadByCode(leadCode) {
+  return withScriptLock_(function () { return purgeLead_({ lead_code: leadCode, actor_type: 'owner', reason_code: 'manual_owner_request' }) })
+}
+
+function purgeLead_(payload) {
+  const found = findLeadWithSheetRow_(payload && payload.lead_code)
+  if (!found) return { ok: false, error: 'not_found' }
+  const from = found.data.status
+  found.data.contact_name = ''
+  found.data.phone = ''
+  found.data.service_area = ''
+  found.data.plan_summary = ''
+  found.data.resume_token_hash = ''
+  found.data.status = 'expired'
+  const changedAt = new Date().toISOString()
+  found.sheet.getRange(found.rowNumber, 1, 1, LEADS_HEADERS.length).setValues([LEADS_HEADERS.map(function (key) { return found.data[key] })])
+  appendObject_('Status History', STATUS_HISTORY_HEADERS, { change_id: `CH-${Utilities.getUuid()}`, lead_id: found.data.lead_id, changed_at: changedAt, from_status: from, to_status: 'expired', actor_type: String(payload.actor_type || 'owner'), reason_code: String(payload.reason_code || 'manual_purge') })
+  return { ok: true, status: 'expired' }
 }
 
 function getSpreadsheet_() {

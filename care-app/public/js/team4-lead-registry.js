@@ -69,14 +69,16 @@
     ].filter(Boolean).join('\n\n'))
   }
 
-  function showRegistryStatus(documentRef, message, state) {
+  function showRegistryStatus(documentRef, message, state, container) {
     let status = documentRef.querySelector('[data-lead-registry-status]')
     if (!status) {
       status = documentRef.createElement('p')
       status.setAttribute('data-lead-registry-status', '')
       status.setAttribute('aria-live', 'polite')
-      const form = documentRef.querySelector('#leadForm')
-      if (form) form.appendChild(status)
+      const target = container || documentRef.querySelector('#leadForm')
+      if (target) target.appendChild(status)
+    } else if (container && status.parentElement !== container) {
+      container.appendChild(status)
     }
     status.className = `lead-registry-status ${state || ''}`
     status.textContent = message
@@ -104,7 +106,8 @@
 
   async function saveCurrentPlan(documentRef, planType) {
     const resultSelector = RESULT_SELECTORS[planType]
-    if (!resultSelector || !documentRef.querySelector(resultSelector)) return { ok: false, error: 'plan_not_ready' }
+    const resultContainer = resultSelector ? documentRef.querySelector(resultSelector) : null
+    if (!resultContainer) return { ok: false, error: 'plan_not_ready' }
     const contactName = documentRef.querySelector('#name,#leadName')?.value
     const phone = documentRef.querySelector('#phone,#leadPhone')?.value
     const serviceArea = documentRef.querySelector('#area,#manualArea')?.value || ''
@@ -112,9 +115,9 @@
     const input = buildLeadInput({ planType, contactName, phone, serviceArea, planSummary })
     const result = await root.CareNavigatorLeads.createLead(input)
     if (result.ok) {
-      showRegistryStatus(documentRef, `บันทึกแผนชั่วคราวแล้ว รหัสอ้างอิง ${result.lead_code}`, 'success')
+      showRegistryStatus(documentRef, `บันทึกแผนชั่วคราวแล้ว รหัสอ้างอิง ${result.lead_code}`, 'success', resultContainer)
     } else {
-      showRegistryStatus(documentRef, 'สร้างแผนเฉพาะตัวแล้ว แต่ยังบันทึกรหัสสำหรับปรึกษาไม่ได้ กรุณาลองใหม่เมื่ออินเทอร์เน็ตพร้อม', 'error')
+      showRegistryStatus(documentRef, 'สร้างแผนเฉพาะตัวแล้ว แต่ยังบันทึกรหัสสำหรับปรึกษาไม่ได้ กรุณาลองใหม่เมื่ออินเทอร์เน็ตพร้อม', 'error', resultContainer)
     }
     return result
   }
