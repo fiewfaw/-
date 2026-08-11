@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ตรวจโครงข้อมูลลีด Care Navigator</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;color:#173344;background:#eef7f6;font-family:"Noto Sans Thai","Leelawadee UI",Tahoma,sans-serif}main{width:min(980px,100%);margin:auto;padding:32px 18px 60px}h1{margin:0;font-size:28px}p{line-height:1.65;color:#57717b}.notice{padding:14px;border-left:4px solid #148d91;background:#fff}.section{margin-top:22px}table{width:100%;border-collapse:collapse;background:#fff}th,td{padding:10px;border:1px solid #d6e5e5;text-align:left;vertical-align:top;font-size:14px;line-height:1.5}th{background:#e6f4f2}code,pre{white-space:pre-wrap;overflow-wrap:anywhere}pre{padding:14px;color:#eaffff;background:#123d4b;border-radius:8px}@media(max-width:640px){table{display:block;overflow-x:auto}h1{font-size:22px}}
+  </style>
+</head>
+<body><main>
+  <h1>โครงข้อมูล Lead Registry</h1>
+  <p class="notice">หน้านี้มีไว้ตรวจความเชื่อมโยงของข้อมูลเท่านั้น ไม่มีการส่งหรือบันทึกข้อมูลจริง</p>
+  <section class="section"><h2>ข้อมูลที่หน้าแอพส่งได้</h2><table><thead><tr><th>ข้อมูล</th><th>กติกา</th></tr></thead><tbody>
+    <tr><td>ชื่อผู้ติดต่อ</td><td>1-80 ตัวอักษร</td></tr><tr><td>เบอร์โทร</td><td>ตัวเลข 10 หลัก</td></tr><tr><td>พื้นที่บริการ</td><td>ข้อความระดับพื้นที่ ไม่รับพิกัดหรือลิงก์แผนที่</td></tr><tr><td>ชนิดและสรุปแผน</td><td>หนึ่งใน 7 แผน และไม่เกิน 12 KB</td></tr><tr><td>หลักฐานความยินยอม</td><td>เวอร์ชันข้อความและเวลาที่กดยืนยัน</td></tr>
+  </tbody></table></section>
+  <section class="section"><h2>ข้อมูลที่ระบบสร้าง</h2><table><thead><tr><th>ข้อมูล</th><th>ใช้ทำอะไร</th></tr></thead><tbody>
+    <tr><td>Lead ID</td><td>รหัสภายในที่สุ่ม</td></tr><tr><td>Lead code</td><td>รหัสอ้างอิงที่คัดลอกได้ แต่ใช้เปิดข้อมูลส่วนตัวโดยลำพังไม่ได้</td></tr><tr><td>Recovery token hash</td><td>ตรวจสิทธิ์กู้แผนจากเบราว์เซอร์เดิม โดยเก็บเฉพาะค่า hash</td></tr><tr><td>สถานะและวันหมดอายุ</td><td>ควบคุมอายุข้อมูล 14/90/30 วัน</td></tr>
+  </tbody></table></section>
+  <section class="section"><h2>ตารางใน Google Sheets</h2><table><thead><tr><th>ชีต</th><th>หน้าที่</th></tr></thead><tbody>
+    <tr><td>Leads</td><td>ข้อมูลปัจจุบันหนึ่งแถวต่อหนึ่งลีด</td></tr><tr><td>Status History</td><td>ประวัติการเปลี่ยนสถานะแบบเพิ่มต่อท้าย</td></tr><tr><td>Lookup Audit</td><td>ผลการค้นหารหัสโดยไม่เก็บข้อความแชท</td></tr><tr><td>Data Dictionary</td><td>ความหมาย ความอ่อนไหว และอายุข้อมูลทุกคอลัมน์</td></tr>
+  </tbody></table></section>
+  <section class="section"><h2>วงจรข้อมูล</h2><table><thead><tr><th>สถานะ</th><th>การเก็บรักษา</th></tr></thead><tbody>
+    <tr><td>pending</td><td>14 วัน</td></tr><tr><td>confirmed / contacted</td><td>90 วัน</td></tr><tr><td>converted / closed</td><td>ล้างข้อมูลติดต่อและแผนภายใน 30 วัน</td></tr><tr><td>expired</td><td>เหลือเฉพาะสถานะและเวลาเพื่อสถิติรวม</td></tr>
+  </tbody></table></section>
+  <section class="section"><h2>ตัวอย่างข้อความสำหรับ AI</h2><pre>=== CARE NAVIGATOR PLAN V1 ===
+Reference code: CN-2345-6789-ABCD-EFGH
+
+[สรุปผลและแผนเฉพาะตัว โดยไม่มีชื่อ เบอร์โทร หรือพิกัด]
+=== END CARE NAVIGATOR PLAN ===</pre></section>
+  <section class="section"><h2>ตัวอย่างการยืนยันในระบบทางการภายหลัง</h2><p>พบบันทึกของคุณ ส*** เบอร์ ******1234 แผนเดินมั่นใจ ลดเสี่ยงล้ม ต้องการให้ติดต่อกลับใช่หรือไม่</p></section>
+</main></body></html>
