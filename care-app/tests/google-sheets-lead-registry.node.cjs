@@ -18,6 +18,8 @@ assert.deepEqual(registry.LOOKUP_AUDIT_HEADERS, [
 assert.equal(registry.verifyEnvelope({ action: 'createLead', gateway_secret: 'secret', request_id: 'req', payload: {} }, 'secret').ok, true)
 assert.equal(registry.verifyEnvelope({ action: 'dropTable', gateway_secret: 'secret', request_id: 'req', payload: {} }, 'secret').ok, false)
 assert.equal(registry.verifyEnvelope({ action: 'createLead', gateway_secret: 'wrong', request_id: 'req', payload: {} }, 'secret').ok, false)
+assert.equal(registry.utf8ByteLength_('abc'), 3)
+assert.equal(registry.utf8ByteLength_('ไทย'), 9)
 
 const bytesA = Uint8Array.from({ length: 16 }, (_, index) => index)
 const code = registry.generateLeadCode(() => bytesA)

@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "node src/server.mjs",
-    "test": "node --test test/gateway.test.mjs"
+    "test": "node --test test/gateway.node.mjs"
   },
   "engines": {
     "node": ">=20"

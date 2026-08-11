@@ -249,7 +249,7 @@ function createLead_(payload) {
     && /^[0-9]{10}$/.test(String(payload.phone || ''))
     && String(payload.contact_name || '').trim().length > 0 && String(payload.contact_name || '').trim().length <= 80
     && String(payload.service_area || '').length <= 120 && !/(?:https?:\/\/|maps\.|goo\.gl)/i.test(String(payload.service_area || ''))
-    && String(payload.plan_summary || '').length > 0 && String(payload.plan_summary || '').length <= 12288
+    && String(payload.plan_summary || '').length > 0 && utf8ByteLength_(payload.plan_summary) <= 12288
     && payload.consent_version === 'lead-temp-v1'
     && payload.request_id && payload.recovery_token
   if (!valid) return { ok: false, error: 'invalid_payload' }
@@ -386,9 +386,14 @@ function sha256Hex_(value) {
   const bytes = Utilities.computeDigest(Utilities.DigestAlgorithm.SHA_256, String(value), Utilities.Charset.UTF_8)
   return bytes.map(function (item) { const value = item < 0 ? item + 256 : item; return (`0${value.toString(16)}`).slice(-2) }).join('')
 }
+function utf8ByteLength_(value) {
+  const text = String(value || '')
+  if (typeof Buffer !== 'undefined') return Buffer.byteLength(text, 'utf8')
+  return Utilities.newBlob(text).getBytes().length
+}
 function uuid_() { return typeof Utilities !== 'undefined' ? Utilities.getUuid() : `${Date.now()}-${Math.random().toString(16).slice(2)}` }
 function json_(value) { return ContentService.createTextOutput(JSON.stringify(value)).setMimeType(ContentService.MimeType.JSON) }
 
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { LEADS_HEADERS, STATUS_HISTORY_HEADERS, LOOKUP_AUDIT_HEADERS, LEAD_CODE_PATTERN, verifyEnvelope, generateLeadCode, generateUniqueLeadCode, maskName, maskPhone, createMemoryRegistry }
+  module.exports = { LEADS_HEADERS, STATUS_HISTORY_HEADERS, LOOKUP_AUDIT_HEADERS, LEAD_CODE_PATTERN, verifyEnvelope, generateLeadCode, generateUniqueLeadCode, maskName, maskPhone, utf8ByteLength_, createMemoryRegistry }
 }
