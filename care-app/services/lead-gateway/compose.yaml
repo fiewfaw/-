@@ -1,0 +1,14 @@
+services:
+  care-navigator-lead-gateway:
+    build: .
+    restart: unless-stopped
+    env_file:
+      - /docker/care-navigator-leads/.env
+    expose:
+      - "8787"
+    networks:
+      - care-navigator-internal
+
+networks:
+  care-navigator-internal:
+    name: care-navigator-internal
