@@ -1,0 +1,932 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <link rel="icon" href="data:,">
+  <title>แผน 05 · ฟื้นการงอเข่าและการเดิน | บ้านกายภาพ ชลบุรี</title>
+  <style>
+    :root {
+      --ink: #16313b;
+      --muted: #607780;
+      --line: #d5e5e5;
+      --paper: #ffffff;
+      --mist: #eef8f7;
+      --sea: #278f88;
+      --sea-deep: #146c70;
+      --cyan: #19b9ca;
+      --blue: #287ea0;
+      --gold: #c79b45;
+      --gold-wash: #fbf5e8;
+      --coral: #b85d62;
+      --coral-wash: #fff2f2;
+      --shadow: 0 18px 48px rgba(28, 78, 84, .13);
+    }
+    * { box-sizing: border-box; }
+    html { background: #dfeeed; scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 15% 8%, rgba(25, 185, 202, .12), transparent 24rem),
+        linear-gradient(180deg, #eaf5f4, #dcebea);
+      font-family: "Noto Sans Thai", "Leelawadee UI", Tahoma, sans-serif;
+      letter-spacing: 0;
+    }
+    button, input, select { font: inherit; letter-spacing: 0; }
+    button { cursor: pointer; }
+    .hidden { display: none !important; }
+    .app {
+      width: min(100%, 580px);
+      min-height: 100vh;
+      margin: 0 auto;
+      overflow: hidden;
+      background: #f9fcfb;
+      box-shadow: var(--shadow);
+    }
+    .topbar {
+      overflow: hidden;
+      min-height: 72px;
+      padding: 14px 18px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border-bottom: 1px solid rgba(164, 203, 202, .55);
+      background: rgba(255, 255, 255, .92);
+      backdrop-filter: blur(14px);
+    }
+    .brand { display: flex; align-items: center; gap: 10px; min-width: 0; flex: 1 1 auto; }
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      border: 1px solid #b8dedd;
+      border-radius: 8px;
+      color: white;
+      background: linear-gradient(145deg, var(--sea-deep), var(--cyan));
+      box-shadow: 0 8px 18px rgba(23, 125, 132, .18);
+    }
+    .brand-mark svg { width: 21px; fill: none; stroke: currentColor; stroke-width: 1.8; }
+    .brand-copy b { display: block; font-size: 13px; line-height: 1.25; }
+    .brand-copy span { display: block; margin-top: 2px; color: var(--sea); font-size: 9px; font-weight: 800; text-transform: uppercase; }
+    .step-badge { max-width: 96px; flex: 0 0 auto; overflow: hidden; color: var(--sea-deep); font-size: 9px; font-weight: 800; white-space: nowrap; }
+    .hero { position: relative; background: #0c303a; }
+    .hero-media { position: relative; width: 100%; aspect-ratio: 4 / 5; max-height: 520px; overflow: hidden; isolation: isolate; }
+    .hero-media::before {
+      content: "";
+      position: absolute;
+      inset: -22px;
+      z-index: -2;
+      background-image: url("media/plan-knee-recovery.png");
+      background-position: center;
+      background-size: cover;
+      filter: blur(18px) brightness(.62) saturate(1.12);
+      transform: scale(1.08);
+    }
+    .hero-media img { position: relative; z-index: -1; width: 100%; height: 100%; display: block; object-fit: contain; object-position: center; }
+    .hero-glow {
+      position: absolute;
+      inset: 0;
+      opacity: .18;
+      background-image: url("media/plan-knee-recovery.png");
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      mix-blend-mode: screen;
+      animation: heroBreathe 3.4s ease-in-out infinite;
+      pointer-events: none;
+    }
+    .hero-line-canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; mix-blend-mode: screen; }
+    .hero-shade { position: absolute; inset: 32% 0 0; background: linear-gradient(180deg, transparent, rgba(5, 28, 35, .82) 72%, rgba(5, 28, 35, .96)); }
+    .hero-copy { position: absolute; left: 20px; right: 20px; bottom: 20px; min-width: 0; color: white; }
+    .hero-kicker { margin: 0 0 6px; color: #aaf5f2; font-size: 10px; font-weight: 900; }
+    .hero h1 { max-width: 500px; margin: 0; overflow-wrap: anywhere; font-size: clamp(23px, 6.6vw, 35px); line-height: 1.28; }
+    .hero-summary { max-width: 490px; margin: 10px 0 0; color: #e2f0ef; font-size: 13px; line-height: 1.7; }
+    @keyframes heroBreathe { 0%, 100% { opacity: .11; filter: brightness(1); } 50% { opacity: .28; filter: brightness(1.3); } }
+    .content { padding: 0 14px 44px; }
+    .section { padding: 22px 5px; border-bottom: 1px solid var(--line); }
+    .section:first-child { padding-top: 18px; }
+    .eyebrow { margin: 0 0 5px; color: var(--sea); font-size: 10px; font-weight: 900; }
+    .section h2 { margin: 0; font-size: 19px; line-height: 1.42; }
+    .section-intro { margin: 6px 0 0; color: var(--muted); font-size: 12px; line-height: 1.7; }
+    .action-grid { margin-top: 14px; display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: white; }
+    .action-column { min-height: 128px; padding: 14px; }
+    .action-column + .action-column { border-left: 1px solid var(--line); background: #fbf7ed; }
+    .action-column b { display: block; margin-bottom: 8px; color: var(--sea-deep); font-size: 12px; }
+    .action-column + .action-column b { color: #8a6c2f; }
+    .action-column ul { margin: 0; padding-left: 17px; color: var(--muted); font-size: 11px; line-height: 1.7; }
+    .treatment-category-grid { margin-top: 13px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .treatment-category { min-height: 66px; padding: 10px; border: 1px solid #c5dddd; border-radius: 8px; color: #405d65; text-align: left; background: white; transition: transform .18s ease, border-color .18s ease, background .18s ease; }
+    .treatment-category:hover, .treatment-category:focus-visible { transform: translateY(-2px); border-color: var(--sea); outline: none; }
+    .treatment-category[aria-pressed="true"] { color: white; border-color: var(--sea-deep); background: linear-gradient(140deg, var(--sea-deep), #2c8390); box-shadow: 0 8px 18px rgba(32, 111, 120, .17); }
+    .treatment-category b { display: block; font-size: 11px; line-height: 1.4; }
+    .treatment-category small { display: block; margin-top: 3px; color: #75888e; font-size: 9px; line-height: 1.4; }
+    .treatment-category[aria-pressed="true"] small { color: #d8f3f2; }
+    .treatment-subtype-grid { margin-top: 9px; }
+    .treatment-subtype-group { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+    .treatment-tab { min-height: 47px; padding: 8px 9px; border: 1px solid #c5dddd; border-radius: 8px; color: #48636b; text-align: left; background: white; font-size: 9px; font-weight: 800; line-height: 1.4; transition: transform .18s ease, border-color .18s ease, background .18s ease; }
+    .treatment-tab:hover, .treatment-tab:focus-visible { transform: translateY(-1px); border-color: var(--sea); outline: none; }
+    .treatment-tab[aria-selected="true"] { color: white; border-color: var(--sea-deep); background: var(--sea-deep); }
+    .knowledge-panel { margin-top: 10px; min-height: 142px; padding: 11px; border: 1px solid #d6d4bd; border-left: 4px solid var(--gold); border-radius: 8px; background: var(--gold-wash); }
+    .treatment-visual { display: grid; grid-template-columns: 124px 1fr; gap: 12px; align-items: start; }
+    .treatment-xray-card { overflow: hidden; border: 1px solid #79bdc7; border-radius: 8px; background: #071f2e; }
+    .treatment-xray { aspect-ratio: 1; background-image: url("media/team4-knee-treatment-xray-atlas.png"); background-repeat: no-repeat; background-size: 200% 300%; background-position: 0 0; }
+    .xray-total-knee { background-position: 0 0; }
+    .xray-partial-knee { background-position: 100% 0; }
+    .xray-patella { background-position: 0 50%; }
+    .xray-tibial-plateau { background-position: 100% 50%; }
+    .xray-distal-femur { background-position: 0 100%; }
+    .xray-nonoperative-knee { background-position: 100% 100%; }
+    .xray-caption { display: block; padding: 5px 6px; color: #c7eff3; background: #0a2b3b; font-size: 7px; line-height: 1.35; text-align: center; }
+    .treatment-knowledge-copy h3 { margin: 0; font-size: 14px; line-height: 1.45; }
+    .treatment-knowledge-copy p { margin: 6px 0 0; color: #665f51; font-size: 10px; line-height: 1.65; }
+    .discharge-keywords { margin-top: 8px; padding: 7px; border: 1px dashed #c9b97c; border-radius: 7px; color: #655b41; background: rgba(255,255,255,.7); font-size: 9px; line-height: 1.5; }
+    .discharge-keywords b { display: block; margin-bottom: 2px; color: #756022; }
+    .treatment-precaution { margin-top: 7px; padding: 7px; border-radius: 7px; color: #75575b; background: #fff1f1; font-size: 9px; line-height: 1.5; }
+    .timeline { margin-top: 14px; position: relative; }
+    .timeline::before { content: ""; position: absolute; top: 9px; bottom: 9px; left: 9px; width: 2px; background: linear-gradient(var(--cyan), var(--gold)); }
+    .timeline-item { position: relative; padding: 0 0 15px 31px; }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-dot { position: absolute; top: 3px; left: 3px; width: 14px; height: 14px; border: 3px solid white; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 0 1px #b4dada; }
+    .timeline-item:nth-child(2) .timeline-dot { background: var(--sea); }
+    .timeline-item:nth-child(3) .timeline-dot { background: var(--gold); }
+    .timeline-item b { display: block; font-size: 12px; }
+    .timeline-item span { display: block; margin-top: 2px; color: var(--muted); font-size: 10px; line-height: 1.6; }
+    .orders-band { padding: 16px; border: 1px solid #bcdede; border-radius: 8px; background: linear-gradient(140deg, #eaf8f6, #f9fbf5); }
+    .orders-head { display: flex; gap: 9px; align-items: center; }
+    .orders-icon { width: 31px; height: 31px; display: grid; place-items: center; border-radius: 8px; color: white; background: var(--sea-deep); font-size: 16px; }
+    .orders-head h2 { font-size: 16px; }
+    .orders-list { margin: 11px 0 0; padding-left: 18px; color: #395b61; font-size: 11px; line-height: 1.75; }
+    .warning-list { margin-top: 10px; padding: 10px 11px; border-left: 3px solid var(--coral); color: #774f53; background: var(--coral-wash); font-size: 10px; line-height: 1.6; }
+    .problem-list { margin-top: 14px; display: grid; gap: 12px; }
+    .problem-card { overflow: hidden; border: 1px solid #cfe2e2; border-radius: 8px; background: white; box-shadow: 0 8px 25px rgba(29, 84, 89, .06); }
+    .problem-head { padding: 15px 14px 11px; display: grid; grid-template-columns: 38px 1fr; gap: 11px; }
+    .problem-no { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 8px; color: white; background: linear-gradient(145deg, var(--sea-deep), var(--cyan)); font-size: 11px; font-weight: 900; }
+    .problem-card:nth-child(2) .problem-no { background: linear-gradient(145deg, var(--blue), var(--gold)); }
+    .problem-card:nth-child(3) .problem-no { background: linear-gradient(145deg, var(--gold), var(--sea)); }
+    .problem-head h3 { margin: 0; font-size: 15px; line-height: 1.5; }
+    .problem-head p { margin: 5px 0 0; color: var(--muted); font-size: 11px; line-height: 1.65; }
+    .management { margin: 0 13px 11px; padding: 12px; border-left: 3px solid var(--sea); color: #315c5e; background: var(--mist); font-size: 11px; line-height: 1.65; }
+    .management b { display: block; margin-bottom: 4px; color: var(--sea-deep); font-size: 13px; }
+    .self-assess { width: calc(100% - 26px); min-height: 58px; margin: 0 13px 10px; padding: 10px; display: grid; grid-template-columns: 32px 1fr 22px; gap: 9px; align-items: center; border: 1px solid #b7d8d8; border-radius: 8px; color: #294f59; text-align: left; background: #fbfefe; }
+    .self-assess:hover, .self-assess[aria-expanded="true"] { border-color: var(--sea); background: #eef8f7; }
+    .self-assess:disabled { cursor: not-allowed; opacity: .46; border-style: dashed; }
+    .assess-icon { width: 32px; height: 32px; display: grid; place-items: center; border-radius: 8px; color: white; background: var(--sea); font-size: 13px; font-weight: 900; }
+    .self-assess b { display: block; font-size: 11px; }
+    .self-assess small { display: block; margin-top: 2px; color: var(--muted); font-size: 9px; line-height: 1.5; }
+    .chevron { width: 9px; height: 9px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg); transition: transform .18s ease; }
+    .self-assess[aria-expanded="true"] .chevron { transform: rotate(225deg); }
+    .assessment-drawer { display: none; margin: 0 13px 11px; padding: 14px; scroll-margin-top: 16px; border-radius: 8px; color: white; background: linear-gradient(145deg, #236f7d, #218d87 62%, #548d74); box-shadow: 0 12px 28px rgba(25, 101, 109, .18); }
+    .assessment-drawer.is-open { display: block; }
+    .drawer-heading b { display: block; font-size: 13px; }
+    .drawer-heading span { display: block; margin-top: 4px; color: #d9f2f0; font-size: 10px; line-height: 1.6; }
+    .form-grid { margin-top: 12px; display: grid; gap: 9px; }
+    .field { display: grid; gap: 5px; }
+    .field label { color: #effafa; font-size: 10px; font-weight: 700; }
+    .field input, .field select { width: 100%; min-height: 44px; padding: 9px 10px; border: 1px solid rgba(255,255,255,.56); border-radius: 7px; color: #18383e; background: white; outline: none; }
+    .term-help-link { padding: 9px 10px; display: flex; align-items: center; justify-content: space-between; gap: 8px; border: 1px solid rgba(255,255,255,.4); border-radius: 7px; color: #efffff; text-decoration: none; background: rgba(255,255,255,.12); transition: .18s ease; }
+    .term-help-link:hover, .term-help-link:focus-visible { border-color: white; background: rgba(255,255,255,.2); transform: translateY(-1px); }
+    .term-help-link b { display: block; font-size: 10px; line-height: 1.4; }
+    .term-help-link small { display: block; margin-top: 2px; color: #d8f1f1; font-size: 8px; }
+    .term-help-link > span:last-child { font-size: 15px; }
+    .field input:focus, .field select:focus { box-shadow: 0 0 0 3px rgba(138, 236, 224, .28); }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+    .check-list { display: grid; gap: 7px; }
+    .check-line { display: flex; gap: 8px; align-items: flex-start; color: #effafa; font-size: 10px; line-height: 1.5; }
+    .check-line input { width: 18px; height: 18px; flex: 0 0 auto; accent-color: #f4ce78; }
+    .save-assessment { width: 100%; min-height: 44px; margin-top: 12px; border: 0; border-radius: 7px; color: #154448; background: #dff7f0; font-size: 11px; font-weight: 900; }
+    .pt-strip { margin: 0 13px 13px; padding: 8px 9px; display: grid; grid-template-columns: 21px 1fr; gap: 7px; align-items: start; border: 1px solid #ead3d5; border-radius: 7px; color: #76595d; background: var(--coral-wash); font-size: 9px; line-height: 1.5; opacity: .72; }
+    .warning-icon { width: 21px; height: 19px; display: grid; place-items: end center; color: white; background: var(--coral); clip-path: polygon(50% 0, 100% 100%, 0 100%); font-size: 11px; font-weight: 900; }
+    .starter-plan, .personal-plan, .lead-form { margin: 18px 0; padding: 18px; border-radius: 8px; }
+    .starter-plan { border: 1px solid #c4e1de; background: linear-gradient(150deg, #eaf8f5, white); }
+    .starter-plan small, .personal-plan small { color: var(--sea); font-size: 9px; font-weight: 900; }
+    .starter-plan h2, .personal-plan h2, .lead-form h2 { margin: 4px 0 0; font-size: 18px; }
+    .starter-plan p, .personal-plan > p, .lead-form > p { margin: 6px 0 0; color: var(--muted); font-size: 11px; line-height: 1.65; }
+    .starter-items { margin-top: 13px; display: grid; gap: 8px; }
+    .starter-item { padding: 11px 12px; border-left: 3px solid var(--sea); background: white; }
+    .starter-item b { display: block; font-size: 12px; }
+    .starter-item span { display: block; margin-top: 3px; color: var(--muted); font-size: 10px; line-height: 1.55; }
+    .assessment-shell { padding: 18px 4px; border-bottom: 1px solid var(--line); }
+    .completion-list { margin: 12px 0; display: grid; gap: 7px; }
+    .completion-item { display: flex; gap: 8px; align-items: center; color: var(--muted); font-size: 10px; }
+    .status-dot { width: 19px; height: 19px; display: grid; place-items: center; border: 1px solid #b4c9c9; border-radius: 50%; color: white; background: white; font-size: 11px; }
+    .completion-item.done { color: #286d65; font-weight: 700; }
+    .completion-item.done .status-dot { border-color: var(--sea); background: var(--sea); }
+    .create-plan-button, .show-plan-button, .consult-button, .copy-button { width: 100%; min-height: 52px; border: 0; border-radius: 8px; font-size: 13px; font-weight: 900; }
+    .create-plan-button { color: white; background: linear-gradient(110deg, var(--sea), var(--blue)); box-shadow: 0 10px 22px rgba(31, 127, 137, .2); }
+    .create-plan-button:disabled { cursor: not-allowed; color: #8ba09e; background: #dce5e3; box-shadow: none; }
+    .button-note { margin: 8px 4px 0; color: var(--muted); font-size: 10px; line-height: 1.6; text-align: center; }
+    .lead-form { border: 1px solid #bfdedb; background: white; box-shadow: var(--shadow); }
+    .lead-form .form-grid { margin-top: 14px; }
+    .lead-form .field input, .lead-form .field select, .form-input { width: 100%; min-height: 48px; padding: 10px 12px; border: 1px solid #c9dddd; border-radius: 7px; color: var(--ink); background: #fbfefe; }
+    .location-control { padding: 11px; border: 1px solid #c9dddd; border-radius: 7px; background: #f6fbfa; }
+    .location-button { width: 100%; min-height: 47px; display: flex; gap: 8px; align-items: center; justify-content: center; border: 1px solid var(--sea); border-radius: 7px; color: var(--sea-deep); background: white; font-size: 11px; font-weight: 900; }
+    .location-button svg { width: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; }
+    .location-button:disabled { cursor: not-allowed; opacity: .42; filter: grayscale(.4); }
+    .location-status { margin: 7px 0 0; color: var(--muted); font-size: 9px; line-height: 1.55; }
+    .map-link { display: inline-block; margin-top: 7px; color: var(--blue); font-size: 10px; font-weight: 800; }
+    .manual-area-wrap { margin-top: 9px; }
+    .manual-area-wrap label { display: block; margin-bottom: 5px; color: var(--muted); font-size: 9px; }
+    .show-plan-button { margin-top: 12px; color: white; background: linear-gradient(110deg, var(--sea-deep), var(--cyan)); }
+    .personal-plan { color: white; background: linear-gradient(155deg, #153f49, #1c6a6f 66%, #286d5b); box-shadow: var(--shadow); }
+    .personal-plan small { color: #a9efeb; }
+    .personal-plan > p { color: #d7e9e8; }
+    .level-banner { margin-top: 13px; padding: 11px; border: 1px solid rgba(255,255,255,.22); border-radius: 7px; color: #f8e0a7; background: rgba(7, 31, 38, .26); font-size: 11px; font-weight: 800; }
+    .activity-list { margin-top: 14px; display: grid; gap: 12px; }
+    .activity-card { overflow: hidden; border-radius: 8px; color: var(--ink); background: white; }
+    .demo-stage { position: relative; width: 100%; aspect-ratio: 1; overflow: hidden; background: #edf4f3; }
+    .demo-frame { position: absolute; inset: 0; opacity: 0; }
+    .demo-frame-a { opacity: 1; }
+    .demo-sprite { position: absolute; inset: 0; background-repeat: no-repeat; background-size: 200% 200%; }
+    .demo-stage.is-playing .demo-frame-a { animation: kneeFrameA 2.8s step-end infinite; }
+    .demo-stage.is-playing .demo-frame-b { animation: kneeFrameB 2.8s step-end infinite; }
+    @keyframes kneeFrameA { 0%, 49.9% { opacity: 1; } 50%, 100% { opacity: 0; } }
+    @keyframes kneeFrameB { 0%, 49.9% { opacity: 0; } 50%, 100% { opacity: 1; } }
+    .activity-copy { padding: 13px; }
+    .activity-copy h3 { margin: 0; font-size: 14px; }
+    .activity-copy p { margin: 5px 0 0; color: var(--muted); font-size: 10px; line-height: 1.6; }
+    .fitt-grid { margin-top: 11px; display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+    .fitt-cell { min-height: 70px; padding: 9px; border: 1px solid #d8e6e5; border-radius: 7px; background: #f8fbfa; }
+    .fitt-cell span { display: block; color: var(--sea); font-size: 8px; font-weight: 900; }
+    .fitt-cell b { display: block; margin-top: 4px; font-size: 9px; line-height: 1.5; }
+    .week { margin-top: 17px; }
+    .week h3, .guidance h3 { margin: 0 0 9px; font-size: 13px; }
+    .week-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; }
+    .week-day { min-height: 74px; padding: 9px; border: 1px solid rgba(255,255,255,.2); border-radius: 7px; color: #d6e7e6; font-size: 8px; line-height: 1.5; }
+    .week-day b { display: block; margin-bottom: 3px; color: #f5d68c; font-size: 9px; }
+    .guidance { margin-top: 16px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.2); }
+    .guidance ul { margin: 0; padding-left: 18px; color: #d6e7e6; font-size: 9px; line-height: 1.65; }
+    .personal-pt { margin-top: 14px; padding: 8px 9px; border: 1px solid rgba(255, 176, 180, .35); border-radius: 7px; color: #efcfd1; background: rgba(100, 28, 38, .17); font-size: 8px; line-height: 1.55; opacity: .75; }
+    .personal-pt b { color: white; }
+    .copy-section { padding: 18px 4px 0; }
+    .consult-button { display:flex;align-items:center;justify-content:center;margin-bottom:8px;color:white;text-decoration:none;background:linear-gradient(110deg,var(--sea),var(--blue));box-shadow:0 10px 22px rgba(31,127,137,.2) }
+    .copy-button { color: var(--blue); border: 1px solid #bcd8e1; background: white; }
+    .copy-help { margin: 8px 3px 0; color: var(--muted); font-size: 10px; line-height: 1.65; }
+    .copy-status { min-height: 20px; margin-top: 6px; color: var(--sea); font-size: 9px; font-weight: 800; }
+    .footer { padding: 24px 18px 36px; color: #70858b; background: #edf5f4; font-size: 9px; line-height: 1.7; text-align: center; }
+    @media (max-width: 480px) {
+      .step-badge { display: none; }
+    }
+    @media (max-width: 380px) {
+      .content { padding-left: 10px; padding-right: 10px; }
+      .hero-copy { left: 16px; right: 16px; bottom: 16px; }
+      .action-grid, .field-row { grid-template-columns: 1fr; }
+      .action-column + .action-column { border-top: 1px solid var(--line); border-left: 0; }
+      .treatment-visual { grid-template-columns: 108px 1fr; gap: 9px; }
+      .fitt-grid { grid-template-columns: 1fr; }
+    }
+    @media (min-width: 760px) {
+      body { padding: 24px 0; }
+      .app { min-height: calc(100vh - 48px); border-radius: 12px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+    }
+    .brand-icon{display:block;width:33px;height:33px;object-fit:contain}
+  </style>
+  <style>.edit-answers{display:inline-flex;min-height:32px;align-items:center;padding:6px 9px;border:1px solid #c8dfe3;border-radius:8px;background:#f7fbfc;color:#176f78;font-size:10px;font-weight:900;text-decoration:none}</style>
+  <link rel="stylesheet" href="css/care-navigator-brand.css">
+  <link rel="stylesheet" href="css/assessment-attention.css">
+</head>
+<body data-lead-plan-type="knee-recovery">
+  <main class="app">
+    <header class="topbar">
+      <div class="care-brand">
+        <span class="care-brand-mark" aria-hidden="true">
+          <img class="care-brand-logo" src="brand-logo.png" alt="">
+        </span>
+        <span class="care-brand-copy"><b>บ้านกายภาพ ชลบุรี</b><small>PHYSIO AT HOME</small></span>
+      </div>
+      <a class="edit-answers" href="problems/">‹ แก้คำตอบ</a>
+    </header>
+
+    <section class="hero" aria-labelledby="pageTitle">
+      <div class="hero-media">
+        <img id="heroImage" src="media/plan-knee-recovery.png" alt="ผู้สูงอายุฝึกเดินด้วยวอล์กเกอร์ในบ้าน พร้อมเส้นแสงแสดงบริเวณข้อเข่าและเส้นทางเดิน">
+        <div class="hero-glow" aria-hidden="true"></div>
+        <canvas class="hero-line-canvas" id="heroLineCanvas" aria-hidden="true"></canvas>
+        <div class="hero-shade" aria-hidden="true"></div>
+        <div class="hero-copy">
+          <p class="hero-kicker">แผน 05 · KNEE RECOVERY</p>
+          <h1 id="pageTitle">ฟื้นการงอเข่าและการเดินหลังผ่าตัดหรือกระดูกหักรอบเข่า</h1>
+          <p class="hero-summary" id="heroSummary">ตอนนี้เป้าหมายคือคุมอาการบวม ฟื้นช่วงการเคลื่อนไหว และกลับมาเดินในบ้านโดยไม่ขัดกับคำสั่งการรักษา</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="content">
+      <section class="section">
+        <p class="eyebrow">ภาพรวมของคุณตอนนี้</p>
+        <h2>ทำสิ่งที่ปลอดภัยก่อน แล้วค่อยเพิ่มตามคำสั่งและผลประเมิน</h2>
+        <p class="section-intro">แผนนี้ไม่ใช้จำนวนวันหลังผ่าตัดเดาว่าคุณควรลงน้ำหนักหรืองอเข่าได้เท่าไร</p>
+        <div class="action-grid">
+          <div class="action-column"><b>เริ่มได้ในขอบเขตที่ทราบ</b><ul id="actionNowList"><li>ติดตามปวด บวม และแผลทุกวัน</li><li>ขยับข้อเท้าเมื่อไม่มีข้อห้าม</li><li>ใช้ walker ตามวิธีที่โรงพยาบาลสอน</li></ul></div>
+          <div class="action-column"><b>ยังไม่ควรเดาเอง</b><ul id="avoidNowList"><li>เพิ่มการลงน้ำหนักโดยไม่มีคำสั่ง</li><li>ฝืนงอเข่าเกินมุมที่กำหนด</li><li>ถอดหรือตั้งมุมสนับเข่าเอง</li></ul></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <p class="eyebrow">โรคและภาวะที่เกี่ยวข้อง</p>
+        <h2>การรักษาของคุณคืออะไร</h2>
+        <p class="section-intro">เลือกกลุ่มการรักษาก่อน แล้วเลือกชนิดย่อยที่ใกล้กับคำในใบจำหน่าย ภาพใช้เพื่อช่วยทำความเข้าใจ ไม่ใช้ยืนยันชนิดการผ่าตัด</p>
+        <div class="treatment-category-grid" role="group" aria-label="กลุ่มการรักษาบริเวณข้อเข่า">
+          <button class="treatment-category" type="button" data-treatment-category="replacement" data-default-treatment="total_knee_replacement" aria-pressed="true"><b>เปลี่ยนข้อเข่า</b><small>ทั้งหมดหรือบางส่วน</small></button>
+          <button class="treatment-category" type="button" data-treatment-category="fracture" data-default-treatment="patella_fracture" aria-pressed="false"><b>กระดูกหักรอบเข่า</b><small>สะบ้า หน้าแข้ง หรือต้นขา</small></button>
+          <button class="treatment-category" type="button" data-treatment-category="nonoperative" data-default-treatment="nonoperative_fracture" aria-pressed="false"><b>รักษาโดยไม่ผ่าตัด</b><small>เฝือก สนับเข่า หรือติดตาม</small></button>
+          <button class="treatment-category" type="button" data-treatment-category="unsure" data-default-treatment="unsure" aria-pressed="false"><b>ยังไม่แน่ใจ</b><small>ช่วยดูคำจากใบจำหน่าย</small></button>
+        </div>
+        <div class="treatment-subtype-grid" id="treatmentSubtypeGrid">
+          <div class="treatment-subtype-group" data-treatment-group="replacement">
+            <button class="treatment-tab" type="button" data-treatment-id="total_knee_replacement" aria-selected="true">ข้อเข่าเทียมทั้งหมด</button>
+            <button class="treatment-tab" type="button" data-treatment-id="partial_knee_replacement" aria-selected="false">ข้อเข่าเทียมบางส่วน</button>
+          </div>
+          <div class="treatment-subtype-group hidden" data-treatment-group="fracture">
+            <button class="treatment-tab" type="button" data-treatment-id="patella_fracture" aria-selected="false">กระดูกสะบ้าหัก</button>
+            <button class="treatment-tab" type="button" data-treatment-id="tibial_plateau_fracture" aria-selected="false">กระดูกหน้าแข้งส่วนบนหัก</button>
+            <button class="treatment-tab" type="button" data-treatment-id="distal_femur_fracture" aria-selected="false">กระดูกต้นขาส่วนปลายหัก</button>
+            <button class="treatment-tab" type="button" data-treatment-id="other_peri_knee_fracture" aria-selected="false">กระดูกหักรอบเข่าชนิดอื่น</button>
+          </div>
+          <div class="treatment-subtype-group hidden" data-treatment-group="nonoperative">
+            <button class="treatment-tab" type="button" data-treatment-id="nonoperative_fracture" aria-selected="false">รักษาโดยไม่ผ่าตัด</button>
+          </div>
+          <div class="treatment-subtype-group hidden" data-treatment-group="unsure">
+            <button class="treatment-tab" type="button" data-treatment-id="unsure" aria-selected="false">ยังไม่แน่ใจ</button>
+          </div>
+        </div>
+        <div class="knowledge-panel" id="treatmentKnowledgePanel" aria-live="polite">
+          <div class="treatment-visual">
+            <div class="treatment-xray-card"><div class="treatment-xray xray-total-knee" role="img" aria-label="ภาพตัวอย่างข้อเข่าเทียมทั้งหมด"></div><span class="xray-caption">ภาพตัวอย่าง อุปกรณ์จริงอาจแตกต่าง</span></div>
+            <div class="treatment-knowledge-copy"><h3>ผ่าตัดเปลี่ยนข้อเข่าเทียมทั้งหมด</h3><p>ผิวข้อเข่าส่วนที่เสียหายถูกแทนด้วยชิ้นส่วนข้อเทียม การฟื้นตัวเน้นแผล อาการบวม ช่วงการเคลื่อนไหว กำลังกล้ามเนื้อ และการกลับไปใช้งานจริง</p><div class="discharge-keywords"><b>คำที่อาจพบในใบจำหน่าย</b>TKA · TKR · Total knee arthroplasty</div><div class="treatment-precaution">นักกายภาพต้องยึดคำสั่งลงน้ำหนัก แผล และข้อจำกัดเฉพาะจากทีมผ่าตัดก่อนเพิ่มกิจกรรม</div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="healingTimeline">
+        <p class="eyebrow">ระยะฟื้นตัว</p>
+        <h2 id="timelineTitle">ข้อเข่าเทียมฟื้นตัวเป็นหลายส่วนพร้อมกัน</h2>
+        <div class="timeline" id="timelineList"></div>
+      </section>
+
+      <section class="section">
+        <div class="orders-band">
+          <div class="orders-head"><span class="orders-icon" aria-hidden="true">✓</span><div><p class="eyebrow">SAFETY FIRST</p><h2>คำสั่งที่ต้องยึดก่อนเริ่มฝึก</h2></div></div>
+          <ul class="orders-list" id="activeOrders"></ul>
+          <div class="warning-list hidden" id="activeWarnings"></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <p class="eyebrow">ปัญหาหลัก + วิธีประเมิน</p>
+        <h2>3 เรื่องที่กำหนดว่าแผนของคุณควรเดินต่ออย่างไร</h2>
+        <p class="section-intro">แต่ละปัญหามีแผนจัดการของตัวเอง แบบประเมินที่ทำเองได้จะเปิดใต้ปัญหานั้นทันที</p>
+        <div class="problem-list">
+          <article class="problem-card">
+            <div class="problem-head"><span class="problem-no">01</span><div><h3>อาการบวมและปวดกำลังบอกว่าร่างกายรับกิจกรรมได้แค่ไหน</h3><p>ติดตามปวด บวม แผล และอาการที่น่องร่วมกัน ไม่ดูเพียงคะแนนปวดอย่างเดียว</p></div></div>
+            <div class="management"><b>แผนจัดการปัญหานี้</b><span>แบ่งกิจกรรมเป็นช่วงสั้นและใช้แนวโน้มอาการตัดสินว่าจะคง ลด หรือเพิ่ม FITT</span></div>
+            <button class="self-assess" type="button" data-assessment-target="symptomAssessment" aria-expanded="false"><span class="assess-icon">0–10</span><span><b>บันทึกอาการด้วยตัวเอง</b><small>คะแนนปวด แนวโน้มบวม และสัญญาณที่ต้องหยุด</small></span><span class="chevron" aria-hidden="true"></span></button>
+            <div class="assessment-drawer" id="symptomAssessment" tabindex="-1">
+              <div class="drawer-heading"><b>บันทึกปวดและบวมวันนี้</b><span>หากมีอาการอันตราย ระบบจะหยุดการเพิ่มโปรแกรมก่อน</span></div>
+              <div class="form-grid">
+                <div class="field-row"><div class="field"><label for="painRest">ปวดขณะพัก 0–10</label><input id="painRest" type="number" min="0" max="10" value="2"></div><div class="field"><label for="painMove">ปวดขณะขยับ 0–10</label><input id="painMove" type="number" min="0" max="10" value="4"></div></div>
+                <div class="field"><label for="swellingTrend">แนวโน้มอาการบวม</label><select id="swellingTrend"><option value="decreasing">ลดลง</option><option value="stable" selected>ใกล้เคียงเดิม</option><option value="increasing">เพิ่มขึ้น</option><option value="unsure">ไม่แน่ใจ</option></select><a class="term-help-link" href="/blog/post.html?slug=dvt-after-surgery" target="_blank" rel="noopener"><span><b>ขาบวมแบบไหนควรระวังลิ่มเลือด?</b><small>อ่านวิธีสังเกต DVT และอาการฉุกเฉิน PE</small></span><span aria-hidden="true">↗</span></a></div>
+                <div class="check-list"><label class="check-line"><input type="checkbox" data-red-flag="wound_infection">แผลมีหนอง แดงลาม มีไข้ หรือปวดแผลเพิ่มเร็ว</label><label class="check-line"><input type="checkbox" data-red-flag="calf_dvt">น่องปวด บวม แดง หรือร้อนขึ้นข้างเดียว</label><label class="check-line"><input type="checkbox" data-red-flag="chest_pain">เจ็บหน้าอกหรือหอบรุนแรงเฉียบพลัน</label><label class="check-line"><input type="checkbox" data-red-flag="cold_numb_foot">ปลายเท้าเย็น ซีด คล้ำ ชา หรือขยับไม่ได้เกิดขึ้นใหม่</label></div>
+              </div>
+              <button class="save-assessment" type="button" data-save-assessment="symptoms">บันทึกข้อมูลอาการ</button>
+            </div>
+            <div class="pt-strip"><span class="warning-icon">!</span><span><b>นักกายภาพประเมิน:</b> แยกอาการบวมตามระยะฟื้นตัวจากภาวะแทรกซ้อน และตรวจการไหลเวียนเมื่อมีข้อสงสัย</span></div>
+          </article>
+
+          <article class="problem-card">
+            <div class="problem-head"><span class="problem-no">02</span><div><h3>เข่ายังเหยียดหรืองอได้ไม่พอกับกิจกรรมที่ต้องทำ</h3><p>การเหยียดมีผลต่อการยืนและเดิน ส่วนการงอมีผลต่อการนั่ง ลุก และขึ้นลงระดับ</p></div></div>
+            <div class="management"><b>แผนจัดการปัญหานี้</b><span>เลือกเน้นการเหยียดหรือการงอจากค่าที่บันทึก และไม่ออกนอกมุมที่ทีมผ่าตัดกำหนด</span></div>
+            <button class="self-assess" id="rangeAssessmentButton" type="button" data-assessment-target="rangeAssessment" aria-expanded="false"><span class="assess-icon">°</span><span><b>บันทึกช่วงการเคลื่อนไหว</b><small id="rangeAssessmentHint">กรอกองศาที่วัดได้ หรือเว้นไว้ให้ผู้เชี่ยวชาญวัด</small></span><span class="chevron" aria-hidden="true"></span></button>
+            <div class="assessment-drawer" id="rangeAssessment" tabindex="-1">
+              <div class="drawer-heading"><b>บันทึกคำสั่งและมุมข้อเข่า</b><span>ถ้าไม่ทราบมุมจริง ไม่ต้องเดาตัวเลข ระบบยังสร้างแผนแบบระมัดระวังได้</span></div>
+              <div class="form-grid">
+                <div class="field"><label for="motionOrder">คำสั่งการขยับเข่า</label><select id="motionOrder"><option value="range_as_tolerated" selected>ขยับได้ตามอาการ</option><option value="fixed_limit">งอได้ไม่เกินมุมที่กำหนด</option><option value="locked_extension">ต้องล็อกเข่าเหยียดตรง</option><option value="no_active_knee_motion">ยังห้ามขยับเข่าด้วยแรงตนเอง</option><option value="unknown">ยังไม่ทราบคำสั่ง</option></select></div>
+                <div class="field hidden" id="maxFlexionWrap"><label for="maxFlexion">งอได้สูงสุดตามคำสั่ง (องศา)</label><input id="maxFlexion" type="number" min="0" max="180" value="60"></div>
+                <div class="field"><label for="braceStatus">เฝือกหรือสนับเข่า</label><select id="braceStatus"><option value="none" selected>ไม่มี</option><option value="hinged">สนับเข่าแบบปรับมุม</option><option value="locked">สนับเข่าล็อกมุม</option><option value="cast">เฝือก</option><option value="unknown">ไม่แน่ใจ</option></select></div>
+                <div class="field-row"><div class="field"><label for="kneeFlexion">มุมงอเข่าที่วัดได้</label><input id="kneeFlexion" type="number" min="0" max="180" value="82"></div><div class="field"><label for="kneeExtension">ยังเหยียดไม่สุดกี่องศา</label><input id="kneeExtension" type="number" min="0" max="90" value="8"></div></div>
+              </div>
+              <button class="save-assessment" type="button" data-save-assessment="range">บันทึกข้อมูลช่วงการเคลื่อนไหว</button>
+            </div>
+            <div class="pt-strip"><span class="warning-icon">!</span><span><b>นักกายภาพประเมิน:</b> วัดมุมด้วยเครื่องมือ ตรวจคุณภาพการเคลื่อนไหว และแยกว่าติดจากปวด บวม กล้ามเนื้อ หรือโครงสร้าง</span></div>
+          </article>
+
+          <article class="problem-card">
+            <div class="problem-head"><span class="problem-no">03</span><div><h3>กำลังขาและการเดินยังไม่กลับมาเพียงพอสำหรับการใช้ชีวิตในบ้าน</h3><p>ความพร้อมขึ้นกับคำสั่งลงน้ำหนัก อุปกรณ์ ระดับการช่วยเหลือ และเส้นทางจริงในบ้าน</p></div></div>
+            <div class="management"><b>แผนจัดการปัญหานี้</b><span>เริ่มจากระดับที่ทำได้จริง ใช้อุปกรณ์ตามคำสั่ง และเพิ่มเวลา จำนวนครั้ง หรือความช่วยเหลือทีละอย่าง</span></div>
+            <button class="self-assess" type="button" data-assessment-target="mobilityAssessment" aria-expanded="false"><span class="assess-icon">03</span><span><b>บันทึกการลุกและเดิน</b><small>ระดับความช่วยเหลือ อุปกรณ์ และเวลาที่เดินได้อย่างสบาย</small></span><span class="chevron" aria-hidden="true"></span></button>
+            <div class="assessment-drawer" id="mobilityAssessment" tabindex="-1">
+              <div class="drawer-heading"><b>ตอนนี้ช่วยเหลือตัวเองได้แค่ไหน</b><span>เลือกจากสิ่งที่ทำได้จริง ไม่ต้องทดลองท่าที่ไม่มั่นใจเพื่อกรอกแบบประเมิน</span></div>
+              <div class="form-grid">
+                <div class="field"><label for="weightBearing">คำสั่งลงน้ำหนัก</label><select id="weightBearing"><option value="non_weight_bearing">ยังห้ามลงน้ำหนัก</option><option value="toe_touch">แตะปลายเท้าเท่านั้น</option><option value="partial">ลงได้บางส่วน</option><option value="weight_bearing_as_tolerated" selected>ลงได้เท่าที่อาการยอมรับ</option><option value="full">ลงได้เต็ม</option><option value="unknown">ยังไม่ทราบคำสั่ง</option></select><a class="term-help-link" href="/blog/post.html?slug=weight-bearing-after-surgery" target="_blank" rel="noopener"><span><b>ไม่แน่ใจว่า NWB ถึง FWB ต่างกันอย่างไร?</b><small>เปิดคำอธิบายคำสั่งการลงน้ำหนัก</small></span><span aria-hidden="true">↗</span></a></div>
+                <div class="field"><label for="bedChairScore">ขยับบนเตียงและย้ายไปเก้าอี้</label><select id="bedChairScore"><option value="0">ทำไม่ได้แม้มีคนช่วยตามปกติ</option><option value="1">ทำได้เมื่อมีคนช่วยหรือบอกทีละขั้น</option><option value="2" selected>ทำได้เองโดยใช้อุปกรณ์ได้</option></select></div>
+                <div class="field"><label for="sitStandScore">ลุกจากเก้าอี้</label><select id="sitStandScore"><option value="0">ยังลุกยืนไม่ได้</option><option value="1" selected>ลุกได้เมื่อมีคนช่วยหรือเฝ้าใกล้ ๆ</option><option value="2">ลุกได้เองโดยใช้อุปกรณ์ได้</option></select></div>
+                <div class="field"><label for="walkingScore">เดินในบ้าน</label><select id="walkingScore"><option value="0">ยังเดินไม่ได้</option><option value="1" selected>เดินได้เมื่อมีคนช่วยหรือเฝ้าใกล้ ๆ</option><option value="2">เดินได้เองโดยใช้อุปกรณ์ได้</option></select></div>
+                <div class="field-row"><div class="field"><label for="currentAid">อุปกรณ์ที่ใช้</label><select id="currentAid"><option value="none">ไม่ใช้</option><option value="stick">ไม้เท้า</option><option value="crutches">ไม้ค้ำ</option><option value="walker" selected>วอล์กเกอร์</option><option value="wheelchair">รถเข็น</option><option value="other">อื่น ๆ</option></select></div><div class="field" id="walkingMinutesWrap"><label for="walkingMinutes">เดินสบายได้กี่นาทีต่อรอบ</label><input id="walkingMinutes" type="number" min="0" max="240" value="3"></div></div>
+                <div class="field hidden" id="sitToStandWrap"><label for="sitToStandSeconds">ถ้าทำได้อย่างปลอดภัย: ลุกยืน 5 ครั้งใช้กี่วินาที</label><input id="sitToStandSeconds" type="number" min="1" max="300" placeholder="ไม่จำเป็นต้องทดลองเพื่อกรอก"></div>
+                <div class="field-row"><div class="field"><label for="caregiverAvailable">มีคนช่วยช่วงฝึกหรือไม่</label><select id="caregiverAvailable"><option value="true" selected>มี</option><option value="false">ไม่มี</option></select></div><div class="field"><label for="homeRisk">จุดเสี่ยงหลักในบ้าน</label><select id="homeRisk"><option value="none">ยังไม่พบ</option><option value="bathroom" selected>ห้องน้ำ</option><option value="stairs">บันได</option><option value="narrow_path">ทางเดินแคบ</option></select></div></div>
+              </div>
+              <button class="save-assessment" type="button" data-save-assessment="mobility">บันทึกข้อมูลการลุกและเดิน</button>
+            </div>
+            <div class="pt-strip"><span class="warning-icon">!</span><span><b>นักกายภาพประเมิน:</b> แรงขา เทคนิคการลุกยืน การลงน้ำหนักจริง ความสูงอุปกรณ์ และเส้นทางเดินในบ้าน</span></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="starter-plan" id="starterPlan">
+        <small>เริ่มได้ก่อนระหว่างตอบแบบประเมิน</small>
+        <h2>โปรแกรมเริ่มต้น</h2>
+        <p>ไม่เกิน 2 กิจกรรม ระบบจะตัดท่างอเข่า ยืน หรือเดินออกเมื่อคำสั่งยังไม่ชัด</p>
+        <div class="starter-items" id="starterItems"></div>
+      </section>
+
+      <section class="assessment-shell" id="assessmentShell">
+        <p class="eyebrow">ปรับโปรแกรมให้เฉพาะตัวขึ้น</p>
+        <h2>ตอบแบบประเมินของปัญหาที่เปิดไว้ให้ครบ</h2>
+        <div class="completion-list">
+          <div class="completion-item" id="completeSymptoms"><span class="status-dot">✓</span><span>อาการปวด บวม และสัญญาณเตือน</span></div>
+          <div class="completion-item" id="completeRange"><span class="status-dot">✓</span><span>ช่วงการเคลื่อนไหวตามคำสั่ง</span></div>
+          <div class="completion-item" id="completeMobility"><span class="status-dot">✓</span><span>การลุกยืนและการเดิน</span></div>
+        </div>
+        <button class="create-plan-button" id="createPlanButton" type="button" disabled>ตอบแบบประเมินให้ครบ เพื่อสร้างแผนเฉพาะตัว</button>
+        <p class="button-note">ข้อมูลที่คุณตอบจะช่วยปรับระดับความหนัก จุดที่ควรระวัง และลำดับการฝึกให้เหมาะกับอาการมากขึ้น</p>
+      </section>
+
+      <section class="lead-form hidden" id="leadForm">
+        <h2>รับแผนเฉพาะตัวฉบับละเอียด</h2>
+        <p>กรอกข้อมูลสั้น ๆ เพื่อเปิดแผน FITT ที่ปรับจากคำตอบของคุณ</p>
+        <div class="form-grid">
+          <input class="form-input" id="leadName" autocomplete="name" placeholder="ชื่อ">
+          <input class="form-input" id="leadPhone" type="tel" inputmode="numeric" minlength="10" maxlength="10" pattern="[0-9]{10}" autocomplete="tel" placeholder="เบอร์โทรศัพท์ 10 หลัก">
+          <div class="location-control">
+            <button class="location-button" id="locationButton" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s6-5.1 6-11a6 6 0 1 0-12 0c0 5.9 6 11 6 11Z"/><circle cx="12" cy="10" r="2.2"/></svg>ใช้ตำแหน่งปัจจุบัน</button>
+            <p class="location-status" id="locationStatus">ใช้หมุดตำแหน่งเพื่อดูพื้นที่บริการ หากปฏิเสธสิทธิ์จึงจะแสดงช่องให้กรอกพื้นที่เอง</p>
+            <a class="map-link hidden" id="locationMapLink" target="_blank" rel="noreferrer">ดูหมุดบนแผนที่</a>
+            <div class="manual-area-wrap hidden" id="manualAreaWrap"><label for="manualArea">พื้นที่หรือที่อยู่โดยย่อ</label><input class="form-input" id="manualArea" autocomplete="address-level2" placeholder="เช่น บางแสน เมืองชลบุรี"></div>
+          </div>
+        </div>
+        <button class="show-plan-button" id="showPersonalPlan" type="button">เปิดแผนเฉพาะตัวของฉัน</button>
+      </section>
+
+      <section class="personal-plan hidden" id="personalPlan" aria-live="polite">
+        <small>แผนเฉพาะตัวฉบับละเอียด</small>
+        <h2 id="personalTitle">แผนฟื้นข้อเข่าและการเดินของคุณ</h2>
+        <p id="personalSummary"></p>
+        <div class="level-banner" id="levelBanner"></div>
+        <div class="activity-list" id="personalActivities"></div>
+        <div class="week"><h3>แนวทาง 7 วันแรก</h3><div class="week-grid" id="weekGrid"></div></div>
+        <div class="guidance"><h3>เพิ่มหรือลดระดับเมื่อไร</h3><ul id="progressionList"></ul></div>
+        <div class="personal-pt" id="ptAssessment"></div>
+      </section>
+
+      <section class="copy-section">
+        <a class="consult-button" href="https://baankaiyaphap-chonburi.com/#packages">ปรึกษานักกายภาพ</a>
+        <button class="copy-button" id="copyAiButton" type="button">นำข้อมูลของฉันไปวิเคราะห์ต่อด้วย AI</button>
+        <p class="copy-help">นำข้อความนี้ไปวางใน AI ที่คุณใช้ เช่น ChatGPT, Claude, Gemini, Grok หรือแอปอื่น ๆ เพื่อให้ช่วยวิเคราะห์อาการและถามต่อจากข้อมูลของคุณได้</p>
+        <p class="copy-status" id="copyStatus" aria-live="polite"></p>
+      </section>
+    </div>
+
+    <footer class="footer">ข้อมูลนี้ใช้เพื่อการคัดกรองและวางแผนเบื้องต้น ไม่ใช้แทนคำสั่งแพทย์หรือการประเมินโดยผู้เชี่ยวชาญ</footer>
+  </main>
+
+  <script src="js/knee-recovery-personalization.js"></script>
+  <script src="js/current-location-lead.js"></script>
+  <script src="js/lead-phone-validation.js"></script>
+  <script>
+    (() => {
+      const $ = (selector, root = document) => root.querySelector(selector);
+      const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
+      const { buildKneeRecoveryPlan } = window.KneeRecoveryPersonalization;
+      const { requestCurrentLocation } = window.CurrentLocationLead;
+      const phoneInput = $('#leadPhone');
+      LeadPhoneValidation.attachPhoneInput(phoneInput);
+
+      const treatmentContent = {
+        total_knee_replacement: { title: 'ผ่าตัดเปลี่ยนข้อเข่าเทียมทั้งหมด', body: 'ผิวข้อเข่าส่วนที่เสียหายถูกแทนด้วยชิ้นส่วนข้อเทียม การฟื้นตัวจึงเน้นแผลและเนื้อเยื่อ อาการบวม ช่วงการเคลื่อนไหว กำลังกล้ามเนื้อ และการกลับไปใช้งานจริง ไม่ใช่การรอให้กระดูกหักติด', keywords: 'TKA · TKR · Total knee arthroplasty · Total knee replacement', precaution: 'ยึดคำสั่งลงน้ำหนัก แผล และข้อจำกัดเฉพาะจากทีมผ่าตัดก่อนเพิ่มกิจกรรม', imageClass: 'xray-total-knee', imageLabel: 'ภาพตัวอย่างข้อเข่าเทียมทั้งหมด' },
+        partial_knee_replacement: { title: 'ผ่าตัดเปลี่ยนข้อเข่าเทียมบางส่วน', body: 'เปลี่ยนเฉพาะช่องข้อเข่าที่เสียหาย ส่วนอื่นของข้อยังคงไว้ การฟื้นตัวอาจต่างจากข้อเข่าเทียมทั้งหมด แต่ยังต้องยึดคำสั่งเรื่องการลงน้ำหนัก แผล และการเพิ่มกิจกรรมของทีมผ่าตัด', keywords: 'UKA · UKR · Unicompartmental knee arthroplasty · Partial knee replacement', precaution: 'อย่าเดาว่าโปรแกรมเหมือนข้อเข่าเทียมทั้งหมด ให้ตรวจข้อจำกัดจากทีมผ่าตัดของคุณ', imageClass: 'xray-partial-knee', imageLabel: 'ภาพตัวอย่างข้อเข่าเทียมบางส่วน' },
+        patella_fracture: { title: 'กระดูกสะบ้าหัก', body: 'กระดูกสะบ้าช่วยส่งแรงจากกล้ามเนื้อหน้าขาเพื่อเหยียดเข่า บางรายต้องล็อกเข่าตรงหรือจำกัดมุมงอ การลงน้ำหนักและการขยับจึงต้องยึดคำสั่งเฉพาะของแพทย์', keywords: 'Patella fracture · Tension band wiring · K-wire · ORIF patella', precaution: 'ต้องทราบว่าล็อกเข่าตรงหรืออนุญาตให้งอได้กี่องศาก่อนฝึกงอเข่าและยกขา', imageClass: 'xray-patella', imageLabel: 'ภาพตัวอย่างการยึดกระดูกสะบ้าด้วยลวดและหมุด' },
+        tibial_plateau_fracture: { title: 'กระดูกหน้าแข้งส่วนบนหักบริเวณผิวข้อเข่า', body: 'เป็นกระดูกหักที่เกี่ยวข้องกับผิวรับน้ำหนักของข้อเข่า จึงมักต้องปกป้องการลงน้ำหนักจนกว่าภาพถ่ายรังสีและแพทย์ยืนยันความพร้อม ความปวดลดลงไม่ได้แปลว่ากระดูกพร้อมรับน้ำหนักเต็มแล้ว', keywords: 'Tibial plateau fracture · Plate and screws · ORIF proximal tibia', precaution: 'คำสั่งลงน้ำหนักเป็นข้อมูลสำคัญที่สุดก่อนฝึกยืนหรือเดิน', imageClass: 'xray-tibial-plateau', imageLabel: 'ภาพตัวอย่างแผ่นและสกรูยึดกระดูกหน้าแข้งส่วนบน' },
+        distal_femur_fracture: { title: 'กระดูกต้นขาส่วนปลายหักเหนือข้อเข่า', body: 'ตำแหน่งหักอยู่เหนือข้อเข่าและอาจยึดด้วยแผ่นโลหะหรืออุปกรณ์ชนิดอื่น การกลับมางอเข่า ยืน และเดินขึ้นกับความมั่นคงของการยึดตรึง คุณภาพกระดูก และคำสั่งลงน้ำหนัก', keywords: 'Distal femur fracture · Locking plate · Plate and screws · ORIF', precaution: 'ตรวจคำสั่งลงน้ำหนักและมุมงอเข่าที่อนุญาตก่อนเพิ่มท่ายืนหรือแรงต้าน', imageClass: 'xray-distal-femur', imageLabel: 'ภาพตัวอย่างแผ่นและสกรูยึดกระดูกต้นขาส่วนปลาย' },
+        other_peri_knee_fracture: { title: 'กระดูกหักรอบข้อเข่าชนิดอื่น', body: 'ตำแหน่งและรูปแบบกระดูกหักทำให้ข้อจำกัดต่างกัน ระบบจึงต้องทราบชื่อการรักษา คำสั่งลงน้ำหนัก และมุมเข่าที่อนุญาตก่อนสร้างท่าที่มีการยืนหรือขยับเข่า', keywords: 'Peri-knee fracture · Periprosthetic fracture · ORIF · Conservative treatment', precaution: 'ภาพนี้เป็นตัวอย่างตำแหน่งรอบเข่าเท่านั้น ต้องใช้ใบจำหน่ายระบุตำแหน่งและวิธีรักษาจริง', imageClass: 'xray-nonoperative-knee', imageLabel: 'ภาพตัวอย่างกระดูกหักบริเวณรอบข้อเข่า' },
+        nonoperative_fracture: { title: 'รักษากระดูกหักโดยไม่ผ่าตัด', body: 'กระดูกบางชนิดรักษาด้วยเฝือกหรือสนับเข่าโดยไม่ผ่าตัด ระยะที่ต้องตรึงและการเริ่มลงน้ำหนักขึ้นกับความมั่นคงของกระดูกและภาพถ่ายรังสี ไม่ควรถอดอุปกรณ์หรือเพิ่มมุมเอง', keywords: 'Conservative treatment · Nonoperative · Cast · Knee brace', precaution: 'ห้ามถอดเฝือก ปรับสนับเข่า เพิ่มมุม หรือเพิ่มการลงน้ำหนักเอง', imageClass: 'xray-nonoperative-knee', imageLabel: 'ภาพตัวอย่างกระดูกหักรอบเข่าที่ไม่มีอุปกรณ์ยึดตรึง' },
+        unsure: { title: 'ยังไม่แน่ใจชนิดการรักษา', body: 'ภาพตัวอย่างช่วยให้เห็นความต่างคร่าว ๆ แต่ใช้ยืนยันชนิดการรักษาไม่ได้ ให้ดูใบสรุปการรักษา ชื่อการผ่าตัด หรือสอบถามโรงพยาบาลก่อน เพราะคำว่า “ผ่าตัดเข่า” ยังไม่พอสำหรับกำหนดการลงน้ำหนักและช่วงการเคลื่อนไหวที่ปลอดภัย', keywords: 'มองหาคำว่า TKA, UKA, ORIF, plate, screws, patella, tibial plateau, distal femur หรือ conservative treatment', precaution: 'ยังไม่ควรเพิ่มการลงน้ำหนักหรือฝืนมุมเข่าจนกว่าจะทราบคำสั่งจากทีมรักษา', imageClass: 'xray-nonoperative-knee', imageLabel: 'ภาพตัวอย่างบริเวณข้อเข่าสำหรับประกอบการอ่านเอกสาร' },
+      };
+
+      const state = {
+        treatmentType: 'total_knee_replacement',
+        operationOrInjuryDate: '2026-07-10',
+        affectedSide: 'left',
+        assessmentDone: { symptoms: false, range: false, mobility: false },
+        result: null,
+        location: null,
+      };
+      let activeTreatmentCategory = 'replacement';
+
+      const demoMap = {
+        ankle_pump: ['media/team4-knee-demo-grid-a.png', ['0% 0%', '100% 0%']],
+        quadriceps_setting: ['media/team4-knee-demo-grid-a.png', ['0% 100%', '100% 100%']],
+        swelling_positioning: ['media/team4-knee-demo-grid-a.png', ['0% 0%', '100% 100%']],
+        heel_slide: ['media/team4-knee-demo-grid-b.png', ['0% 0%', '100% 0%']],
+        supported_knee_extension: ['media/team4-knee-demo-grid-b.png', ['0% 100%', '100% 100%']],
+        seated_knee_extension: ['media/team4-knee-demo-grid-b.png', ['0% 0%', '100% 100%']],
+        sit_to_stand: ['media/team4-knee-demo-grid-c.png', ['0% 0%', '100% 0%']],
+        supported_walk: ['media/team4-knee-demo-grid-c.png', ['0% 100%', '100% 100%']],
+      };
+      let demoPlaybackTimer = null;
+
+      function numberOrNull(element) {
+        if (!element || element.value === '') return null;
+        const value = Number(element.value);
+        return Number.isFinite(value) ? value : null;
+      }
+
+      function collectKneeRecoveryInput() {
+        const redFlags = {};
+        $$('[data-red-flag]').forEach((input) => { redFlags[input.dataset.redFlag] = input.checked; });
+        const homeRisk = $('#homeRisk').value;
+        return {
+          treatmentType: state.treatmentType,
+          operationOrInjuryDate: state.operationOrInjuryDate,
+          affectedSide: state.affectedSide,
+          weightBearingStatus: $('#weightBearing').value,
+          kneeMotionOrder: $('#motionOrder').value,
+          maximumFlexionOrder: $('#motionOrder').value === 'fixed_limit' ? numberOrNull($('#maxFlexion')) : null,
+          braceStatus: $('#braceStatus').value,
+          painAtRest: numberOrNull($('#painRest')),
+          painWithMovement: numberOrNull($('#painMove')),
+          swellingTrend: $('#swellingTrend').value,
+          kneeFlexionDegrees: numberOrNull($('#kneeFlexion')),
+          kneeExtensionDeficitDegrees: numberOrNull($('#kneeExtension')),
+          mobilityBedChair: Number($('#bedChairScore').value),
+          mobilitySitToStand: Number($('#sitStandScore').value),
+          mobilityIndoorWalking: Number($('#walkingScore').value),
+          walkingMinutes: numberOrNull($('#walkingMinutes')),
+          fiveTimesSitToStandSeconds: numberOrNull($('#sitToStandSeconds')),
+          currentAid: $('#currentAid').value,
+          caregiverAvailable: $('#caregiverAvailable').value === 'true',
+          homeRisks: homeRisk === 'none' ? [] : [homeRisk],
+          redFlags: redFlags,
+          ankleMovementRestricted: false,
+        };
+      }
+
+      function renderTreatmentKnowledge() {
+        const content = treatmentContent[state.treatmentType] || treatmentContent.unsure;
+        $('#treatmentKnowledgePanel').innerHTML = `<div class="treatment-visual"><div class="treatment-xray-card"><div class="treatment-xray ${content.imageClass}" role="img" aria-label="${content.imageLabel}"></div><span class="xray-caption">ภาพตัวอย่าง อุปกรณ์จริงอาจแตกต่าง</span></div><div class="treatment-knowledge-copy"><h3>${content.title}</h3><p>${content.body}</p><div class="discharge-keywords"><b>คำที่อาจพบในใบจำหน่าย</b>${content.keywords}</div><div class="treatment-precaution">${content.precaution}</div></div></div>`;
+        $$('[data-treatment-id]').forEach((button) => button.setAttribute('aria-selected', String(button.dataset.treatmentId === state.treatmentType)));
+      }
+
+      function syncTreatmentCategory(category) {
+        activeTreatmentCategory = category;
+        $$('[data-treatment-category]').forEach((button) => button.setAttribute('aria-pressed', String(button.dataset.treatmentCategory === category)));
+        $$('[data-treatment-group]').forEach((group) => {
+          const hasChoices = group.querySelectorAll('[data-treatment-id]').length > 1;
+          group.classList.toggle('hidden', group.dataset.treatmentGroup !== category || !hasChoices);
+        });
+      }
+
+      function renderTimeline(result) {
+        const fracture = result.healingTimelineType === 'fracture';
+        $('#timelineTitle').textContent = fracture ? 'กระดูก กล้ามเนื้อ และการเดินฟื้นไม่พร้อมกันทั้งหมด' : 'ข้อเข่าเทียมฟื้นตัวเป็นหลายส่วนพร้อมกัน';
+        const items = fracture
+          ? [
+              ['ช่วงปกป้องการรักษา', 'ยึดคำสั่งลงน้ำหนัก เฝือก สนับเข่า และมุมข้อเป็นหลัก'],
+              ['ช่วงติดตามการเชื่อมของกระดูก', 'แพทย์ใช้การตรวจและภาพถ่ายรังสียืนยัน ไม่ใช้ความปวดลดลงตัดสินเพียงอย่างเดียว'],
+              ['ช่วงกลับไปใช้งาน', 'ค่อยเพิ่มกำลัง ช่วงการเคลื่อนไหว การยืน และการเดินตามความพร้อม'],
+            ]
+          : [
+              ['ช่วงแผลและอาการบวม', 'ติดตามแผล ปวด บวม และการไหลเวียน พร้อมทำตามคำแนะนำหลังผ่าตัด'],
+              ['ช่วงฟื้นมุมเข่าและกำลัง', 'ฝึกเหยียด งอ และกำลังหน้าขาในขอบเขตที่ได้รับอนุญาต'],
+              ['ช่วงกลับไปใช้ชีวิต', 'เพิ่มการลุก เดิน ทางต่างระดับ และกิจกรรมจริงทีละอย่าง'],
+            ];
+        $('#timelineList').innerHTML = items.map(([title, detail]) => `<div class="timeline-item"><span class="timeline-dot"></span><b>${title}</b><span>${detail}</span></div>`).join('');
+      }
+
+      function renderProblemBlocks(blocks) {
+        const cards = $$('.problem-card');
+        blocks.forEach((block, index) => {
+          const card = cards[index];
+          if (!card) return;
+          card.querySelector('.problem-head h3').textContent = block.titleTh;
+          card.querySelector('.problem-head p').textContent = block.explanationTh;
+          card.querySelector('.management').innerHTML = `<b>แผนจัดการปัญหานี้</b><span>${block.managementTh}</span>`;
+        });
+      }
+
+      function renderStarter(result) {
+        $('#starterItems').innerHTML = result.starterActivities.map((item) => `<div class="starter-item"><b>${item.titleTh}</b><span>${item.fitt.time} · ${item.fitt.intensity}</span></div>`).join('');
+      }
+
+      function renderOrders(result) {
+        $('#activeOrders').innerHTML = result.activeOrdersTh.map((item) => `<li>${item}</li>`).join('');
+        const warningBox = $('#activeWarnings');
+        if (result.activeWarningsTh.length) {
+          warningBox.classList.remove('hidden');
+          warningBox.innerHTML = result.activeWarningsTh.join('<br>');
+        } else {
+          warningBox.classList.add('hidden');
+          warningBox.textContent = '';
+        }
+      }
+
+      function updateAssessmentAvailability(result) {
+        const rangeButton = $('#rangeAssessmentButton');
+        rangeButton.disabled = !result.optionalAssessments.kneeRange;
+        $('#rangeAssessmentHint').textContent = result.optionalAssessments.kneeRange
+          ? 'กรอกองศาที่วัดได้ หรือเว้นไว้ให้ผู้เชี่ยวชาญวัด'
+          : 'ปิดไว้จนกว่าจะทราบคำสั่งขยับเข่าที่ชัดเจน';
+        if (!result.optionalAssessments.kneeRange) {
+          $('#rangeAssessment').classList.remove('is-open');
+          rangeButton.setAttribute('aria-expanded', 'false');
+          state.assessmentDone.range = true;
+        }
+        $('#walkingMinutesWrap').classList.toggle('hidden', !result.optionalAssessments.walking);
+        $('#sitToStandWrap').classList.toggle('hidden', !result.optionalAssessments.fiveTimesSitToStand);
+      }
+
+      function updateCompletion() {
+        $('#completeSymptoms').classList.toggle('done', state.assessmentDone.symptoms);
+        $('#completeRange').classList.toggle('done', state.assessmentDone.range);
+        $('#completeMobility').classList.toggle('done', state.assessmentDone.mobility);
+        const complete = state.assessmentDone.symptoms && state.assessmentDone.range && state.assessmentDone.mobility;
+        $('#createPlanButton').disabled = !complete;
+        $('#createPlanButton').textContent = complete ? 'สร้างแผนเฉพาะตัวของฉัน' : 'ตอบแบบประเมินให้ครบ เพื่อสร้างแผนเฉพาะตัว';
+      }
+
+      function renderResult() {
+        const result = buildKneeRecoveryPlan(collectKneeRecoveryInput());
+        state.result = result;
+        if (result.route === 'invalid_input') return;
+        renderTreatmentKnowledge();
+        renderTimeline(result);
+        renderOrders(result);
+        renderProblemBlocks(result.problemBlocks);
+        renderStarter(result);
+        updateAssessmentAvailability(result);
+        updateCompletion();
+        if (result.route === 'emergency') {
+          $('#heroSummary').textContent = 'พบอาการที่ควรหยุดแบบประเมินและขอความช่วยเหลือฉุกเฉินก่อนเริ่มโปรแกรม';
+        } else if (result.route === 'medical_review') {
+          $('#heroSummary').textContent = 'พบอาการที่ควรให้โรงพยาบาลหรือทีมผ่าตัดประเมินก่อนเพิ่มการฝึก';
+        } else if (result.route === 'verify_orders') {
+          $('#heroSummary').textContent = 'ยังขาดคำสั่งสำคัญ ระบบจึงแสดงเฉพาะสิ่งที่ไม่ขัดกับข้อมูลที่ทราบ';
+        } else {
+          $('#heroSummary').textContent = result.levelLabelTh;
+        }
+      }
+
+      function focusAssessmentPanel(panel) {
+        const firstControl = panel.querySelector('input, select, button');
+        if (firstControl) window.setTimeout(() => firstControl.focus({ preventScroll: true }), 260);
+      }
+
+      function openAssessment(panel) {
+        $$('.assessment-drawer.is-open').forEach((item) => {
+          if (item !== panel) item.classList.remove('is-open');
+        });
+        $$('[data-assessment-target]').forEach((button) => button.setAttribute('aria-expanded', String(button.dataset.assessmentTarget === panel.id)));
+        panel.classList.add('is-open');
+        panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        focusAssessmentPanel(panel);
+      }
+
+      function buildDemoStage(activity, index) {
+        const config = demoMap[activity.id] || demoMap.quadriceps_setting;
+        return `<div class="demo-stage" tabindex="0" data-demo-index="${index}" aria-label="ภาพสาธิต ${activity.titleTh} สลับสองจังหวะ"><div class="demo-frame demo-frame-a"><div class="demo-sprite" style="background-image:url('${config[0]}');background-position:${config[1][0]}"></div></div><div class="demo-frame demo-frame-b"><div class="demo-sprite" style="background-image:url('${config[0]}');background-position:${config[1][1]}"></div></div></div>`;
+      }
+
+      function initDemoPlayback() {
+        const demos = $$('.demo-stage');
+        if (demoPlaybackTimer) clearInterval(demoPlaybackTimer);
+        demoPlaybackTimer = null;
+        if (!demos.length) return;
+        let activeIndex = 0;
+        let pinnedIndex = null;
+        const activate = (index) => {
+          activeIndex = index;
+          demos.forEach((demo, demoIndex) => demo.classList.toggle('is-playing', demoIndex === activeIndex));
+        };
+        demos.forEach((demo, index) => {
+          demo.addEventListener('mouseenter', () => { pinnedIndex = index; activate(index); });
+          demo.addEventListener('mouseleave', () => { pinnedIndex = null; });
+          demo.addEventListener('focusin', () => { pinnedIndex = index; activate(index); });
+          demo.addEventListener('focusout', () => { pinnedIndex = null; });
+          demo.addEventListener('touchstart', () => { pinnedIndex = index; activate(index); }, { passive: true });
+        });
+        activate(0);
+        demoPlaybackTimer = window.setInterval(() => {
+          if (pinnedIndex !== null) return;
+          activate((activeIndex + 1) % demos.length);
+        }, 4200);
+      }
+
+      function renderPersonalPlan() {
+        const result = buildKneeRecoveryPlan(collectKneeRecoveryInput());
+        state.result = result;
+        const stopped = ['emergency', 'medical_review'].includes(result.route);
+        $('#personalPlan').classList.remove('hidden');
+        $('#personalTitle').textContent = stopped ? 'หยุดโปรแกรมและจัดการอาการสำคัญก่อน' : 'แผนฟื้นข้อเข่าและการเดินเฉพาะตัวของคุณ';
+        $('#personalSummary').textContent = stopped ? result.activeWarningsTh.join(' ') : 'ท่าหลักคงเดิม แต่ปรับความถี่ ความหนัก เวลา และชนิดกิจกรรมจากคำสั่งและผลประเมินของคุณ';
+        $('#levelBanner').textContent = result.levelLabelTh || 'ยังไม่ควรเพิ่มโปรแกรม';
+        $('#personalActivities').innerHTML = result.activities.map((item, index) => `<article class="activity-card">${buildDemoStage(item, index)}<div class="activity-copy"><h3>${index + 1}. ${item.titleTh}</h3><p>${item.summaryTh}</p><div class="fitt-grid"><div class="fitt-cell"><span>ความถี่</span><b>${item.fitt.frequency}</b></div><div class="fitt-cell"><span>ความหนัก</span><b>${item.fitt.intensity}</b></div><div class="fitt-cell"><span>เวลา/จำนวน</span><b>${item.fitt.time}</b></div><div class="fitt-cell"><span>วิธีทำ</span><b>${item.fitt.type}</b></div></div></div></article>`).join('');
+        $('#weekGrid').innerHTML = result.schedule.map((item, index) => `<div class="week-day"><b>วันที่ ${index + 1}</b>${item.focusTh}</div>`).join('');
+        $('#progressionList').innerHTML = [...result.progressionRulesTh, ...result.regressionRulesTh].map((item) => `<li>${item}</li>`).join('');
+        $('#ptAssessment').innerHTML = `<b>นักกายภาพประเมิน:</b> ${result.ptAssessmentTh.join(' · ')}`;
+        initDemoPlayback();
+        $('#personalPlan').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      function isCyanHologramPixel(red, green, blue) {
+        return blue > 115 && green > 100 && blue > red * 1.2 && green > red * 1.08 && Math.abs(blue - green) < 125;
+      }
+
+      function isHeroHologramRegion(x, y, width, height) {
+        const horizontal = x / width;
+        const vertical = y / height;
+        const aroundKnee = horizontal > .36 && horizontal < .62 && vertical > .43 && vertical < .75;
+        const alongFloorPath = horizontal > .16 && horizontal < .82 && vertical > .61;
+        return aroundKnee || alongFloorPath;
+      }
+
+      function drawHeroSampleAsContain(sampleContext, image, width, height) {
+        const scale = Math.min(width / image.naturalWidth, height / image.naturalHeight);
+        const renderedWidth = image.naturalWidth * scale;
+        const renderedHeight = image.naturalHeight * scale;
+        const drawX = (width - renderedWidth) / 2;
+        const drawY = (height - renderedHeight) / 2;
+        sampleContext.clearRect(0, 0, width, height);
+        sampleContext.drawImage(image, drawX, drawY, renderedWidth, renderedHeight);
+      }
+
+      function initHeroLineEffect() {
+        const image = $('#heroImage');
+        const canvas = $('#heroLineCanvas');
+        const context = canvas.getContext('2d');
+        const sampleCanvas = document.createElement('canvas');
+        const sampleContext = sampleCanvas.getContext('2d', { willReadFrequently: true });
+        let points = [];
+        let tick = 0;
+
+        const prepare = () => {
+          const width = Math.max(1, Math.round(image.clientWidth));
+          const height = Math.max(1, Math.round(image.clientHeight));
+          const scale = window.devicePixelRatio || 1;
+          canvas.width = Math.round(width * scale);
+          canvas.height = Math.round(height * scale);
+          canvas.style.width = `${width}px`;
+          canvas.style.height = `${height}px`;
+          context.setTransform(scale, 0, 0, scale, 0, 0);
+          sampleCanvas.width = Math.max(1, Math.round(width / 2));
+          sampleCanvas.height = Math.max(1, Math.round(height / 2));
+          drawHeroSampleAsContain(sampleContext, image, sampleCanvas.width, sampleCanvas.height);
+          const pixels = sampleContext.getImageData(0, 0, sampleCanvas.width, sampleCanvas.height).data;
+          points = [];
+          for (let y = 0; y < sampleCanvas.height; y += 2) {
+            for (let x = 0; x < sampleCanvas.width; x += 2) {
+              const offset = (y * sampleCanvas.width + x) * 4;
+              if (isHeroHologramRegion(x, y, sampleCanvas.width, sampleCanvas.height) && isCyanHologramPixel(pixels[offset], pixels[offset + 1], pixels[offset + 2])) {
+                points.push([x * 2, y * 2, (x + y) % 97]);
+              }
+            }
+          }
+        };
+
+        function drawHeroLineFrame() {
+          context.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+          tick = (tick + .9) % 97;
+          points.forEach(([x, y, phase]) => {
+            const distance = Math.abs(((phase - tick + 145.5) % 97) - 48.5);
+            if (distance > 7) return;
+            const alpha = (1 - distance / 7) * .72;
+            context.fillStyle = `rgba(86, 239, 247, ${alpha})`;
+            context.fillRect(x, y, 2.4, 2.4);
+          });
+          requestAnimationFrame(drawHeroLineFrame);
+        }
+
+        try {
+          prepare();
+          window.addEventListener('resize', prepare, { passive: true });
+          requestAnimationFrame(drawHeroLineFrame);
+        } catch (_error) {
+          canvas.hidden = true;
+        }
+      }
+
+      $$('[data-treatment-category]').forEach((button) => button.addEventListener('click', () => {
+        syncTreatmentCategory(button.dataset.treatmentCategory);
+        state.treatmentType = button.dataset.defaultTreatment;
+        renderResult();
+      }));
+
+      $$('[data-treatment-id]').forEach((button) => button.addEventListener('click', () => {
+        const group = button.closest('[data-treatment-group]');
+        if (group) syncTreatmentCategory(group.dataset.treatmentGroup);
+        state.treatmentType = button.dataset.treatmentId;
+        renderResult();
+      }));
+
+      $$('[data-assessment-target]').forEach((button) => button.addEventListener('click', () => {
+        if (button.disabled) return;
+        const panel = document.getElementById(button.dataset.assessmentTarget);
+        if (!panel) return;
+        if (panel.classList.contains('is-open')) {
+          panel.classList.remove('is-open');
+          button.setAttribute('aria-expanded', 'false');
+          return;
+        }
+        openAssessment(panel);
+      }));
+
+      $$('[data-save-assessment]').forEach((button) => button.addEventListener('click', () => {
+        state.assessmentDone[button.dataset.saveAssessment] = true;
+        renderResult();
+        const panel = button.closest('.assessment-drawer');
+        if (panel) panel.classList.remove('is-open');
+        updateCompletion();
+      }));
+
+      $('#motionOrder').addEventListener('change', () => {
+        $('#maxFlexionWrap').classList.toggle('hidden', $('#motionOrder').value !== 'fixed_limit');
+        state.assessmentDone.range = false;
+        renderResult();
+      });
+      $('#braceStatus').addEventListener('change', () => { state.assessmentDone.range = false; renderResult(); });
+      $('#weightBearing').addEventListener('change', () => { state.assessmentDone.mobility = false; renderResult(); });
+      $('#sitStandScore').addEventListener('change', renderResult);
+      $('#walkingScore').addEventListener('change', renderResult);
+
+      $('#createPlanButton').addEventListener('click', () => {
+        $('#leadForm').classList.remove('hidden');
+        $('#leadForm').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+
+      $('#locationButton').addEventListener('click', async () => {
+        const button = $('#locationButton');
+        button.disabled = true;
+        $('#locationStatus').textContent = 'กำลังระบุตำแหน่งปัจจุบัน…';
+        const result = await requestCurrentLocation(navigator.geolocation);
+        if (result.ok) {
+          state.location = result.location;
+          $('#locationStatus').textContent = `รับตำแหน่งแล้ว ความคลาดเคลื่อนประมาณ ${Math.round(result.location.accuracyMeters || 0)} เมตร`;
+          $('#locationMapLink').href = result.location.googleMapsUrl;
+          $('#locationMapLink').classList.remove('hidden');
+          return;
+        }
+        state.location = null;
+        $('#locationStatus').textContent = result.messageTh;
+        $('#manualAreaWrap').classList.remove('hidden');
+        $('#manualArea').focus();
+      });
+
+      $('#showPersonalPlan').addEventListener('click', () => {
+        const name = $('#leadName').value.trim();
+        const phone = phoneInput.value;
+        const manualArea = $('#manualArea').value.trim();
+        if (!name) {
+          $('#locationStatus').textContent = 'กรุณากรอกชื่อก่อนเปิดแผน';
+          return;
+        }
+        if (!LeadPhoneValidation.isCompletePhone(phone)) {
+          $('#locationStatus').textContent = 'กรุณากรอกเบอร์โทรศัพท์ให้ครบ 10 หลัก';
+          phoneInput.focus();
+          return;
+        }
+        if (!state.location && !manualArea) {
+          $('#locationStatus').textContent = 'กรุณาใช้ตำแหน่งปัจจุบันก่อน หากปฏิเสธสิทธิ์ ระบบจะแสดงช่องให้กรอกพื้นที่เอง';
+          return;
+        }
+        renderPersonalPlan();
+      });
+
+      $('#copyAiButton').addEventListener('click', async () => {
+        const result = state.result || buildKneeRecoveryPlan(collectKneeRecoveryInput());
+        try {
+        await CareNavigatorTeam4Leads.copyForAi(result.aiSummaryTh);
+          $('#copyStatus').textContent = 'คัดลอกข้อมูลสำหรับ AI แล้ว';
+        } catch (_error) {
+          $('#copyStatus').textContent = 'คัดลอกอัตโนมัติไม่สำเร็จ กรุณาลองใหม่จากเบราว์เซอร์';
+        }
+      });
+
+      $('#heroImage').addEventListener('load', initHeroLineEffect, { once: true });
+      if ($('#heroImage').complete) initHeroLineEffect();
+      renderResult();
+    })();
+  </script>
+  <script src="js/assessment-attention.js" data-assessment-selector=".self-assess"></script>
+  <script src="js/first-party-events-config.js"></script>
+  <script src="js/first-party-events.js"></script>
+  <script src="js/team4-event-bridge.js"></script>
+  <script src="js/lead-registry-contract.js"></script>
+  <script src="js/lead-registry-config.js"></script>
+  <script src="js/lead-registry-client.js"></script>
+  <script src="js/team4-lead-registry.js"></script>
+</body>
+</html>
