@@ -37,7 +37,12 @@ try {
     consented_at: new Date().toISOString(),
     app_version: 'synthetic-smoke',
   })
-  if (![200, 201].includes(created.response.status) || !created.body?.ok) throw new Error('Synthetic create failed')
+  if (![200, 201].includes(created.response.status) || !created.body?.ok) {
+    const errorCode = created.body && typeof created.body.error === 'string'
+      ? created.body.error
+      : 'invalid_response'
+    throw new Error(`Synthetic create failed: HTTP ${created.response.status} (${errorCode})`)
+  }
   leadCode = created.body.lead_code
 
   const recovered = await jsonPost(`${gateway}/v1/leads/recover`, { lead_code: leadCode, recovery_token: created.body.recovery_token })

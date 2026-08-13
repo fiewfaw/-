@@ -61,6 +61,14 @@ function safeLog(logger, level, value) {
   if (method) method(value)
 }
 
+function storageFailureCode(error) {
+  if (error && error.name === 'TimeoutError') return 'timeout'
+  if (error && error.message === 'lead_storage_http_error') return 'http_error'
+  if (error && error.message === 'lead_storage_invalid_response') return 'invalid_response'
+  if (error && error.message === 'storage_rejected') return 'rejected'
+  return 'unknown'
+}
+
 export function createLeadGateway(options = {}) {
   const storageClient = options.storageClient || createStorageClient(options)
   const tokenBytes = options.tokenBytes || nodeRandomBytes
@@ -74,6 +82,7 @@ export function createLeadGateway(options = {}) {
     const path = new URL(request.url || '/', 'http://gateway.local').pathname
     let requestId = randomUUID()
     let resultCode = 'unknown'
+    let failureCode = ''
     let status = 500
     try {
       if (request.method === 'GET' && path === '/healthz') {
@@ -128,9 +137,12 @@ export function createLeadGateway(options = {}) {
     } catch (error) {
       status = Number(error && error.status) || 503
       resultCode = status === 413 ? 'body_too_large' : status === 400 ? 'invalid_json' : 'storage_unavailable'
+      if (status >= 500) failureCode = storageFailureCode(error)
       return sendJson(response, status, { ok: false, error: resultCode }, origin)
     } finally {
-      safeLog(logger, status >= 500 ? 'error' : 'info', { event: 'lead_gateway_request', request_id: requestId, path, result_code: resultCode, status })
+      const logEntry = { event: 'lead_gateway_request', request_id: requestId, path, result_code: resultCode, status }
+      if (failureCode) logEntry.failure_code = failureCode
+      safeLog(logger, status >= 500 ? 'error' : 'info', logEntry)
     }
   })
 }

@@ -3,6 +3,7 @@ import test from 'node:test'
 import { once } from 'node:events'
 
 import { createLeadGateway } from '../src/server.mjs'
+import { createStorageClient } from '../src/storage-client.mjs'
 
 const createPayload = {
   schema_version: 1,
@@ -36,6 +37,78 @@ test('health check exposes no dependency details', async () => {
     assert.equal(response.status, 200)
     assert.deepEqual(await response.json(), { ok: true })
   })
+})
+
+test('storage client allows a 30 second Apps Script cold start', async () => {
+  let timeoutMs = 0
+  const storageClient = createStorageClient({
+    storageUrl: 'https://script.google.com/example',
+    storageSecret: 'test-secret',
+    timeoutSignal(value) {
+      timeoutMs = value
+      return new AbortController().signal
+    },
+    fetchImpl: async () => ({ ok: true, json: async () => ({ ok: true }) }),
+  })
+
+  await storageClient('expireLeads', { actor_type: 'system' }, 'request-id')
+  assert.equal(timeoutMs, 30000)
+})
+
+test('storage client retries one non-JSON Apps Script response with the same request', async () => {
+  const requests = []
+  const storageClient = createStorageClient({
+    storageUrl: 'https://script.google.com/example',
+    storageSecret: 'test-secret',
+    timeoutSignal: () => new AbortController().signal,
+    fetchImpl: async (_url, options) => {
+      requests.push(String(options.body))
+      if (requests.length === 1) return { ok: true, json: async () => { throw new SyntaxError('HTML response') } }
+      return { ok: true, json: async () => ({ ok: true, lead_code: 'CN-2345-6789-ABCD-EFGH' }) }
+    },
+  })
+
+  const result = await storageClient('createLead', { request_id: 'same-payload' }, 'same-request-id')
+  assert.equal(result.ok, true)
+  assert.equal(requests.length, 2)
+  assert.equal(requests[0], requests[1])
+})
+
+test('storage client retries one Apps Script timeout with the same request', async () => {
+  const requests = []
+  const storageClient = createStorageClient({
+    storageUrl: 'https://script.google.com/example',
+    storageSecret: 'test-secret',
+    timeoutSignal: () => new AbortController().signal,
+    fetchImpl: async (_url, options) => {
+      requests.push(String(options.body))
+      if (requests.length === 1) throw Object.assign(new Error('timed out'), { name: 'TimeoutError' })
+      return { ok: true, json: async () => ({ ok: true, lead_code: 'CN-2345-6789-ABCD-EFGH' }) }
+    },
+  })
+
+  const result = await storageClient('createLead', { request_id: 'same-payload' }, 'same-request-id')
+  assert.equal(result.ok, true)
+  assert.equal(requests.length, 2)
+  assert.equal(requests[0], requests[1])
+})
+
+test('storage client retries one transient Apps Script HTTP response', async () => {
+  let attempts = 0
+  const storageClient = createStorageClient({
+    storageUrl: 'https://script.google.com/example',
+    storageSecret: 'test-secret',
+    timeoutSignal: () => new AbortController().signal,
+    fetchImpl: async () => {
+      attempts += 1
+      if (attempts === 1) return { ok: false, status: 429 }
+      return { ok: true, status: 200, json: async () => ({ ok: true }) }
+    },
+  })
+
+  const result = await storageClient('recoverPlan', { lead_code: 'CN-2345-6789-ABCD-EFGH' }, 'same-request-id')
+  assert.equal(result.ok, true)
+  assert.equal(attempts, 2)
 })
 
 test('create accepts exact production origin and returns opaque recovery values', async () => {
@@ -84,9 +157,11 @@ test('rejects disallowed origins, content types, fields, and oversized bodies', 
 
 test('recovers only plan data and converts storage outages to 503', async () => {
   let unavailable = false
+  const logs = []
   await withServer({
+    logger: { info: (value) => logs.push(JSON.stringify(value)), error: (value) => logs.push(JSON.stringify(value)) },
     storageClient: async (action) => {
-      if (unavailable) throw new Error('sheet payload should never be logged')
+      if (unavailable) throw new Error('lead_storage_invalid_response')
       assert.equal(action, 'recoverPlan')
       return { ok: true, lead_code: 'CN-2345-6789-ABCD-EFGH', plan_type: 'walk-confidence', plan_summary: 'summary', expires_at: '2026-08-25T08:00:00.000Z' }
     },
@@ -99,6 +174,7 @@ test('recovers only plan data and converts storage outages to 503', async () => 
     const down = await fetch(`${base}/v1/leads/recover`, { method: 'POST', headers, body: JSON.stringify({ lead_code: 'CN-2345-6789-ABCD-EFGH', recovery_token: 'token_value_long_enough_1234567890' }) })
     assert.equal(down.status, 503)
   })
+  assert.match(logs.join('\n'), /"failure_code":"invalid_response"/)
 })
 
 test('logs result metadata only and applies a coarse rate cap', async () => {
