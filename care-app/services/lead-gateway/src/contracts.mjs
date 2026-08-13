@@ -1,7 +1,7 @@
 import { createRequire } from 'node:module'
 
 const require = createRequire(import.meta.url)
-const sharedContract = require('../../../public/js/lead-registry-contract.js')
+const sharedContract = require('../contract/lead-registry-contract.cjs')
 
 export const { LEAD_CODE_PATTERN, validateCreateInput } = sharedContract
 
