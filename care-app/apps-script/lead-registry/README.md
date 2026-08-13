@@ -2,7 +2,13 @@
 
 Dedicated private storage for temporary, consented Care Navigator leads. This project must not share a spreadsheet or deployment with anonymous marketing events.
 
-## Setup
+## Rollback reference
+
+This Apps Script implementation is retained only as a rollback reference. The active design uses the VPS gateway with the Google Sheets API and a dedicated service account shared only with the Lead Registry spreadsheet.
+
+Do not install or run `installDailyExpiryTrigger()` after the VPS expiry timer is enabled. Remove the old Apps Script trigger after the VPS timer passes its synthetic test so two cleanup jobs cannot run at the same time.
+
+## Legacy setup
 
 1. Create a private Google Spreadsheet named `Care Navigator - Pending Leads`.
 2. Create a separate Apps Script project and add `Code.gs` plus `appsscript.json`.

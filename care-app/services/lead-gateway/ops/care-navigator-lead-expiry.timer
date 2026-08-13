@@ -1,0 +1,11 @@
+[Unit]
+Description=Run Care Navigator lead expiry daily
+
+[Timer]
+OnCalendar=*-*-* 03:15:00 Asia/Bangkok
+Persistent=true
+RandomizedDelaySec=300
+Unit=care-navigator-lead-expiry.service
+
+[Install]
+WantedBy=timers.target

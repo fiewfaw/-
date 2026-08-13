@@ -1,0 +1,11 @@
+[Unit]
+Description=Expire Care Navigator lead personal data
+After=network-online.target docker.service
+Wants=network-online.target
+Requires=docker.service
+
+[Service]
+Type=oneshot
+WorkingDirectory=/docker/care-navigator-leads/gateway
+ExecStart=/usr/bin/docker compose run --rm --no-deps care-navigator-lead-gateway node scripts/expire-leads.mjs
+User=root
