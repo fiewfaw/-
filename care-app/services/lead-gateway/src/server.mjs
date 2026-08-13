@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url'
 
 import { validateCreateInput, validateRecoveryInput } from './contracts.mjs'
 import { createStorageClient } from './storage-client.mjs'
+import { createSheetsStorageFromEnvironment } from './sheets-runtime.mjs'
 
 const MAX_BODY_BYTES = 16 * 1024
 const PRODUCTION_ORIGIN = 'https://baankaiyaphap-chonburi.com'
@@ -150,5 +151,7 @@ export function createLeadGateway(options = {}) {
 const isDirectRun = process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]
 if (isDirectRun) {
   const port = Number(process.env.PORT || 8787)
-  createLeadGateway().listen(port, '0.0.0.0', () => console.log(JSON.stringify({ event: 'lead_gateway_started', port })))
+  const driver = process.env.LEAD_STORAGE_DRIVER || 'apps-script'
+  const sheetsStorage = driver === 'sheets' ? await createSheetsStorageFromEnvironment() : undefined
+  createLeadGateway({ storageDriver: driver, sheetsStorage }).listen(port, '0.0.0.0', () => console.log(JSON.stringify({ event: 'lead_gateway_started', port })))
 }

@@ -1,4 +1,10 @@
 export function createStorageClient(options = {}) {
+  const storageDriver = options.storageDriver || process.env.LEAD_STORAGE_DRIVER || 'apps-script'
+  if (storageDriver === 'sheets') {
+    if (typeof options.sheetsStorage !== 'function') throw new Error('sheets_storage_not_configured')
+    return options.sheetsStorage
+  }
+  if (storageDriver !== 'apps-script') throw new Error('lead_storage_driver_not_supported')
   const storageUrl = options.storageUrl || process.env.LEAD_STORAGE_URL
   const storageSecret = options.storageSecret || process.env.LEAD_STORAGE_SECRET
   const fetchImpl = options.fetchImpl || fetch
