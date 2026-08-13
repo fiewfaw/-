@@ -4,6 +4,8 @@ services:
     restart: unless-stopped
     env_file:
       - /docker/care-navigator-leads/.env
+    volumes:
+      - /docker/care-navigator-leads/secrets/google-service-account.json:/run/secrets/google-service-account.json:ro
     expose:
       - "8787"
     healthcheck:
