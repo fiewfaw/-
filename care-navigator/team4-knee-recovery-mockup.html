@@ -292,7 +292,7 @@
   <link rel="stylesheet" href="css/assessment-attention.css?v=click-label-2">
   <link rel="stylesheet" href="css/approved-assessment-icons.css?v=replace-original-1">
 </head>
-<body>
+<body data-lead-plan-type="knee-recovery">
   <main class="app">
     <header class="topbar">
       <div class="care-brand">
@@ -906,7 +906,7 @@
       $('#copyAiButton').addEventListener('click', async () => {
         const result = state.result || buildKneeRecoveryPlan(collectKneeRecoveryInput());
         try {
-          await navigator.clipboard.writeText(result.aiSummaryTh);
+          await CareNavigatorTeam4Leads.copyForAi(result.aiSummaryTh);
           $('#copyStatus').textContent = 'คัดลอกข้อมูลสำหรับ AI แล้ว';
         } catch (_error) {
           $('#copyStatus').textContent = 'คัดลอกอัตโนมัติไม่สำเร็จ กรุณาลองใหม่จากเบราว์เซอร์';
@@ -923,5 +923,9 @@
   <script src="js/first-party-events-config.js"></script>
   <script src="js/first-party-events.js"></script>
   <script src="js/team4-event-bridge.js"></script>
+  <script src="js/lead-registry-contract.js"></script>
+  <script src="js/lead-registry-config.js"></script>
+  <script src="js/lead-registry-client.js"></script>
+  <script src="js/team4-lead-registry.js"></script>
 </body>
 </html>

@@ -25,7 +25,7 @@
   <link rel="stylesheet" href="css/assessment-attention.css?v=click-label-2">
   <link rel="stylesheet" href="css/approved-assessment-icons.css?v=replace-original-1">
 </head>
-<body>
+<body data-lead-plan-type="bedbound-transfer">
 <main class="stage">
   <div class="phone-shell"><div class="app">
     <header class="topbar"><div class="care-brand"><span class="care-brand-mark" aria-hidden="true"><img class="care-brand-logo" src="brand-logo.png" alt=""></span><span class="care-brand-copy"><b>บ้านกายภาพ ชลบุรี</b><small>PHYSIO AT HOME</small></span></div><a class="edit-answers" href="problems/">‹ แก้คำตอบ</a></header>
@@ -78,7 +78,7 @@
   function renderPlan(plan){$('#levelLabel').textContent=plan.levelLabelTh;$('#personalSummary').textContent=plan.summaryTh;$('#personalActivities').innerHTML=plan.activities.map(activity=>{const demo=demoMap[activity.id]||demoMap.rolling_sequence;return`<article class="personal-activity" tabindex="0"><div class="personal-demo" data-demo-key="${activity.demoKey}" style="background-image:url('${demo[0]}');--row:${demo[1]}"></div><div class="personal-copy"><h3>${activity.titleTh}</h3><p>${activity.purposeTh}</p><div class="fitt"><span><b>ความถี่</b><br>${activity.fitt.frequencyTh}</span><span><b>ความหนัก</b><br>${activity.fitt.intensityTh}</span><span><b>จำนวน/เวลา</b><br>${activity.fitt.timeTh}</span><span><b>รูปแบบ</b><br>${activity.fitt.typeTh}</span></div></div></article>`}).join('');$('#schedule').innerHTML=plan.schedule.map(item=>`<div class="day"><b>${item.dayTh}</b><span>${item.activityTh}</span></div>`).join('');$('#ptAssessment').innerHTML=plan.ptAssessmentTh.map(item=>`<p class="lead">• ${item}</p>`).join('');$('#personalizedPlan').hidden=false;setupPersonalAnimations();$('#personalizedPlan').scrollIntoView({behavior:'smooth',block:'start'})}
   submitPlan.addEventListener('click',()=>{if(!LeadPhoneValidation.isCompletePhone(phone.value)){showToast('กรุณากรอกเบอร์โทรศัพท์ให้ครบ 10 หลัก');return}currentPlan=BedboundTransferPersonalization.buildBedboundTransferPlan(collect());renderPlan(currentPlan)});
   function summaryText(){const input=collect(),plan=currentPlan||BedboundTransferPersonalization.buildBedboundTransferPlan(input);return`ช่วยวิเคราะห์ข้อมูลการฟื้นความสามารถของผู้ที่เริ่มติดเตียง โดยไม่วินิจฉัยแทนแพทย์\n\nBarthel Index: ${input.barthelComplete?input.barthelTotal+'/20':'ยังตอบไม่ครบ'}\nการพลิกตัว: ${input.rolling}\nการนั่งขอบเตียง: ${input.edgeSitting} นั่งได้ ${input.sittingSeconds||0} วินาที\nการย้ายตัว: ${input.transfer}\nผิวหนัง: ${input.skinConcern}\nผู้ดูแล: ${input.caregiver}\nระดับแผน: ${plan.levelLabelTh||plan.route}\nท่าหลัก: ${plan.activities.map(item=>item.titleTh).join(', ')||'ยังไม่ควรสร้างแผน'}\n\nโปรดช่วยอธิบายสิ่งที่ควรติดตาม คำถามที่ควรถามทีมรักษา และข้อควรระวังจากข้อมูลนี้`}
-  $('#copySummary').addEventListener('click',async()=>{await navigator.clipboard.writeText(summaryText());showToast('คัดลอกผลสรุปแล้ว')});
+  $('#copySummary').addEventListener('click',async()=>{try{await CareNavigatorTeam4Leads.copyForAi(summaryText());showToast('คัดลอกผลสรุปแล้ว')}catch(_error){showToast('ไม่สามารถคัดลอกอัตโนมัติได้')}});
   function showToast(message){const toast=$('#toast');toast.textContent=message;toast.classList.add('show');clearTimeout(showToast.timer);showToast.timer=setTimeout(()=>toast.classList.remove('show'),2600)}
   $$('.exercise-card').forEach((card,index)=>{card.addEventListener('mouseenter',()=>{$$('.exercise-card .demo').forEach((demo,i)=>demo.classList.toggle('playing',i===index))});card.addEventListener('click',()=>{$$('.exercise-card .demo').forEach((demo,i)=>demo.classList.toggle('playing',i===index))})});
 </script>
@@ -87,5 +87,9 @@
   <script src="js/first-party-events-config.js"></script>
   <script src="js/first-party-events.js"></script>
   <script src="js/team4-event-bridge.js"></script>
+  <script src="js/lead-registry-contract.js"></script>
+  <script src="js/lead-registry-config.js"></script>
+  <script src="js/lead-registry-client.js"></script>
+  <script src="js/team4-lead-registry.js"></script>
 </body>
 </html>

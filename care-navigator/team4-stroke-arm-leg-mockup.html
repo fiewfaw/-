@@ -27,7 +27,7 @@
   <link rel="stylesheet" href="css/assessment-attention.css?v=click-label-2">
   <link rel="stylesheet" href="css/approved-assessment-icons.css?v=replace-original-1">
 </head>
-<body>
+<body data-lead-plan-type="stroke-arm-leg">
   <main class="canvas">
     <div class="phone-shell">
       <div class="phone">
@@ -492,7 +492,7 @@
       const assessment='Barthel Index '+(state.barthelComplete?state.barthelTotal+'/20':'ยังตอบไม่ครบ')+'\nการนั่งและย้ายตัว '+(state.transferLevel===null?'ยังไม่ตอบ':state.transferLevel)+'/3\nFAC '+(state.facLevel===null?'ยังไม่ตอบ':state.facLevel)+'/5\nการใช้แขนข้างอ่อนแรง '+(state.armUseLevel===null?'ยังไม่ตอบ':state.armUseLevel)+'/5\nผลกระทบจากอาการเกร็งแขน '+(state.armSpasticityImpact===null?'ยังไม่ตอบ':state.armSpasticityImpact)+'/3\nผลกระทบจากอาการเกร็งขา '+(state.legSpasticityImpact===null?'ยังไม่ตอบ':state.legSpasticityImpact)+'/3\nผลกระทบจากอาการปวดหรือความไม่มั่นคงของไหล่ '+(state.shoulderPainImpact===null?'ยังไม่ตอบ':state.shoulderPainImpact)+'/3';
       const detail=plan?'\nระดับแผน: '+plan.levelLabelTh+'\nกิจกรรมและ FITT:\n'+plan.activities.map((item,index)=>(index+1)+'. '+item.titleTh+' | '+item.fitt.frequency+' | '+item.fitt.intensity+' | '+item.fitt.time+' | '+item.fitt.type).join('\n')+'\nสิ่งที่นักกายภาพควรประเมิน: '+plan.ptAssessmentTh.join(' · '):'';
       const summary='ข้อมูลเพื่อวิเคราะห์ต่อ: แผน 03 ฟื้นการใช้แขนขาหลังโรคหลอดเลือดสมอง\n'+assessment+detail+'\nกรุณาช่วยวิเคราะห์ข้อมูล ถามคำถามที่ยังขาด และอธิบายทางเลือกอย่างปลอดภัย โดยไม่วินิจฉัยหรือเปลี่ยนคำสั่งแพทย์แทนผู้เชี่ยวชาญ';
-      try{await navigator.clipboard.writeText(summary);showToast('คัดลอกข้อมูลสำหรับนำไปถาม AI แล้ว')}catch(_error){showToast('เบราว์เซอร์นี้ไม่อนุญาตให้คัดลอกอัตโนมัติ')}
+      try{await CareNavigatorTeam4Leads.copyForAi(summary);showToast('คัดลอกข้อมูลสำหรับนำไปถาม AI แล้ว')}catch(_error){showToast('เบราว์เซอร์นี้ไม่อนุญาตให้คัดลอกอัตโนมัติ')}
     });
 
     updateReadiness();
@@ -502,5 +502,9 @@
   <script src="js/first-party-events-config.js"></script>
   <script src="js/first-party-events.js"></script>
   <script src="js/team4-event-bridge.js"></script>
+  <script src="js/lead-registry-contract.js"></script>
+  <script src="js/lead-registry-config.js"></script>
+  <script src="js/lead-registry-client.js"></script>
+  <script src="js/team4-lead-registry.js"></script>
 </body>
 </html>

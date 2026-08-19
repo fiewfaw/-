@@ -31,7 +31,7 @@
   <link rel="stylesheet" href="css/assessment-attention.css?v=click-label-2">
   <link rel="stylesheet" href="css/approved-assessment-icons.css?v=replace-original-1">
 </head>
-<body>
+<body data-lead-plan-type="hip-recovery">
   <main class="app">
     <div class="phone">
       <header class="topbar">
@@ -210,7 +210,7 @@
       function renderPersonal(){if(!state.result)state.result=window.HipRecoveryPersonalization.buildHipRecoveryPlan(collect());const result=state.result;$('#personalPlan').classList.remove('hidden');$('#personalTitle').textContent=result.route==='emergency'?'ควรขอความช่วยเหลือฉุกเฉินก่อน':result.route==='medical_review'?'ควรให้แพทย์ประเมินก่อนเพิ่มการฝึก':'แผนฟื้นการลุกเดินเฉพาะตัวของคุณ';$('#personalSummary').textContent=result.actionSummaryTh;$('#levelBanner').textContent=result.levelLabelTh||'หยุดแผนการฝึกชั่วคราว';$('#personalActivities').innerHTML=result.activities.map((item,index)=>{const frame=demoFrames(item.demoKey);return`<article class="activity-card"><div class="demo-stage ${index===0?'animate':''}"><div class="frame ${frame[1]}"><div class="demo-photo ${frame[0]}"></div></div><div class="frame ${frame[2]}"><div class="demo-photo ${frame[0]}"></div></div></div><div class="activity-copy"><h3>${index+1}. ${item.titleTh}</h3><p>${item.purposeTh}</p><div class="fitt-grid"><div class="fitt-cell"><span>ความถี่</span><b>${item.fitt.frequency}</b></div><div class="fitt-cell"><span>ความหนัก</span><b>${item.fitt.intensity}</b></div><div class="fitt-cell"><span>เวลา/จำนวน</span><b>${item.fitt.time}</b></div><div class="fitt-cell"><span>วิธีทำ</span><b>${item.fitt.type}</b></div></div><div class="safety-note">${item.safetyTh}</div></div></article>`}).join('');$('#weekGrid').innerHTML=result.schedule.map(item=>`<div class="week-day"><b>วันที่ ${item.day}</b>${item.focusTh}</div>`).join('');$('#progressionList').innerHTML=[...result.progressionRulesTh,...result.regressionRulesTh].map(item=>`<li>${item}</li>`).join('');$('#ptAssessment').innerHTML='<b>นักกายภาพประเมินต่อ:</b> '+result.ptAssessmentTh.join(' · ');$('#personalPlan').scrollIntoView({behavior:'smooth',block:'start'})}
       $('#showPersonalPlan').addEventListener('click',()=>{if(!$('#leadName').value.trim()||!$('#leadPhone').value.trim()){toast('กรุณากรอกชื่อและเบอร์โทร');return}if(!LeadPhoneValidation.isCompletePhone($('#leadPhone').value)){toast('กรุณากรอกเบอร์โทรศัพท์ให้ครบ 10 หลัก');return}if(!state.location&&!$('#manualArea').value.trim()){toast('กรุณาใช้ตำแหน่งปัจจุบัน หรือปฏิเสธสิทธิ์แล้วกรอกพื้นที่');return}renderPersonal()});
       function aiText(){const input=collect();const result=state.result||window.HipRecoveryPersonalization.buildHipRecoveryPlan(input);return`ฉันต้องการให้ช่วยวิเคราะห์ข้อมูลฟื้นตัวหลังผ่าตัดหรือกระดูกสะโพกหัก โดยไม่วินิจฉัยแทนแพทย์\n\nการรักษา: ${result.treatmentLabelTh}\nวันที่รักษา: ${input.operationDate}\nข้างที่รักษา: ${input.operatedSide}\nคำสั่งลงน้ำหนัก: ${input.weightBearingStatus}\nข้อควรระวัง: ${result.activePrecautionsTh.join('; ')||'ไม่มีข้อมูลข้อห้ามชุดเฉพาะ'}\nCAS: ${result.casTotal}/6\nBarthel: ${input.barthelTotal===null?'ยังไม่ได้ทำ':input.barthelTotal+'/20'}\nปวดพัก/ขยับ: ${input.painAtRest}/${input.painWithMovement}\nระดับแผน: ${result.levelLabelTh}\nท่าหลัก: ${result.activities.map(item=>item.titleTh).join(', ')||'ยังไม่ควรฝึก'}\nสิ่งที่ต้องตรวจเพิ่ม: ${result.verificationTasksTh.join('; ')||'ไม่มี'}\n\nโปรดช่วยอธิบายสิ่งที่ควรติดตาม คำถามที่ควรถามแพทย์หรือนักกายภาพ และช่วยจัดคำถามต่อยอดจากข้อมูลนี้`}
-      $('#copyAiButton').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(aiText());toast('คัดลอกข้อมูลสำหรับ AI แล้ว')}catch(_error){toast('อุปกรณ์นี้ไม่อนุญาตให้คัดลอกอัตโนมัติ')}});
+      $('#copyAiButton').addEventListener('click',async()=>{try{await CareNavigatorTeam4Leads.copyForAi(aiText());toast('คัดลอกข้อมูลสำหรับ AI แล้ว')}catch(_error){toast('อุปกรณ์นี้ไม่อนุญาตให้คัดลอกอัตโนมัติ')}});
       initHeroLineEffect();
       refresh();
     })();
@@ -220,5 +220,9 @@
   <script src="js/first-party-events-config.js"></script>
   <script src="js/first-party-events.js"></script>
   <script src="js/team4-event-bridge.js"></script>
+  <script src="js/lead-registry-contract.js"></script>
+  <script src="js/lead-registry-config.js"></script>
+  <script src="js/lead-registry-client.js"></script>
+  <script src="js/team4-lead-registry.js"></script>
 </body>
 </html>

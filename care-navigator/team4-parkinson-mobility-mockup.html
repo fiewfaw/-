@@ -21,7 +21,7 @@
   <link rel="stylesheet" href="css/assessment-attention.css?v=click-label-2">
   <link rel="stylesheet" href="css/approved-assessment-icons.css?v=replace-original-1">
 </head>
-<body>
+<body data-lead-plan-type="parkinson-mobility">
   <main class="stage">
     <div class="phone"><div class="app">
       <header class="topbar"><div class="care-brand"><span class="care-brand-mark" aria-hidden="true"><img class="care-brand-logo" src="brand-logo.png" alt=""></span><span class="care-brand-copy"><b>บ้านกายภาพ ชลบุรี</b><small>PHYSIO AT HOME</small></span></div><a class="edit-answers" href="problems/">‹ แก้คำตอบ</a></header>
@@ -166,7 +166,7 @@
     submitPlan.addEventListener("click",()=>{const phone=phoneInput.value;if(!LeadPhoneValidation.isCompletePhone(phone)){showToast("กรุณากรอกเบอร์โทรศัพท์ให้ครบ 10 หลัก");return}currentPlan=ParkinsonMobilityPersonalization.buildParkinsonMobilityPlan(collectInput());renderPlan(currentPlan)});
 
     const toast=document.querySelector("#toast");let toastTimer;function showToast(message){clearTimeout(toastTimer);toast.textContent=message;toast.classList.add("show");toastTimer=setTimeout(()=>toast.classList.remove("show"),2200)}
-    document.querySelector("#copySummary").addEventListener("click",async()=>{const input=collectInput();const result=currentPlan||ParkinsonMobilityPersonalization.buildParkinsonMobilityPlan(input);const text=["ข้อมูลเพื่อวิเคราะห์ต่อ: แผนการเคลื่อนไหวสำหรับโรคพาร์กินสัน","ช่วงการเคลื่อนไหว: "+input.movementPeriod,"เท้าติดใน 7 วัน: "+input.freezingEpisodes7d+" ครั้ง","สิ่งกระตุ้น: "+(input.freezingTriggers.join(", ")||"ไม่ได้ระบุ"),"การลุกยืน: "+input.chairRise,"การเดิน: "+input.walkingAssistance,"ล้มหรือเกือบล้ม 30 วัน: "+input.fallEvents30d+" ครั้ง","ระดับแผน: "+(result.levelLabelTh||result.summaryTh),"ท่าที่แนะนำ: "+result.activities.map(item=>item.titleTh).join(" | "),"ข้อควรระวัง: "+result.warningsTh.join(" | ")].join("\n");try{await navigator.clipboard.writeText(text);showToast("คัดลอกข้อมูลแล้ว")}catch(_error){showToast("ไม่สามารถคัดลอกอัตโนมัติได้")}});
+    document.querySelector("#copySummary").addEventListener("click",async()=>{const input=collectInput();const result=currentPlan||ParkinsonMobilityPersonalization.buildParkinsonMobilityPlan(input);const text=["ข้อมูลเพื่อวิเคราะห์ต่อ: แผนการเคลื่อนไหวสำหรับโรคพาร์กินสัน","ช่วงการเคลื่อนไหว: "+input.movementPeriod,"เท้าติดใน 7 วัน: "+input.freezingEpisodes7d+" ครั้ง","สิ่งกระตุ้น: "+(input.freezingTriggers.join(", ")||"ไม่ได้ระบุ"),"การลุกยืน: "+input.chairRise,"การเดิน: "+input.walkingAssistance,"ล้มหรือเกือบล้ม 30 วัน: "+input.fallEvents30d+" ครั้ง","ระดับแผน: "+(result.levelLabelTh||result.summaryTh),"ท่าที่แนะนำ: "+result.activities.map(item=>item.titleTh).join(" | "),"ข้อควรระวัง: "+result.warningsTh.join(" | ")].join("\n");try{await CareNavigatorTeam4Leads.copyForAi(text);showToast("คัดลอกข้อมูลแล้ว")}catch(_error){showToast("ไม่สามารถคัดลอกอัตโนมัติได้")}});
     assessmentState();
   </script>
   <script src="js/assessment-attention.js?v=frame-flash-1" data-assessment-selector=".self-card"></script>
@@ -174,5 +174,9 @@
   <script src="js/first-party-events-config.js"></script>
   <script src="js/first-party-events.js"></script>
   <script src="js/team4-event-bridge.js"></script>
+  <script src="js/lead-registry-contract.js"></script>
+  <script src="js/lead-registry-config.js"></script>
+  <script src="js/lead-registry-client.js"></script>
+  <script src="js/team4-lead-registry.js"></script>
 </body>
 </html>

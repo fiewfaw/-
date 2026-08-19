@@ -68,7 +68,7 @@
   <link rel="stylesheet" href="css/assessment-attention.css?v=click-label-2">
   <link rel="stylesheet" href="css/approved-assessment-icons.css?v=replace-original-1">
 </head>
-<body>
+<body data-lead-plan-type="return-strength">
   <main class="stage">
     <div class="phone"><div class="app">
       <header class="topbar">
@@ -315,7 +315,7 @@
       const values=Object.fromEntries(inputs.map(input=>[input.dataset.metric,input.value||'ยังไม่ได้กรอก']));
       const fitt=currentPlan?'\nระดับแผน: '+currentPlan.levelLabelTh+'\nFITT ลุกยืน: '+currentPlan.sitToStand.frequency+', '+currentPlan.sitToStand.intensity+', '+currentPlan.sitToStand.time+', '+currentPlan.sitToStand.type+'\nFITT เดินเป็นช่วง: '+currentPlan.intervalWalking.frequency+', '+currentPlan.intervalWalking.intensity+', '+currentPlan.intervalWalking.time+', '+currentPlan.intervalWalking.type+'\nข้อควรระวังเฉพาะ: '+(currentPlan.modifierNotesTh.join(' · ')||'ไม่มีข้อมูลเพิ่ม'):'';
       const summary='ข้อมูลสำหรับ AI: ผู้ใช้ได้รับผลเป็น แผน 02 คืนแรงหลังกลับบ้าน ปัญหาหลักคือความทนทานต่อกิจกรรมยังไม่เพียงพอ แรงขาลด และยังจัดจังหวะกิจกรรมกับการพักไม่เหมาะสม เดินต่อเนื่อง 2 นาทีได้ '+values.walkDistance+' เมตร ซึ่งใช้เป็นค่าติดตาม ไม่ใช้คำนวณความหนัก เหนื่อยหลังเดิน '+values.fatigueScore+'/10 ฟื้นถึงระดับไม่เกิน 2/10 ใน '+values.recoveryMinutes+' นาที และลุกยืนใน 30 วินาทีได้ '+values.chairReps+' ครั้ง'+fitt+'\nกรุณาช่วยตั้งคำถามเพิ่มเติมเพื่อวิเคราะห์ความปลอดภัยและปรับแผน โดยไม่วินิจฉัยโรคแทนผู้เชี่ยวชาญ';
-      try{await navigator.clipboard.writeText(summary);showToast('คัดลอกข้อความสำหรับ AI แล้ว')}catch{showToast('เบราว์เซอร์นี้ยังไม่อนุญาตให้คัดลอก')}
+      try{await CareNavigatorTeam4Leads.copyForAi(summary);showToast('คัดลอกข้อความสำหรับ AI แล้ว')}catch{showToast('เบราว์เซอร์นี้ยังไม่อนุญาตให้คัดลอก')}
     });
     updateReadiness();
   </script>
@@ -324,5 +324,9 @@
   <script src="js/first-party-events-config.js"></script>
   <script src="js/first-party-events.js"></script>
   <script src="js/team4-event-bridge.js"></script>
+  <script src="js/lead-registry-contract.js"></script>
+  <script src="js/lead-registry-config.js"></script>
+  <script src="js/lead-registry-client.js"></script>
+  <script src="js/team4-lead-registry.js"></script>
 </body>
 </html>
