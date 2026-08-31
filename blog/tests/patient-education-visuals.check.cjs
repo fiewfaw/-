@@ -14,7 +14,7 @@ const cases = [
     images: [
       'lumbar-decompression-breathing.webp',
       'lumbar-decompression-bed-mobility.webp',
-      'lumbar-decompression-sit-stand-walk.webp',
+      'lumbar-decompression-sit-stand-walk-v2.webp',
       'lumbar-decompression-strength-basics.webp',
       'lumbar-decompression-daily-activity.webp',
     ],

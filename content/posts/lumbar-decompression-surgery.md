@@ -157,7 +157,7 @@ tags: ["Lumbar decompression", "ผ่าตัดหลัง", "กระด�
 เริ่มจากพื้นที่ราบและระยะที่ควบคุมได้ สังเกตหน้ามืด เข่าทรุด เท้าสะดุด ปวดร้าวหรือชามากขึ้น และคุณภาพการเดินหลังเหนื่อย ผู้ที่เพิ่งผ่าตัดไม่จำเป็นต้องเดินไกลในครั้งเดียว การแบ่งเป็นช่วงสั้นและพักอย่างมีแผนอาจปลอดภัยกว่า
 
 <figure class="article-figure">
-<img src="../blog/images/glossary/lumbar-decompression-sit-stand-walk.webp" alt="ลำดับตัวอย่างการลุกจากเก้าอี้และเดินระยะสั้นด้วย walker หลังผ่าตัดหลัง" loading="lazy" style="width:100%;aspect-ratio:16/9;object-fit:contain;background:#edf6f5;">
+<img src="../blog/images/glossary/lumbar-decompression-sit-stand-walk-v2.webp" alt="ลำดับตัวอย่างการเตรียมลุก ลุกยืน และเดินระยะสั้น โดยมี walker อยู่ด้านหน้าครบทุกขั้นตอนหลังผ่าตัดหลัง" loading="lazy" style="width:100%;aspect-ratio:16/9;object-fit:contain;background:#edf6f5;">
 <figcaption><strong>ภาพจำลองเพื่อการศึกษา ไม่ใช่ภาพของผู้ป่วยจริง:</strong> เริ่มจากเก้าอี้ที่มั่นคง ลุกยืนด้วยจังหวะที่ควบคุมได้ และใช้อุปกรณ์ช่วยเดินเมื่อได้รับการประเมินแล้ว ผู้ดูแลควรยืนในตำแหน่งที่นักกายภาพสอน</figcaption>
 </figure>
 
