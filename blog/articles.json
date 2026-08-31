@@ -251,11 +251,13 @@
   {
     "slug": "stroke-คืออะไร",
     "title": "Stroke คืออะไร? อาการเตือน สาเหตุ และการฟื้นฟูที่ควรรู้",
-    "description": "ทำความเข้าใจโรคหลอดเลือดสมอง (Stroke) ตั้งแต่สาเหตุ อาการเตือน FAST วิธีรับมือเบื้องต้น และแนวทางการฟื้นฟูด้วยกายภาพบำบัด",
+    "description": "เข้าใจ Stroke ทั้งชนิดหลอดเลือดอุดตันและแตก สังเกต FAST การตรวจ CT/MRI และแนวทางฟื้นฟูอย่างปลอดภัย",
     "date": "2026-04-09",
-    "image": "/blog/images/ep1/stroke-types.jpg",
+    "image": "/blog/images/glossary/stroke-basics-cover.webp",
     "tags": [
       "stroke",
+      "FAST",
+      "การฟื้นฟู",
       "ความรู้พื้นฐาน"
     ]
   },
