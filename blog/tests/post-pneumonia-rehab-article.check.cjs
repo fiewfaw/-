@@ -12,6 +12,13 @@ const coverPath = path.join(
   'glossary',
   'post-pneumonia-deconditioning-rehab-cover.webp',
 );
+const activityImagePath = path.join(
+  root,
+  'blog',
+  'images',
+  'glossary',
+  'post-hospital-deconditioning-safe-start.webp',
+);
 const articles = JSON.parse(
   fs.readFileSync(path.join(root, 'blog', 'articles.json'), 'utf8'),
 );
@@ -19,6 +26,7 @@ const sitemap = fs.readFileSync(path.join(root, 'sitemap.xml'), 'utf8');
 
 assert.ok(fs.existsSync(articlePath), 'post-pneumonia rehabilitation article exists');
 assert.ok(fs.existsSync(coverPath), 'dedicated post-pneumonia cover exists');
+assert.ok(fs.existsSync(activityImagePath), 'dedicated safe-start sequence exists');
 
 const article = fs.readFileSync(articlePath, 'utf8');
 
@@ -39,10 +47,17 @@ for (const term of [
   'pneumonia',
   'deconditioning',
   'หลังนอนโรงพยาบาล',
+  'หลังติดเชื้อ',
   'ความทนทาน',
   'ลุกจากเก้าอี้',
   'เดินช่วงสั้น',
   'SpO2',
+  'BP',
+  'HR',
+  'mental state',
+  'กินน้ำ',
+  'ankle pump',
+  'heel slide',
   'ความดันตกเมื่อเปลี่ยนท่า',
 ]) {
   assert.match(article, new RegExp(term, 'i'), `article explains ${term}`);
@@ -65,6 +80,16 @@ assert.match(
 );
 assert.match(article, /interval|สลับพัก/i, 'explains short interval walking');
 assert.match(article, /นักกายภาพบำบัด.{0,200}ประเมิน/s, 'explains the physiotherapy assessment role');
+assert.match(article, /post-hospital-deconditioning-safe-start\.webp/, 'embeds safe-start sequence');
+assert.match(article, /baseline|ค่าพื้นฐาน/i, 'interprets observations against personal baseline');
+assert.match(article, /10\.1177\/02692155221095936/, 'cites post-hospital home exercise review');
+assert.match(article, /10\.1001\/jamainternmed\.2018\.4869/, 'cites hospital exercise trial');
+assert.match(article, /nice\.org\.uk\/guidance\/NG253/i, 'cites current NICE sepsis guidance');
+assert.doesNotMatch(
+  article,
+  /(?:SpO2|BP|HR).{0,40}(?:ต่ำกว่า|สูงกว่า|<|>)\s*\d+/i,
+  'does not present a universal vital-sign cutoff',
+);
 
 assert.doesNotMatch(article, /DVT|ลิ่มเลือดอุดตันในหลอดเลือดดำส่วนลึก|ปวดน่อง|หนักน่อง/i, 'keeps DVT and calf-pain content in the separate DVT article');
 assert.doesNotMatch(article, /อรรถเดช|เฉลิมผจง|Centrum|แป๊ะก๊วย/i, 'does not expose case-identifying details');
