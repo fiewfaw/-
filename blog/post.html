@@ -250,7 +250,12 @@
                             '@type': 'WebPage',
                             '@id': canonicalUrl
                         },
-                        author: {
+                        author: meta.ai_assisted === 'true' ? {
+                            '@type': 'Organization',
+                            name: 'บ้านกายภาพ ชลบุรี',
+                            description: 'เรียบเรียงด้วย AI โดยหมอโฟล์ / Hermes (morfol); เจ้าของอนุมัติเผยแพร่ ไม่ใช่การรับรองโดยแพทย์',
+                            url: `${SITE_ORIGIN}/`
+                        } : {
                             '@type': 'Person',
                             name: 'รัชธรรม เชื้อแถว',
                             jobTitle: 'นักกายภาพบำบัด',
@@ -368,6 +373,19 @@
                 document.getElementById('articleReviewDate').textContent = meta.updated
                     ? `ทบทวนเนื้อหาล่าสุด ${formatDate(meta.updated)}`
                     : (meta.date ? `เผยแพร่ ${formatDate(meta.date)}` : '');
+
+                // Publication approval is not clinician review. Opt in per article only.
+                if (meta.ai_assisted === 'true') {
+                    document.querySelector('.article-meta .author').textContent = 'เรียบเรียงด้วย AI · หมอโฟล์ / Hermes (morfol)';
+                    const authorBox = document.querySelector('.article-author-box');
+                    authorBox.setAttribute('aria-label', 'ข้อมูลการเรียบเรียงบทความ');
+                    authorBox.querySelector('img').remove();
+                    authorBox.querySelector('.article-author-label').textContent = 'การเรียบเรียง';
+                    authorBox.querySelector('strong').textContent = 'หมอโฟล์ / Hermes (morfol) — AI';
+                    authorBox.querySelector('p').textContent = 'เจ้าของเว็บไซต์อนุมัติการเผยแพร่ ไม่อ้างว่าผ่านการทบทวนหรือรับรองทางคลินิกโดยแพทย์';
+                    document.getElementById('articleReviewDate').textContent = meta.updated
+                        ? `ปรับปรุงบทความ ${formatDate(meta.updated)}` : '';
+                }
 
                 // Tags
                 const tags = Array.isArray(meta.tags) ? meta.tags : (meta.tags ? [meta.tags] : []);

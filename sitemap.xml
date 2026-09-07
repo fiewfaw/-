@@ -14,9 +14,15 @@
   </url>
   <url>
     <loc>https://baankaiyaphap-chonburi.com/blog/</loc>
-    <lastmod>2026-09-02</lastmod>
+    <lastmod>2026-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://baankaiyaphap-chonburi.com/blog/post.html?slug=total-knee-replacement-home-rehab</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://baankaiyaphap-chonburi.com/blog/post.html?slug=post-stroke-upper-limb-task-specific-training</loc>
