@@ -6,6 +6,7 @@ date: "2026-09-07"
 updated: "2026-09-07"
 image: "../blog/images/glossary/total-knee-replacement-home-rehab-cover.webp"
 ai_assisted: "true"
+author: "นักกายภาพเฟี้ยว (รัชธรรม)"
 show_author_footer: "false"
 tags: ["TKA", "ข้อเข่าเทียม", "ฟื้นฟูหลังเปลี่ยนข้อเข่า"]
 ---

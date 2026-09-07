@@ -250,7 +250,11 @@
                             '@type': 'WebPage',
                             '@id': canonicalUrl
                         },
-                        author: meta.ai_assisted === 'true' ? {
+                        author: meta.author ? {
+                            '@type': 'Person',
+                            name: meta.author,
+                            url: `${SITE_ORIGIN}/`
+                        } : meta.ai_assisted === 'true' ? {
                             '@type': 'Organization',
                             name: 'บ้านกายภาพ ชลบุรี',
                             description: 'เรียบเรียงด้วย AI โดยหมอโฟล์ / Hermes (morfol); เจ้าของอนุมัติเผยแพร่ ไม่ใช่การรับรองโดยแพทย์',
@@ -374,9 +378,14 @@
                     ? `ทบทวนเนื้อหาล่าสุด ${formatDate(meta.updated)}`
                     : (meta.date ? `เผยแพร่ ${formatDate(meta.date)}` : '');
 
+                // Explicit owner attribution is authorship, not a clinical-review claim.
+                if (meta.author) {
+                    document.querySelector('.article-meta .author span').textContent = meta.author;
+                }
+
                 // Publication approval is not clinician review. Opt in per article only.
                 if (meta.ai_assisted === 'true') {
-                    document.querySelector('.article-meta .author').textContent = 'เรียบเรียงด้วย AI · หมอโฟล์ / Hermes (morfol)';
+                    if (!meta.author) document.querySelector('.article-meta .author').textContent = 'เรียบเรียงด้วย AI · หมอโฟล์ / Hermes (morfol)';
                     const authorBox = document.querySelector('.article-author-box');
                     authorBox.setAttribute('aria-label', 'ข้อมูลการเรียบเรียงบทความ');
                     authorBox.querySelector('img').remove();
