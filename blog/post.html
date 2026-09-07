@@ -387,6 +387,12 @@
                         ? `ปรับปรุงบทความ ${formatDate(meta.updated)}` : '';
                 }
 
+                // Optional presentation-only opt-out; author/date structured metadata stays intact.
+                // Omitted or true preserves the existing footer for every other article.
+                if (meta.show_author_footer === 'false') {
+                    document.querySelector('.article-author-box').remove();
+                }
+
                 // Tags
                 const tags = Array.isArray(meta.tags) ? meta.tags : (meta.tags ? [meta.tags] : []);
                 document.getElementById('articleTags').innerHTML = tags.map(t =>
