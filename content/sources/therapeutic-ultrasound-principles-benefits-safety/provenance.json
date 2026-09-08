@@ -1,8 +1,11 @@
 {
-  "approved_html_sha256": "129495afe5f94d52d63be0ed69cfceb371e3bdf553cf7fec11c08f2524063c31",
+  "approved_html_sha256": "a3dcce60d06bfc093280cacaac3684b293c79c5fea7ae5ca3fba600c5f80236e",
   "published_slug": "therapeutic-ultrasound-principles-benefits-safety",
   "references": 7,
   "inline_svg_diagrams": 2,
   "transformation": "Existing site title/byline; scoped original CSS; externalized unchanged cover; source clinical prose retained.",
-  "public_content_only": true
+  "public_content_only": true,
+  "original_approved_html_sha256": "129495afe5f94d52d63be0ed69cfceb371e3bdf553cf7fec11c08f2524063c31",
+  "color_revision": "2026-09-08-contrast-v2",
+  "color_revision_scope": "CSS only: namespace pale card blue to --us-blue; explicit navy h2/h3. All non-style bytes unchanged."
 }
