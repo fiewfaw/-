@@ -4,7 +4,6 @@ description: "คู่มือผู้ดูแล: คำบอกทีล�
 author: "นักกายภาพเฟี้ยว (รัชธรรม)"
 date: "2026-09-08"
 show_author_footer: "false"
-image: "../blog/images/memory-decline-safe-walking-at-home/cover.webp"
 tags: ["ผู้สูงอายุ", "ความจำลดลง", "walker", "ผู้ดูแล", "ป้องกันล้ม"]
 ---
 
