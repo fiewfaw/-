@@ -1,10 +1,64 @@
 [
   {
+    "slug": "barthel-index-20-daily-living",
+    "title": "Barthel Index 20 คะแนน: อ่านความสามารถในชีวิตประจำวันอย่างไร",
+    "description": "เข้าใจคะแนน Barthel ฉบับ 20 คะแนน สิ่งที่วัดได้ ข้อจำกัด และวิธีใช้ผลประเมินวางเป้าหมายดูแลที่บ้าน",
+    "date": "2026-09-29",
+    "tags": [
+      "Barthel Index",
+      "ADL",
+      "Stroke",
+      "ผู้ดูแล"
+    ]
+  },
+  {
+    "slug": "stream-stroke-movement-assessment",
+    "title": "STREAM คืออะไร? ดูการขยับแขน ขา และการเคลื่อนตัวหลัง Stroke",
+    "description": "รู้จัก STREAM ฉบับ 30 ข้อ การให้คะแนนแยกด้าน และเหตุผลที่ไม่ควรดูเฉพาะคะแนนรวมหลังโรคหลอดเลือดสมอง",
+    "date": "2026-09-29",
+    "tags": [
+      "STREAM",
+      "Stroke",
+      "ประเมินการเคลื่อนไหว",
+      "กายภาพบำบัด"
+    ]
+  },
+  {
+    "slug": "berg-balance-scale-understanding-scores",
+    "title": "Berg Balance Scale: คะแนนการทรงตัวบอกอะไร และไม่ได้บอกอะไร",
+    "description": "เข้าใจ Berg Balance Scale 14 ข้อ 56 คะแนน การประเมินอย่างปลอดภัย และเหตุผลที่คะแนนเดียวไม่รับรองว่าจะไม่ล้ม",
+    "date": "2026-09-29",
+    "tags": [
+      "Berg Balance Scale",
+      "การทรงตัว",
+      "Stroke",
+      "ป้องกันหกล้ม"
+    ]
+  },
+  {
+    "slug": "modified-ashworth-scale-stroke-muscle-tone",
+    "title": "Modified Ashworth Scale: อ่านคะแนนความตึงและแรงต้านหลัง Stroke",
+    "description": "รู้จัก MAS ระดับ 0, 1, 1+, 2, 3, 4 ข้อจำกัดในการประเมินความเกร็ง และข้อมูลที่ควรจดเพื่อเทียบผลอย่างมีความหมาย",
+    "date": "2026-09-29",
+    "tags": [
+      "Modified Ashworth Scale",
+      "MAS",
+      "Stroke",
+      "เกร็ง"
+    ]
+  },
+  {
     "slug": "electrical-stimulation-stroke-spasticity-motor-training",
     "title": "กระตุ้นไฟฟ้าหลัง Stroke: ลดเกร็งกับฝึกให้กล้ามเนื้อทำงาน ต่างกันอย่างไร?",
     "description": "เข้าใจความต่างระหว่างการกระตุ้นไฟฟ้าเพื่อลดเกร็ง ลดปวด และช่วยให้กล้ามเนื้อทำงานหลัง Stroke พร้อมหลักฐานและข้อควรระวังสำหรับผู้ป่วยและญาติ",
     "date": "2026-09-19",
-    "tags": ["Stroke", "กระตุ้นไฟฟ้า", "เกร็ง", "ฟื้นฟูแขน", "กายภาพบำบัด"],
+    "tags": [
+      "Stroke",
+      "กระตุ้นไฟฟ้า",
+      "เกร็ง",
+      "ฟื้นฟูแขน",
+      "กายภาพบำบัด"
+    ],
     "image": "/blog/images/electrical-stimulation-stroke-spasticity-motor-training/cover.png"
   },
   {
