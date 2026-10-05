@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>ประเมิน Barthel Index (BI) 20 คะแนน</title>
+  <style>
+    :root {
+      --bg: #f6f8fb;
+      --card: #ffffff;
+      --text: #172033;
+      --muted: #667085;
+      --line: #d9e2ec;
+      --primary: #1261a6;
+      --primary-dark: #0b477a;
+      --ok: #157347;
+      --warn: #b54708;
+      --shadow: 0 10px 28px rgba(18, 35, 58, .08);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.45;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      background: rgba(246, 248, 251, .96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+    .wrap { max-width: 880px; margin: 0 auto; padding: 14px; }
+    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    h1 { margin: 0; font-size: 20px; }
+    .subtitle { margin: 4px 0 0; color: var(--muted); font-size: 13px; }
+    .scorebox {
+      min-width: 112px;
+      text-align: center;
+      background: var(--card);
+      border: 2px solid var(--primary);
+      border-radius: 16px;
+      padding: 8px 10px;
+      box-shadow: var(--shadow);
+    }
+    .score { font-size: 34px; font-weight: 800; color: var(--primary); line-height: 1; }
+    .scorelabel { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    main.wrap { padding-bottom: 92px; }
+    .item {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      margin: 12px 0;
+      padding: 14px;
+      box-shadow: var(--shadow);
+    }
+    .item-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+    .item-title { font-size: 17px; font-weight: 750; }
+    .item-score {
+      flex: 0 0 auto;
+      color: var(--primary);
+      font-weight: 800;
+      background: #e8f2fb;
+      border-radius: 999px;
+      padding: 3px 10px;
+      font-size: 14px;
+    }
+    .choices { display: grid; gap: 8px; margin-top: 12px; }
+    button.choice {
+      width: 100%;
+      border: 1.5px solid var(--line);
+      border-radius: 14px;
+      padding: 11px 12px;
+      text-align: left;
+      background: #fff;
+      color: var(--text);
+      font-size: 15px;
+      cursor: pointer;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      min-height: 48px;
+    }
+    button.choice:active { transform: translateY(1px); }
+    button.choice.selected {
+      border-color: var(--primary);
+      background: #eaf4ff;
+      box-shadow: 0 0 0 2px rgba(18, 97, 166, .12) inset;
+    }
+    .pts {
+      flex: 0 0 auto;
+      min-width: 38px;
+      text-align: center;
+      font-weight: 800;
+      color: #fff;
+      background: var(--primary);
+      border-radius: 999px;
+      padding: 2px 8px;
+      font-size: 13px;
+      margin-top: 1px;
+    }
+    .choice:not(.selected) .pts { background: #98a2b3; }
+    .text { flex: 1 1 auto; }
+    .summary {
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      color: #7c2d12;
+      padding: 10px 12px;
+      border-radius: 14px;
+      margin: 12px 0;
+      font-size: 14px;
+    }
+    .footerbar {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 10;
+      background: rgba(255,255,255,.96);
+      border-top: 1px solid var(--line);
+      box-shadow: 0 -6px 22px rgba(18, 35, 58, .08);
+      padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+    }
+    .footer-inner { max-width: 880px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .action {
+      border: 0;
+      border-radius: 14px;
+      padding: 13px 12px;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .reset { background: #eef2f7; color: #344054; }
+    .copy { background: var(--primary); color: #fff; }
+    .copy:active, .reset:active { transform: translateY(1px); }
+    .status { margin-top: 8px; text-align: center; color: var(--muted); font-size: 12px; min-height: 16px; }
+    @media (min-width: 720px) {
+      .choices { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      h1 { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap topbar">
+      <div>
+        <h1>ประเมิน Barthel Index (BI)</h1>
+        <p class="subtitle">เลือกคะแนนแต่ละ item รวมเต็ม 20 คะแนน • ไม่บันทึกข้อมูลผู้ป่วย</p>
+      </div>
+      <div class="scorebox" aria-live="polite">
+        <div class="score"><span id="total">0</span>/20</div>
+        <div class="scorelabel">คะแนนรวม BI</div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="summary" id="summary">เลือกครบ 10 item แล้วนำคะแนน BI ไปกรอกในแชทได้เลย</div>
+    <section id="items"></section>
+  </main>
+
+  <div class="footerbar">
+    <div class="footer-inner">
+      <button class="action reset" id="resetBtn" type="button">รีเซตคนใหม่</button>
+      <button class="action copy" id="copyBtn" type="button">คัดลอก BI</button>
+    </div>
+    <div class="status" id="status"></div>
+  </div>
+
+<script>
+const BI_ITEMS = [
+  {
+    id: 'feeding', title: '1. รับประทานอาหาร',
+    choices: [
+      [0, 'ทำไม่ได้ / ต้องป้อนทั้งหมด'],
+      [1, 'ต้องช่วยบางส่วน เช่น ตัดอาหาร ทาเนย เตรียมอาหาร'],
+      [2, 'ทำเองได้']
+    ]
+  },
+  {
+    id: 'grooming', title: '2. ล้างหน้า หวีผม แปรงฟัน โกนหนวด',
+    choices: [
+      [0, 'ต้องช่วย'],
+      [1, 'ทำเองได้']
+    ]
+  },
+  {
+    id: 'transfer', title: '3. ลุกนั่ง / เคลื่อนย้าย เตียง-เก้าอี้',
+    choices: [
+      [0, 'ทำไม่ได้ / นั่งทรงตัวไม่ได้'],
+      [1, 'ช่วยมาก 1-2 คน แต่ยังนั่งได้'],
+      [2, 'ช่วยเล็กน้อย / ต้องกำกับ'],
+      [3, 'ทำเองได้']
+    ]
+  },
+  {
+    id: 'toilet', title: '4. ใช้ห้องน้ำ',
+    choices: [
+      [0, 'ทำไม่ได้'],
+      [1, 'ต้องช่วยบางส่วน'],
+      [2, 'ทำเองได้']
+    ]
+  },
+  {
+    id: 'mobility', title: '5. เดินพื้นราบ / เคลื่อนที่',
+    choices: [
+      [0, 'เคลื่อนที่ไม่ได้'],
+      [1, 'ใช้รถเข็นเองได้อย่างน้อย 45 เมตร'],
+      [2, 'เดินได้โดยมีคนช่วย 1 คน / กำกับ'],
+      [3, 'เดินเองได้ 45 เมตร อาจใช้อุปกรณ์ช่วยเดิน']
+    ]
+  },
+  {
+    id: 'dressing', title: '6. แต่งตัว',
+    choices: [
+      [0, 'ทำไม่ได้'],
+      [1, 'ต้องช่วย แต่ทำเองได้บางส่วน'],
+      [2, 'ทำเองได้ รวมติดกระดุม/รูดซิป/ผูกเชือก']
+    ]
+  },
+  {
+    id: 'stairs', title: '7. ขึ้นลงบันได',
+    choices: [
+      [0, 'ทำไม่ได้'],
+      [1, 'ต้องช่วย / ต้องกำกับ'],
+      [2, 'ทำเองได้']
+    ]
+  },
+  {
+    id: 'bathing', title: '8. อาบน้ำ',
+    choices: [
+      [0, 'ต้องช่วย'],
+      [1, 'ทำเองได้']
+    ]
+  },
+  {
+    id: 'bowels', title: '9. การกลั้นอุจจาระ',
+    choices: [
+      [0, 'กลั้นไม่ได้ / ต้องสวนหรือช่วยจัดการ'],
+      [1, 'มีอุบัติเหตุเป็นบางครั้ง'],
+      [2, 'ควบคุมได้']
+    ]
+  },
+  {
+    id: 'bladder', title: '10. การกลั้นปัสสาวะ',
+    choices: [
+      [0, 'กลั้นไม่ได้ / ใส่สายหรือช่วยจัดการ'],
+      [1, 'มีอุบัติเหตุเป็นบางครั้ง'],
+      [2, 'ควบคุมได้']
+    ]
+  }
+];
+
+const selected = Object.fromEntries(BI_ITEMS.map(item => [item.id, null]));
+const itemsEl = document.getElementById('items');
+const totalEl = document.getElementById('total');
+const summaryEl = document.getElementById('summary');
+const statusEl = document.getElementById('status');
+
+function render() {
+  itemsEl.innerHTML = '';
+  BI_ITEMS.forEach(item => {
+    const card = document.createElement('article');
+    card.className = 'item';
+    const itemScore = selected[item.id];
+    card.innerHTML = `
+      <div class="item-head">
+        <div class="item-title">${item.title}</div>
+        <div class="item-score">${itemScore === null ? '-' : itemScore} คะแนน</div>
+      </div>
+      <div class="choices"></div>
+    `;
+    const choicesEl = card.querySelector('.choices');
+    item.choices.forEach(([pts, text]) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'choice' + (selected[item.id] === pts ? ' selected' : '');
+      btn.setAttribute('aria-pressed', selected[item.id] === pts ? 'true' : 'false');
+      btn.innerHTML = `<span class="pts">${pts}</span><span class="text">${text}</span>`;
+      btn.addEventListener('click', () => {
+        selected[item.id] = pts;
+        update();
+        render();
+      });
+      choicesEl.appendChild(btn);
+    });
+    itemsEl.appendChild(card);
+  });
+}
+
+function calcTotal() {
+  return Object.values(selected).reduce((sum, value) => sum + (value ?? 0), 0);
+}
+
+function update() {
+  const total = calcTotal();
+  const done = Object.values(selected).filter(value => value !== null).length;
+  totalEl.textContent = total;
+  summaryEl.textContent = done === BI_ITEMS.length
+    ? `เลือกครบแล้ว: BI ${total}/20`
+    : `เลือกแล้ว ${done}/${BI_ITEMS.length} item • คะแนนชั่วคราว BI ${total}/20`;
+}
+
+function resetAll() {
+  Object.keys(selected).forEach(key => selected[key] = null);
+  statusEl.textContent = 'รีเซตแล้ว พร้อมประเมินคนใหม่';
+  update();
+  render();
+}
+
+async function copyBI() {
+  const total = calcTotal();
+  const done = Object.values(selected).filter(value => value !== null).length;
+  const text = `BI ${total}/20`;
+  try {
+    await navigator.clipboard.writeText(text);
+    statusEl.textContent = done === BI_ITEMS.length ? `คัดลอกแล้ว: ${text}` : `คัดลอกคะแนนชั่วคราวแล้ว: ${text}`;
+  } catch (_) {
+    statusEl.textContent = text;
+  }
+}
+
+document.getElementById('resetBtn').addEventListener('click', resetAll);
+document.getElementById('copyBtn').addEventListener('click', copyBI);
+update();
+render();
+</script>
+</body>
+</html>
